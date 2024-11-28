@@ -3,6 +3,7 @@
 const Purchase = () => {
     return (
         <div>
+            hi
         </div>
     )
 }
