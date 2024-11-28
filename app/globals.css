@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -39,4 +39,99 @@ a {
   html {
     color-scheme: dark;
   }
+} */
+
+:root {
+  /* colors */
+  --Almost-white: rgb(243, 243, 243);
+  --white: #ffffff;
+  --black: #000000;
+  --almost-black: rgb(22, 22, 22);
+  --primary-color: #dda604;
+  --primary-color-light: #FFD500;  
+  --primary-color-dark: #B88A03;
+  --primary-blue: #0066CC;
+  --primary-blue-light: #3388FF;
+  --primary-blue-dark: #004D99;
+  --primary-green: #28A745;
+  --secondary-orange: #FF7F32;
+  --danger-red: #FF4136;
+
+  /* background and text colors for dark mode */
+  --background-light: #ffffff;
+  --background-dark: #333333;
+  --text-light: #000000;
+  --text-dark: #ffffff;
+
+  /* font family */
+  --primary-font: 'Arial', sans-serif;
+  --secondary-font: 'Courier New', monospace;
+
+  /* sizes */
+  --primary-size: 16px;
+  --small-size: calc(var(--primary-size)/1.5);
+  --half-size: calc(var(--primary-size)/2);
+  --double-size: calc(var(--primary-size)*2);
+  --big-size: calc(var(--primary-size)*1.5);
+  --biggest-size: 24px;
+  --extra-small-size: 12px;
+
+  /* borders */
+  --border-radius: 8px;
+  --border-color: #ccc;
+  --border-width: 2px;
+
+  /* opacity levels */
+  --opacity-light: 0.8;
+  --opacity-medium: 0.5;
+  --opacity-dark: 0.2;
+
+  /* margins */
+  --small-margin: 8px;
+  --medium-margin: 16px;
+  --large-margin: 32px;
+
+  /* gradients */
+  --gradient-primary: linear-gradient(45deg, #FFD500, #FF6F00);
+  --gradient-blue: linear-gradient(45deg, #3388FF, #004D99);
+
+  /* height */
+  --header-height: 75px;
+}
+
+*{
+  box-sizing: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  
+}
+
+body{
+  background-color: var(--Almost-white);
+}
+
+svg {
+  width: 20px;
+  height: 20px;
+  color: var(--black);
+}
+
+
+#app {
+  background-color: var(--white);
+}
+#app *{
+  transition: color 0.5s, background-color 0.5s;
+}
+#app p, #app h1, #app h2, #app button, #app a {
+  background-color: var(--white);
+  color: var(--black);
+}
+#app.dark-mode {
+  background-color: var(--black);
+}
+#app.dark-mode p, #app.dark-mode h1, #app.dark-mode h2, #app.dark-mode button, #app.dark-mode a {
+  background-color: var(--black);
+  color: var(--white);
 }
