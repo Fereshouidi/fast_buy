@@ -43,11 +43,11 @@ a {
 
 :root {
   /* colors */
-  --Almost-white: rgb(243, 243, 243);
+  --almost-white: rgb(243, 243, 243);
   --white: #ffffff;
   --black: #000000;
   --almost-black: rgb(22, 22, 22);
-  --primary-color: #dda604;
+  --primary-color: #FF9B38;
   --primary-color-light: #FFD500;  
   --primary-color-dark: #B88A03;
   --primary-blue: #0066CC;
@@ -77,9 +77,9 @@ a {
   --extra-small-size: 12px;
 
   /* borders */
-  --border-radius: 8px;
+  --border-radius: 50px;
   --border-color: #ccc;
-  --border-width: 2px;
+  --border-width: 0.2px;
 
   /* opacity levels */
   --opacity-light: 0.8;
@@ -97,6 +97,9 @@ a {
 
   /* height */
   --header-height: 75px;
+  --primary-height: 50px;
+  --double-height: calc(var(--primary-height)*2);
+  --half-height: calc(var(--primary-height)/2);
 }
 
 *{
@@ -108,13 +111,18 @@ a {
 }
 
 body{
-  background-color: var(--Almost-white);
+  background-color: var(--almost-white);
 }
 
 svg {
   width: 20px;
   height: 20px;
-  color: var(--black);
+  /* color: var(--black); */
+}
+
+.primary-border{
+  border: var(--border-width) solid var(--border-color) ;
+  border-radius: var(--border-radius);
 }
 
 
