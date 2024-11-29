@@ -12,6 +12,8 @@ const SideBar = () => {
 
     const [activeLanguage, setActiveLanguage] = useState(english);
 
+    console.log(activeLanguage);
+    
     const context = useContext(LanguageSelectorContext);
     const sideBarExistContext = useContext(SideBarContext);
     
