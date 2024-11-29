@@ -3,7 +3,7 @@ import SearchIcon from "@/app/svg/icons/search";
 import React, { CSSProperties, useState, useContext, useEffect } from 'react';
 import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
-import { LanguageSelectorContext } from "@/app/pages/home/page";
+import { LanguageSelectorContext } from "@/app/LanguageSelectorContext";
 
 
 

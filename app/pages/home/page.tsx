@@ -3,14 +3,15 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect, createContext } from "react";
 import HeaderForComputer from "../../components/header/headerForComputer/header";
 import HeaderForPhone from "../../components/header/headerForPhones/header";
+import { LanguageSelectorContext } from "@/app/LanguageSelectorContext";
 //import LanguageSelector from "@/app/components/header/headerForComputer/components/languageSelector/languageSelector";
 
-interface LanguageContextType {
-    activeLanguage: string;
-    setActiveLanguage: React.Dispatch<React.SetStateAction<string>>;
-  }
+// interface LanguageContextType {
+//     activeLanguage: string;
+//     setActiveLanguage: React.Dispatch<React.SetStateAction<string>>;
+//   }
   
-  export const LanguageSelectorContext = createContext<LanguageContextType | undefined>(undefined);
+//   export const LanguageSelectorContext = createContext<LanguageContextType | undefined>(undefined);
   
 const Home = () => {
   const router = useRouter();
