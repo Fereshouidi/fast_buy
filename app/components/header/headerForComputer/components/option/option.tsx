@@ -1,9 +1,11 @@
 'use client';
 import OptionIcon from '@/app/svg/icons/option';
-import { CSSProperties, useContext } from 'react';
+import { CSSProperties, useContext, useState } from 'react';
 import { SideBarContext } from '@/app/contexts/SideBarContext';
+import { TIMEOUT } from 'dns';
 const Options = () => {
 
+    const [optionIconColor, setOptionIconColor] = useState('transparent')
     const sideBarContext = useContext(SideBarContext);
 
     if(!sideBarContext){
@@ -11,12 +13,21 @@ const Options = () => {
     }
 
     const handleSideBarExistance = () => {
+        setOptionIconColor('var(--primary-color-semi-transparent)')
+        setTimeout(() => {setOptionIconColor('transparent')}, 100)
         sideBarContext.setSideBarExist(!sideBarContext.sideBarExist);
     }
 
     const style: CSSProperties = {
+        width: 'var(--primary-width)',
+        height: 'var(--primary-height)',
+        borderRadius: '50px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         cursor: 'pointer',
         color: sideBarContext.sideBarExist? 'var(--primary-color)': 'var(--black)',
+        backgroundColor: optionIconColor,
     }
     return(
         <div style={style} onClick={handleSideBarExistance}>

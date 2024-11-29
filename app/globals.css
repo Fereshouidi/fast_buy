@@ -55,6 +55,7 @@ a {
   --ashen: rgb(123, 123, 123);
   --ashen-semi-transparent:  rgba(123, 123, 123, 0.463);
   --primary-color: #FF9B38;
+  --primary-color-semi-transparent: #ff9c387a;
   --primary-color-light: #FFD500;  
   --primary-color-dark: #B88A03;
   --primary-blue: #0066CC;
@@ -130,6 +131,7 @@ a {
   padding: 0;
   border-radius: 0;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  user-select: none;
 }
 
 body{
