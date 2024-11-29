@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState, useContext, CSSProperties } from 'react';
-import { LanguageSelectorContext } from '@/app/LanguageSelectorContext';
+import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
 
 const LanguageSelector = () => {
 

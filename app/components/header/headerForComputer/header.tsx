@@ -4,7 +4,7 @@ import Logo from "./components/logo/logo";
 import Purchase from "./components/purchase/purchase";
 import SearchBar from "./components/searchBar/searchBar";
 import CategorieSelector from "./components/languageSelector/languageSelector";
-import { LanguageSelectorContext } from "@/app/LanguageSelectorContext";
+import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import Options from "./components/option/option";
 
 const Header = () => {

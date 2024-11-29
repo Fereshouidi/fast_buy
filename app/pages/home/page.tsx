@@ -3,21 +3,17 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import HeaderForComputer from "../../components/header/headerForComputer/header";
 import HeaderForPhone from "../../components/header/headerForPhones/header";
-import { LanguageSelectorContext } from "@/app/LanguageSelectorContext";
-//import LanguageSelector from "@/app/components/header/headerForComputer/components/languageSelector/languageSelector";
+import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
+import { SideBarContext } from "@/app/contexts/SideBarContext";
+import SideBar from "@/app/components/sideBar/sideBarForComputers/sidebar";
 
-// interface LanguageContextType {
-//     activeLanguage: string;
-//     setActiveLanguage: React.Dispatch<React.SetStateAction<string>>;
-//   }
-  
-//   export const LanguageSelectorContext = createContext<LanguageContextType | undefined>(undefined);
-  
+
 const Home = () => {
   const router = useRouter();
 
   const [screenWidth, setScreenWidth] = useState(0); 
   const [activeLanguage, setActiveLanguage] = useState("english"); 
+  const [sideBarExist, setSideBarExist] = useState(false); 
 
   // handle screen width
   useEffect(() => {
@@ -42,9 +38,12 @@ const Home = () => {
 
   return (
     <LanguageSelectorContext.Provider value={{activeLanguage, setActiveLanguage}}>
-      {screenWidth > 700 ? <HeaderForComputer /> : <HeaderForPhone />}
-      <div>home page</div>
-      <button onClick={goToAbout}>Go to About</button>
+        <SideBarContext.Provider value={{sideBarExist, setSideBarExist}}>
+            {screenWidth > 700 ? <HeaderForComputer /> : <HeaderForPhone />}
+            <SideBar/>
+            <div>home page</div>
+            <button onClick={goToAbout}>Go to About</button>
+        </SideBarContext.Provider>
     </LanguageSelectorContext.Provider>
   );
 };

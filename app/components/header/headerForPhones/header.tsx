@@ -3,7 +3,7 @@
 import Logo from "../headerForComputer/components/logo/logo";
 import Options from "../headerForComputer/components/option/option";
 import { CSSProperties, useContext, useEffect, useState } from "react";
-import { LanguageSelectorContext } from "@/app/LanguageSelectorContext";
+import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
 
