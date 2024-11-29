@@ -2,7 +2,6 @@
 import OptionIcon from '@/app/svg/icons/option';
 import { CSSProperties, useContext, useState } from 'react';
 import { SideBarContext } from '@/app/contexts/SideBarContext';
-import { TIMEOUT } from 'dns';
 const Options = () => {
 
     const [optionIconColor, setOptionIconColor] = useState('transparent')
