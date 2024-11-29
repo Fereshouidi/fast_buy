@@ -1,8 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { LanguageSelectorContext } from '@/app/pages/home/page';
+
 const SearchIcon = () => {
 
     const [hover, setHover] = useState(false);
 
+    const context = useContext(LanguageSelectorContext);
+
+    if (!context) {
+        throw new Error("LanguageSelector must be used within a LanguageSelectorContext.Provider");
+    }
+
+    const { activeLanguage } = context;
+
+    
+
+    const style = {
+        position: 'absolute',
+        right: activeLanguage === 'english' ? '5px' : activeLanguage === 'arabic'? 'calc(100% - 45px)': '5px',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        color: 'var(--white)',
+        backgroundColor: 'var(--black)',
+        width: 'calc(var(--primary-height) - 10px)',
+        height: 'calc(var(--primary-height) - 10px)',
+        padding: '5px 7px 5px 3px',
+        fontSize: '50px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        cursor: 'pointer',
+        transition: '0.3s ease',
+    }
+    
+    const styleHover = {
+        ... style,
+        backgroundColor: 'var(--primary-color)',
+    }
 
     return(
         <svg 
@@ -27,25 +61,3 @@ const SearchIcon = () => {
     )
 }
 export default SearchIcon;
-
-const style = {
-    position: 'absolute',
-    right: '5px',
-    top: '50%',
-    transform: 'translateY(-50%)',
-    color: 'var(--white)',
-    backgroundColor: 'var(--black)',
-    width: 'calc(var(--primary-height) - 20px)',
-    height: 'calc(var(--primary-height) - 20px)',
-    padding: '5px 7px 5px 3px',
-    fontSize: '50px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-}
-
-const styleHover = {
-    ... style,
-    backgroundColor: 'var(--primary-color)',
-}
-

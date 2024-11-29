@@ -45,10 +45,13 @@ a {
 
 :root {
   /* colors */
+  
+  --white-almost-transparnt: rgba(255, 255, 255, 0.089);
   --almost-white: rgb(243, 243, 243);
   --white: #ffffff;
   --black: #000000;
   --almost-black: rgb(22, 22, 22);
+  --black-almost-transparnt: rgba(0, 0, 0, 0.082);
   --primary-color: #FF9B38;
   --primary-color-light: #FFD500;  
   --primary-color-dark: #B88A03;
@@ -93,6 +96,11 @@ a {
   --medium-margin: calc(var(--small-margin)*2);
   --large-margin: calc(var(--medium-margin)*2);
 
+  /* padding */
+  --small-padding: 5px;
+  --medium-padding: calc(var(--small-padding)*2);
+  --large-padding: calc(var(--medium-padding)*2);
+
   /* gradients */
   --gradient-primary: linear-gradient(45deg, #FFD500, #FF6F00);
   --gradient-blue: linear-gradient(45deg, #3388FF, #004D99);
@@ -104,24 +112,27 @@ a {
   --half-height: calc(var(--primary-height)/2);
 
   /* widths */
-  --primary-width: 50px;
-  --double-width: calc(var(--primary-width)*2);
-  --long-width: calc(var(--double-width)*2);
   --extra-long-width: calc(var(--long-width)*2);
+  --long-width: calc(var(--double-width)*2);
+  --double-width: calc(var(--primary-width)*2);
+  --primary-width: 50px;
   --half-width: calc(var(--primary-width)/2);
+  --short-width: calc(var(--half-width)/2);
+  --extra-short-width: calc(var(--short-width)/2);
 
 }
 
 *{
-  box-sizing: 0;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   border-radius: 0;
-  font-family: 'Cairo', 'Nunito', sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 body{
   background-color: var(--almost-white);
+  padding-top: var(--header-height);
 }
 
 svg {
@@ -130,9 +141,14 @@ svg {
   /* color: var(--black); */
 }
 
+
 .primary-border{
   border: var(--border-width) solid var(--border-color) ;
   border-radius: var(--border-radius);
+}
+
+header div{
+  margin: var(--small-margin);
 }
 
 .logo{
@@ -161,6 +177,7 @@ svg {
 }
 #app *{
   transition: color 0.5s, background-color 0.5s;
+  direction: ltr;
 }
 #app p, #app h1, #app h2, #app button, #app a {
   background-color: var(--white);
@@ -172,4 +189,7 @@ svg {
 #app.dark-mode p, #app.dark-mode h1, #app.dark-mode h2, #app.dark-mode button, #app.dark-mode a {
   background-color: var(--black);
   color: var(--white);
+}
+#app.arabic{
+  direction: rtl;
 }
