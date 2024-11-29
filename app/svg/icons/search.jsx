@@ -2,7 +2,6 @@ import React, { CSSProperties, useRef, useState } from 'react';
 const SearchIcon = () => {
 
     const [hover, setHover] = useState(false);
-    const [focus, setFocus] = useState(false);
 
 
     return(
