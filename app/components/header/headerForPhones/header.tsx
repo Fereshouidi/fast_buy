@@ -25,6 +25,8 @@ const Header = () => {
     }, [context.activeLanguage])
     
 
+    console.log(activeLanguage);
+    
   //const router = useRouter()
 
   const headerStyle :CSSProperties = {
