@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { LanguageSelectorContext } from '@/app/pages/home/page';
+import { LanguageSelectorContext } from '@/app/LanguageSelectorContext';
 
 const SearchIcon = () => {
 
