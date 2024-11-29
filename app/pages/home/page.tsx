@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect, createContext } from "react";
 import HeaderForComputer from "../../components/header/headerForComputer/header";
 import HeaderForPhone from "../../components/header/headerForPhones/header";
-import LanguageSelector from "@/app/components/header/headerForComputer/components/languageSelector/languageSelector";
+//import LanguageSelector from "@/app/components/header/headerForComputer/components/languageSelector/languageSelector";
 
 interface LanguageContextType {
     activeLanguage: string;

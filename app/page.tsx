@@ -6,7 +6,7 @@ export default function App() {
 
 
   
-  const [activeLanguage, setActiveLanguage] = useState(localStorage.getItem('activeLanguage') || 'english');
+  //const [activeLanguage, setActiveLanguage] = useState(localStorage.getItem('activeLanguage') || 'english');
   const router = useRouter();
 
   const goToHome = () => {
