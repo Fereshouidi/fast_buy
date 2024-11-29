@@ -1,4 +1,4 @@
-import React, { CSSProperties, useRef, useState } from 'react';
+import React, { useState } from 'react';
 const SearchIcon = () => {
 
     const [hover, setHover] = useState(false);
