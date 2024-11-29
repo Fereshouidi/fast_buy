@@ -1,0 +1,14 @@
+{
+    "general": {
+        "appName": "Fast Buy"
+    },
+
+    "home": {
+        "header": {
+            "searchWord": "search",
+            "categorieOption": {
+                
+            }
+        }
+    }
+}

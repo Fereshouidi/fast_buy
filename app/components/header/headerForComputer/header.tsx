@@ -3,7 +3,7 @@ import { CSSProperties } from "react";
 import Logo from "./components/logo/logo";
 import Purchase from "./components/purchase/purchase";
 import SearchBar from "./components/searchBar/searchBar";
-import CategorieSelector from "./components/CategoriesSelector/CategoriesSelector";
+import CategorieSelector from "./components/languageSelector/languageSelector";
 
 const Header = () => {
   //const router = useRouter()
