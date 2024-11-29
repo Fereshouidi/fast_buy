@@ -18,6 +18,9 @@ const LanguageSelector = () => {
         }
     }, []);
 
+    console.log(activeLanguage);
+    
+
     return(
         <select name="languageSelector" id="languageSelector" onChange={(event) => handleLanguage(event)}>
             <option value="english">english</option>
