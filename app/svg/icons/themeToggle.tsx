@@ -57,15 +57,21 @@ const ThemeToggleIcon = () => {
         
         
         if(languageContext.activeLanguage == 'arabic'){
-             theme == 'light' ? 
-             setIconPlace('3px 3px 3px 3px') 
-             : theme == 'dark' ? setIconPlace('3px 19px 3px 3px') 
-             : setIconPlace('3px 19px 3px 3px')
+             if(theme == 'light' ){
+                setIconPlace('3px 3px 3px 3px') 
+             }else if(theme == 'dark' ){
+                setIconPlace('3px 19px 3px 3px') 
+             } else{
+                setIconPlace('3px 19px 3px 3px')
+             }
         }else{
-            theme == 'light' ? 
-            setIconPlace('3px') 
-            : theme == 'dark' ? setIconPlace('3px 3px 3px 19px') 
-            : setIconPlace('3px 3px 3px 3px')
+            if(theme == 'light' ){
+                setIconPlace('3px') 
+            }else if(theme == 'dark' ){
+                setIconPlace('3px 3px 3px 19px') 
+            }else{
+                setIconPlace('3px 3px 3px 3px')
+            }
         }
 
     }, [languageContext.activeLanguage, theme])
