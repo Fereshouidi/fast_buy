@@ -3,12 +3,13 @@ import LightModeIcon from "./lightMode";
 import DarkModeIcon from "./darkMode";
 import { ThemeContext } from "@/app/contexts/ThemeContext";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-import { CSSProperties, useContext, useEffect } from "react";
+import { CSSProperties, useContext, useEffect, useState } from "react";
 
 const ThemeToggleIcon = () => {
 
     const themeContext = useContext(ThemeContext);
     const languageContext = useContext(LanguageSelectorContext)
+    const [iconPlace, setIconPlace] = useState('');
 
     if(!themeContext){
         throw 'error themeContext !'
@@ -51,8 +52,29 @@ const ThemeToggleIcon = () => {
         border: 'var(--border-width) solid var(--border-color)',
         borderRadius: '50px',
     }
+
+    useEffect(() => {
+        
+        
+        if(languageContext.activeLanguage == 'arabic'){
+             theme == 'light' ? 
+             setIconPlace('3px 3px 3px 3px') 
+             : theme == 'dark' ? setIconPlace('3px 19px 3px 3px') 
+             : setIconPlace('3px 19px 3px 3px')
+        }else{
+            theme == 'light' ? 
+            setIconPlace('3px') 
+            : theme == 'dark' ? setIconPlace('3px 3px 3px 19px') 
+            : setIconPlace('3px 3px 3px 3px')
+        }
+
+    }, [languageContext.activeLanguage, theme])
+    
+        
+
+
     const styleIcon: CSSProperties = {
-        margin: theme == 'night' ? '3px' : theme == 'dark' ? '3px 3px 3px 19px' : '3px 3px 3px 3px',
+        margin: iconPlace,
         backgroundColor: 'var(--white)',
         color: 'var(--black)',
         padding: '5px',
@@ -64,7 +86,7 @@ const ThemeToggleIcon = () => {
         alignItems: "center",
         justifyContent: 'center',
         objectFit: 'contain',
-        transition: '0.3s ease'
+        transition: '0.3s ease',
     }
 
     return(
