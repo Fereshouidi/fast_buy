@@ -7,7 +7,6 @@ import CategorieSelector from "./CategoriesSelector/CategoriesSelector";
 import Contact from "./contact/contact";
 import Favorite from "./favorite/favorite";
 import Purchase from "./purchase/purchase";
-import LanguageSelector from "./setting/language/language";
 import Setting from "./setting/setting";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import english from '@/app/languages/english.json';
