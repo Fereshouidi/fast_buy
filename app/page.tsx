@@ -15,7 +15,7 @@ const App = () => {
 
   const [screenWidth, setScreenWidth] = useState<number>(0); 
   const [theme, setTheme] = useState(() => {
-    if (typeof window !== undefined || typeof window !== 'undefined') {
+    if (typeof window !== undefined && typeof window !== 'undefined') {
       return localStorage.getItem("activeTheme") || "light";
     }
     return "light";
