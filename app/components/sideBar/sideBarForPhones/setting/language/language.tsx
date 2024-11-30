@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState, useContext, CSSProperties } from 'react';
 import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
+import { SideBarContext } from '@/app/contexts/SideBarContext';
 import LanguageIcon from '@/app/svg/icons/language';
 
 const LanguageSelector = () => {
@@ -9,9 +10,13 @@ const LanguageSelector = () => {
     const context = useContext(LanguageSelectorContext);
     const [hoveredOption, setHoveredOption] = useState<string | null>(null);
 
+    const sideBarContext = useContext(SideBarContext);
 
-      if (!context) {
+    if (!context) {
         throw new Error("LanguageSelector must be used within a LanguageSelectorContext.Provider");
+    }
+    if (!sideBarContext) {
+        throw new Error("error sideBarContext !");
     }
 
     const { activeLanguage, setActiveLanguage } = context;
@@ -53,6 +58,7 @@ const LanguageSelector = () => {
         margin: 'var(--small-margin)',
         color: 'var(--black)',
         backgroundColor: 'var(--whie)',
+        display: sideBarContext.sideBarExist? 'flex': 'none',
     }
 
     const getOptionStyle = (optionValue: string): CSSProperties => ({
