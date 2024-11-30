@@ -13,7 +13,7 @@ const Home = () => {
   const router = useRouter();
 
   const [screenWidth, setScreenWidth] = useState(0); 
-  const [theme, setTheme] = useState<string>(localStorage.getItem('activeTheme') || 'light');
+  const [theme, setTheme] = useState<string>('light');
   const [activeLanguage, setActiveLanguage] = useState("english"); 
   const [sideBarExist, setSideBarExist] = useState(false); 
 
@@ -36,6 +36,14 @@ const Home = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedTheme = localStorage.getItem('activeTheme');
+      if (storedTheme) {
+        setTheme(storedTheme);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     document.body.className = theme;
