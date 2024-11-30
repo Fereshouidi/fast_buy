@@ -13,7 +13,7 @@ const Home = () => {
   const router = useRouter();
 
   const [screenWidth, setScreenWidth] = useState(0); 
-  const [theme, setTheme] = useState('ligh');
+  const [theme, setTheme] = useState(localStorage.getItem('activeTheme') || 'light');
   const [activeLanguage, setActiveLanguage] = useState("english"); 
   const [sideBarExist, setSideBarExist] = useState(false); 
 
