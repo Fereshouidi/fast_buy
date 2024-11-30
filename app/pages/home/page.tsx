@@ -1,13 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
-import HeaderForComputer from "../../components/header/headerForComputer/header";
-import HeaderForPhone from "../../components/header/headerForPhones/header";
-import { ThemeContext } from "@/app/contexts/ThemeContext";
-import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-import { SideBarContext } from "@/app/contexts/SideBarContext";
-import SideBar from "@/app/components/sideBar/sideBarForComputers/sidebar";
 
 const Home = () => {
 //   const router = useRouter();

@@ -5,7 +5,6 @@ import { ThemeContext } from "@/app/contexts/ThemeContext";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import { CSSProperties, useContext, useEffect, useState } from "react";
-import SideBar from "@/app/components/sideBar/sideBarForComputers/sidebar";
 
 const ThemeToggleIcon = () => {
 
