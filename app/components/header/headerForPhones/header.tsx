@@ -1,12 +1,9 @@
 "use client";
 //import { useRouter } from "next/navigation";
 import Logo from "../headerForPhones/components/logo/logo";
-import SearchIcon_ from "@/app/svg/icons/search_";
-import Options from "./components/icons/optionsButton/option";
 import Icons from "./components/icons/icons";
 import { CSSProperties, useContext, useEffect, useState } from "react";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-import { SearchIconContext } from "@/app/contexts/searchIconConext";
 import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
 
@@ -27,6 +24,7 @@ const Header = () => {
         }
     }, [context.activeLanguage])
     
+console.log(activeLanguage);
 
     
   //const router = useRouter()
