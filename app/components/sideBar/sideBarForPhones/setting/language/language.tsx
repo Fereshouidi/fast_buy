@@ -44,10 +44,9 @@ const LanguageSelector = () => {
 
 
     const styleLi: CSSProperties = {
-        display: 'flex',
+        display: sideBarContext.sideBarExist? 'flex': 'none',
         alignItems: 'center',
         fontWeight: 'var(--font-weight-semi-bold)',
-        display: sideBarContext.sideBarExist? 'flex': 'none',
     }
 
     const styleSelector: CSSProperties = {
