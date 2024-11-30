@@ -1,7 +1,7 @@
 'use client';
 import { SearchIconContext } from "@/app/contexts/searchIconConext";
 import SearchIcon_ from "@/app/svg/icons/search_";
-import { CSSProperties, useContext } from "react";
+import { CSSProperties } from "react";
 
 const Search = () => {
 
