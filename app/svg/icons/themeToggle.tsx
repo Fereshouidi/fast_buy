@@ -53,28 +53,27 @@ const ThemeToggleIcon = () => {
         borderRadius: '50px',
     }
 
-    useEffect(() => {
+    // useEffect(() => {
         
-        
-        if(languageContext.activeLanguage == 'arabic'){
-             if(theme == 'light' ){
-                setIconPlace('3px 3px 3px 3px') 
-             }else if(theme == 'dark' ){
-                setIconPlace('3px 19px 3px 3px') 
-             } else{
-                setIconPlace('3px 19px 3px 3px')
-             }
-        }else{
-            if(theme == 'light' ){
-                setIconPlace('3px') 
-            }else if(theme == 'dark' ){
-                setIconPlace('3px 3px 3px 19px') 
-            }else{
-                setIconPlace('3px 3px 3px 3px')
-            }
-        }
+    //     if(languageContext.activeLanguage == 'arabic'){
+    //          if(theme == 'light' ){
+    //             setIconPlace('3px 3px 3px 3px') 
+    //          }else if(theme == 'dark' ){
+    //             setIconPlace('3px 19px 3px 3px') 
+    //          } else{
+    //             setIconPlace('3px 19px 3px 3px')
+    //          }
+    //     }else{
+    //         if(theme == 'light' ){
+    //             setIconPlace('3px') 
+    //         }else if(theme == 'dark' ){
+    //             setIconPlace('3px 3px 3px 19px') 
+    //         }else{
+    //             setIconPlace('3px 3px 3px 3px')
+    //         }
+    //     }
 
-    }, [languageContext.activeLanguage, theme])
+    // }, [languageContext.activeLanguage, theme])
     
         
 
