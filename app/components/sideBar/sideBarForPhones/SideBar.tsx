@@ -67,7 +67,6 @@ const SideBar = () => {
                 <Order/>
                 <CategorieSelector/>
                 <Favorite/>
-                <LanguageSelector/>
                 <About/>
                 <Contact/>
 
