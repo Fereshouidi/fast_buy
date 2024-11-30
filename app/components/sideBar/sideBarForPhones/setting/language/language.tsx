@@ -47,6 +47,7 @@ const LanguageSelector = () => {
         display: 'flex',
         alignItems: 'center',
         fontWeight: 'var(--font-weight-semi-bold)',
+        display: sideBarContext.sideBarExist? 'flex': 'none',
     }
 
     const styleSelector: CSSProperties = {
@@ -58,7 +59,6 @@ const LanguageSelector = () => {
         margin: 'var(--small-margin)',
         color: 'var(--black)',
         backgroundColor: 'var(--whie)',
-        display: sideBarContext.sideBarExist? 'flex': 'none',
     }
 
     const getOptionStyle = (optionValue: string): CSSProperties => ({
