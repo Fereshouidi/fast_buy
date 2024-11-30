@@ -75,7 +75,7 @@ const ThemeToggleIcon = () => {
 
     // }, [languageContext.activeLanguage, theme])
     
-        
+    setIconPlace('1px')
 
 
     const styleIcon: CSSProperties = {
