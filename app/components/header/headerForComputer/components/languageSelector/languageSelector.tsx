@@ -41,7 +41,9 @@ const LanguageSelector = () => {
         outline: 'none',
         border: 'none',
         cursor: 'pointer',
-        margin: 'var(--small-margin)'
+        margin: 'var(--small-margin)',
+        color: 'var(--black)',
+        backgroundColor: 'var(--whie)',
     }
 
     const getOptionStyle = (optionValue: string): CSSProperties => ({

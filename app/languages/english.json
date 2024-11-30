@@ -2,13 +2,22 @@
     "general": {
         "appName": "Fast Buy"
     },
+    "header": {
+        "searchWord": "search",
+        "categorieOption": {
 
-    "home": {
-        "header": {
-            "searchWord": "search",
-            "categorieOption": {
-                
-            }
         }
+    },
+    "sideBar": {
+        "aboutW": "About",
+        "accountW": "Account",
+        "purchaseW": "purchase",
+        "categorieW": "Categories",
+        "contactW": "Contact",
+        "favorite": "Favorite",
+        "homeW": "Home",
+        "language": "Language",
+        "orderW": "Orders",
+        "themeW": "Theme"
     }
 }

@@ -9,7 +9,8 @@ const Logo = () => {
 
 
     const style: CSSProperties = {
-        cursor: 'pointer'
+        cursor: 'pointer',
+        color: 'var(--black)'
     }
     return (
         <div style={style} className='logo'>
@@ -17,7 +18,7 @@ const Logo = () => {
                 src={logo.src}
                 alt="Logo"   
             />
-            <h1 >{english.general.appName}</h1>
+            <h1>{english.general.appName}</h1>
         </div>
     )
 }

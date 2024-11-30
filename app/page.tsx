@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 //import { useState } from "react";
+import { ThemeContext } from "./contexts/ThemeContext";
 
 export default function App() {
 

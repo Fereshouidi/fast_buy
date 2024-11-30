@@ -1,7 +1,13 @@
 'use client';
 import { CSSProperties, useContext, useEffect, useState } from "react";
+import Home from "./home/home";
+import Order from "./orders/orders";
 import About from "./about/about";
 import Account from "./account/account";
+import CategorieSelector from "./CategoriesSelector/CategoriesSelector";
+import Contact from "./contact/contact";
+import Favorite from "./favorite/favorite";
+import ThemeToggle from "./ThemeToggle/themeToggle";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
@@ -51,13 +57,19 @@ const SideBar = () => {
             style={backgroundStyle}
             onClick={() => sideBarExistContext.setSideBarExist(false)}
         >
-            <div 
+            <ul onClick={(e) => e.stopPropagation()}
                 className='sideBar'
                 style={sideBarStyle}
             >
+                <Home/>
+                <Order/>
+                <CategorieSelector/>
+                <Favorite/>
+                <ThemeToggle/>
                 <About/>
+                <Contact/>
                 <Account/>
-            </div>
+            </ul>
         </div>
     )
 }

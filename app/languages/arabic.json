@@ -2,13 +2,22 @@
     "general": {
         "appName": "Fast Buy"
     },
-
-    "home": {
-        "header": {
-            "searchWord": "بحث",
-            "categorieOption": {
-                
-            }
+    "header": {
+        "searchWord": "بحث",
+        "categorieOption": {
+            
         }
+    },
+    "sideBar": {
+        "aboutW": "معلومات عنا",
+        "accountW": "الحساب",
+        "purchaseW": "سلة المشتريات",
+        "categorieW": "التصنيفات",
+        "contactW": "تواصل معنا",
+        "favorite": "المفضلة",
+        "homeW": "الصفحة الرئيسية",
+        "language": "اللغة",
+        "orderW": "الطلبات",
+        "themeW": "السمة"
     }
 }

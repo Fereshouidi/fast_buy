@@ -84,10 +84,21 @@ a {
   --biggest-size: 24px;
   --extra-small-size: 12px;
 
+  /* fonts weight */
+  --font-weight-thin: 100;      /* Thin */
+  --font-weight-extra-light: 200; /* Extra Light */
+  --font-weight-light: 300;    /* Light */
+  --font-weight-regular: 400;  /* Regular */
+  --font-weight-medium: 500;   /* Medium */
+  --font-weight-semi-bold: 600; /* Semi Bold */
+  --font-weight-bold: 700;     /* Bold */
+  --font-weight-extra-bold: 800; /* Extra Bold */
+  --font-weight-black: 900;
+
   /* borders */
   --border-radius: 50px;
-  --border-color: #ccc;
-  --border-width: 0.2px;
+  --border-color: #cccccca2;
+  --border-width: 0.1px;
 
   /* opacity levels */
   --opacity-light: 0.8;
@@ -142,7 +153,8 @@ body{
 svg {
   width: 20px;
   height: 20px;
-  /* color: var(--black); */
+  border-radius: 50px;
+  color: var(--black);
 }
 
 
@@ -187,12 +199,21 @@ header div{
   background-color: var(--white);
   color: var(--black);
 }
-#app.dark-mode {
-  background-color: var(--black);
+.dark {
+  --white-almost-transparnt: rgba(0, 0, 0, 0.089);
+  --almost-white: rgb(25, 25, 25);
+  --white: #000000;
+  --black: #ffffff;
+  --almost-black: rgb(245, 245, 245);
+  --black-almost-transparnt: rgba(255, 255, 255, 0.082);
 }
-#app.dark-mode p, #app.dark-mode h1, #app.dark-mode h2, #app.dark-mode button, #app.dark-mode a {
-  background-color: var(--black);
-  color: var(--white);
+.dark .dark header, .dark div, .dark p, .dark h1, .dark h2, .dark button, .dark a {
+  --white-almost-transparnt: rgba(0, 0, 0, 0.089);
+  --almost-white: rgb(25, 25, 25);
+  --white: #000000;
+  --black: #ffffff;
+  --almost-black: rgb(245, 245, 245);
+  --black-almost-transparnt: rgba(255, 255, 255, 0.082);
 }
 #app.arabic{
   direction: rtl;
@@ -201,6 +222,7 @@ header div{
 .sideBar-background{
   height: 100vh;
   background-color: var(--ashen-semi-transparent);
+  color: var(--black);
   position: fixed;
   top: var(--header-height);
 }
@@ -209,6 +231,26 @@ header div{
   height: 100vh;
   background-color: var(--white);
 }
+.sideBar-background .sideBar li{
+  width: 100%;
+  height: var(--primary-height);
+  padding: var(--small-padding);
+  border-bottom: var(--border-width) solid var(--border-color);
+  justify-content: start;
+  align-items: center;
+  position: relative;
+}
+.sideBar-background .sideBar li:hover{
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+.sideBar-background .sideBar li svg:not(.toggle svg){
+  margin: 0 10px;
+}
+.sideBar-background .sideBar li .toggle svg{
+  margin: 3px,
+}
+
 .sideBar-background-invisible{
   width: 0;
   height: 100vh;

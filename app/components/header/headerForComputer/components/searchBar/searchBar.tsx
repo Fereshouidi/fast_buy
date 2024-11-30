@@ -58,7 +58,7 @@ const SearchBar = () => {
                 <input 
                     type="text" 
                     placeholder={
-                        activeLanguage.home.header.searchWord
+                        activeLanguage.header.searchWord
                     }
                     className="primary-border" 
                     onFocus={() => setFocus(true)}
