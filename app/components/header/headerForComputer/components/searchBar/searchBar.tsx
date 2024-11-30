@@ -42,6 +42,7 @@ const SearchBar = () => {
     
     const inputStyle:CSSProperties = {
         backgroundColor: 'var(--almost-white)',
+        color: 'var(--black)',
         width: '100%',
         height: '100%',
         padding: '0 20px',
@@ -58,7 +59,7 @@ const SearchBar = () => {
                 <input 
                     type="text" 
                     placeholder={
-                        activeLanguage.header.searchWord
+                        activeLanguage.header.searchWord +' ...'
                     }
                     className="primary-border" 
                     onFocus={() => setFocus(true)}

@@ -51,6 +51,7 @@ const CategorieSelector = () => {
         fontWeight: 'var(--font-weight-semi-bold)',
         color: 'var(--black)',
         backgroundColor: 'var(--whie)',
+        outline: 'none'
     }
 
     const styleOption: CSSProperties = {

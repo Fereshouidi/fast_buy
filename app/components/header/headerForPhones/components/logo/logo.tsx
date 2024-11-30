@@ -9,7 +9,8 @@ const Logo = () => {
 
 
     const style: CSSProperties = {
-        cursor: 'pointer'
+        cursor: 'pointer',
+        color: 'var(--black)'
     }
     return (
         <div style={style} className='logo'>

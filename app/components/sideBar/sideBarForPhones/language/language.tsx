@@ -37,15 +37,16 @@ const LanguageSelector = () => {
         setHoveredOption(null);
     };
 
-    const styleDiv: CSSProperties = {
+
+    const styleLi: CSSProperties = {
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
-        color: 'var(--black)'
+        fontWeight: 'var(--font-weight-semi-bold)',
     }
 
     const styleSelector: CSSProperties = {
-        width: 'var(--double-width)',
+        width: '100%',
+        height: '100%',
         outline: 'none',
         border: 'none',
         cursor: 'pointer',
@@ -60,7 +61,7 @@ const LanguageSelector = () => {
     });
 
     return(
-        <div style={styleDiv}>
+        <li style={styleLi}> 
             <LanguageIcon/>
             <select name="languageSelector" 
             id="languageSelector" 
@@ -81,8 +82,7 @@ const LanguageSelector = () => {
                 value="arabic">العربية
             </option>
         </select>
-        </div>
-        
+        </li>
     )
 }
 export default LanguageSelector;

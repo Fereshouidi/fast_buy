@@ -3,11 +3,11 @@ import { CSSProperties, useContext, useEffect, useState } from "react";
 import Home from "./home/home";
 import Order from "./orders/orders";
 import About from "./about/about";
-import Account from "./setting/account/account";
 import CategorieSelector from "./CategoriesSelector/CategoriesSelector";
 import Contact from "./contact/contact";
 import Favorite from "./favorite/favorite";
-import ThemeToggle from "./setting/ThemeToggle/themeToggle";
+import Purchase from "./purchase/purchase";
+import LanguageSelector from "./language/language";
 import Setting from "./setting/setting";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import english from '@/app/languages/english.json';
@@ -63,9 +63,11 @@ const SideBar = () => {
                 style={sideBarStyle}
             >
                 <Home/>
+                <Purchase/>
                 <Order/>
                 <CategorieSelector/>
                 <Favorite/>
+                <LanguageSelector/>
                 <About/>
                 <Contact/>
 

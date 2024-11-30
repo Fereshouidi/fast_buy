@@ -16,6 +16,7 @@ const ShoppingCartIcon = () => {
   const styleSvg = {
     width: 'var(--half-width)',
     height: 'var(--half-height)',
+    color: 'var(--black)',
   }
   const styleSpan = {
     width: 'calc(var(--half-width) - 5px)',

@@ -4,21 +4,29 @@ import english from "@/app/languages/english.json";
 import arabic from "@/app/languages/arabic.json";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { SideBarContext } from "@/app/contexts/SideBarContext";
-import FavoriteIcon from "@/app/svg/icons/favotite";
+import { ThemeContext } from "@/app/contexts/ThemeContext";
+import LightModeIcon from "@/app/svg/icons/lightMode";
+import DarkModeIcon from "@/app/svg/icons/darkMode";
+import ThemeToggleIcon from "@/app/svg/icons/themeToggle";
 
-const Favorite = () => {
+const ThemeToggle = () => {
 
     const [activeLanguage, setActiveLanguage] = useState(english);
     const languageSelectorContext = useContext(LanguageSelectorContext);
-
-    
     const sideBarContext = useContext(SideBarContext);
+    const themeContext = useContext(ThemeContext);
+
     if (!sideBarContext) {
         throw new Error("SideBarContext must be used within a SideBarContext.Provider");
     }
-    const { sideBarExist, setSideBarExist } = sideBarContext;
+
+    const { sideBarExist } = sideBarContext;
     if(!languageSelectorContext){
         throw 'context error !'
+    }
+
+    if (!themeContext) {
+        throw new Error("themeContext error");
     }
 
     if(!sideBarContext){
@@ -35,8 +43,9 @@ const Favorite = () => {
         }
     }, [languageSelectorContext])
 
-    const handleClick = () => {
-        setSideBarExist(false)
+    const handleToggleClick = (e: React.MouseEvent<HTMLElement>) => {
+        e.stopPropagation();
+        themeContext.setTheme(themeContext.theme == 'light' ? 'dark' : themeContext.theme == 'dark' ? 'light' : 'light');
     }
 
     const style: CSSProperties = {
@@ -44,10 +53,11 @@ const Favorite = () => {
     }
 
     return(
-        <li style={style} onClick={handleClick}>
-            <FavoriteIcon/>
-            <span>{activeLanguage.sideBar.favorite}</span>
+        <li style={style} onClick={(e) => handleToggleClick(e)}>
+            {themeContext.theme == 'light' ? <LightModeIcon/> : themeContext.theme == 'dark' ? <DarkModeIcon/> : <LightModeIcon/>} 
+            <span>{activeLanguage.sideBar.themeW}</span>
+            <ThemeToggleIcon/>
         </li>
     )
 }
-export default Favorite;
+export default ThemeToggle;

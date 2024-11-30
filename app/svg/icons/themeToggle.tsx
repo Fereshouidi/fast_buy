@@ -3,12 +3,15 @@ import LightModeIcon from "./lightMode";
 import DarkModeIcon from "./darkMode";
 import { ThemeContext } from "@/app/contexts/ThemeContext";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
+import { SideBarContext } from "@/app/contexts/SideBarContext";
 import { CSSProperties, useContext, useEffect, useState } from "react";
+import SideBar from "@/app/components/sideBar/sideBarForComputers/sidebar";
 
 const ThemeToggleIcon = () => {
 
     const themeContext = useContext(ThemeContext);
-    const languageContext = useContext(LanguageSelectorContext)
+    const languageContext = useContext(LanguageSelectorContext);
+    const sideBarContext = useContext(SideBarContext);
     const [iconPlace, setIconPlace] = useState('');
 
     if(!themeContext){
@@ -16,6 +19,9 @@ const ThemeToggleIcon = () => {
     }
     if(!languageContext){
         throw 'error languageContext !'
+    }
+    if(!sideBarContext){
+        throw 'error sideBarContext !'
     }
 
     const {theme, setTheme} = themeContext;
@@ -51,6 +57,8 @@ const ThemeToggleIcon = () => {
         backgroundColor: 'var(--almost-white)',
         border: 'var(--border-width) solid var(--border-color)',
         borderRadius: '50px',
+        opacity: sideBarContext.sideBarExist ? '1' : '0',
+        transition: '0.3s',
     }
 
     useEffect(() => {
