@@ -2,6 +2,7 @@
 import { CSSProperties, useContext } from "react";
 import Account from "./account/account";
 import ThemeToggle from "./ThemeToggle/themeToggle";
+import LanguageSelector from "./language/language";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 
 const Setting = () => {
@@ -27,6 +28,7 @@ const Setting = () => {
     }
     return(
         <div style={style}>
+            <LanguageSelector/>
             <ThemeToggle/>
             <Account/>
         </div>
