@@ -9,6 +9,9 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import SideBarForComputer from "@/app/components/sideBar/sideBarForComputers/sidebar";
 import SideBarForPhone from '@/app/components/sideBar/sideBarForPhones/SideBar';
+import BulletinBoardForPhone from "./components/bulletinBoard/forPhone/bulletinBoard";
+import BulletinBoardForComputer from "./components/bulletinBoard/forcomputer/bulletinBoard";
+import Slider from "./components/slider/slider";
 
 const App = () => {
   const router = useRouter();
@@ -16,7 +19,7 @@ const App = () => {
   const [screenWidth, setScreenWidth] = useState<number>(0); 
   const [theme, setTheme] = useState(() => {
     if (typeof window !== undefined && typeof window !== 'undefined') {
-      return localStorage.getItem("activeTheme") || "light";
+      return localStorage.getItem("activeTheme") || "light" ;
     }
     return "light";
   });
@@ -73,6 +76,8 @@ const App = () => {
         <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
           {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
           {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
+          {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
+          <Slider/>
           <div>home page</div>
           <button onClick={goToAbout}>Go to About</button>
         </SideBarContext.Provider>
