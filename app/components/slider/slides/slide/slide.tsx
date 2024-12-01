@@ -1,6 +1,6 @@
 'use client';
 
-import { CSSProperties, useEffect, useMemo, useRef, useState } from "react";
+import { CSSProperties, useEffect, useRef, useState } from "react";
 
 type SliseParams = {
     productTittle: string,
@@ -20,14 +20,25 @@ const Slide = ({productTittle, productImage} :SliseParams) => {
         }
     };
 
-    if(typeof window != 'undefined'){
-        setWindowWidth(window.innerWidth);
-    }
-    useMemo(() => {
     
-        updateImageWidth();
+    useEffect(() => {
 
-    }, [windowWidth])
+        if (typeof window !== 'undefined') {
+            
+            const handleResize = () => {
+                setWindowWidth(window.innerWidth);
+                updateImageWidth(); 
+            };
+
+            window.addEventListener('resize', handleResize);
+
+            handleResize();
+
+            return () => {
+                window.removeEventListener('resize', handleResize);
+            };
+        }
+    }, []);
 
     const style:CSSProperties = {
         display: 'flex',
