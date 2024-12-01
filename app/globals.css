@@ -46,12 +46,12 @@ a {
 :root {
   /* colors */
   
-  --white-almost-transparnt: rgba(255, 255, 255, 0.089);
-  --almost-white: rgb(231, 231, 231);
+  --white-almost-transparnt: rgba(255, 255, 255, 0.167);
+  --almost-white: rgb(240, 240, 240);
   --white: #ffffff;
   --black: #000000;
-  --almost-black: rgb(38, 38, 38);
-  --black-almost-transparnt: rgba(0, 0, 0, 0.082);
+  --almost-black: rgb(23, 23, 23);
+  --black-almost-transparnt: rgba(0, 0, 0, 0.148);
   --ashen: rgb(123, 123, 123);
   --ashen-semi-transparent:  rgba(123, 123, 123, 0.463);
   --primary-color: #FF9B38;
