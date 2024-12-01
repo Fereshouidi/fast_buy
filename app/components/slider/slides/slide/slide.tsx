@@ -11,7 +11,7 @@ const Slide = ({productTittle, productImage} :SliseParams) => {
     const slideRef = useRef<HTMLDivElement>(null);
     const [imageWidth, setImageWidth] = useState<number>(0);
 
-    if(typeof window !== undefined || typeof window == 'undefined'){
+    if(typeof window == undefined || typeof window == 'undefined'){
         throw 'type of window is undefined'
     }
 
