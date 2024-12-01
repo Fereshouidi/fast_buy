@@ -10,7 +10,6 @@ const Slide = ({productTittle, productImage} :SliseParams) => {
 
     const slideRef = useRef<HTMLDivElement>(null);
     const [imageWidth, setImageWidth] = useState<number>(0);
-    const [windowWidth, setWindowWidth] = useState(0);
 
 
     const updateImageWidth = () => {
@@ -24,9 +23,8 @@ const Slide = ({productTittle, productImage} :SliseParams) => {
     useEffect(() => {
 
         if (typeof window !== 'undefined') {
-            
+
             const handleResize = () => {
-                setWindowWidth(window.innerWidth);
                 updateImageWidth(); 
             };
 
