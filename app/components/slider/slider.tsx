@@ -10,6 +10,8 @@ const Slider = () => {
         overflowX: 'hidden',
         margin: 'calc(var(--extra-large-margin)*2) 0',
         position: 'relative',
+        borderRadius: '200px',
+        backgroundColor: 'var(--almost-white)',
     }
     return(
         <section style={style}> 

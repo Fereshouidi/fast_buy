@@ -47,10 +47,10 @@ a {
   /* colors */
   
   --white-almost-transparnt: rgba(255, 255, 255, 0.089);
-  --almost-white: rgb(243, 243, 243);
+  --almost-white: rgb(231, 231, 231);
   --white: #ffffff;
   --black: #000000;
-  --almost-black: rgb(22, 22, 22);
+  --almost-black: rgb(38, 38, 38);
   --black-almost-transparnt: rgba(0, 0, 0, 0.082);
   --ashen: rgb(123, 123, 123);
   --ashen-semi-transparent:  rgba(123, 123, 123, 0.463);
