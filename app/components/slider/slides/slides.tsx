@@ -73,7 +73,7 @@ const Slides = () => {
                 }
                 return nextIndex;
             });
-        }, 3000);
+        }, 5000);
 
         return () => clearInterval(intervalId);
     }, []); 
