@@ -2,67 +2,74 @@
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import Slide from "./slide/slide";
 
-const Slides = () => {
+type sliderDataParams = {
+    products: slideDataParams[] 
+}
+type slideDataParams = {
+    name: string,
+    images: string[]
+}
+const Slides = ({products}: sliderDataParams) => {
 
-    const list = [
-        {
-            tittle: 'the tittle',
-            img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-        },
-        {
-            tittle: 'the tittle',
-            img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-        },
-        {
-            tittle: 'the tittle',
-            img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-        },
-        {
-            tittle: 'the tittle',
-            img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-        },
-        {
-            tittle: 'the tittle',
-            img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-        },
-        {
-            tittle: 'the tittle',
-            img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-        },
-        {
-            tittle: 'the tittle',
-            img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-        },
-        {
-            tittle: 'the tittle',
-            img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-        },
-        {
-            tittle: 'the tittle',
-            img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-        },
-        {
-            tittle: 'the tittle',
-            img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-        },
-        {
-            tittle: 'the tittle',
-            img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-        },
-        {
-            tittle: 'the tittle',
-            img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-        },
-        {
-            tittle: 'the tittle',
-            img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-        }
-    ]
+    // const list = [
+    //     {
+    //         tittle: 'the tittle',
+    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
+    //     },
+    //     {
+    //         tittle: 'the tittle',
+    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
+    //     },
+    //     {
+    //         tittle: 'the tittle',
+    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
+    //     },
+    //     {
+    //         tittle: 'the tittle',
+    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
+    //     },
+    //     {
+    //         tittle: 'the tittle',
+    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
+    //     },
+    //     {
+    //         tittle: 'the tittle',
+    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
+    //     },
+    //     {
+    //         tittle: 'the tittle',
+    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
+    //     },
+    //     {
+    //         tittle: 'the tittle',
+    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
+    //     },
+    //     {
+    //         tittle: 'the tittle',
+    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
+    //     },
+    //     {
+    //         tittle: 'the tittle',
+    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
+    //     },
+    //     {
+    //         tittle: 'the tittle',
+    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
+    //     },
+    //     {
+    //         tittle: 'the tittle',
+    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
+    //     },
+    //     {
+    //         tittle: 'the tittle',
+    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
+    //     }
+    // ]
 
     const slidesRef = useRef<HTMLDivElement>(null);
     const [currentIndex, setCurrentIndex] = useState(0);
     const slideWidth = 90;
-    const totalSlides = list.length /3;
+    const totalSlides = products? products.length /3 : 0;
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -95,8 +102,12 @@ const Slides = () => {
     }
     return(
         <div style={style} ref={slidesRef}> {
-            list.map((product, index) => {
-                return <Slide key={index} productTittle={product.tittle} productImage={product.img}/>
+            products && products.map((product, index) => {
+                return <Slide 
+                    key={index} 
+                    productTittle={product.name} 
+                    productImage={product.images[0]}
+                />
             })
         } </div>
     )

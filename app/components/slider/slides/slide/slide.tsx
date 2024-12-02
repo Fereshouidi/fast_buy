@@ -16,7 +16,7 @@ const Slide = ({productTittle, productImage} :SliseParams) => {
 
         if (slideRef.current && typeof window != 'undefined') {
             if(window.innerWidth >= 800){
-                setImageWidth((slideRef.current.offsetWidth * 0.9) / 1.5);
+                setImageWidth((slideRef.current.offsetWidth * 0.9) / 1.3);
             }else{
                 setImageWidth((slideRef.current.offsetWidth * 0.9));
             }
@@ -49,9 +49,6 @@ const Slide = ({productTittle, productImage} :SliseParams) => {
         flexShrink: '0',
         flexGrow: '0',
         flexBasis: 'calc(90vw /3)',
-        // backgroundColor: 'red',
-        // margin: '1px',
-        // padding: '15px',
         
     }
     const styleTittle:CSSProperties = {
@@ -62,7 +59,6 @@ const Slide = ({productTittle, productImage} :SliseParams) => {
         height: imageWidth ,
         borderRadius: '50%',
         marginBottom: '15px',
-        // margin: '15px',
         boxShadow: '0 5px 15px var(--black-almost-transparnt)'
     }
     
