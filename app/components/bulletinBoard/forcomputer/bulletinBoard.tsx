@@ -53,6 +53,9 @@ const BulletinBoard = () => {
         width: '100%',
         height: '100%',
         objectFit: 'cover',
+        display: 'flex',
+        alignItems: "center",
+        justifyContent: 'center',
     }
     return(
         <div style={style}>

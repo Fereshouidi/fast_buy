@@ -50,8 +50,12 @@ const BulletinBoard = () => {
     const styleIMG:CSSProperties = {
         width: '100%',
         height: '100%',
-        objectFit: 'contain'
+        objectFit: 'contain',
+        display: 'flex',
+        alignItems: "center",
+        justifyContent: 'center',
     }
+    
     return(
         <div style={style}>
             <img style={styleIMG} 
