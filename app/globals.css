@@ -127,6 +127,8 @@ a {
   --double-height: calc(var(--primary-height)*2);
   --primary-height: 50px;
   --half-height: calc(var(--primary-height)/2);
+  --short-height: calc(var(--half-height)/2);
+  --extra-short-height: calc(var(--short-height)/2);
   --header-height: 75px;
 
   /* widths */
@@ -225,9 +227,21 @@ header div{
   --black-almost-transparnt: rgba(255, 255, 255, 0.082);
   --border-color: #616161a2;
 }
-#app.arabic{
+/* #app.arabic *{
+  direction: rtl;
+  background-color: red;
+} */
+
+.arabic *{
   direction: rtl;
 }
+
+/* span{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+} */
 
 .sideBar-background{
   height: 100vh;

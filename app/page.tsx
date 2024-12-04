@@ -12,6 +12,7 @@ import SideBarForPhone from '@/app/components/sideBar/sideBarForPhones/SideBar';
 import BulletinBoardForPhone from "./components/bulletinBoard/forPhone/bulletinBoard";
 import BulletinBoardForComputer from "./components/bulletinBoard/forcomputer/bulletinBoard";
 import Slider from "./components/slider/slider";
+import ProductsShowing from "./components/productsShowing/productsShowing";
 
 const App = () => {
   const router = useRouter();
@@ -26,7 +27,6 @@ const App = () => {
   const [activeLanguage, setActiveLanguage] = useState("english");
   const [sideBarExist, setSideBarExist] = useState(false);
 
-  // Handle screen width
   useEffect(() => {
     if (typeof window !== "undefined") {
       setScreenWidth(window.innerWidth);
@@ -59,8 +59,23 @@ const App = () => {
   }, [theme]);
 
   useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
+    
+    if(theme == 'dark'){
+      document.body.classList.remove('light');
+      document.body.classList.add(theme);
+    }else if(theme == 'light'){
+      document.body.classList.remove('dark');
+      document.body.classList.add(theme);
+    }
+
+    if(activeLanguage != 'arabic'){
+      document.body.classList.remove('arabic');
+    }else{
+      document.body.classList.add(activeLanguage);
+    }
+    
+    //alert(document.body.classList)
+  }, [theme, activeLanguage]);
 
   const goToAbout = () => {
     router.push("/pages/about");
@@ -78,6 +93,7 @@ const App = () => {
           {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
           {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
           <Slider/>
+          <ProductsShowing/>
           <div>home page</div>
           <button onClick={goToAbout}>Go to About</button>
         </SideBarContext.Provider>

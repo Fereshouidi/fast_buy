@@ -21,7 +21,7 @@ const BulletinBoard = () => {
     
             if (data && data.images.length > 0) {
                 let x = 0;
-                setInterval(() => {
+                const interval = setInterval(() => {
                     x += 1;
                     if (x < data.images.length - 1) {
                         setActiveIndex( x);
@@ -32,7 +32,7 @@ const BulletinBoard = () => {
                     }
                     
                 }, data.changingTime * 1000);
-    
+                clearInterval(interval);
             }
         };
     
@@ -55,7 +55,7 @@ const BulletinBoard = () => {
         alignItems: "center",
         justifyContent: 'center',
     }
-    
+
     return(
         <div style={style}>
             <img style={styleIMG} 

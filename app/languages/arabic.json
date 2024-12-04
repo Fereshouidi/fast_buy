@@ -19,5 +19,22 @@
         "language": "اللغة",
         "orderW": "الطلبات",
         "themeW": "السمة"
+    },
+    "time": {
+        "secondW": {
+            "plural": "ثواني",
+            "singular": "ثانية"
+        },
+        "muniteW": {
+            "plural": "دقائق",
+            "singular": "دقيقة"
+        },
+        "hourW": {
+            "plural": "ساعات",
+            "singular": "ساعة"
+        },"dayW": {
+            "plural": "ايام",
+            "singular": "يوم"
+        }
     }
 }

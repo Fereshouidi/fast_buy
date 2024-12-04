@@ -19,5 +19,23 @@
         "language": "Language",
         "orderW": "Orders",
         "themeW": "Theme"
+    },
+    "time": {
+        "secondW": {
+            "plural": "seconds",
+            "singular": "second"
+        },
+        "muniteW": {
+            "plural": "minites",
+            "singular": "minite"
+        },
+        "hourW": {
+            "plural": "hours",
+            "singular": "hour"
+        },
+        "dayW": {
+            "plural": "days",
+            "singular": "day"
+        }
     }
 }

@@ -3,73 +3,27 @@ import { CSSProperties, useEffect, useRef, useState } from "react";
 import Slide from "./slide/slide";
 
 type sliderDataParams = {
-    products: slideDataParams[] 
-}
-type slideDataParams = {
-    name: string,
-    images: string[]
-}
-const Slides = ({products}: sliderDataParams) => {
+    tittle: string;
+    products: slideDataParams[];
+    changingTime: number;
+};
 
-    // const list = [
-    //     {
-    //         tittle: 'the tittle',
-    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-    //     },
-    //     {
-    //         tittle: 'the tittle',
-    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-    //     },
-    //     {
-    //         tittle: 'the tittle',
-    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-    //     },
-    //     {
-    //         tittle: 'the tittle',
-    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-    //     },
-    //     {
-    //         tittle: 'the tittle',
-    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-    //     },
-    //     {
-    //         tittle: 'the tittle',
-    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-    //     },
-    //     {
-    //         tittle: 'the tittle',
-    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-    //     },
-    //     {
-    //         tittle: 'the tittle',
-    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-    //     },
-    //     {
-    //         tittle: 'the tittle',
-    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-    //     },
-    //     {
-    //         tittle: 'the tittle',
-    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-    //     },
-    //     {
-    //         tittle: 'the tittle',
-    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-    //     },
-    //     {
-    //         tittle: 'the tittle',
-    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-    //     },
-    //     {
-    //         tittle: 'the tittle',
-    //         img: 'https://i.ytimg.com/vi/qBj4UPUIivQ/maxresdefault.jpg'
-    //     }
-    // ]
+type slideDataParams = {
+    name: string;
+    images: string[];
+    startOfDiscount: Date,
+    endOfDiscount: Date,
+    discount: number,
+    discountSticker: string
+
+};
+
+const Slides = ({ slideBarData }: { slideBarData: sliderDataParams }) => {
 
     const slidesRef = useRef<HTMLDivElement>(null);
     const [currentIndex, setCurrentIndex] = useState(0);
     const slideWidth = 90;
-    const totalSlides = products? products.length /3 : 0;
+    const totalSlides = slideBarData? slideBarData.products.length /3 : 0;
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -80,7 +34,11 @@ const Slides = ({products}: sliderDataParams) => {
                 }
                 return nextIndex;
             });
-        }, 5000);
+        }, slideBarData.changingTime * 1000);
+
+        if(slideBarData.changingTime == 0){
+            clearInterval(intervalId);
+        }
 
         return () => clearInterval(intervalId);
     }, []); 
@@ -99,14 +57,14 @@ const Slides = ({products}: sliderDataParams) => {
         height: 'auto',
         display: 'flex',
         transition: '1.5s',
+        padding: '0px 0'
     }
     return(
         <div style={style} ref={slidesRef}> {
-            products && products.map((product, index) => {
+            slideBarData.products && slideBarData.products.map((product, index) => {
                 return <Slide 
                     key={index} 
-                    productTittle={product.name} 
-                    productImage={product.images[0]}
+                    product={product}
                 />
             })
         } </div>

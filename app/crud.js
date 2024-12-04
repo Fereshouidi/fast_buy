@@ -1,4 +1,4 @@
-const url = 'https://fast-buy-back-end-ctzb.vercel.app/api';
+const url = 'http://localhost:3002/api';
 import axios from "axios";
 
 
@@ -22,3 +22,14 @@ export const getSliserData = async() => {
         throw err;
     }
 }
+
+export const getAllProducts_SortedByRating = async() => {
+    try{
+        const response = await axios.get(url + '/get/products/byRating');
+        const data = response.data;
+        return data;
+    }catch(err){
+        throw err;
+    }
+}
+
