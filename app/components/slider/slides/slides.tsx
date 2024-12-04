@@ -20,10 +20,19 @@ type slideDataParams = {
 
 const Slides = ({ slideBarData }: { slideBarData: sliderDataParams }) => {
 
+    if(typeof window == 'undefined'){
+        throw 'window is undefined !'
+    }
+
     const slidesRef = useRef<HTMLDivElement>(null);
     const [currentIndex, setCurrentIndex] = useState(0);
     const slideWidth = 90;
-    const totalSlides = slideBarData? slideBarData.products.length /3 : 0;
+    const totalSlides = slideBarData? 
+        window.innerWidth > 800 ? slideBarData.products.length /3 
+        : window.innerWidth <= 800 && window.innerWidth >= 500 ? slideBarData.products.length /2
+        : window.innerWidth < 500 ? slideBarData.products.length /1  
+        : slideBarData.products.length /3 
+        : 0;
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -36,7 +45,7 @@ const Slides = ({ slideBarData }: { slideBarData: sliderDataParams }) => {
             });
         }, slideBarData.changingTime * 1000);
 
-        if(slideBarData.changingTime == 0){
+        if(slideBarData.changingTime != 0){
             clearInterval(intervalId);
         }
 

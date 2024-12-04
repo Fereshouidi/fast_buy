@@ -15,6 +15,10 @@ type productParams = {
 
 const Slide = ({product} : {product: productParams}) => {
 
+    if(typeof window == 'undefined'){
+        throw 'window is undefined !'
+    }
+
     const slideRef = useRef<HTMLDivElement>(null);
     const [imageWidth, setImageWidth] = useState<number>(0);
 
@@ -55,7 +59,7 @@ const Slide = ({product} : {product: productParams}) => {
         flexDirection: 'column',
         flexShrink: '0',
         flexGrow: '0',
-        flexBasis: 'calc(90vw /3)',
+        flexBasis: window.innerWidth > 800 ? 'calc(90vw /3)' : window.innerWidth <= 800 && window.innerWidth >= 500 ? 'calc(90vw /2)' : 'calc(90vw /1)',
     }
     const styleTittle: CSSProperties = {
         color: 'var(--black)',
@@ -93,19 +97,25 @@ const Slide = ({product} : {product: productParams}) => {
         
     }
     const stylePrices: CSSProperties = {
-        margin: 'var(--large-margin)'
+        margin: 'var(--large-margin)',
+        
     }
     const styleoldPrice: CSSProperties = {
         width: imageWidth /4 ,
         height: imageWidth/4 ,
-        fontSize: imageWidth / 15,
-        margin: 'var(--small-margin)'
+        fontSize: imageWidth / 25,
+        margin: 'var(--small-margin)',
+        textDecoration: 'line-through'
     }
     const styleNewPrice: CSSProperties = {
         width: imageWidth /4 ,
         height: imageWidth/4 ,
-        fontSize: imageWidth / 15,
-        margin: 'var(--small-margin)'
+        fontSize: imageWidth / 20,
+        borderRadius: '50px',
+        margin: 'var(--small-margin)',
+        padding: 'var(--medium-padding)',
+        backgroundColor: 'var(--primary-color)',
+        color: 'var(--white)'
     }
 
 

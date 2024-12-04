@@ -244,6 +244,7 @@ header div{
 } */
 
 .sideBar-background{
+  //text-decoration: dashed;
   height: 100vh;
   background-color: var(--ashen-semi-transparent);
   color: var(--black);
