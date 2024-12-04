@@ -3,11 +3,7 @@
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import TimeLeft from "./detail/timeLeft";
 
-type SliseParams = {
-    productTittle: string,
-    productImage: string,
-    products: productParams[]
-}
+
 type productParams = {
     name: string;
     images: string[];

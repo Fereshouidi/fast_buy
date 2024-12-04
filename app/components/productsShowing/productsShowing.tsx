@@ -6,9 +6,6 @@ import Card from "./card/card";
 
 const ProductsShowing = () => {
 
-    type allProductsParams = {
-        allProducts: productParams[]
-    }
     type productParams = {
         name: string
     }
