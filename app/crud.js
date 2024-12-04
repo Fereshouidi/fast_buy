@@ -1,4 +1,4 @@
-const url = 'https://vercel.com/fares-projects-605761dd/fast-buy-back-end-ctzb/api';
+const url = 'https://fast-buy-back-end-ctzb.vercel.app/api';
 import axios from "axios";
 
 
