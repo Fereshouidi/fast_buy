@@ -106,7 +106,7 @@ const Slide = ({product} : {product: productParams}) => {
         fontSize: imageWidth / 25,
         margin: 'var(--small-margin)',
         textDecoration: 'line-through',
-        color: 'var(--white)'
+        color: 'var(--black)'
     }
     const styleNewPrice: CSSProperties = {
         width: imageWidth /4 ,
