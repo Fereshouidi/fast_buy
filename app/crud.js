@@ -1,4 +1,4 @@
-const url = 'http://localhost:3002/api';
+const url = 'https://vercel.com/fares-projects-605761dd/fast-buy-back-end-ctzb/api';
 import axios from "axios";
 
 
