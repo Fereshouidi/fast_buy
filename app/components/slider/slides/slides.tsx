@@ -45,7 +45,7 @@ const Slides = ({ slideBarData }: { slideBarData: sliderDataParams }) => {
             });
         }, slideBarData.changingTime * 1000);
 
-        if(slideBarData.changingTime != 0){
+        if(slideBarData.changingTime == 0){
             clearInterval(intervalId);
         }
 
