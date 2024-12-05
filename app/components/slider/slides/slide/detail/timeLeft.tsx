@@ -5,13 +5,17 @@ import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 
-type productsParams = {
-    name: string;
-    images: string[];
-    startOfDiscount: Date,
-    endOfDiscount: Date
-}
-const TimeLeft = ({product} : {product: productsParams}) => {
+type discountParams = {
+    createdAt: Date,
+    discountSticker: string,
+    newPrice: number,
+    oldPrice: number,
+    percentage: number,
+    startOfDiscount: Date, 
+    endOfDiscount: Date,
+};
+
+const TimeLeft = ({product} : {product: discountParams}) => {
 
     const [timeLeft, setTimeLeft] = useState<string>();
     const [percentage , setPercentage ] = useState<number>(0);

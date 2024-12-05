@@ -7,8 +7,24 @@ import Card from "./card/card";
 const ProductsShowing = () => {
 
     type productParams = {
-        name: string
+        name: string,
+        imagePrincipal: string,
+        price: number,
+        discount: discountParams,
+        totalRating: number,
+        currencyType: string
+
     }
+    
+    type discountParams = {
+        createdAt: Date,
+        discountSticker: string,
+        newPrice: number,
+        oldPrice: number,
+        percentage: number,
+        startOfDiscount: Date, 
+        endOfDiscount: Date
+    };
     const [allProducts, setAllProducts] = useState<productParams[]>()
 
     useEffect(() => {
@@ -22,7 +38,7 @@ const ProductsShowing = () => {
     
 
     const Style: CSSProperties = {
-        width: '100vw',
+        width: '100%',
         backgroundColor: 'var(--almost-white)',
         display: "flex",
         justifyContent: "center",
@@ -31,12 +47,12 @@ const ProductsShowing = () => {
     }
     
     const StyleH2: CSSProperties = {
-        margin: 'calc(var(--large-margin)*3)',
+        margin: 'calc(var(--large-margin)*3) 0',
         color: 'var(--black)'
     }
 
     const styleContainer: CSSProperties = {
-        width: '100vw',
+        width: '100%',
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

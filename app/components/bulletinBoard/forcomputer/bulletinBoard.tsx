@@ -50,7 +50,8 @@ const BulletinBoard = () => {
         display: 'flex',
         alignItems: "center",
         justifyContent: 'center',
-        marginBottom: 'var(--small-margin)'
+        marginBottom: 'var(--small-margin)',
+        cursor: "pointer",
     }
     const styleIMG:CSSProperties = {
         width: '100%',

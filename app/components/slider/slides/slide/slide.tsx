@@ -5,13 +5,24 @@ import TimeLeft from "./detail/timeLeft";
 
 
 type productParams = {
-    name: string;
-    images: string[];
+    name: string,
+    images: string[],
+    imagePrincipal: string,
     startOfDiscount: Date,
     endOfDiscount: Date,
-    discount: number,
-    discountSticker: string
+    discount: discountParams,
+    discountSticker: string,
+    currencyType: string
 }
+type discountParams = {
+    createdAt: Date,
+    discountSticker: string,
+    newPrice: number,
+    oldPrice: number,
+    percentage: number,
+    startOfDiscount: Date, 
+    endOfDiscount: Date
+};
 
 const Slide = ({product} : {product: productParams}) => {
 
@@ -59,6 +70,7 @@ const Slide = ({product} : {product: productParams}) => {
         flexDirection: 'column',
         flexShrink: '0',
         flexGrow: '0',
+        cursor: "pointer",
         flexBasis: window.innerWidth > 800 ? 'calc(90vw /3)' : window.innerWidth <= 800 && window.innerWidth >= 500 ? 'calc(90vw /2)' : 'calc(90vw /1)',
     }
     const styleTittle: CSSProperties = {
@@ -98,7 +110,8 @@ const Slide = ({product} : {product: productParams}) => {
     }
     const stylePrices: CSSProperties = {
         margin: 'var(--large-margin)',
-        
+        direction: 'ltr'
+
     }
     const styleoldPrice: CSSProperties = {
         width: imageWidth /4 ,
@@ -123,14 +136,14 @@ const Slide = ({product} : {product: productParams}) => {
 
     return(
         <div ref={slideRef} style={style}>
-            {product.discount && <TimeLeft product={product}/>}
+            {product.discount && <TimeLeft product={product.discount}/>}
             <div style={styleImgDiv}>
-                <img style={styleImage} src={product.images[0]} alt="productImage" />
+                <img style={styleImage} src={product.imagePrincipal} alt="productImage" />
                 {
-                product.discount && product.discountSticker?
-                 <img style={styleDiscount} src={product.discountSticker} alt="discount sticker"></img>
-                 : product.discount && !product.discountSticker?
-                 <span style={styleDiscount}>{`${product.discount}%`}</span>
+                product.discount && product.discount.discountSticker?
+                 <img style={styleDiscount} src={product.discount.discountSticker} alt="discount sticker"></img>
+                 : product.discount && !product.discount.discountSticker?
+                 <span style={styleDiscount}>{`${product.discount.percentage}%`}</span>
                  : null
                 
                 } 
@@ -138,8 +151,8 @@ const Slide = ({product} : {product: productParams}) => {
                  </div>
             <h4 style={styleTittle}>{product.name}</h4>
             <div style={stylePrices}>
-                <span style={styleoldPrice}>90.000</span>
-                <span style={styleNewPrice}>50.000</span>
+                {product.discount && product.discount.oldPrice && <span style={styleoldPrice}>{product.discount.oldPrice + product.currencyType}</span>} 
+                {product.discount && product.discount.oldPrice && <span style={styleNewPrice}>{product.discount.newPrice + product.currencyType}</span>}
             </div>
         </div>
     )

@@ -1,4 +1,4 @@
-const url = 'https://fast-buy-back-end-ctzb.vercel.app/api';
+const url = 'http://localhost:3002/api';
 import axios from "axios";
 
 
@@ -13,10 +13,12 @@ export const getBulletinBoard = async() => {
     }
 }
 
-export const getSliserData = async() => {
+export const getSliderData = async() => {
     try{
         const response = await axios.get(url + '/get/slider');
         const data = response.data;
+        console.log(data);
+        
         return data;
     }catch(err){
         throw err;

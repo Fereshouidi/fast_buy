@@ -1,7 +1,7 @@
 'use client';
 import { CSSProperties, useEffect, useState } from "react";
 import Slides from "./slides/slides";
-import { getSliserData } from "@/app/crud";
+import { getSliderData } from "@/app/crud";
 
 const Slider = () => {
 
@@ -14,18 +14,29 @@ const Slider = () => {
     type slideDataParams = {
         name: string;
         images: string[];
+        imagePrincipal: string,
         startOfDiscount: Date,
         endOfDiscount: Date,
-        discount: number,
-        discountSticker: string
+        discount: discountParams,
+        discountSticker: string,
+        currencyType: string
+    };
 
+    type discountParams = {
+        createdAt: Date,
+        discountSticker: string,
+        newPrice: number,
+        oldPrice: number,
+        percentage: number,
+        startOfDiscount: Date, 
+        endOfDiscount: Date
     };
     
     const [sliderData, setSliderData] = useState<sliderDataParams>();
 
     useEffect(() => {
         const fetchData = async() => {
-            const data = await getSliserData();
+            const data = await getSliderData();
             setSliderData(data);
         }
         fetchData()
