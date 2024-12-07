@@ -21,11 +21,11 @@ const CategorieSelector = () => {
         margin: number
     }
 
-    const [activeLanguage, setActiveLanguage] = useState(english);
+   // const [activeLanguage, setActiveLanguage] = useState(english);
     const languageSelectorContext = useContext(LanguageSelectorContext);
     const [allCategories, setAllCategories] = useState<categorieParams[]>([]);
     const [categorieClicked, setCategorieClicked] = useState<boolean>(false);
-    const [iconHover, setIconHover] = useState<boolean>(false);
+  //  const [iconHover, setIconHover] = useState<boolean>(false);
 
     
     const sideBarContext = useContext(SideBarContext);
@@ -44,15 +44,15 @@ const CategorieSelector = () => {
         throw '  !'
     }
 
-    useEffect(() => {
-        if(languageSelectorContext.activeLanguage == 'english'){
-            setActiveLanguage(english);
-        }else if(languageSelectorContext.activeLanguage == 'arabic'){
-            setActiveLanguage(arabic);
-        }else{
-            setActiveLanguage(english);
-        }
-    }, [languageSelectorContext])
+    // useEffect(() => {
+    //     if(languageSelectorContext.activeLanguage == 'english'){
+    //         setActiveLanguage(english);
+    //     }else if(languageSelectorContext.activeLanguage == 'arabic'){
+    //         setActiveLanguage(arabic);
+    //     }else{
+    //         setActiveLanguage(english);
+    //     }
+    // }, [languageSelectorContext])
     
     useEffect(() => {
         const fetchData = async() => {
@@ -165,7 +165,7 @@ const styleDownIcon: CSSProperties = {
                     return (
                     <ul key={index} style={styleChildren}  >
                         <ul style={{paddingLeft: `${categorie.margin}px` }} className={categorie.parentCategorie? "child" : categorieClicked? "parent-clicked": "parent"} key={categorie._id} >{categorie.name}</ul>
-                        {categorie.childrenCategories.length > 0 ?         <FontAwesomeIcon onClick={() => handleClick(categorie)} style={styleDownIcon} onMouseEnter={() => setIconHover(true)} onMouseLeave={() => setIconHover(false)} icon={faChevronDown } /> : null}
+                        {categorie.childrenCategories.length > 0 ?         <FontAwesomeIcon onClick={() => handleClick(categorie)} style={styleDownIcon} icon={faChevronDown } /> : null}
                     </ul>
                 )
                 })
