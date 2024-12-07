@@ -10,7 +10,7 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 
 type productsShowing = {
     pageNumber: number,
-    setPageNumber: Function,
+    setPageNumber: (showMore: number) => void;
     allProducts: productParams[]
 }
 type productParams = {
