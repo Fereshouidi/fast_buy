@@ -1,7 +1,7 @@
 'use client';
 import { CSSProperties, useContext, useEffect, useState } from "react";
-import english from "@/app/languages/english.json";
-import arabic from "@/app/languages/arabic.json";
+// import english from "@/app/languages/english.json";
+// import arabic from "@/app/languages/arabic.json";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import CategorieIcon from "@/app/svg/icons/categorie";
