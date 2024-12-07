@@ -6,7 +6,7 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import CategorieIcon from "@/app/svg/icons/categorie";
 import { getAllCategorie, getCategoriesByParent } from "@/app/crud";
-import './categorieSelector.css'
+//import '../CategoriesSelector/categorieSelector.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 

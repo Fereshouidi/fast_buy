@@ -12,7 +12,9 @@ import SideBarForPhone from '@/app/components/sideBar/sideBarForPhones/SideBar';
 import BulletinBoardForPhone from "./components/bulletinBoard_one/forPhone/bulletinBoard";
 import BulletinBoardForComputer from "./components/bulletinBoard_one/forcomputer/bulletinBoard";
 import Slider from "./components/slider/slider";
-import ProductsShowing from "./components/productsShowing/productsShowing";
+import ProductsShowing from "@/app/components/productsShowing/productsShowing";
+// import ProductsShowingForComputer from "@/app/components/productsShowing/forComputer/productsShowing";
+// import ProductsShowingForPhone from "@/app/components/productsShowing/forPhone/productsShowing";
 import BulletinBoard_two_forPhone from "./components/bulletinBoard_two/forPhone/bulletinBoard";
 import BulletinBoard_two_forComputer from "./components/bulletinBoard_two/forcomputer/bulletinBoard";
 import CategoriesSection from "./components/categories/categories";
@@ -96,6 +98,7 @@ const App = () => {
           {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
           {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
           <Slider/>
+          {/* {screenWidth > 800 ? <ProductsShowingForComputer/> : <ProductsShowingForPhone />} */}
           <ProductsShowing/>
           {screenWidth > 800 ? <BulletinBoard_two_forComputer /> : <BulletinBoard_two_forPhone />}
           <CategoriesSection/>

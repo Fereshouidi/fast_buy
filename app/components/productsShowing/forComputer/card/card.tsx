@@ -26,7 +26,6 @@ type discountParams = {
     endOfDiscount: Date
 };
 const Card = ({product}: {product : productParams}) => {
-
     
 const languageContext = useContext(LanguageSelectorContext)
 

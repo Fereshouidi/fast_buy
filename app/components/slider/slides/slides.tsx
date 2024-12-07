@@ -91,7 +91,8 @@ const Slides = ({ slideBarData }: { slideBarData: sliderDataParams }) => {
         height: 'auto',
         display: 'flex',
         transition: '0.5s',
-        padding: '0px 0'
+        padding: 0,
+        margin: 0
     }
     return(
         <div style={style} ref={slidesRef}> {

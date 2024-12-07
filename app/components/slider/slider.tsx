@@ -45,17 +45,20 @@ const Slider = () => {
     const StyleSection:CSSProperties = {
         backgroundColor: 'var(--white)', 
         width: '100%', 
+        height: 'auto',
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'center',
         flexDirection: 'column',
-        padding: 'calc(var(--extra-large-margin)*2) 0'
+        padding: 0,
+        paddingTop: 'calc(var(--extra-large-margin)*2)',
     }
     const styleDiv:CSSProperties = {
         width: '90vw',
         height: 'auto',
         overflowX: 'hidden',
-        margin: 'calc(var(--large-margin)*3) 0',
+     //   margin:  window.innerWidth > 800? 'calc(var(--extra-large-margin)*2) 0' : 'calc(var(--extra-large-margin)/2) 0',
+        marginTop: 'var(--extra-large-margin)',
         position: 'relative',
         borderRadius: '25px',
         backgroundColor: 'var(--white)',

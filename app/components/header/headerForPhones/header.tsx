@@ -34,7 +34,7 @@ console.log(activeLanguage);
     top: '0',
     zIndex: '999',
     width: '100vw',
-    height: 'var(--header-height)',
+    height: 'calc(var(--header-height)/1.2)',
     backgroundColor: 'var(--white)',
     display: 'flex',
     justifyContent: 'space-between',

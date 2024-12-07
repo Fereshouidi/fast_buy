@@ -3,7 +3,7 @@ import { CSSProperties, useContext, useEffect, useState } from "react";
 import Home from "./home/home";
 import Order from "./orders/orders";
 import About from "./about/about";
-import CategorieSelector from "./CategoriesSelector/CategoriesSelector";
+import CategorieSelector from "@/app/components/sideBar/sideBarForComputers/CategoriesSelector/CategoriesSelector";
 import Contact from "./contact/contact";
 import Favorite from "./favorite/favorite";
 import Setting from "./setting/setting";
