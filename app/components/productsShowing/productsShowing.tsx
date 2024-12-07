@@ -7,11 +7,6 @@ import { useEffect, useState } from "react";
 
 const ProductsShowing = () => {
 
-
-    if (typeof window == 'undefined') {
-        return ;
-      }
-
     type productParams = {
         name: string,
         imagePrincipal: string,
@@ -46,6 +41,10 @@ const ProductsShowing = () => {
     //     setPageNumber((prev) => prev + 1)
     // }
     
+    if (typeof window == 'undefined') {
+        return ;
+      }
+
 
     return (
         
