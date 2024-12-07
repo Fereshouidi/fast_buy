@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+
 import ReactStars from 'react-stars';
 import './reactStars.css';
 
