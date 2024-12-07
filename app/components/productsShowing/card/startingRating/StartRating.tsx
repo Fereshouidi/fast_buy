@@ -24,9 +24,7 @@ type discountParams = {
 
 const StarRating = ({product}: {product : productParams}) => {
 
-    const style: CSSProperties = {
 
-    }
     return (
         <ReactStars
             count={5}
