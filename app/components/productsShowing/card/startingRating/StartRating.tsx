@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import ReactStars from 'react-stars';
+import './reactStars.css';
 
 type productParams = {
     name: string,
@@ -22,13 +23,18 @@ type discountParams = {
 };
 
 const StarRating = ({product}: {product : productParams}) => {
+
+    const style: CSSProperties = {
+
+    }
     return (
         <ReactStars
             count={5}
-            size={24} 
+            size={18} 
             value={product.totalRating}
             edit={false} 
             color2={'var(--primary-color)'} 
+            className='react-stars'
         />
     );
 };

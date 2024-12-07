@@ -7,8 +7,8 @@ const BoxIcon = () => {
 
     const style:CSSProperties ={
         color: 'var(--primary-color)',
-        margin: ' 0 var(--small-margin)',
-        fontSize: 'var(--double-size)'
+        margin: 'calc( var(--small-margin)*1.2)',
+        fontSize: 'var(--primary-size)'
     }
     return(
         <div style={style}>

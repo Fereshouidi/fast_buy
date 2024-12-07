@@ -44,11 +44,11 @@ const unsetHover = () => {
 }
 
     const Style: CSSProperties = {
-        width: '300px',
-        height: '400px',
+        width: '250px',
+        height: '350px',
         backgroundColor: 'var(--white)',
         borderRadius: '20px',
-        margin: 'var(--large-margin)',
+        margin: 'var(--medium-margin)',
         padding: 'var(--small-padding)',
         boxShadow: '0 5px 15px var(--black-almost-transparnt)',
         cursor: "pointer",
@@ -66,7 +66,7 @@ const unsetHover = () => {
         backgroundColor: 'var(--almost-white)',
     }
     const styleH4: CSSProperties = {
-        padding: 'var(--small-padding)',
+        padding: 'calc(var(--small-padding)/1.5)',
         color: 'var(--black)'
     }
     const StyleCartInformation: CSSProperties = {
@@ -92,7 +92,7 @@ const unsetHover = () => {
                 <h4 style={styleH4}>{product.name}</h4>
                 <StarRating product={product}/>
                 <div style={styleBoxAndPricesDiv}>
-                    <BoxIcon />
+                    <BoxIcon  />
                     <Price product={product}/>
                 </div>
             </div>
