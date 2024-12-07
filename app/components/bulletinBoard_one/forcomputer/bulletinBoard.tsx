@@ -2,12 +2,15 @@
 
 import { CSSProperties, useEffect, useState } from "react";
 import {getBulletinBoard} from "@/app/crud";
+import { useRouter } from "next/navigation";
 
 const BulletinBoard = () => {
 
+    const router = useRouter()
     type bulletinBoardParams = {
         images: string[],
-        changingTime: number
+        changingTime: number,
+        link: string,
     }
     const [bulletinBoard, setBulletinBoard] = useState<bulletinBoardParams | null>(null);
     const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -32,32 +35,39 @@ const BulletinBoard = () => {
                     }
                     
                 }, data.changingTime * 1000);
-                clearInterval(interval);
+                if(data.changingTime == 0){
+                    clearInterval(interval);
+                }
+    
             }
         };
     
         fetchData();
     }, []);
-
+    
+    const handleClick = () => {
+        router.push(bulletinBoard && bulletinBoard.link ? bulletinBoard.link : '')
+    }
 
     const style:CSSProperties = {
         width: '100%',
-        maxHeight: '400px',
+        height: '400px',
         display: 'flex',
         alignItems: "center",
         justifyContent: 'center',
+        marginBottom: 'var(--small-margin)',
+        cursor: "pointer",
     }
     const styleIMG:CSSProperties = {
         width: '100%',
         height: '100%',
-        objectFit: 'contain',
+        objectFit: 'cover',
         display: 'flex',
         alignItems: "center",
         justifyContent: 'center',
     }
-
     return(
-        <div style={style}>
+        <div style={style} onClick={handleClick}>
             <img style={styleIMG} 
                 src={bulletinBoard?.images?.[activeIndex] }
                 alt="Bulletin Board" 

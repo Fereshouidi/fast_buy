@@ -9,10 +9,13 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import SideBarForComputer from "@/app/components/sideBar/sideBarForComputers/sidebar";
 import SideBarForPhone from '@/app/components/sideBar/sideBarForPhones/SideBar';
-import BulletinBoardForPhone from "./components/bulletinBoard/forPhone/bulletinBoard";
-import BulletinBoardForComputer from "./components/bulletinBoard/forcomputer/bulletinBoard";
+import BulletinBoardForPhone from "./components/bulletinBoard_one/forPhone/bulletinBoard";
+import BulletinBoardForComputer from "./components/bulletinBoard_one/forcomputer/bulletinBoard";
 import Slider from "./components/slider/slider";
 import ProductsShowing from "./components/productsShowing/productsShowing";
+import BulletinBoard_two_forPhone from "./components/bulletinBoard_two/forPhone/bulletinBoard";
+import BulletinBoard_two_forComputer from "./components/bulletinBoard_two/forcomputer/bulletinBoard";
+import CategoriesSection from "./components/categories/categories";
 
 const App = () => {
   const router = useRouter();
@@ -94,6 +97,8 @@ const App = () => {
           {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
           <Slider/>
           <ProductsShowing/>
+          {screenWidth > 800 ? <BulletinBoard_two_forComputer /> : <BulletinBoard_two_forPhone />}
+          <CategoriesSection/>
           <div>home page</div>
           <button onClick={goToAbout}>Go to About</button>
         </SideBarContext.Provider>

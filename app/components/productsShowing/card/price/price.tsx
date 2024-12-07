@@ -1,7 +1,7 @@
 'use client';
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 
-import { CSSProperties, useContext } from "react";
+import { CSSProperties, useContext, useState } from "react";
 
 type productParams = {
     name: string,
@@ -23,7 +23,9 @@ type discountParams = {
 };
 const Price = ({product}: {product : productParams}) => {
 
-  const languageContext = useContext(LanguageSelectorContext)
+  const languageContext = useContext(LanguageSelectorContext);
+  const [price_Hover, setPrice_Hover] = useState(false);
+
 
   if(!languageContext){
     throw 'error languageContext'
@@ -56,18 +58,23 @@ const price: CSSProperties = {
   borderRadius: '50px',
   color: 'var(--black)'
 }
-
-
+const newPriceHover: CSSProperties = {
+  ...styleNewPrice,
+  backgroundColor: 'var(--primary-color-clicked)'
+}
   
     return (
         <div style={stylePriceDiv}>
           {product.discount ? (
             <div style={stylediscountPricesDiv}>
               <h5 style={styleoldPrice}>{product.discount.oldPrice+ ' ' +product.currencyType|| "N/A"}</h5>
-              <h4 style={styleNewPrice}>{product.discount.newPrice+ ' ' +product.currencyType|| "N/A"}</h4>
+              <h4 style={price_Hover? newPriceHover: styleNewPrice}
+                onMouseEnter={() => setPrice_Hover(true)} 
+                onMouseLeave={() => setPrice_Hover(false)}
+              >{product.discount.newPrice+ ' ' +product.currencyType|| "N/A"}</h4>
             </div>
           ) : (
-            <h4 style={price}>{product.price+ ' ' +product.currencyType || "N/A"}</h4>
+            <h4 style={price} >{product.price+ ' ' +product.currencyType || "N/A"}</h4>
           )}
         </div>
       );

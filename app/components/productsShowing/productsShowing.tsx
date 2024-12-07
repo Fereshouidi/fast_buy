@@ -1,10 +1,31 @@
 'use client';
 
-import { CSSProperties, useEffect, useState } from "react";
+import { CSSProperties, useContext, useEffect, useState } from "react";
 import { getAllProducts_SortedByRating } from "@/app/crud";
 import Card from "./card/card";
+import english from "@/app/languages/english.json";
+import arabic from "@/app/languages/arabic.json";
+import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 
 const ProductsShowing = () => {
+
+    const [activeLanguage, setActiveLanguage] = useState(english);
+    const [showMore_btn_Hover, setShowMor_btn_eHover] = useState(false);
+
+    const languageContext = useContext(LanguageSelectorContext);
+    if(!languageContext){
+        throw 'error languageContext !';
+    }
+
+    useEffect(() => {
+        if(languageContext.activeLanguage == 'english'){
+            setActiveLanguage(english);
+        }else if(languageContext.activeLanguage == 'arabic'){
+            setActiveLanguage(arabic);
+        }
+    }, [languageContext.activeLanguage])
+
+ 
 
     type productParams = {
         name: string,
@@ -25,16 +46,19 @@ const ProductsShowing = () => {
         startOfDiscount: Date, 
         endOfDiscount: Date
     };
-    const [allProducts, setAllProducts] = useState<productParams[]>()
-
+    const [allProducts, setAllProducts] = useState<productParams[]>();
+    const [pageNumber, setPageNumber] = useState<number>(1);
     useEffect(() => {
         const fetchData = async() => {
-            const data = await getAllProducts_SortedByRating();
-            setAllProducts(data);
+            const data = await getAllProducts_SortedByRating(pageNumber, 12);
+            setAllProducts((prev) => [...(prev || []), ...data]);
         }
         fetchData()
-    }, [])
+    }, [pageNumber])
 
+    const handleShowMore = () => {
+        setPageNumber((prev) => prev + 1)
+    }
     
 
     const Style: CSSProperties = {
@@ -59,9 +83,22 @@ const ProductsShowing = () => {
         flexWrap: 'wrap'
     }
 
+    const styleSpan: CSSProperties = {
+        color: 'var(--white)',
+        backgroundColor: 'var(--primary-color)',
+        padding: 'calc(var(--medium-padding) *1.2)',
+        borderRadius: '20px',
+        margin: 'calc(var(--large-margin) *2) 0',
+        cursor: 'pointer'
+    }
+    const styleSpanHover: CSSProperties = {
+        ...styleSpan,
+        backgroundColor: 'var(--primary-color-clicked)'
+    }
     return (
         <section style={Style}>
-            <h2 style={StyleH2}>{'Highest rated'}</h2>
+
+            <h2 style={StyleH2}>{activeLanguage.highestRatedW +' :'}</h2>
             <div style={styleContainer}>
                 {allProducts && allProducts.map((product, index) => {
                     return <div key={index}>
@@ -70,6 +107,12 @@ const ProductsShowing = () => {
                 })}
             </div>
             
+            <span style={showMore_btn_Hover? styleSpanHover: styleSpan}
+                onClick={handleShowMore} 
+                onMouseEnter={() => setShowMor_btn_eHover(true)} 
+                onMouseLeave={() => setShowMor_btn_eHover(false)}
+            >{activeLanguage.showMoreW}</span>
+
         </section>
     )
 }

@@ -55,6 +55,7 @@ a {
   --ashen: rgb(123, 123, 123);
   --ashen-semi-transparent:  rgba(123, 123, 123, 0.463);
   --primary-color: #FF9B38;
+  --primary-color-clicked: #ff9328;
   --primary-color-semi-transparent: #ff9c387a;
   --primary-color-light: #FFD500;  
   --primary-color-dark: #B88A03;
@@ -99,6 +100,7 @@ a {
   --border-radius: 50px;
   --border-color: #c6c6c6a2;
   --border-width: 0.1px;
+  --slim-border: 0.05px solid #c6c6c6a2;
 
   /* opacity levels */
   --opacity-light: 0.8;
@@ -280,7 +282,7 @@ header div{
   align-items: center;
   position: relative;
 }
-.sideBar-background .sideBar li:hover{
+.sideBar-background .sideBar li:not(.categoriesSelector):hover{
   background-color: var(--primary-color);
   color: var(--white);
 }
