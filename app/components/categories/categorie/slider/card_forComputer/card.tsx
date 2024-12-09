@@ -43,7 +43,7 @@ const unsetHover = () => {
 }
 
     const Style: CSSProperties = {
-        border: '1px solid var(--primary-color)',
+        border: '0.1px solid var(--primary-color)',
         display: 'flex',
         alignItems: "center",
         flexDirection: 'column',
@@ -68,7 +68,7 @@ const unsetHover = () => {
         width: '100%',
         height: '70%',
         objectFit: 'cover',
-        borderRadius: '20px',
+        borderRadius: '10px',
         backgroundColor: 'var(--almost-white)',
     }
     const styleH4: CSSProperties = {
