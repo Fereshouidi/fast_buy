@@ -86,7 +86,7 @@ const App = () => {
     }
     
     //alert(document.body.classList)
-  }, [theme, activeLanguage, window.innerWidth]);
+  }, [theme, activeLanguage, screenWidth]);
 
   const goToAbout = () => {
     router.push("/pages/about");
