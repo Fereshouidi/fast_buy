@@ -3,9 +3,7 @@
 import { CSSProperties } from "react";
 import Slider from "./slider/slider";
 
-type categoriesSectionParams = {
-    categoriesList: { categorie: categorieParams, products: productParams[] }[];
-}
+
 
 type categorieParams = {
     _id: string;
