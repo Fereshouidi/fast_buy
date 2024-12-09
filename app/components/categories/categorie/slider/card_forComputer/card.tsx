@@ -43,7 +43,7 @@ const unsetHover = () => {
 }
 
     const Style: CSSProperties = {
-        border: '1px solid red',
+        border: '1px solid var(--primary-color)',
         display: 'flex',
         alignItems: "center",
         flexDirection: 'column',
