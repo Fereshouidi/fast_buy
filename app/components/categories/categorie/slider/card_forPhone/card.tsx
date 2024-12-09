@@ -44,11 +44,14 @@ const unsetHover = () => {
 }
 
 const Style: CSSProperties = {
+    border: '1px solid red',
+
     display: 'flex',
     alignItems: "center",
     flexDirection: 'column',
     width: '120px',
-    height: '150px',
+    maxHeight: '180px',
+    minHeight: '180px',
     backgroundColor: 'var(--white)',
     borderRadius: '10px',
     margin: 'var(--extra-small-margin)',
@@ -101,7 +104,7 @@ const Style: CSSProperties = {
                 <h4 style={styleH4}>{product.name}</h4>
                 <StarRating product={product}/>
                 <div style={styleBoxAndPricesDiv}>
-                    <BoxIcon  />
+                    {/* <BoxIcon  /> */}
                     <Price product={product}/>
                 </div>
             </div>

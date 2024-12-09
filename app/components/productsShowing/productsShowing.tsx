@@ -32,7 +32,7 @@ const ProductsShowing = () => {
         const fetchData = async() => {
             const data = await getAllProducts_SortedByRating(pageNumber, 12);
             setAllProducts((prev) => [...(prev || []), ...data]);
-            
+            console.log(allProducts)
         }
         fetchData()
     }, [pageNumber])

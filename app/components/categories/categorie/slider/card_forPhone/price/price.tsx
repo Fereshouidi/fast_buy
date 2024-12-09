@@ -32,13 +32,23 @@ const Price = ({product}: {product : productParams}) => {
   }
   
 const stylePriceDiv: CSSProperties = {
-  direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr'
+  direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '100%',
+  //margin: '5px',
+  height: 'auto',
+  //position: 'absolute',
+  //bottom: 0,
 }
 const stylediscountPricesDiv: CSSProperties = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr'
+  direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr',
+  width: '100%',
+
 }
 const styleoldPrice: CSSProperties = {
   margin: '0 var(--extra-small-margin)',
@@ -52,7 +62,12 @@ const styleNewPrice: CSSProperties = {
   fontSize: 'calc(var(--primary-size)/1.5)',
   padding: 'var(--small-padding)',
   borderRadius: '50px',
-  color: 'white'
+  color: 'white',
+
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '90%'
 }
 const price: CSSProperties = {
   fontSize: 'calc(var(--small-size)/1.2)',
@@ -73,14 +88,14 @@ const newPriceHover: CSSProperties = {
         <div style={stylePriceDiv}>
           {product.discount ? (
             <div style={stylediscountPricesDiv}>
-              <h5 style={styleoldPrice}>{product.discount.oldPrice+ ' ' +product.currencyType|| "N/A"}</h5>
+              {/* <h5 style={styleoldPrice}>{product.discount.oldPrice+ ' ' +product.currencyType|| "N/A"}</h5> */}
               <h4 style={price_Hover? newPriceHover: styleNewPrice}
                 onMouseEnter={() => setPrice_Hover(true)} 
                 onMouseLeave={() => setPrice_Hover(false)}
               >{product.discount.newPrice+ ' ' +product.currencyType|| "N/A"}</h4>
             </div>
           ) : (
-            <h4 style={price} >{product.price+ ' ' +product.currencyType || "N/A"}</h4>
+            <h4 style={styleNewPrice} >{product.price+ ' ' +product.currencyType || "N/A"}</h4>
           )}
         </div>
       );

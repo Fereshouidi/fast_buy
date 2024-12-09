@@ -43,6 +43,7 @@ const unsetHover = () => {
 }
 
     const Style: CSSProperties = {
+        border: '1px solid red',
         display: 'flex',
         alignItems: "center",
         flexDirection: 'column',
@@ -81,12 +82,6 @@ const unsetHover = () => {
         position: 'relative'
     }
     const styleBoxAndPricesDiv: CSSProperties = {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'end',
-        position: 'absolute',
-        left: '0',
-        bottom: '0',
         width: '100%',
         direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr'
     }
@@ -97,7 +92,7 @@ const unsetHover = () => {
                 <h4 style={styleH4}>{product.name}</h4>
                 <StarRating product={product}/>
                 <div style={styleBoxAndPricesDiv}>
-                    <BoxIcon  />
+                    {/* <BoxIcon  /> */}
                     <Price product={product}/>
                 </div>
             </div>

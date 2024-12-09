@@ -32,13 +32,22 @@ const Price = ({product}: {product : productParams}) => {
   }
   
 const stylePriceDiv: CSSProperties = {
-  direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr'
+  direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '100%',
+  margin: 0,
+  height: 'auto',
+  marginBottom: '70px',
 }
 const stylediscountPricesDiv: CSSProperties = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr'
+  direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr',
+  width: '100%',
+
 }
 const styleoldPrice: CSSProperties = {
   margin: 'var(--small-margin)',
@@ -46,17 +55,24 @@ const styleoldPrice: CSSProperties = {
   color: 'var(--black)'
 }
 const styleNewPrice: CSSProperties = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
   margin: 'var(--small-margin)',
   backgroundColor: 'var(--primary-color)',
   padding: 'var(--medium-padding)',
   borderRadius: '50px',
-  color: 'white'
+  color: 'white',
+  width: '90%'
+
 }
 const price: CSSProperties = {
-  margin: 'var(--small-margin)',
-  padding: 'var(--medium-padding)',
+  padding: 'var(--medium-padding) 5%',
   borderRadius: '50px',
-  color: 'var(--black)'
+  color: 'var(--black)',
+  width: '100%,',
+  backgroundColor: 'var(--primary-color)',
+  
 }
 const newPriceHover: CSSProperties = {
   ...styleNewPrice,
@@ -67,14 +83,13 @@ const newPriceHover: CSSProperties = {
         <div style={stylePriceDiv}>
           {product.discount ? (
             <div style={stylediscountPricesDiv}>
-              <h5 style={styleoldPrice}>{product.discount.oldPrice+ ' ' +product.currencyType|| "N/A"}</h5>
               <h4 style={price_Hover? newPriceHover: styleNewPrice}
                 onMouseEnter={() => setPrice_Hover(true)} 
                 onMouseLeave={() => setPrice_Hover(false)}
               >{product.discount.newPrice+ ' ' +product.currencyType|| "N/A"}</h4>
             </div>
           ) : (
-            <h4 style={price} >{product.price+ ' ' +product.currencyType || "N/A"}</h4>
+            <h4 style={styleNewPrice} >{product.price+ ' ' +product.currencyType || "N/A"}</h4>
           )}
         </div>
       );
