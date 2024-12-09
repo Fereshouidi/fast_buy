@@ -2,7 +2,7 @@
 
 import { CSSProperties, useContext, useState } from "react";
 import Price from "./price/price";
-import BoxIcon from "@/app/svg/icons/boxSmall";
+import BoxIcon from "@/app/svg/icons/box";
 import StarRating from "./startingRating/StartRating";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 
@@ -26,7 +26,6 @@ type discountParams = {
     endOfDiscount: Date
 };
 const Card = ({product}: {product : productParams}) => {
-
     
 const languageContext = useContext(LanguageSelectorContext)
 
@@ -43,24 +42,23 @@ const unsetHover = () => {
     setCardHover(false)
 }
 
-const Style: CSSProperties = {
-    display: 'flex',
-    alignItems: "center",
-    flexDirection: 'column',
-    width: '120px',
-    height: '150px',
-    backgroundColor: 'var(--white)',
-    borderRadius: '10px',
-    margin: 'var(--small-margin)',
-    padding: 'calc(var(--small-padding)/2)',
-    boxShadow: '0 5px 15px var(--black-almost-transparnt)',
-    cursor: "pointer",
-    transition: '0.5s ease',
-    flexShrink: '0',
-    flexGrow: '0',
-    flexBasis: window.innerWidth > 800 ? 'calc(90vw /6)' : window.innerWidth <= 800 && window.innerWidth >= 600 ? 'calc(90vw /4)' : 'calc(90vw /3)',
-    position: 'relative',
-}
+    const Style: CSSProperties = {
+        display: 'flex',
+        alignItems: "center",
+        flexDirection: 'column',
+        width: '250px',
+        maxHeight: '350px',
+        backgroundColor: 'var(--white)',
+        borderRadius: '20px',
+        margin: 'var(--medium-margin)',
+        padding: 'var(--small-padding)',
+        boxShadow: '0 5px 15px var(--black-almost-transparnt)',
+        cursor: "pointer",
+        transition: '0.5s ease',
+        flexShrink: '0',
+        flexGrow: '0',
+        flexBasis: window.innerWidth > 1500 ? 'calc(90vw /6)' : window.innerWidth <= 1500 && window.innerWidth >= 1100 ? 'calc(90vw /5)' : 'calc(90vw /4)',
+    }
     const StyleWithHover: CSSProperties = {
         ...Style,
         transform: 'scale(1.05)',
@@ -73,9 +71,8 @@ const Style: CSSProperties = {
         backgroundColor: 'var(--almost-white)',
     }
     const styleH4: CSSProperties = {
-        padding: 'calc(var(--small-padding)/2)',
-        color: 'var(--black)',
-        fontSize: 'calc(var(--extra-small-size)/1.5)'
+        padding: 'calc(var(--small-padding)/1.5)',
+        color: 'var(--black)'
     }
     const StyleCartInformation: CSSProperties = {
         width: '100%',
@@ -84,7 +81,6 @@ const Style: CSSProperties = {
         position: 'relative'
     }
     const styleBoxAndPricesDiv: CSSProperties = {
-        marginTop: 'var(--extra-small-margin)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'end',

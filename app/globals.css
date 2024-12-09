@@ -46,7 +46,7 @@ a {
 :root {
   /* colors */
   
-  --white-almost-transparnt: rgba(255, 255, 255, 0.167);
+  --white-almost-transparnt: rgba(248, 248, 248, 0.229);
   --almost-white: rgb(247, 247, 247);
   --white: #ffffff;
   --black: #000000;
@@ -159,14 +159,29 @@ a {
   user-select: none;
   user-select: none;
 }
+@media (max-width: 800px) {
+  
+  h2 {
+    font-size: var(--primary-size);
+    margin: 0;
+    padding: 0;
+    color: var(--black);
+  }
+}
 
 body{
   background-color: var(--almost-white);
-  padding-top: var(--header-height);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.computer {
+  padding-top: var(--header-height);
+}
+.phone {
+  padding-top: calc(var(--header-height)/1.2);
 }
 
 svg {

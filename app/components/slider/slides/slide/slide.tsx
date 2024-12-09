@@ -38,7 +38,7 @@ const Slide = ({product} : {product: productParams}) => {
 
         if (slideRef.current && typeof window != 'undefined') {
             if(window.innerWidth >= 800){
-                setImageWidth((slideRef.current.offsetWidth * 0.9) / 1.3);
+                setImageWidth((slideRef.current.offsetWidth * 0.8) / 1.3);
             }else{
                 setImageWidth((slideRef.current.offsetWidth * 0.9));
             }
@@ -71,11 +71,12 @@ const Slide = ({product} : {product: productParams}) => {
         flexShrink: '0',
         flexGrow: '0',
         cursor: "pointer",
-        flexBasis: window.innerWidth > 800 ? 'calc(90vw /3)' : window.innerWidth <= 800 && window.innerWidth >= 500 ? 'calc(90vw /2)' : 'calc(90vw /1)',
+        flexBasis: window.innerWidth > 800 ? 'calc(90vw /3)' : window.innerWidth <= 800 && window.innerWidth >= 500 ? 'calc(90vw /2)' : 'calc(90vw /2)',
     }
     const styleTittle: CSSProperties = {
         color: 'var(--black)',
-        marginTop: 'var(--large-margin)'
+        marginTop: window.innerWidth > 800 ? 'var(--large-margin)' : 'var(--medium-margin)',
+        fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'var(--small-size)'
     }
     const styleImgDiv: CSSProperties = {
         width: imageWidth ,
@@ -92,8 +93,8 @@ const Slide = ({product} : {product: productParams}) => {
         // objectFit: 'cover'
     }
     const styleDiscount: CSSProperties = {
-        width: imageWidth /4 ,
-        height: imageWidth/4 ,
+        width: imageWidth /3.5 ,
+        height: imageWidth/3.5 ,
         display: 'flex',
         alignItems: "center",
         justifyContent: 'center',
@@ -109,27 +110,27 @@ const Slide = ({product} : {product: productParams}) => {
         
     }
     const stylePrices: CSSProperties = {
-        margin: 'var(--large-margin)',
+        margin: 'var(--large-margin) 0',
         direction: 'ltr'
 
     }
     const styleoldPrice: CSSProperties = {
-        width: imageWidth /4 ,
-        height: imageWidth/4 ,
-        fontSize: imageWidth / 25,
+        width: imageWidth /2 ,
+        height: imageWidth/2 ,
+        fontSize: imageWidth / 15,
         margin: 'var(--small-margin)',
         textDecoration: 'line-through',
         color: 'var(--black)'
     }
     const styleNewPrice: CSSProperties = {
-        width: imageWidth /4 ,
-        height: imageWidth/4 ,
-        fontSize: imageWidth / 20,
+        width: imageWidth /2 ,
+        height: imageWidth/2 ,
+        fontSize: window.innerWidth > 800 ? imageWidth / 15 : imageWidth / 15,
         borderRadius: '50px',
         margin: 'var(--small-margin)',
         padding: 'var(--medium-padding)',
         backgroundColor: 'var(--primary-color)',
-        color: 'var(--white)'
+        color: 'white'
     }
 
 

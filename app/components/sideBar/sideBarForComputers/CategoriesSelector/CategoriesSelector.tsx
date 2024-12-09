@@ -6,7 +6,7 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import CategorieIcon from "@/app/svg/icons/categorie";
 import { getAllCategorie, getCategoriesByParent } from "@/app/crud";
-//import '../CategoriesSelector/categorieSelector.css'
+import '../CategoriesSelector/categorieSelector.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
@@ -154,6 +154,7 @@ const styleDownIcon: CSSProperties = {
     position: 'absolute',
     fontSize: 'var(--small-size)',
     zIndex: 0,
+    cursor: 'pointer'
 }
 
 

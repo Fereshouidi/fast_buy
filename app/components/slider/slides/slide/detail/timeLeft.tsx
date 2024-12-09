@@ -86,50 +86,55 @@ const TimeLeft = ({product} : {product: discountParams}) => {
         let red = 0;
         let green = 0;
       
-        if (percentage > 60) {
-          red = Math.floor((255 * (percentage - 60)) / 40); 
+        if (percentage > 70) {
+          red = Math.floor((255 * (100 - percentage)) / 30); 
           green = 255; 
-        } else if (percentage > 20) {
+        } else if (percentage >= 30 && percentage <= 70) {
           red = 255; 
-          green = Math.floor((255 * (percentage - 20)) / 40); 
+          green = Math.floor((255 * (percentage - 30)) / 40); 
         } else {
           red = 255; 
+          green = Math.floor((255 * percentage) / 30); 
         }
       
         const color = `rgb(${red}, ${green}, 0)`;
-        setCountColor(color);
+        setCountColor(color); 
       };
       
-    
-    useEffect(() => {
-        setInterval(() => {
-            setTimeLeft(() => {
-                return calcTimeLeft(product.endOfDiscount, product.startOfDiscount);
-            })
-        }, 1000)
-        
-    }, [timeLeft])
+      useEffect(() => {
+        const interval = setInterval(() => {
+          setTimeLeft(() => {
+            return calcTimeLeft(product.endOfDiscount, product.startOfDiscount);
+          });
+        }, 1000);
+      
+        return () => clearInterval(interval); 
+      }, [product.endOfDiscount, product.startOfDiscount]);
+      
 
 
     const styleDivParent: CSSProperties = {
-        // backgroundColor: 'red',
-        margin: 'var(--large-margin)',
+        //backgroundColor: 'red',
+        marginBottom: 'calc(var(--large-margin)/1.5)',
         width: '100%', 
+        height: 'auto',
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'center',
         flexDirection: 'column',
     }
     const styleSpan: CSSProperties = {
-        margin: 'var(--small-margin)',
+        margin: '0',
+        padding: '0',
         width: '90%', 
         height: 'var(--half-height)',
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'center',
         flexDirection: 'row',
-        fontSize: 'var(--small-size)',
-        color: 'var(--black)',
+        fontSize: 'calc(var(--small-size)/1.5)',
+        color: 'var(--almost-black)',
+        opacity: '0.7',
         whiteSpace: 'normal',
         wordWrap: 'break-word', 
         textAlign: 'center',
@@ -137,9 +142,11 @@ const TimeLeft = ({product} : {product: discountParams}) => {
     const styleCountdownDiv : CSSProperties = {
         backgroundColor: 'var(--almost-white)',
         width: '50%', 
-        height: 'var(--short-height)',
+        height: 'calc(var(--short-height)/2)',
         borderRadius: '50px',
         overflow: 'hidden',
+        margin: 0,
+        padding: 0,
     }
     const styleCount : CSSProperties = {
         background: countColor ,

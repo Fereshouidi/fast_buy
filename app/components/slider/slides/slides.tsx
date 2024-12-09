@@ -42,10 +42,10 @@ const Slides = ({ slideBarData }: { slideBarData: sliderDataParams }) => {
     const slideWidth = 90;
   //  alert(slideWidth)
     const totalSlides = slideBarData? 
-        window.innerWidth > 800 ? slideBarData.products.length /3 
+        window.innerWidth > 800 ? slideBarData.products.length /6
         : window.innerWidth <= 800 && window.innerWidth >= 500 ? slideBarData.products.length /2
-        : window.innerWidth < 500 ? slideBarData.products.length /1  
-        : slideBarData.products.length /3 
+        : window.innerWidth < 500 ? slideBarData.products.length /2  
+        : slideBarData.products.length /6 
         : 0;
 
     useEffect(() => {

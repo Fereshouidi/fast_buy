@@ -17,7 +17,7 @@ import ProductsShowing from "@/app/components/productsShowing/productsShowing";
 // import ProductsShowingForPhone from "@/app/components/productsShowing/forPhone/productsShowing";
 import BulletinBoard_two_forPhone from "./components/bulletinBoard_two/forPhone/bulletinBoard";
 import BulletinBoard_two_forComputer from "./components/bulletinBoard_two/forcomputer/bulletinBoard";
-import CategoriesSection from "./components/categories/categories";
+import CategoriesSection from "@/app/components/categories/categories";
 
 const App = () => {
   const router = useRouter();
@@ -78,9 +78,15 @@ const App = () => {
     }else{
       document.body.classList.add(activeLanguage);
     }
+
+    if(window.innerWidth > 800){
+      document.body.classList.add('computer');
+    }else{
+      document.body.classList.add('phone');
+    }
     
     //alert(document.body.classList)
-  }, [theme, activeLanguage]);
+  }, [theme, activeLanguage, window.innerWidth]);
 
   const goToAbout = () => {
     router.push("/pages/about");
@@ -89,6 +95,8 @@ const App = () => {
   if (screenWidth === null) {
     return <div>Loading...</div>; // Render a loader while determining screen width
   }
+
+
 
   return (
     <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>

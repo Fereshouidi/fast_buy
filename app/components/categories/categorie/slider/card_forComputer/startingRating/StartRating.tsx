@@ -28,7 +28,7 @@ const StarRating = ({product}: {product : productParams}) => {
     return (
         <ReactStars
             count={5}
-            size={10} 
+            size={18} 
             value={product.totalRating}
             edit={false} 
             color2={'var(--primary-color)'} 
