@@ -2,7 +2,7 @@
 
 import { CSSProperties, useContext, useState } from "react";
 import Price from "./price/price";
-import BoxIcon from "@/app/svg/icons/box";
+//import BoxIcon from "@/app/svg/icons/box";
 import StarRating from "./startingRating/StartRating";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 
