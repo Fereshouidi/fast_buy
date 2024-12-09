@@ -49,11 +49,11 @@ const stylediscountPricesDiv: CSSProperties = {
   width: '100%',
 
 }
-const styleoldPrice: CSSProperties = {
-  margin: 'var(--small-margin)',
-  textDecoration: 'line-through',
-  color: 'var(--black)'
-}
+// const styleoldPrice: CSSProperties = {
+//   margin: 'var(--small-margin)',
+//   textDecoration: 'line-through',
+//   color: 'var(--black)'
+// }
 const styleNewPrice: CSSProperties = {
   display: 'flex',
   justifyContent: 'center',
@@ -66,14 +66,14 @@ const styleNewPrice: CSSProperties = {
   width: '90%'
 
 }
-const price: CSSProperties = {
-  padding: 'var(--medium-padding) 5%',
-  borderRadius: '50px',
-  color: 'var(--black)',
-  width: '100%,',
-  backgroundColor: 'var(--primary-color)',
+// const price: CSSProperties = {
+//   padding: 'var(--medium-padding) 5%',
+//   borderRadius: '50px',
+//   color: 'var(--black)',
+//   width: '100%,',
+//   backgroundColor: 'var(--primary-color)',
   
-}
+// }
 const newPriceHover: CSSProperties = {
   ...styleNewPrice,
   backgroundColor: 'var(--primary-color-clicked)'

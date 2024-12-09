@@ -50,12 +50,12 @@ const stylediscountPricesDiv: CSSProperties = {
   width: '100%',
 
 }
-const styleoldPrice: CSSProperties = {
-  margin: '0 var(--extra-small-margin)',
-  fontSize: 'calc(var(--extra-small-size)/1.7)',
-  textDecoration: 'line-through',
-  color: 'var(--black)'
-}
+// const styleoldPrice: CSSProperties = {
+//   margin: '0 var(--extra-small-margin)',
+//   fontSize: 'calc(var(--extra-small-size)/1.7)',
+//   textDecoration: 'line-through',
+//   color: 'var(--black)'
+// }
 const styleNewPrice: CSSProperties = {
   margin: '0 var(--extra-small-margin)',
   backgroundColor: 'var(--primary-color)',
@@ -69,16 +69,16 @@ const styleNewPrice: CSSProperties = {
   alignItems: 'center',
   width: '90%'
 }
-const price: CSSProperties = {
-  fontSize: 'calc(var(--small-size)/1.2)',
-  //margin: 'calc(var(--extra-small-margin)/1.2)',
-  padding: 'var(--small-padding)',
-  borderRadius: '50px',
-  color: 'var(--black)',
-  position: 'absolute',
-  right: 0,
-  bottom: 0,
-}
+// const price: CSSProperties = {
+//   fontSize: 'calc(var(--small-size)/1.2)',
+//   //margin: 'calc(var(--extra-small-margin)/1.2)',
+//   padding: 'var(--small-padding)',
+//   borderRadius: '50px',
+//   color: 'var(--black)',
+//   position: 'absolute',
+//   right: 0,
+//   bottom: 0,
+// }
 const newPriceHover: CSSProperties = {
   ...styleNewPrice,
   backgroundColor: 'var(--primary-color-clicked)'
