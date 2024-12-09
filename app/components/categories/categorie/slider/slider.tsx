@@ -3,14 +3,6 @@ import CardForComputer from "@/app/components/categories/categorie/slider/card_f
 import CardForPhone from "@/app/components/categories/categorie/slider/card_forPhone/card";
 import { CSSProperties } from "react";
 
-type categorieParams = {
-    _id: string;
-    name: string;
-    parentCategorie: string;
-    childrenCategories: categorieParams[];
-    childOpen: boolean;
-    margin: number;
-}
 
 type productParams = {
     name: string;
