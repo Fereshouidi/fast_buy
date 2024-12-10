@@ -8,7 +8,7 @@
     line-height: 1.5;
     margin: 20px 0;
     padding: 50px;
-    background-color: #f9f9f9;
+    background-color: var(--almost-white);
     border-radius: 8px;
 }
 
@@ -68,7 +68,7 @@
     line-height: 1.5;
     margin: 20px 0;
     padding: 10px;
-    background-color: #f9f9f9;
+    background-color: var(--almost-white);
     border-radius: 8px;
 }
 
