@@ -132,6 +132,7 @@ a {
   --short-height: calc(var(--half-height)/2);
   --extra-short-height: calc(var(--short-height)/2);
   --header-height: 75px;
+  --header-height-for-phone: calc(var(--header-height) / 1.2);
 
   /* widths */
   --extra-long-width: calc(var(--long-width)*2);
@@ -167,6 +168,10 @@ a {
     padding: 0;
     color: var(--black);
   }
+
+  /* :root {
+    --header-height: calc(var(--header-height) + var(var(--header-height)))
+  } */
 }
 
 body{
@@ -270,6 +275,11 @@ header div{
   flex-direction: column;
 } */
 
+/* @media (max-width: 800px) {
+  .sideBar-background{
+    top: 0;
+  }
+} */
 .sideBar-background{
   text-decoration: dashed;
   height: 100vh;

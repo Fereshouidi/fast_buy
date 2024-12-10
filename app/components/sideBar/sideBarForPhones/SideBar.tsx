@@ -44,6 +44,7 @@ const SideBar = () => {
         right: context.activeLanguage == 'arabic'? '0': '',
         left: context.activeLanguage != 'arabic'? '0': '',
         width: sideBarExistContext.sideBarExist? '100vw': '0',
+        top: 'var(--header-height-for-phone)'
     }
     const sideBarStyle: CSSProperties = {
         direction: context.activeLanguage == 'arabic'? 'rtl': 'ltr',
