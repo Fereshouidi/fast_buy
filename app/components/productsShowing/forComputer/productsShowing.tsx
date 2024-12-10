@@ -14,13 +14,17 @@ type productsShowing = {
     allProducts: productParams[]
 }
 type productParams = {
-
-    name: string,
+    name: nameParams,
     imagePrincipal: string,
     price: number,
     discount: discountParams,
     totalRating: number,
     currencyType: string
+}
+
+type nameParams = {
+    english: string,
+    arabic: string
 }
 
 type discountParams = {
@@ -34,6 +38,8 @@ type discountParams = {
 };
 
 const ProductsShowing = ({allProducts, pageNumber, setPageNumber}: productsShowing) => {
+
+    
 
     const [activeLanguage, setActiveLanguage] = useState(english);
     const [showMore_btn_Hover, setShowMor_btn_eHover] = useState(false);

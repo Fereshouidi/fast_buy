@@ -6,6 +6,7 @@ import HeaderForComputer from "@/app/components/header/headerForComputer/header"
 import HeaderForPhone from "@/app/components/header/headerForPhones/header";
 import { ThemeContext } from "@/app/contexts/ThemeContext";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
+import { CompanyInformationContext } from "./contexts/companyInformation";
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import SideBarForComputer from "@/app/components/sideBar/sideBarForComputers/sidebar";
 import SideBarForPhone from '@/app/components/sideBar/sideBarForPhones/SideBar';
@@ -13,11 +14,11 @@ import BulletinBoardForPhone from "./components/bulletinBoard_one/forPhone/bulle
 import BulletinBoardForComputer from "./components/bulletinBoard_one/forcomputer/bulletinBoard";
 import Slider from "./components/slider/slider";
 import ProductsShowing from "@/app/components/productsShowing/productsShowing";
-// import ProductsShowingForComputer from "@/app/components/productsShowing/forComputer/productsShowing";
-// import ProductsShowingForPhone from "@/app/components/productsShowing/forPhone/productsShowing";
 import BulletinBoard_two_forPhone from "./components/bulletinBoard_two/forPhone/bulletinBoard";
 import BulletinBoard_two_forComputer from "./components/bulletinBoard_two/forcomputer/bulletinBoard";
 import CategoriesSection from "@/app/components/categories/categories";
+import About from "@/app/components/about/about";
+import { getConpanyInformations } from "./crud";
 
 const App = () => {
   const router = useRouter();
@@ -31,6 +32,33 @@ const App = () => {
   });
   const [activeLanguage, setActiveLanguage] = useState("english");
   const [sideBarExist, setSideBarExist] = useState(false);
+
+  interface companyInformationsParams {
+    name: nameParams,
+    logo: string,
+    biggestDiscount: number,
+    offersDetails : string,
+    entities: string[],
+    originalProductsPercentage: number,
+    servises: string[]
+}
+type nameParams = {
+  arabic: string,
+  english: string
+}
+const [conpanyInformations, setConpanyInformations] = useState<companyInformationsParams | undefined>();
+
+useEffect(() => {
+    const fetchData = async() => {
+        const conpanyInformationsData = await getConpanyInformations();
+        setConpanyInformations(conpanyInformationsData);
+        console.log(conpanyInformationsData);
+        
+    }
+    fetchData();
+}, [])
+
+
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -93,28 +121,35 @@ const App = () => {
   };
 
   if (screenWidth === null) {
-    return <div>Loading...</div>; // Render a loader while determining screen width
+    return <div>Loading...</div>; 
   }
 
+  if (!conpanyInformations) {
+    return <div>Loading company information...</div>; 
+  }
+  
 
 
   return (
-    <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
-      <ThemeContext.Provider value={{ theme, setTheme }}>
-        <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
-          {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
-          {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-          {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
-          <Slider/>
-          {/* {screenWidth > 800 ? <ProductsShowingForComputer/> : <ProductsShowingForPhone />} */}
-          <ProductsShowing/>
-          {screenWidth > 800 ? <BulletinBoard_two_forComputer /> : <BulletinBoard_two_forPhone />}
-          <CategoriesSection/>
-          <div>home page</div>
-          <button onClick={goToAbout}>Go to About</button>
-        </SideBarContext.Provider>
-      </ThemeContext.Provider>
-    </LanguageSelectorContext.Provider>
+    <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises,}} >
+        <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
+          <ThemeContext.Provider value={{ theme, setTheme }}>
+            <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
+              {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
+              {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
+              {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
+              <Slider/>
+              <ProductsShowing/>
+              {screenWidth > 800 ? <BulletinBoard_two_forComputer /> : <BulletinBoard_two_forPhone />}
+              <CategoriesSection/>
+              <About/>
+              {/* <div>home page</div>
+              <button onClick={goToAbout}>Go to About</button> */}
+            </SideBarContext.Provider>
+          </ThemeContext.Provider>
+        </LanguageSelectorContext.Provider>
+    </CompanyInformationContext.Provider>
+
   );
 };
 

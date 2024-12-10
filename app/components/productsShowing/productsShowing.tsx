@@ -3,12 +3,35 @@
 import { getAllProducts_SortedByRating } from "@/app/crud";
 import ProductsShowingForComputer from '@/app/components/productsShowing/forComputer/productsShowing';
 import ProductsShowingForPhone from '@/app/components/productsShowing/forPhone/productsShowing';
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
+import english from '@/app/languages/english.json';
+import arabic from '@/app/languages/arabic.json';
 
 const ProductsShowing = () => {
 
+    const [activeLanguage, setActiveLanguage] = useState(english);
+    const languageContext = useContext(LanguageSelectorContext);
+
+    if(!languageContext){
+        throw 'error languageContext';
+    }
+
+    useEffect(() => {
+
+        if(languageContext.activeLanguage == 'english'){
+            setActiveLanguage(english);
+        }else if(languageContext.activeLanguage == 'arabic'){
+            setActiveLanguage(arabic);
+        }
+
+    }, [languageContext.activeLanguage])
+
+
+
+
     type productParams = {
-        name: string,
+        name: nameParams,
         imagePrincipal: string,
         price: number,
         discount: discountParams,
@@ -16,6 +39,12 @@ const ProductsShowing = () => {
         currencyType: string
 
     }
+
+    type nameParams = {
+        english: string,
+        arabic: string
+    }
+    
     
     type discountParams = {
         createdAt: Date,

@@ -14,14 +14,19 @@ type productsShowing = {
     allProducts: productParams[]
 }
 type productParams = {
-
-    name: string,
+    name: nameParams,
     imagePrincipal: string,
     price: number,
     discount: discountParams,
     totalRating: number,
     currencyType: string
 }
+
+type nameParams = {
+    english: string,
+    arabic: string
+}
+
 
 type discountParams = {
     createdAt: Date,

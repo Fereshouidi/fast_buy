@@ -1,11 +1,12 @@
 'use client';
 
-import { CSSProperties, useEffect, useRef, useState } from "react";
+import { CSSProperties, useContext, useEffect, useRef, useState } from "react";
 import TimeLeft from "./detail/timeLeft";
+import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 
 
 type productParams = {
-    name: string,
+    name: languageParams,
     images: string[],
     imagePrincipal: string,
     startOfDiscount: Date,
@@ -24,11 +25,23 @@ type discountParams = {
     endOfDiscount: Date
 };
 
+type languageParams = {
+    english: string,
+    arabic: string
+}
+
 const Slide = ({product} : {product: productParams}) => {
 
     if(typeof window == 'undefined'){
         throw 'window is undefined !'
     }
+
+    const languageContext = useContext(LanguageSelectorContext);
+
+    if(!languageContext){
+        throw 'error languageContext';
+    }
+
 
     const slideRef = useRef<HTMLDivElement>(null);
     const [imageWidth, setImageWidth] = useState<number>(0);
@@ -150,7 +163,13 @@ const Slide = ({product} : {product: productParams}) => {
                 } 
             
                  </div>
-            <h4 style={styleTittle}>{product.name}</h4>
+            <h4 style={styleTittle}>{
+                languageContext.activeLanguage == 'english' ?
+                product.name.english
+                :languageContext.activeLanguage == 'arabic' ?
+                product.name.arabic
+                :product.name.english
+            }</h4>
             <div style={stylePrices}>
                 {product.discount && product.discount.oldPrice && <span style={styleoldPrice}>{product.discount.oldPrice + product.currencyType}</span>} 
                 {product.discount && product.discount.oldPrice && <span style={styleNewPrice}>{product.discount.newPrice + product.currencyType}</span>}

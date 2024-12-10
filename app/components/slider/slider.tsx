@@ -1,18 +1,25 @@
 'use client';
-import { CSSProperties, useEffect, useState } from "react";
+import { CSSProperties, useContext, useEffect, useState } from "react";
 import Slides from "./slides/slides";
 import { getSliderData } from "@/app/crud";
+import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 
 const Slider = () => {
 
+    const languageContext = useContext(LanguageSelectorContext);
+
+    if(!languageContext){
+        throw 'error languageContext';
+    }
+
     type sliderDataParams = {
-        tittle: string;
+        tittle: languageParams;
         products: slideDataParams[];
         changingTime: number;
     };
     
     type slideDataParams = {
-        name: string;
+        name: languageParams;
         images: string[];
         imagePrincipal: string,
         startOfDiscount: Date,
@@ -21,6 +28,11 @@ const Slider = () => {
         discountSticker: string,
         currencyType: string
     };
+
+    type languageParams = {
+        english: string,
+        arabic: string
+    }
 
     type discountParams = {
         createdAt: Date,
@@ -69,7 +81,12 @@ const Slider = () => {
     
     return(
         <section style={StyleSection}>
-            <h2 style={styleH2}>{sliderData?.tittle }</h2>
+            <h2 style={styleH2}>{languageContext.activeLanguage == "english" ?
+                sliderData?.tittle.english
+                : languageContext.activeLanguage == "arabic" ?
+                sliderData?.tittle.arabic
+                : sliderData?.tittle.english
+            }</h2>
             <div style={styleDiv}> 
                 {sliderData && <Slides slideBarData={sliderData} />}
             </div>

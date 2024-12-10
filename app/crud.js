@@ -1,4 +1,4 @@
-const url = 'https://fast-buy-back-end-ctzb.vercel.app/api';
+const url = 'http://localhost:3002/api';
 import axios from "axios";
 
 
@@ -81,10 +81,34 @@ export const getProductsByCategorie = async(id) => {
 export const getCategoriesSection = async() => {
     try{
         const categoriesSection = (await axios.get(url + '/get/categoriesSection')).data;
-       
-        console.log(categoriesSection);
-        
         return categoriesSection;
+    }catch(err){
+        throw err;
+    }
+}
+
+export const getConpanyInformations = async() => {
+    try{
+        const conpanyInformations = (await axios.get(url + '/get/conpanyInformations')).data;
+        return conpanyInformations;
+    }catch(err){
+        throw err;
+    }
+}
+
+export const getBestCategories = async() => {
+    try{
+        const bestCategories = (await axios.get(url + '/get/bestCategories')).data;
+        return bestCategories;
+    }catch(err){
+        throw err;
+    }
+}
+
+export const getProductByBiggestDiscount = async() => {
+    try{
+        const bestCategories = (await axios.get(url + '/get/product/by/biggestDiscount')).data;
+        return bestCategories;
     }catch(err){
         throw err;
     }

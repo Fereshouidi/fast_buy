@@ -4,13 +4,13 @@ import Slide from "./slide/slide";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 
 type sliderDataParams = {
-    tittle: string;
+    tittle: languageParams;
     products: slideDataParams[];
     changingTime: number;
 };
 
 type slideDataParams = {
-    name: string;
+    name: languageParams;
     images: string[];
     imagePrincipal: string,
     startOfDiscount: Date,
@@ -19,6 +19,12 @@ type slideDataParams = {
     discountSticker: string
     currencyType: string
 };
+
+type languageParams = {
+    english: string,
+    arabic: string
+}
+
 type discountParams = {
     createdAt: Date,
     discountSticker: string,

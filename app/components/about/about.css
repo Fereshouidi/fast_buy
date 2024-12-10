@@ -1,0 +1,119 @@
+
+#about-section {
+    width: 100%;
+    font-family: Arial, sans-serif;
+    color: var(--black);
+    opacity: 0.7;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 20px 0;
+    padding: 50px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+#about-section strong {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+#about-section h1 {
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+#about-section h2 {
+    font-size: 15px;
+    font-weight: calc(var(--font-weight-extra-bold)*2);
+    color: var(--black);
+    margin-bottom: 10px;
+}
+
+#about-section ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#about-section ul li {
+    margin: 8px 0;
+}
+
+#about-section a {
+    color: blue;
+    text-decoration: none;
+}
+
+#about-section a:hover {
+    text-decoration: underline;
+}
+
+#about-section p {
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: var(--ashen);
+}
+
+
+@media (max-width: 600px){
+
+    
+#about-section {
+    width: 100%;
+    font-family: Arial, sans-serif;
+    color: var(--black);
+    opacity: 0.7;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+#about-section strong {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+#about-section h1 {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+#about-section h2 {
+    font-size: 10px;
+    font-weight: calc(var(--font-weight-extra-bold)*2);
+    color: var(--black);
+    margin-bottom: 10px;
+}
+
+#about-section ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#about-section ul li {
+    margin: 8px 0;
+}
+
+#about-section a {
+    color: blue;
+    text-decoration: none;
+}
+
+#about-section a:hover {
+    text-decoration: underline;
+}
+
+#about-section p {
+    margin-bottom: 10px;
+    font-size: 10px;
+    color: var(--ashen);
+}
+
+
+}

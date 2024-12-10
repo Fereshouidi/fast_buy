@@ -1,11 +1,10 @@
 'use client';
-import { CSSProperties } from 'react';
-import logo from '../../../../../images/logo.png';
-import english from '@/app/languages/english.json';
+import { CSSProperties, useContext } from 'react';
+import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 
 const Logo = () => {
 
-
+    const companyInformation = useContext(CompanyInformationContext)
 
 
     const style: CSSProperties = {
@@ -15,10 +14,10 @@ const Logo = () => {
     return (
         <div style={style} className='logo'>
             <img 
-                src={logo.src}
+                src={companyInformation?.logo}
                 alt="Logo"   
             />
-            <h1 >{english.general.appName}</h1>
+            <h3 >{companyInformation?.name.english}</h3>
         </div>
     )
 }

@@ -5,6 +5,10 @@ import { getCategoriesSection } from "@/app/crud";
 
 const CategoriesSection = () => {
 
+    if(typeof window == 'undefined'){
+        throw 'window.innerWidth == "undefind"'
+    }
+
     type categoriesSectionParams = {
         catgorie: categorieParams;
         products: productParams[];
@@ -13,7 +17,7 @@ const CategoriesSection = () => {
 
     type categorieParams = {
         _id: string;
-        name: string;
+        name: nameParams;
         parentCategorie: string;
         childrenCategories: categorieParams[];
         childOpen: boolean;
@@ -21,7 +25,7 @@ const CategoriesSection = () => {
     };
 
     type productParams = {
-        name: string;
+        name: nameParams;
         imagePrincipal: string;
         price: number;
         discount: discountParams;
@@ -29,6 +33,12 @@ const CategoriesSection = () => {
         currencyType: string;
     };
 
+    type nameParams = {
+        english: string,
+        arabic: string
+    }
+
+    
     type discountParams = {
         createdAt: Date;
         discountSticker: string;

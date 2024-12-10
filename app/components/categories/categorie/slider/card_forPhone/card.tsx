@@ -7,13 +7,18 @@ import StarRating from "./startingRating/StartRating";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 
 type productParams = {
-    name: string,
+    name: nameParams,
     imagePrincipal: string,
     price: number,
     discount: discountParams,
     totalRating: number,
     currencyType: string
 
+}
+
+type nameParams = {
+    english: string,
+    arabic: string
 }
 
 type discountParams = {
@@ -100,7 +105,13 @@ const Style: CSSProperties = {
         <div style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover}>
             <img src={product.imagePrincipal} alt="" style={StyleImage} />
             <div style={StyleCartInformation}>
-                <h4 style={styleH4}>{product.name}</h4>
+            <h4 style={styleH4}>{
+                    languageContext.activeLanguage == "english" ?
+                    product.name.english
+                    :languageContext.activeLanguage == "arabic" ?
+                    product.name.arabic
+                    :product.name.english    
+                }</h4>
                 <StarRating product={product}/>
                 <div style={styleBoxAndPricesDiv}>
                     {/* <BoxIcon  /> */}

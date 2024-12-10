@@ -14,11 +14,16 @@ const CategorieSelector = () => {
 
     type categorieParams = {
         _id: string,
-        name: string,
+        name: nameParams,
         parentCategorie: string,
         childrenCategories: categorieParams[],
         childOpen: boolean,
         margin: number
+    }
+
+    type nameParams = {
+        english: string,
+        arabic: string
     }
 
    // const [activeLanguage, setActiveLanguage] = useState(english);
@@ -44,15 +49,6 @@ const CategorieSelector = () => {
         throw '  !'
     }
 
-    // useEffect(() => {
-    //     if(languageSelectorContext.activeLanguage == 'english'){
-    //         setActiveLanguage(english);
-    //     }else if(languageSelectorContext.activeLanguage == 'arabic'){
-    //         setActiveLanguage(arabic);
-    //     }else{
-    //         setActiveLanguage(english);
-    //     }
-    // }, [languageSelectorContext])
     
     useEffect(() => {
         const fetchData = async() => {
@@ -88,7 +84,7 @@ const getAllChildrenIds = (parent: categorieParams, categories: categorieParams[
         if (!categorie.childOpen) {
             const otherCategories = await getCategoriesByParent(categorie._id);
             otherCategories.forEach((categorieChild: categorieParams) => {
-                categorieChild.margin = categorie.margin + 10; //alert()
+                categorieChild.margin = categorie.margin + 10; 
             });
             setAllCategories((prev) => {
                 const targetIndex = prev.findIndex((item) => item._id === categorie._id);
@@ -164,7 +160,7 @@ const styleDownIcon: CSSProperties = {
                 allCategories.map((categorie, index) => {
                     return (
                     <ul key={index} style={styleChildren}  >
-                        <ul style={{paddingLeft: `${categorie.margin}px` }} className={categorie.parentCategorie? "child" : categorieClicked? "parent-clicked": "parent"} key={categorie._id} >{categorie.name}</ul>
+                        <ul style={{paddingLeft: `${categorie.margin}px` }} className={categorie.parentCategorie? "child" : categorieClicked? "parent-clicked": "parent"} key={categorie._id} >{languageSelectorContext.activeLanguage == 'arabic' ? categorie.name.arabic : languageSelectorContext.activeLanguage == 'english' ? categorie.name.english : categorie.name.english}</ul>
                         {categorie.childrenCategories.length > 0 ?         <FontAwesomeIcon onClick={() => handleClick(categorie)} style={styleDownIcon} icon={faChevronDown } /> : null}
                     </ul>
                 )

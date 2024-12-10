@@ -3,13 +3,18 @@ import ReactStars from 'react-stars';
 import './reactStars.css';
 
 type productParams = {
-    name: string,
+    name: nameParams,
     imagePrincipal: string,
     price: number,
     discount: discountParams,
     totalRating: number,
     currencyType: string
 
+}
+
+type nameParams = {
+    english: string,
+    arabic: string
 }
 
 type discountParams = {
@@ -21,9 +26,11 @@ type discountParams = {
     startOfDiscount: Date, 
     endOfDiscount: Date
 };
-
 const StarRating = ({product}: {product : productParams}) => {
 
+    if(typeof window == 'undefined'){
+        throw 'window.innerWidth == "undefind"'
+    }
 
     return (
         <ReactStars

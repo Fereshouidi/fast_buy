@@ -4,13 +4,19 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 import { CSSProperties, useContext, useState } from "react";
 
 type productParams = {
-    name: string,
+    name: nameParams,
     imagePrincipal: string,
     price: number,
     discount: discountParams,
     totalRating: number,
     currencyType: string
 }
+
+type nameParams = {
+  english: string,
+  arabic: string
+}
+
 
 type discountParams = {
     createdAt: Date,

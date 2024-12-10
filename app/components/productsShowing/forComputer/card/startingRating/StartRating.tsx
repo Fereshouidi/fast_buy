@@ -3,7 +3,7 @@ import ReactStars from 'react-stars';
 import './reactStars.css';
 
 type productParams = {
-    name: string,
+    name: nameParams,
     imagePrincipal: string,
     price: number,
     discount: discountParams,
@@ -11,6 +11,12 @@ type productParams = {
     currencyType: string
 
 }
+
+type nameParams = {
+    english: string,
+    arabic: string
+}
+
 
 type discountParams = {
     createdAt: Date,

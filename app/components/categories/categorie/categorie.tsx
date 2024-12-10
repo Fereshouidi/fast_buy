@@ -1,13 +1,14 @@
 'use client';
 
-import { CSSProperties } from "react";
+import { CSSProperties, useContext } from "react";
 import Slider from "./slider/slider";
+import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 
 
 
 type categorieParams = {
     _id: string;
-    name: string;
+    name: nameParams;
     parentCategorie: string;
     childrenCategories: categorieParams[];
     childOpen: boolean;
@@ -15,12 +16,17 @@ type categorieParams = {
 }
 
 type productParams = {
-    name: string;
+    name: nameParams;
     imagePrincipal: string;
     price: number;
     discount: discountParams;
     totalRating: number;
     currencyType: string;
+}
+
+type nameParams = {
+    english: string,
+    arabic: string
 }
 
 type discountParams = {
@@ -39,6 +45,11 @@ const Categorie = ({ categorie, products }: { categorie: categorieParams, produc
         throw 'window.innerWidth == "undefind"'
     }
 
+    const languageContext = useContext(LanguageSelectorContext);
+    if(!languageContext){
+        throw 'error languageContext !';
+    }
+
     const style: CSSProperties = {
         backgroundColor: 'var(--white)',
         margin: '1px',
@@ -53,7 +64,13 @@ const Categorie = ({ categorie, products }: { categorie: categorieParams, produc
     }
     return (
         <div style={style}>
-            <h2 style={styleH2}>{categorie.name}</h2>
+            <h2 style={styleH2}>{
+                languageContext.activeLanguage == "arabic" ?
+                categorie.name.arabic
+                :languageContext.activeLanguage == "english" ?
+                categorie.name.english
+                :categorie.name.english    
+            }</h2>
             {<Slider products={products}/> }
         </div>
     );
