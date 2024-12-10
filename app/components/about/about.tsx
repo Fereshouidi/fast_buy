@@ -101,7 +101,7 @@ const About = () => {
               <section id="about-section">
                 <h1>{`${conpanyInformations.name.english}: The Leading E-Commerce Platform for Your Customers`}</h1>
                 <p>
-                  Welcome to <strong>{`${conpanyInformations.name.english}`}</strong>, your trusted partner for an exceptional online shopping experience tailored to your customers' needs. We offer:
+                  Welcome to <strong>{`${conpanyInformations.name.english}`}</strong>, your trusted partner for an exceptional online shopping experience tailored to your customers&apos; needs. We offer:
                 </p>
           
                 <div className="products">
@@ -153,7 +153,7 @@ const About = () => {
           
                 <p>
                   Discover now the world of <strong>{`${conpanyInformations.name.english}`}</strong> and be part of a shopping experience
-                  that makes your life easier and more enjoyable. Don't miss the opportunity to join thousands of satisfied customers who trust us!
+                  that makes your life easier and more enjoyable. Don&apos;t miss the opportunity to join thousands of satisfied customers who trust us!
                 </p>
               </section>
           
@@ -219,6 +219,7 @@ const About = () => {
           
               : ''
           )
+          
           
 }
 export default About;
