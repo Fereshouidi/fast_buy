@@ -1,8 +1,8 @@
 'use clint';
 import { useContext, useEffect, useState } from "react";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-import english from '@/app/languages/english.json';
-import arabic from '@/app/languages/arabic.json';
+// import english from '@/app/languages/english.json';
+// import arabic from '@/app/languages/arabic.json';
 import './about.css';
 import { getConpanyInformations, getCategoriesSection, getProductByBiggestDiscount } from "@/app/crud";
 

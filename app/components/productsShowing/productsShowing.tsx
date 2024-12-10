@@ -5,27 +5,27 @@ import ProductsShowingForComputer from '@/app/components/productsShowing/forComp
 import ProductsShowingForPhone from '@/app/components/productsShowing/forPhone/productsShowing';
 import { useContext, useEffect, useState } from "react";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-import english from '@/app/languages/english.json';
-import arabic from '@/app/languages/arabic.json';
+// import english from '@/app/languages/english.json';
+// import arabic from '@/app/languages/arabic.json';
 
 const ProductsShowing = () => {
 
-    const [activeLanguage, setActiveLanguage] = useState(english);
+    // const [activeLanguage, setActiveLanguage] = useState(english);
     const languageContext = useContext(LanguageSelectorContext);
 
     if(!languageContext){
         throw 'error languageContext';
     }
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if(languageContext.activeLanguage == 'english'){
-            setActiveLanguage(english);
-        }else if(languageContext.activeLanguage == 'arabic'){
-            setActiveLanguage(arabic);
-        }
+    //     if(languageContext.activeLanguage == 'english'){
+    //         setActiveLanguage(english);
+    //     }else if(languageContext.activeLanguage == 'arabic'){
+    //         setActiveLanguage(arabic);
+    //     }
 
-    }, [languageContext.activeLanguage])
+    // }, [languageContext.activeLanguage])
 
 
 
