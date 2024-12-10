@@ -63,7 +63,7 @@ const About = () => {
         endOfDiscount: Date;
     };
 
-    const [activeLanguage, setActiveLanguage] = useState(english);
+    //const [activeLanguage, setActiveLanguage] = useState(english);
     const languageContext = useContext(LanguageSelectorContext);
     const [conpanyInformations, setConpanyInformations] = useState<conpanyInformationsParams>();
     const [bestCategories, setBestCategories] = useState<categoriesSectionParams>();
@@ -73,15 +73,15 @@ const About = () => {
         throw 'error languageContext';
     }
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if(languageContext.activeLanguage == 'english'){
-            setActiveLanguage(english);
-        }else if(languageContext.activeLanguage == 'arabic'){
-            setActiveLanguage(arabic);
-        }
+    //     if(languageContext.activeLanguage == 'english'){
+    //         setActiveLanguage(english);
+    //     }else if(languageContext.activeLanguage == 'arabic'){
+    //         setActiveLanguage(arabic);
+    //     }
 
-    }, [languageContext.activeLanguage])
+    // }, [languageContext.activeLanguage])
 
 
     useEffect(() => {

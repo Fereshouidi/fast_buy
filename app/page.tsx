@@ -21,7 +21,7 @@ import About from "@/app/components/about/about";
 import { getConpanyInformations } from "./crud";
 
 const App = () => {
-  const router = useRouter();
+  //const router = useRouter();
 
   const [screenWidth, setScreenWidth] = useState<number>(0); 
   const [theme, setTheme] = useState(() => {
@@ -116,9 +116,9 @@ useEffect(() => {
     //alert(document.body.classList)
   }, [theme, activeLanguage, screenWidth]);
 
-  const goToAbout = () => {
-    router.push("/pages/about");
-  };
+  // const goToAbout = () => {
+  //   router.push("/pages/about");
+  // };
 
   if (screenWidth === null) {
     return <div>Loading...</div>; 
