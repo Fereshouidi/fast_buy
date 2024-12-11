@@ -91,14 +91,17 @@ const Style: CSSProperties = {
         position: 'relative'
     }
     const styleBoxAndPricesDiv: CSSProperties = {
-         margin: 'var(--extra-small-margin) 0',
-        // display: 'flex',
-        // justifyContent: 'space-between',
-        // //alignItems: 'end',
-        // //position: 'absolute',
+         marginTop: 'var(--extra-small-margin)',
+         width: '100%',
+         //height: '100%',
+         backgroundColor: 'red',
+        display: 'flex',
+         justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
         // padding: "15px",
-        // // left: '0',
-        // // bottom: '0',
+         left: '0',
+         bottom: '0',
         // width: '100%',
         // direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr'
     }
