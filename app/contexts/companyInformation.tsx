@@ -4,6 +4,7 @@ import { createContext } from "react";
 interface companyInformationsParams {
     name: nameParams,
     logo: string,
+    primaryColor: string,
     biggestDiscount: number,
     offersDetails : string,
     entities: string[],

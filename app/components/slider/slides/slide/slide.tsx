@@ -3,6 +3,7 @@
 import { CSSProperties, useContext, useEffect, useRef, useState } from "react";
 import TimeLeft from "./detail/timeLeft";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
+import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
 
 type productParams = {
@@ -35,7 +36,7 @@ const Slide = ({product} : {product: productParams}) => {
     if(typeof window == 'undefined'){
         throw 'window is undefined !'
     }
-
+    const companyInformation = useContext(CompanyInformationContext)
     const languageContext = useContext(LanguageSelectorContext);
 
     if(!languageContext){
@@ -112,7 +113,7 @@ const Slide = ({product} : {product: productParams}) => {
         alignItems: "center",
         justifyContent: 'center',
         flexDirection: 'column',
-        backgroundColor: 'var(--primary-color)',
+        backgroundColor: `${companyInformation?.primaryColor}`,
         color: 'var(--white)',
         borderRadius: '50%',
         boxShadow: '1px 1px 10px var(--almost-black)',
@@ -142,7 +143,7 @@ const Slide = ({product} : {product: productParams}) => {
         borderRadius: '50px',
         margin: 'var(--small-margin)',
         padding: 'var(--medium-padding)',
-        backgroundColor: 'var(--primary-color)',
+        backgroundColor: `${companyInformation?.primaryColor}`,
         color: 'white'
     }
 

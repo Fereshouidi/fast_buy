@@ -1,7 +1,8 @@
 'use client';
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-
+import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 import { CSSProperties, useContext, useState } from "react";
+import tinycolor from "tinycolor2";
 
 type productParams = {
   name: nameParams,
@@ -29,6 +30,7 @@ type discountParams = {
 };
 const Price = ({product}: {product : productParams}) => {
 
+  const companyInformation = useContext(CompanyInformationContext)
   if(typeof window == 'undefined'){
     throw 'window.innerWidth == "undefind"'
 }
@@ -41,6 +43,9 @@ const Price = ({product}: {product : productParams}) => {
     throw 'error languageContext'
   }
   
+  const darkenedColor = tinycolor(companyInformation?.primaryColor || '#111111').darken(10).toString();  
+
+
 const stylePriceDiv: CSSProperties = {
   direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr',
   display: 'flex',
@@ -69,7 +74,7 @@ const styleNewPrice: CSSProperties = {
   justifyContent: 'center',
   alignItems: 'center',
   margin: 'var(--small-margin)',
-  backgroundColor: 'var(--primary-color)',
+  backgroundColor: `${companyInformation?.primaryColor}`,
   padding: 'var(--medium-padding)',
   borderRadius: '50px',
   color: 'white',
@@ -81,12 +86,12 @@ const styleNewPrice: CSSProperties = {
 //   borderRadius: '50px',
 //   color: 'var(--black)',
 //   width: '100%,',
-//   backgroundColor: 'var(--primary-color)',
+//   backgroundColor: `${companyInformation?.primaryColor}`,
   
 // }
 const newPriceHover: CSSProperties = {
   ...styleNewPrice,
-  backgroundColor: 'var(--primary-color-clicked)'
+  backgroundColor: darkenedColor
 }
   
     return (

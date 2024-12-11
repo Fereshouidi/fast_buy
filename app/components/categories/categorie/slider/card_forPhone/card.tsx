@@ -5,6 +5,7 @@ import Price from "./price/price";
 //import BoxIcon from "@/app/svg/icons/boxSmall";
 import StarRating from "./startingRating/StartRating";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
+import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
 type productParams = {
     name: nameParams,
@@ -32,7 +33,7 @@ type discountParams = {
 };
 const Card = ({product}: {product : productParams}) => {
 
-    
+const companyInformation = useContext(CompanyInformationContext)
 const languageContext = useContext(LanguageSelectorContext)
 
 if(!languageContext){
@@ -49,7 +50,7 @@ const unsetHover = () => {
 }
 
 const Style: CSSProperties = {
-    border: '0.1px solid var(--primary-color)',
+    border: `0.1px solid ${companyInformation?.primaryColor}`,
     display: 'flex',
     alignItems: "center",
     flexDirection: 'column',
@@ -60,7 +61,6 @@ const Style: CSSProperties = {
     borderRadius: '10px',
     margin: 'var(--extra-small-margin)',
     padding: 'calc(var(--small-padding)/2)',
-    //boxShadow: '0 5px 15px var(--black-almost-transparnt)',
     cursor: "pointer",
     transition: '0.5s ease',
     flexShrink: '0',
@@ -91,19 +91,11 @@ const Style: CSSProperties = {
         position: 'relative'
     }
     const styleBoxAndPricesDiv: CSSProperties = {
-         marginTop: 'var(--extra-small-margin)',
-         width: '100%',
-         //height: '100%',
-         //backgroundColor: 'red',
+        marginTop: 'var(--extra-small-margin)',
+        width: '100%',
         display: 'flex',
-        // justifyContent: 'center',
-        //alignItems: 'center',
-        //position: 'absolute',
-        // padding: "15px",
-         left: '0',
-         bottom: '0',
-        // width: '100%',
-        // direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr'
+        left: '0',
+        bottom: '0',
     }
     return(
         <div style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover}>

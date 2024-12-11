@@ -5,6 +5,8 @@ import Price from "./price/price";
 import BoxIcon from "@/app/svg/icons/box";
 import StarRating from "./startingRating/StartRating";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
+import { CompanyInformationContext } from "@/app/contexts/companyInformation";
+
 
 type productParams = {
     name: nameParams,
@@ -32,7 +34,9 @@ type discountParams = {
     endOfDiscount: Date
 };
 const Card = ({product}: {product : productParams}) => {
-    
+
+const companyInformation = useContext(CompanyInformationContext)
+
 const languageContext = useContext(LanguageSelectorContext)
 
 if(!languageContext){
@@ -47,6 +51,8 @@ const setHover = () => {
 const unsetHover = () => {
     setCardHover(false)
 }
+
+
 
     const Style: CSSProperties = {
         width: '250px',

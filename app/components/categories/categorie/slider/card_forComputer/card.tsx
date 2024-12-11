@@ -5,6 +5,7 @@ import Price from "./price/price";
 //import BoxIcon from "@/app/svg/icons/box";
 import StarRating from "./startingRating/StartRating";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
+import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
 type productParams = {
     name: nameParams,
@@ -32,6 +33,9 @@ type discountParams = {
 };
 const Card = ({product}: {product : productParams}) => {
 
+    const companyInformation = useContext(CompanyInformationContext);
+    console.log(companyInformation);
+    
     if(typeof window == 'undefined'){
         throw 'window.innerWidth == "undefind"'
     }
@@ -53,7 +57,7 @@ const unsetHover = () => {
 }
 
     const Style: CSSProperties = {
-        border: '0.1px solid var(--primary-color)',
+        border: `0.1px solid ${companyInformation?.primaryColor}`,
         display: 'flex',
         alignItems: "center",
         flexDirection: 'column',

@@ -6,6 +6,8 @@ import Card from "./card/card";
 import english from "@/app/languages/english.json";
 import arabic from "@/app/languages/arabic.json";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
+import { CompanyInformationContext } from "@/app/contexts/companyInformation";
+import tinycolor from "tinycolor2";
 
 
 type productsShowing = {
@@ -40,6 +42,8 @@ type discountParams = {
 
 const ProductsShowing = ({allProducts, pageNumber, setPageNumber}: productsShowing) => {
 
+    const companyInformation = useContext(CompanyInformationContext)
+
     const [activeLanguage, setActiveLanguage] = useState(english);
     const [showMore_btn_Hover, setShowMor_btn_eHover] = useState(false);
 
@@ -56,6 +60,8 @@ const ProductsShowing = ({allProducts, pageNumber, setPageNumber}: productsShowi
         }
     }, [languageContext.activeLanguage])
 
+
+    const darkenedColor = tinycolor(companyInformation?.primaryColor || '#111111').darken(10).toString();  
 
 
     const Style: CSSProperties = {
@@ -82,7 +88,7 @@ const ProductsShowing = ({allProducts, pageNumber, setPageNumber}: productsShowi
 
     const styleSpan: CSSProperties = {
         color: 'var(--white)',
-        backgroundColor: 'var(--primary-color)',
+        backgroundColor: `${companyInformation?.primaryColor}`,
         padding: 'calc(var(--small-padding) *1.2)',
         fontSize: 'var(--small-size)',
         borderRadius: '20px',
@@ -91,7 +97,7 @@ const ProductsShowing = ({allProducts, pageNumber, setPageNumber}: productsShowi
     }
     const styleSpanHover: CSSProperties = {
         ...styleSpan,
-        backgroundColor: 'var(--primary-color-clicked)'
+        backgroundColor: darkenedColor
     }
     return (
         <section style={Style}>

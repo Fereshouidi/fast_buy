@@ -36,6 +36,7 @@ const App = () => {
   interface companyInformationsParams {
     name: nameParams,
     logo: string,
+    primaryColor: string,
     biggestDiscount: number,
     offersDetails : string,
     entities: string[],
@@ -131,7 +132,7 @@ useEffect(() => {
 
 
   return (
-    <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises,}} >
+    <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises,}} >
         <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
           <ThemeContext.Provider value={{ theme, setTheme }}>
             <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>

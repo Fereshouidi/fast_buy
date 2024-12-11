@@ -6,11 +6,13 @@ import { CSSProperties, useContext, useEffect, useState } from "react";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
+import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
 const Header = () => {
 
     const [activeLanguage, setActiveLanguage] = useState({});
 
+    const companyInformation = useContext(CompanyInformationContext)
     const context = useContext(LanguageSelectorContext);
     if(!context){
         throw 'context error';

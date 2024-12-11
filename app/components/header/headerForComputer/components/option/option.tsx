@@ -2,8 +2,10 @@
 import OptionIcon from '@/app/svg/icons/option';
 import { CSSProperties, useContext, useState } from 'react';
 import { SideBarContext } from '@/app/contexts/SideBarContext';
+import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 const Options = () => {
 
+    const companyInformation = useContext(CompanyInformationContext)
     const [optionIconColor, setOptionIconColor] = useState('transparent')
     const sideBarContext = useContext(SideBarContext);
 
@@ -25,7 +27,7 @@ const Options = () => {
         alignItems: 'center',
         justifyContent: 'center',
         cursor: 'pointer',
-        color: sideBarContext.sideBarExist? 'var(--primary-color)': 'var(--black)',
+        color: sideBarContext.sideBarExist? `${companyInformation?.primaryColor}`: 'var(--black)',
         backgroundColor: optionIconColor,
     }
     return(

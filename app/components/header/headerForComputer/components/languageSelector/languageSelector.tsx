@@ -2,10 +2,11 @@
 import { useEffect, useState, useContext, CSSProperties } from 'react';
 import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
 import LanguageIcon from '@/app/svg/icons/language';
+import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 
 const LanguageSelector = () => {
 
-
+    const companyInformation = useContext(CompanyInformationContext)
     const context = useContext(LanguageSelectorContext);
     const [hoveredOption, setHoveredOption] = useState<string | null>(null);
 
@@ -55,7 +56,7 @@ const LanguageSelector = () => {
     }
 
     const getOptionStyle = (optionValue: string): CSSProperties => ({
-        backgroundColor: hoveredOption === optionValue ? 'var(--primary-color)' : 'var(--white)',
+        backgroundColor: hoveredOption === optionValue ? `${companyInformation?.primaryColor}` : 'var(--white)',
         outline: 'none',
     });
 

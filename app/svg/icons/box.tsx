@@ -1,12 +1,15 @@
 'use client';
+import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 import { faBoxArchive } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CSSProperties } from "react";
+import { CSSProperties, useContext } from "react";
 
 const BoxIcon = () => {
 
+    const companyInformation = useContext(CompanyInformationContext)
+
     const style:CSSProperties ={
-        color: 'var(--primary-color)',
+        color: `${companyInformation?.primaryColor}`,
         margin: 'calc( var(--small-margin)*1.2)',
         fontSize: 'var(--primary-size)'
     }

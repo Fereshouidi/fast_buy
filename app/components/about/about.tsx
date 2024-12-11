@@ -1,16 +1,20 @@
 'use clint';
-import { useContext, useEffect, useState } from "react";
+import { CSSProperties, useContext, useEffect, useState } from "react";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 // import english from '@/app/languages/english.json';
 // import arabic from '@/app/languages/arabic.json';
 import './about.css';
 import { getConpanyInformations, getCategoriesSection, getProductByBiggestDiscount } from "@/app/crud";
+//import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
 const About = () => {
+
+  //const companyInformation = useContext(CompanyInformationContext);
 
     type conpanyInformationsParams = {
         name: nameParams,
         categories: categorieParams,
+        primaryColor: string,
         biggestDiscount: number,
         offersDetails : string,
         entities: string[],
@@ -61,7 +65,7 @@ const About = () => {
         endOfDiscount: Date;
     };
 
-    //const [activeLanguage, setActiveLanguage] = useState(english);
+    
     const languageContext = useContext(LanguageSelectorContext);
     const [conpanyInformations, setConpanyInformations] = useState<conpanyInformationsParams>();
     const [bestCategories, setBestCategories] = useState<categoriesSectionParams>();
@@ -70,16 +74,6 @@ const About = () => {
     if(!languageContext){
         throw 'error languageContext';
     }
-
-    // useEffect(() => {
-
-    //     if(languageContext.activeLanguage == 'english'){
-    //         setActiveLanguage(english);
-    //     }else if(languageContext.activeLanguage == 'arabic'){
-    //         setActiveLanguage(arabic);
-    //     }
-
-    // }, [languageContext.activeLanguage])
 
 
     useEffect(() => {
@@ -94,14 +88,19 @@ const About = () => {
         fetchData();
     }, [])
 
-         //<section id="about-section" dangerouslySetInnerHTML={{ __html: activeLanguage.aboutP }} />
+    const styleStrong: CSSProperties = {
+      color: conpanyInformations?.primaryColor,
+    }
+    const styleH1: CSSProperties = {
+      color: conpanyInformations?.primaryColor,
+    }
 
          return (
             conpanyInformations && languageContext.activeLanguage === "english" ?
               <section id="about-section">
-                <h1>{`${conpanyInformations.name.english}: The Leading E-Commerce Platform for Your Customers`}</h1>
+                <h1 style={styleH1}>{`${conpanyInformations.name.english}: The Leading E-Commerce Platform for Your Customers`}</h1>
                 <p>
-                  Welcome to <strong>{`${conpanyInformations.name.english}`}</strong>, your trusted partner for an exceptional online shopping experience tailored to your customers&apos; needs. We offer:
+                  Welcome to <strong style={styleStrong}>{`${conpanyInformations.name.english}`}</strong>, your trusted partner for an exceptional online shopping experience tailored to your customers&apos; needs. We offer:
                 </p>
           
                 <div className="products">
@@ -109,9 +108,9 @@ const About = () => {
                   <ul>
                     {bestCategories?.map((categorie, index) => (
                       <li key={index}>
-                        <strong>{`${categorie.catgorie.name.english}:`}</strong> such as
+                        <strong style={styleStrong}>{`${categorie.catgorie.name.english}:`}</strong> such as
                         {categorie.products.slice(0, 3).map((product, index) => (
-                          <span key={index}>{`${product.name.english}`}</span>
+                          <span key={index}>{` ${product.name.english} `}</span>
                         ))}
                         .
                       </li>
@@ -123,11 +122,11 @@ const About = () => {
                   <h2>Exclusive Offers and Discounts:</h2>
                   <ul>
                     <li>
-                      Enjoy discounts up to <strong>{`${conpanyInformations.biggestDiscount}%`}</strong>
+                      Enjoy discounts up to <strong  style={styleStrong}>{` ${conpanyInformations.biggestDiscount}% `}</strong>
                       on {bigestDiscount && bigestDiscount.products.length >= 0 ? ` ${bigestDiscount.products[0].name.english} ` : ''}
                     </li>
                     <li>
-                      Exclusive offers such as <strong>{`${conpanyInformations.offersDetails}`}</strong>
+                      Exclusive offers such as <strong  style={styleStrong}>{` ${conpanyInformations.offersDetails} `}</strong>
                     </li>
                   </ul>
                 </div>
@@ -145,23 +144,23 @@ const About = () => {
                   <h2>Quality Guarantee:</h2>
                   <ul>
                     <li>
-                      All our products are <strong>{`${conpanyInformations.originalProductsPercentage}%`}</strong>
+                      All our products are <strong  style={styleStrong}>{` ${conpanyInformations.originalProductsPercentage}% `}</strong>
                       authentic, with flexible return policies.
                     </li>
                   </ul>
                 </div>
           
                 <p>
-                  Discover now the world of <strong>{`${conpanyInformations.name.english}`}</strong> and be part of a shopping experience
+                  Discover now the world of <strong  style={styleStrong}>{`${conpanyInformations.name.english}`}</strong> and be part of a shopping experience
                   that makes your life easier and more enjoyable. Don&apos;t miss the opportunity to join thousands of satisfied customers who trust us!
                 </p>
               </section>
           
               : conpanyInformations && languageContext.activeLanguage === "arabic" ?
               <section id="about-section">
-                <h1>{`${conpanyInformations.name.arabic}: المنصة الرائدة للتجارة الإلكترونية لعملائك`}</h1>
+                <h1  style={styleH1}>{`${conpanyInformations.name.arabic}: المنصة الرائدة للتجارة الإلكترونية لعملائك`}</h1>
                 <p>
-                  مرحبًا بك في <strong>{`${conpanyInformations.name.arabic}`}</strong>، شريكك الموثوق لتجربة تسوق إلكتروني استثنائية تناسب احتياجات عملائك. نحن نقدم:
+                  مرحبًا بك في <strong  style={styleStrong}>{`${conpanyInformations.name.arabic}`}</strong>، شريكك الموثوق لتجربة تسوق إلكتروني استثنائية تناسب احتياجات عملائك. نحن نقدم:
                 </p>
           
                 <div className="products">
@@ -169,9 +168,9 @@ const About = () => {
                   <ul>
                     {bestCategories?.map((categorie, index) => (
                       <li key={index}>
-                        <strong>{`${categorie.catgorie.name.arabic}:`}</strong> مثل
+                        <strong  style={styleStrong}>{`${categorie.catgorie.name.arabic}:`}</strong> مثل
                         {categorie.products.slice(0, 3).map((product, index) => (
-                          <span key={index}>{`${product.name.arabic}`}</span>
+                          <span key={index}>{` ${product.name.arabic} `}</span>
                         ))}
                         .
                       </li>
@@ -183,11 +182,11 @@ const About = () => {
                   <h2>عروض وخصومات حصرية:</h2>
                   <ul>
                     <li>
-                      استمتع بخصومات تصل إلى <strong>{`${conpanyInformations.biggestDiscount}%`}</strong>
+                      استمتع بخصومات تصل إلى <strong  style={styleStrong}>{`${conpanyInformations.biggestDiscount}% `}</strong>
                       على {bigestDiscount && bigestDiscount.products.length >= 0 ? ` ${bigestDiscount.products[0].name.arabic} ` : ''}
                     </li>
                     <li>
-                      عروض حصرية مثل <strong>{`${conpanyInformations.offersDetails}`}</strong>
+                      عروض حصرية مثل <strong  style={styleStrong}>{`${conpanyInformations.offersDetails}`}</strong>
                     </li>
                   </ul>
                 </div>
@@ -205,14 +204,14 @@ const About = () => {
                   <h2>ضمان الجودة:</h2>
                   <ul>
                     <li>
-                      جميع منتجاتنا أصلية بنسبة <strong>{`${conpanyInformations.originalProductsPercentage}%`}</strong>
+                      جميع منتجاتنا أصلية بنسبة <strong  style={styleStrong}>{` ${conpanyInformations.originalProductsPercentage}% `}</strong>
                       مع سياسات إرجاع مرنة.
                     </li>
                   </ul>
                 </div>
           
                 <p>
-                  اكتشف الآن عالم <strong>{`${conpanyInformations.name.arabic}`}</strong> وكن جزءًا من تجربة تسوق
+                  اكتشف الآن عالم <strong  style={styleStrong}>{`${conpanyInformations.name.arabic}`}</strong> وكن جزءًا من تجربة تسوق
                   تجعل حياتك أسهل وأكثر متعة. لا تفوت الفرصة للانضمام إلى آلاف العملاء الراضين الذين يثقون بنا!
                 </p>
               </section>

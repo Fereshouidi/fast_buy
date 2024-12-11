@@ -1,11 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
+import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 
 const SearchIcon = () => {
 
     const [hover, setHover] = useState(false);
 
     const context = useContext(LanguageSelectorContext);
+    const companyInformation = useContext(CompanyInformationContext)
 
     if (!context) {
         throw new Error("LanguageSelector must be used within a LanguageSelectorContext.Provider");
@@ -35,7 +37,7 @@ const SearchIcon = () => {
     
     const styleHover = {
         ... style,
-        backgroundColor: 'var(--primary-color)',
+        backgroundColor: `${companyInformation?.primaryColor}`,
     }
 
     return(

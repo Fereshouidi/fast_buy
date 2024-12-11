@@ -61,7 +61,7 @@ const LanguageSelector = () => {
     }
 
     const getOptionStyle = (optionValue: string): CSSProperties => ({
-        backgroundColor: hoveredOption === optionValue ? 'var(--primary-color)' : 'var(--white)',
+        backgroundColor: hoveredOption === optionValue ? `${companyInformation?.primaryColor}` : 'var(--white)',
         outline: 'none',
     });
 

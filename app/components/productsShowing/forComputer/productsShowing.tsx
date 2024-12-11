@@ -6,13 +6,16 @@ import Card from "./card/card";
 import english from "@/app/languages/english.json";
 import arabic from "@/app/languages/arabic.json";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
+import { CompanyInformationContext } from "@/app/contexts/companyInformation";
+import tinycolor from 'tinycolor2';
 
 
 type productsShowing = {
     pageNumber: number,
     setPageNumber: (showMore: number) => void;
-    allProducts: productParams[]
+    allProducts: productParams[]  
 }
+
 type productParams = {
     name: nameParams,
     imagePrincipal: string,
@@ -39,7 +42,7 @@ type discountParams = {
 
 const ProductsShowing = ({allProducts, pageNumber, setPageNumber}: productsShowing) => {
 
-    
+    const companyInformation = useContext(CompanyInformationContext)
 
     const [activeLanguage, setActiveLanguage] = useState(english);
     const [showMore_btn_Hover, setShowMor_btn_eHover] = useState(false);
@@ -55,8 +58,9 @@ const ProductsShowing = ({allProducts, pageNumber, setPageNumber}: productsShowi
         }else if(languageContext.activeLanguage == 'arabic'){
             setActiveLanguage(arabic);
         }
-    }, [languageContext.activeLanguage])
+    }, [languageContext.activeLanguage]);
 
+    const darkenedColor = tinycolor(companyInformation?.primaryColor || '#111111').darken(10).toString();  
 
     const Style: CSSProperties = {
         width: '100%',
@@ -66,7 +70,7 @@ const ProductsShowing = ({allProducts, pageNumber, setPageNumber}: productsShowi
         alignItems: "center",
         flexDirection: 'column'
     }
-    
+
     const StyleH2: CSSProperties = {
         margin: 'calc(var(--large-margin)*3) 0',
         color: 'var(--black)'
@@ -82,20 +86,21 @@ const ProductsShowing = ({allProducts, pageNumber, setPageNumber}: productsShowi
 
     const styleSpan: CSSProperties = {
         color: 'var(--white)',
-        backgroundColor: 'var(--primary-color)',
+        backgroundColor: `${companyInformation?.primaryColor}`,
         padding: 'calc(var(--medium-padding) *1.2)',
         borderRadius: '20px',
         margin: 'calc(var(--large-margin) *2) 0',
         cursor: 'pointer'
     }
+    
     const styleSpanHover: CSSProperties = {
         ...styleSpan,
-        backgroundColor: 'var(--primary-color-clicked)'
+        backgroundColor: darkenedColor
     }
+
     return (
         <section style={Style}>
-
-            <h2 style={StyleH2}>{activeLanguage.highestRatedW +' :'}</h2>
+            <h2 style={StyleH2}>{activeLanguage.highestRatedW + ' :'}</h2>
             <div style={styleContainer}>
                 {allProducts && allProducts.map((product, index) => {
                     return <div key={index}>
@@ -103,14 +108,15 @@ const ProductsShowing = ({allProducts, pageNumber, setPageNumber}: productsShowi
                     </div>
                 })}
             </div>
-            
-            <span style={showMore_btn_Hover? styleSpanHover: styleSpan}
+            <span style={showMore_btn_Hover ? styleSpanHover : styleSpan}
                 onClick={() => setPageNumber(pageNumber + 1)} 
                 onMouseEnter={() => setShowMor_btn_eHover(true)} 
                 onMouseLeave={() => setShowMor_btn_eHover(false)}
-            >{activeLanguage.showMoreW}</span>
-
+            >
+                {activeLanguage.showMoreW}
+            </span>
         </section>
     )
 }
+
 export default ProductsShowing;
