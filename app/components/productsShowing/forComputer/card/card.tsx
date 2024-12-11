@@ -5,7 +5,7 @@ import Price from "./price/price";
 import BoxIcon from "@/app/svg/icons/box";
 import StarRating from "./startingRating/StartRating";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-import { CompanyInformationContext } from "@/app/contexts/companyInformation";
+//import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
 
 type productParams = {
@@ -35,7 +35,7 @@ type discountParams = {
 };
 const Card = ({product}: {product : productParams}) => {
 
-const companyInformation = useContext(CompanyInformationContext)
+//const companyInformation = useContext(CompanyInformationContext)
 
 const languageContext = useContext(LanguageSelectorContext)
 
