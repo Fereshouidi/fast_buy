@@ -45,7 +45,7 @@ const stylePriceDiv: CSSProperties = {
   width: '100%',
   //margin: '5px',
   height: '100%',
-  margin: 0,
+  marginBottom: '5px',
   //backgroundColor: 'red'
   //position: 'absolute',
   //bottom: 0,
