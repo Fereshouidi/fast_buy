@@ -8,6 +8,7 @@ import { ThemeContext } from "@/app/contexts/ThemeContext";
 import LightModeIcon from "@/app/svg/icons/lightMode";
 import DarkModeIcon from "@/app/svg/icons/darkMode";
 import ThemeToggleIcon from "@/app/svg/icons/themeToggle";
+import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
 const ThemeToggle = () => {
 
@@ -15,6 +16,9 @@ const ThemeToggle = () => {
     const languageSelectorContext = useContext(LanguageSelectorContext);
     const sideBarContext = useContext(SideBarContext);
     const themeContext = useContext(ThemeContext);
+    const [isHover, setIsHover] = useState<boolean>(false)
+
+    const companyInformation = useContext(CompanyInformationContext);
 
     if (!sideBarContext) {
         throw new Error("SideBarContext must be used within a SideBarContext.Provider");
@@ -51,9 +55,16 @@ const ThemeToggle = () => {
     const style: CSSProperties = {
         display: sideBarExist? 'flex': 'none',
     }
-
+    const styleHover: CSSProperties = {
+        ...style,
+        backgroundColor: companyInformation?.primaryColor
+    }
     return(
-        <li style={style} onClick={(e) => handleToggleClick(e)}>
+        <li style={isHover? styleHover : style}  
+            onClick={(e) => handleToggleClick(e)}
+            onMouseEnter={() => setIsHover(true)}
+            onMouseLeave={() => setIsHover(false)}
+        >
             {themeContext.theme == 'light' ? <LightModeIcon/> : themeContext.theme == 'dark' ? <DarkModeIcon/> : <LightModeIcon/>} 
             <span>{activeLanguage.sideBar.themeW}</span>
             <ThemeToggleIcon/>

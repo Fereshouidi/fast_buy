@@ -1,11 +1,17 @@
 'use clint';
 import { CSSProperties, useContext, useEffect, useState } from "react";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-// import english from '@/app/languages/english.json';
-// import arabic from '@/app/languages/arabic.json';
 import './about.css';
 import { getConpanyInformations, getCategoriesSection, getProductByBiggestDiscount } from "@/app/crud";
-//import { CompanyInformationContext } from "@/app/contexts/companyInformation";
+import FacebookIcon from "@/app/svg/icons/socialMedia/facebook";
+import InstagramIcon from "@/app/svg/icons/socialMedia/instagram";
+import XIcon from "@/app/svg/icons/socialMedia/x";
+import MessengerIcon from "@/app/svg/icons/socialMedia/messanger";
+import WhatsAppIcon from "@/app/svg/icons/socialMedia/whatsApp";
+import YouTubeIcon from "@/app/svg/icons/socialMedia/youtube";
+import { Link } from "react-router-dom";
+
+
 
 const About = () => {
 
@@ -19,8 +25,18 @@ const About = () => {
         offersDetails : string,
         entities: string[],
         originalProductsPercentage: number,
-        servises: string[]
+        servises: string[],
+        socialMediaLinks: socialMedia
     }
+
+    type socialMedia = {
+      facebook: string,
+      messanger: string,
+      whatsApp: string,
+      instagram: string,
+      x: string,
+      youtube: string
+  }
 
     type categoriesSectionParams = {
         catgorie: categorieParams;
@@ -28,7 +44,7 @@ const About = () => {
     }[];
 
     type bigestDiscountParams = {
-        catgorie: categorieParams;
+        discount: discountParams;
         products: productParams[];
     };
 
@@ -122,7 +138,7 @@ const About = () => {
                   <h2>Exclusive Offers and Discounts:</h2>
                   <ul>
                     <li>
-                      Enjoy discounts up to <strong  style={styleStrong}>{` ${conpanyInformations.biggestDiscount}% `}</strong>
+                      Enjoy discounts up to <strong  style={styleStrong}>{` ${bigestDiscount?.discount.percentage}% `}</strong>
                       on {bigestDiscount && bigestDiscount.products.length >= 0 ? ` ${bigestDiscount.products[0].name.english} ` : ''}
                     </li>
                     <li>
@@ -148,6 +164,16 @@ const About = () => {
                       authentic, with flexible return policies.
                     </li>
                   </ul>
+                </div>
+
+                <div className="social-media"> 
+                  <h2>Social Media :</h2>
+                    {conpanyInformations.socialMediaLinks.facebook && <a href={conpanyInformations.socialMediaLinks.facebook}><FacebookIcon/></a> }
+                    {conpanyInformations.socialMediaLinks.instagram && <a href={conpanyInformations.socialMediaLinks.instagram}><InstagramIcon/></a>}
+                    {conpanyInformations.socialMediaLinks.whatsApp && <a href={conpanyInformations.socialMediaLinks.whatsApp}><WhatsAppIcon/></a>}
+                    {conpanyInformations.socialMediaLinks.messanger && <a href={conpanyInformations.socialMediaLinks.messanger}><MessengerIcon/></a>}
+                    {conpanyInformations.socialMediaLinks.x && <a href={conpanyInformations.socialMediaLinks.x}><XIcon/></a>}
+                    {conpanyInformations.socialMediaLinks.youtube && <a href={conpanyInformations.socialMediaLinks.youtube}><YouTubeIcon/></a>}
                 </div>
           
                 <p>
@@ -182,7 +208,7 @@ const About = () => {
                   <h2>عروض وخصومات حصرية:</h2>
                   <ul>
                     <li>
-                      استمتع بخصومات تصل إلى <strong  style={styleStrong}>{`${conpanyInformations.biggestDiscount}% `}</strong>
+                      استمتع بخصومات تصل إلى <strong  style={styleStrong}>{`${bigestDiscount?.discount.percentage}% `}</strong>
                       على {bigestDiscount && bigestDiscount.products.length >= 0 ? ` ${bigestDiscount.products[0].name.arabic} ` : ''}
                     </li>
                     <li>
@@ -210,6 +236,16 @@ const About = () => {
                   </ul>
                 </div>
           
+                <div className="social-media"> 
+                  <h2>Social Media :</h2>
+                    {conpanyInformations.socialMediaLinks.facebook && <a href={conpanyInformations.socialMediaLinks.facebook}><FacebookIcon/></a> }
+                    {conpanyInformations.socialMediaLinks.instagram && <a href={conpanyInformations.socialMediaLinks.instagram}><InstagramIcon/></a>}
+                    {conpanyInformations.socialMediaLinks.whatsApp && <a href={conpanyInformations.socialMediaLinks.whatsApp}><WhatsAppIcon/></a>}
+                    {conpanyInformations.socialMediaLinks.messanger && <a href={conpanyInformations.socialMediaLinks.messanger}><MessengerIcon/></a>}
+                    {conpanyInformations.socialMediaLinks.x && <a href={conpanyInformations.socialMediaLinks.x}><XIcon/></a>}
+                    {conpanyInformations.socialMediaLinks.youtube && <a href={conpanyInformations.socialMediaLinks.youtube}><YouTubeIcon/></a>}
+                </div>
+                
                 <p>
                   اكتشف الآن عالم <strong  style={styleStrong}>{`${conpanyInformations.name.arabic}`}</strong> وكن جزءًا من تجربة تسوق
                   تجعل حياتك أسهل وأكثر متعة. لا تفوت الفرصة للانضمام إلى آلاف العملاء الراضين الذين يثقون بنا!

@@ -14,7 +14,7 @@ const Options = () => {
     }
 
     const handleSideBarExistance = () => {
-        setOptionIconColor('var(--primary-color-semi-transparent)')
+        setOptionIconColor('var(--black-almost-transparnt)')
         setTimeout(() => {setOptionIconColor('transparent')}, 100)
         sideBarContext.setSideBarExist(!sideBarContext.sideBarExist);
     }

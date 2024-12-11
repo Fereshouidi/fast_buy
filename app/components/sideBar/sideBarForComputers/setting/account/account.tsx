@@ -5,12 +5,15 @@ import arabic from "@/app/languages/arabic.json";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import AccountIcon from "@/app/svg/icons/account";
+import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
 const Account = () => {
 
     const [activeLanguage, setActiveLanguage] = useState(english);
     const languageSelectorContext = useContext(LanguageSelectorContext);
+    const [isHover, setIsHover] = useState<boolean>(false)
 
+    const companyInformation = useContext(CompanyInformationContext);
     
     const sideBarContext = useContext(SideBarContext);
     if (!sideBarContext) {
@@ -42,9 +45,16 @@ const Account = () => {
     const style: CSSProperties = {
         display: sideBarExist? 'flex': 'none',
     }
-
+    const styleHover: CSSProperties = {
+        ...style,
+        backgroundColor: companyInformation?.primaryColor
+    }
     return(
-        <li style={style} onClick={handleClick}>
+        <li style={isHover? styleHover : style} 
+            onClick={handleClick}
+            onMouseEnter={() => setIsHover(true)}
+            onMouseLeave={() => setIsHover(false)}
+        >  
             <AccountIcon/>
             <span>{activeLanguage.sideBar.accountW}</span>
         </li>

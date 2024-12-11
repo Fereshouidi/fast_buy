@@ -6,9 +6,10 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import CategorieIcon from "@/app/svg/icons/categorie";
 import { getAllCategorie, getCategoriesByParent } from "@/app/crud";
-//import './CategoriesSelector/categorieSelector.css'
+import '../CategoriesSelector/categorieSelector.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
 const CategorieSelector = () => {
 
@@ -26,11 +27,13 @@ const CategorieSelector = () => {
         arabic: string
     }
 
-   // const [activeLanguage, setActiveLanguage] = useState(english);
+    const [isHover, setIsHover] = useState<boolean>(false)
+
+    const companyInformation = useContext(CompanyInformationContext)
+
     const languageSelectorContext = useContext(LanguageSelectorContext);
     const [allCategories, setAllCategories] = useState<categorieParams[]>([]);
     const [categorieClicked, setCategorieClicked] = useState<boolean>(false);
-  //  const [iconHover, setIconHover] = useState<boolean>(false);
 
     
     const sideBarContext = useContext(SideBarContext);
@@ -48,7 +51,6 @@ const CategorieSelector = () => {
     if(!allCategories){
         throw '  !'
     }
-
     
     useEffect(() => {
         const fetchData = async() => {
@@ -84,7 +86,7 @@ const getAllChildrenIds = (parent: categorieParams, categories: categorieParams[
         if (!categorie.childOpen) {
             const otherCategories = await getCategoriesByParent(categorie._id);
             otherCategories.forEach((categorieChild: categorieParams) => {
-                categorieChild.margin = categorie.margin + 10; 
+                categorieChild.margin = categorie.margin + 10; //alert()
             });
             setAllCategories((prev) => {
                 const targetIndex = prev.findIndex((item) => item._id === categorie._id);
@@ -151,16 +153,33 @@ const styleDownIcon: CSSProperties = {
     position: 'absolute',
     fontSize: 'var(--small-size)',
     zIndex: 0,
+    cursor: 'pointer'
+}
+
+const styleHover: CSSProperties = {
+    ...style,
+    backgroundColor: companyInformation?.primaryColor
+}
+const styleDivHover: CSSProperties = {
+    ...styleDiv,
+    backgroundColor: companyInformation?.primaryColor
+}
+const styleChildrenHover: CSSProperties = {
+    ...styleChildren,
+    backgroundColor: companyInformation?.primaryColor
 }
 
 
     return(
-        <li className="categoriesSelector" style={style} >
+        <li style={isHover? styleHover : style}
+            onMouseEnter={() => setIsHover(true)}
+            onMouseLeave={() => setIsHover(false)}
+        >
             <CategorieIcon/>
-            <div style={styleDiv}>{
+            <div style={isHover? styleDivHover : styleDiv}>{
                 allCategories.map((categorie, index) => {
                     return (
-                    <ul key={index} style={styleChildren}  >
+                    <ul key={index} style={isHover? styleChildrenHover : styleChildren}  >
                         <ul style={languageSelectorContext.activeLanguage == 'arabic' ? {paddingRight: `${categorie.margin}px` } : {paddingLeft: `${categorie.margin}px` }} className={categorie.parentCategorie? "child" : categorieClicked? "parent-clicked": "parent"} key={categorie._id} >{languageSelectorContext.activeLanguage == 'arabic' ? categorie.name.arabic : languageSelectorContext.activeLanguage == 'english' ? categorie.name.english : categorie.name.english}</ul>
                         {categorie.childrenCategories.length > 0 ?         <FontAwesomeIcon onClick={() => handleClick(categorie)} style={styleDownIcon} icon={faChevronDown } /> : null}
                     </ul>
