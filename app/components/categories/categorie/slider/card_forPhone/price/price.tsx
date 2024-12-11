@@ -44,7 +44,7 @@ const stylePriceDiv: CSSProperties = {
   alignItems: 'center',
   width: '100%',
   //margin: '5px',
-  height: '100%',
+  height: 'auto',
   marginBottom: '5px',
   //backgroundColor: 'red'
   //position: 'absolute',
