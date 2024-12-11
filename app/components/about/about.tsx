@@ -9,7 +9,6 @@ import XIcon from "@/app/svg/icons/socialMedia/x";
 import MessengerIcon from "@/app/svg/icons/socialMedia/messanger";
 import WhatsAppIcon from "@/app/svg/icons/socialMedia/whatsApp";
 import YouTubeIcon from "@/app/svg/icons/socialMedia/youtube";
-import { Link } from "react-router-dom";
 
 
 
@@ -245,7 +244,7 @@ const About = () => {
                     {conpanyInformations.socialMediaLinks.x && <a href={conpanyInformations.socialMediaLinks.x}><XIcon/></a>}
                     {conpanyInformations.socialMediaLinks.youtube && <a href={conpanyInformations.socialMediaLinks.youtube}><YouTubeIcon/></a>}
                 </div>
-                
+
                 <p>
                   اكتشف الآن عالم <strong  style={styleStrong}>{`${conpanyInformations.name.arabic}`}</strong> وكن جزءًا من تجربة تسوق
                   تجعل حياتك أسهل وأكثر متعة. لا تفوت الفرصة للانضمام إلى آلاف العملاء الراضين الذين يثقون بنا!
