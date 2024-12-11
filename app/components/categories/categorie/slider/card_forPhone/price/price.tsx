@@ -44,7 +44,9 @@ const stylePriceDiv: CSSProperties = {
   alignItems: 'center',
   width: '100%',
   //margin: '5px',
-  height: 'auto',
+  height: '100%',
+  margin: 0,
+  //backgroundColor: 'red'
   //position: 'absolute',
   //bottom: 0,
 }
@@ -66,14 +68,15 @@ const styleNewPrice: CSSProperties = {
   margin: '0 var(--extra-small-margin)',
   backgroundColor: 'var(--primary-color)',
   fontSize: 'calc(var(--primary-size)/1.5)',
-  padding: 'var(--small-padding)',
+  //padding: 'var(--small-padding)',
   borderRadius: '50px',
   color: 'white',
 
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  width: '90%'
+  width: '90%',
+  height: '20px'
 }
 // const price: CSSProperties = {
 //   fontSize: 'calc(var(--small-size)/1.2)',
