@@ -1,6 +1,8 @@
 
 import ReactStars from 'react-stars';
 import './reactStars.css';
+import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
+import { useContext } from 'react';
 
 type productParams = {
     name: nameParams,
@@ -30,6 +32,7 @@ type discountParams = {
 
 const StarRating = ({product}: {product : productParams}) => {
 
+    const languageContext = useContext(LanguageSelectorContext);
 
     return (
         <ReactStars
@@ -38,7 +41,7 @@ const StarRating = ({product}: {product : productParams}) => {
             value={product.totalRating}
             //edit={false} 
             color2={'var(--primary-color)'} 
-            className= 'rating-stars-ltr'
+            className= {languageContext?.activeLanguage == 'arabic' ? 'rating-stars-rtl' : 'rating-stars-ltr'}
         />
     );
 };

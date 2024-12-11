@@ -54,7 +54,7 @@ const Style: CSSProperties = {
     alignItems: "center",
     flexDirection: 'column',
     width: '120px',
-    maxHeight: '180px',
+    maxHeight: '200px',
     minHeight: '180px',
     backgroundColor: 'var(--white)',
     borderRadius: '10px',
@@ -91,15 +91,16 @@ const Style: CSSProperties = {
         position: 'relative'
     }
     const styleBoxAndPricesDiv: CSSProperties = {
-        marginTop: 'var(--extra-small-margin)',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'end',
-        position: 'absolute',
-        left: '0',
-        bottom: '0',
-        width: '100%',
-        direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr'
+         margin: 'var(--extra-small-margin) 0',
+        // display: 'flex',
+        // justifyContent: 'space-between',
+        // //alignItems: 'end',
+        // //position: 'absolute',
+        // padding: "15px",
+        // // left: '0',
+        // // bottom: '0',
+        // width: '100%',
+        // direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr'
     }
     return(
         <div style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover}>

@@ -1,9 +1,11 @@
 .rating-stars-rtl{
     direction: rtl;
+    display: flex;
+    justify-content: flex-start; 
 }
 
 .rating-stars-ltr{
-    direction: rtl;
+    direction: ltr;
     display: flex;
     justify-content: flex-start; 
 }

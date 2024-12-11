@@ -58,7 +58,7 @@ const unsetHover = () => {
         alignItems: "center",
         flexDirection: 'column',
         width: '250px',
-        maxHeight: '350px',
+        height: '350px',
         backgroundColor: 'var(--white)',
         borderRadius: '20px',
         margin: 'var(--medium-margin)',
@@ -93,6 +93,7 @@ const unsetHover = () => {
     }
     const styleBoxAndPricesDiv: CSSProperties = {
         width: '100%',
+        margin: 'var(--extra-small-margin) 0',
         direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr'
     }
     return(

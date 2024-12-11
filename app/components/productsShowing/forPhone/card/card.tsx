@@ -95,7 +95,7 @@ const Style: CSSProperties = {
         justifyContent: 'space-between',
         alignItems: 'end',
         //position: 'absolute',
-        padding: '0 5px',
+        padding: '0 0 0 5px',
          //left: '10px',
         bottom: '15px',
         width: '100%',
