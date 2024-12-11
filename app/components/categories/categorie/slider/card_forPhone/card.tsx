@@ -54,7 +54,7 @@ const Style: CSSProperties = {
     alignItems: "center",
     flexDirection: 'column',
     width: '120px',
-    maxHeight: '200px',
+    height: 'auto',
     minHeight: '180px',
     backgroundColor: 'var(--white)',
     borderRadius: '10px',
