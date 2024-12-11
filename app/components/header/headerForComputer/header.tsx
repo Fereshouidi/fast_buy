@@ -6,7 +6,7 @@ import SearchBar from "./components/searchBar/searchBar";
 import CategorieSelector from "./components/languageSelector/languageSelector";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import Options from "./components/option/option";
-import { CompanyInformationContext } from "@/app/contexts/companyInformation";
+//import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
 const Header = () => {
     

@@ -6,7 +6,7 @@ import { CSSProperties, useContext, useEffect, useState } from "react";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
-import { CompanyInformationContext } from "@/app/contexts/companyInformation";
+//import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
 const Header = () => {
 
