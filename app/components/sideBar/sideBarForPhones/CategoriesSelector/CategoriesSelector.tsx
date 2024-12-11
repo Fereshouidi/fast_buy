@@ -143,7 +143,8 @@ const styleDownIcon: CSSProperties = {
     width: 'var(--short-width)',
     height: 'var(--short-width)',
     padding: '10px',
-    right: '5px',
+    right: languageSelectorContext.activeLanguage == "arabic" ? '' : '5px',
+    left: languageSelectorContext.activeLanguage == "arabic" ? '5px' : "",
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -160,7 +161,7 @@ const styleDownIcon: CSSProperties = {
                 allCategories.map((categorie, index) => {
                     return (
                     <ul key={index} style={styleChildren}  >
-                        <ul style={{paddingLeft: `${categorie.margin}px` }} className={categorie.parentCategorie? "child" : categorieClicked? "parent-clicked": "parent"} key={categorie._id} >{languageSelectorContext.activeLanguage == 'arabic' ? categorie.name.arabic : languageSelectorContext.activeLanguage == 'english' ? categorie.name.english : categorie.name.english}</ul>
+                        <ul style={languageSelectorContext.activeLanguage == 'arabic' ? {paddingRight: `${categorie.margin}px` } : {paddingLeft: `${categorie.margin}px` }} className={categorie.parentCategorie? "child" : categorieClicked? "parent-clicked": "parent"} key={categorie._id} >{languageSelectorContext.activeLanguage == 'arabic' ? categorie.name.arabic : languageSelectorContext.activeLanguage == 'english' ? categorie.name.english : categorie.name.english}</ul>
                         {categorie.childrenCategories.length > 0 ?         <FontAwesomeIcon onClick={() => handleClick(categorie)} style={styleDownIcon} icon={faChevronDown } /> : null}
                     </ul>
                 )
