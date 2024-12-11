@@ -36,9 +36,9 @@ const StarRating = ({product}: {product : productParams}) => {
             count={5}
             size={10} 
             value={product.totalRating}
-            edit={false} 
+            //edit={false} 
             color2={'var(--primary-color)'} 
-            className='react-stars'
+            className= 'rating-stars-ltr'
         />
     );
 };

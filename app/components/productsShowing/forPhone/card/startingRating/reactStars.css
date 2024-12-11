@@ -1,3 +1,9 @@
-.react-stars{
-    font-size: calc(var(--half-size)/2);
+.rating-stars-rtl{
+    direction: rtl;
+}
+
+.rating-stars-ltr{
+    direction: rtl;
+    display: flex;
+    justify-content: flex-start; 
 }

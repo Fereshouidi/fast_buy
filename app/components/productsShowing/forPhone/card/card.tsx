@@ -54,10 +54,10 @@ const Style: CSSProperties = {
     alignItems: "center",
     flexDirection: 'column',
     width: '120px',
-    height: '150px',
+    maxHeight: '150px',
     backgroundColor: 'var(--white)',
     borderRadius: '10px',
-    margin: 'var(--small-margin)',
+    margin: 'var(--extra-small-margin)',
     padding: 'calc(var(--small-padding)/2)',
     boxShadow: '0 5px 15px var(--black-almost-transparnt)',
     cursor: "pointer",
@@ -73,13 +73,13 @@ const Style: CSSProperties = {
     }
     const StyleImage: CSSProperties = {
         width: '100%',
-        height: '70%',
+        height: '120px',
         objectFit: 'cover',
         borderRadius: '20px',
         backgroundColor: 'var(--almost-white)',
     }
     const styleH4: CSSProperties = {
-        padding: 'calc(var(--small-padding)/2)',
+        padding: 'var(--small-padding) calc(var(--small-padding)/2) calc(var(--small-padding)/2) calc(var(--small-padding)/2)',
         color: 'var(--black)',
         fontSize: 'calc(var(--extra-small-size)/1.5)'
     }
@@ -90,13 +90,14 @@ const Style: CSSProperties = {
         position: 'relative'
     }
     const styleBoxAndPricesDiv: CSSProperties = {
-        marginTop: 'var(--extra-small-margin)',
+        margin: 'var(--small-margin)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'end',
-        position: 'absolute',
-        left: '0',
-        bottom: '0',
+        //position: 'absolute',
+        padding: '0 5px',
+         //left: '10px',
+        bottom: '15px',
         width: '100%',
         direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr'
     }

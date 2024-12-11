@@ -66,9 +66,9 @@ const price: CSSProperties = {
   padding: 'var(--small-padding)',
   borderRadius: '50px',
   color: 'var(--black)',
-  position: 'absolute',
-  right: 0,
-  bottom: 0,
+  // position: 'absolute',
+  // right: 0,
+  // bottom: 0,
 }
 const newPriceHover: CSSProperties = {
   ...styleNewPrice,
