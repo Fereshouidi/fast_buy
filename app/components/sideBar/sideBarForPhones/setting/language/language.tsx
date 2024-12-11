@@ -11,6 +11,7 @@ const LanguageSelector = () => {
     const companyInformation = useContext(CompanyInformationContext)
     const context = useContext(LanguageSelectorContext);
     const [hoveredOption, setHoveredOption] = useState<string | null>(null);
+    const [isHover, setIsHover] = useState<boolean>(false)
 
     const sideBarContext = useContext(SideBarContext);
 
@@ -67,8 +68,15 @@ const LanguageSelector = () => {
         outline: 'none',
     });
 
+    const styleHover: CSSProperties = {
+        ...styleLi,
+        backgroundColor: companyInformation?.primaryColor
+    }
     return(
-        <li style={styleLi}> 
+        <li style={isHover? styleHover : styleLi} 
+            onMouseEnter={() => setIsHover(true)}
+            onMouseLeave={() => setIsHover(false)}
+        > 
             <LanguageIcon/>
             <select name="languageSelector" 
             id="languageSelector" 

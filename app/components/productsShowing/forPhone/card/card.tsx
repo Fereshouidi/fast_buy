@@ -90,12 +90,12 @@ const Style: CSSProperties = {
         position: 'relative'
     }
     const styleBoxAndPricesDiv: CSSProperties = {
-        margin: 'var(--small-margin)',
+        margin: 'var(--small-margin) 0',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'end',
         //position: 'absolute',
-        padding: '0 0 0 5px',
+        //padding: '0 0 0 5px',
          //left: '10px',
         bottom: '15px',
         width: '100%',
