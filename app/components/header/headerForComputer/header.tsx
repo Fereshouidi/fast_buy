@@ -10,7 +10,7 @@ import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
 const Header = () => {
     
-    const companyInformation = useContext(CompanyInformationContext)
+    //const companyInformation = useContext(CompanyInformationContext)
     const context = useContext(LanguageSelectorContext);
 
     if (!context) {

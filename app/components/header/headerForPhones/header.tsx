@@ -12,7 +12,7 @@ const Header = () => {
 
     const [activeLanguage, setActiveLanguage] = useState({});
 
-    const companyInformation = useContext(CompanyInformationContext)
+    //const companyInformation = useContext(CompanyInformationContext)
     const context = useContext(LanguageSelectorContext);
     if(!context){
         throw 'context error';
