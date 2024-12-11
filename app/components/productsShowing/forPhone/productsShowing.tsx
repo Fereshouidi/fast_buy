@@ -68,7 +68,7 @@ const ProductsShowing = ({allProducts, pageNumber, setPageNumber}: productsShowi
     }
     
     const StyleH2: CSSProperties = {
-        margin: 'calc(var(--large-margin)*3) 0',
+        margin: window.innerWidth > 800 ? 'calc(var(--large-margin)*3) 0' : 'calc(var(--large-margin)*2) 0',
         color: 'var(--black)'
     }
 
@@ -83,9 +83,10 @@ const ProductsShowing = ({allProducts, pageNumber, setPageNumber}: productsShowi
     const styleSpan: CSSProperties = {
         color: 'var(--white)',
         backgroundColor: 'var(--primary-color)',
-        padding: 'calc(var(--medium-padding) *1.2)',
+        padding: 'calc(var(--small-padding) *1.2)',
+        fontSize: 'var(--small-size)',
         borderRadius: '20px',
-        margin: 'calc(var(--large-margin) *2) 0',
+        margin: 'var(--large-margin) 0',
         cursor: 'pointer'
     }
     const styleSpanHover: CSSProperties = {

@@ -63,7 +63,7 @@ const Slider = () => {
         justifyContent: 'center',
         flexDirection: 'column',
         padding: 0,
-        paddingTop: 'calc(var(--extra-large-margin)*2)',
+        paddingTop: window.innerWidth > 800 ? 'calc(var(--extra-large-margin)*2)' : 'var(--extra-large-margin)',
     }
     const styleDiv:CSSProperties = {
         width: '90vw',

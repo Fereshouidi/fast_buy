@@ -94,7 +94,7 @@ const Style: CSSProperties = {
          marginTop: 'var(--extra-small-margin)',
          width: '100%',
          //height: '100%',
-         backgroundColor: 'red',
+         //backgroundColor: 'red',
         display: 'flex',
         // justifyContent: 'center',
         //alignItems: 'center',
