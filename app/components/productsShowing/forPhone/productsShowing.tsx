@@ -105,7 +105,7 @@ const ProductsShowing = ({allProducts, pageNumber, setPageNumber}: productsShowi
 
             <h2 style={StyleH2}>{activeLanguage.highestRatedW +' :'}</h2>
             <div style={styleContainer}>
-                {allProducts ? allProducts.map((product, index) => {
+                {allProducts.length == 0 ? allProducts.map((product, index) => {
                         return <div key={index}>
                             <Card product={product}/>
                         </div>
