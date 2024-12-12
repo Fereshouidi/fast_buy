@@ -8,6 +8,7 @@ import arabic from "@/app/languages/arabic.json";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 import tinycolor from "tinycolor2";
+import LoadingIcon from "@/app/svg/icons/loading/loading";
 
 
 type productsShowing = {
@@ -104,11 +105,13 @@ const ProductsShowing = ({allProducts, pageNumber, setPageNumber}: productsShowi
 
             <h2 style={StyleH2}>{activeLanguage.highestRatedW +' :'}</h2>
             <div style={styleContainer}>
-                {allProducts && allProducts.map((product, index) => {
-                    return <div key={index}>
-                        <Card product={product}/>
-                    </div>
-                })}
+                {allProducts ? allProducts.map((product, index) => {
+                        return <div key={index}>
+                            <Card product={product}/>
+                        </div>
+                    })
+                    : <LoadingIcon/>
+                }
             </div>
             
             <span style={showMore_btn_Hover? styleSpanHover: styleSpan}

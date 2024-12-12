@@ -1,6 +1,7 @@
 'use client';
 import CardForComputer from "@/app/components/categories/categorie/slider/card_forComputer/card";
 import CardForPhone from "@/app/components/categories/categorie/slider/card_forPhone/card";
+import LoadingIcon from "@/app/svg/icons/loading/loading";
 import { CSSProperties } from "react";
 
 
@@ -50,9 +51,11 @@ const Slider = ({ products }: {products: productParams[] }) => {
     }
     return (
             <div id="slide" style={StyleSlide}>
-                {products.map((product, index) => {
-                    return window.innerWidth > 1000? <CardForComputer key={index} product={product}/> : <CardForPhone key={index} product={product}/>
-                })}
+                {products ? products.map((product, index) => {
+                        return window.innerWidth > 1000? <CardForComputer key={index} product={product}/> : <CardForPhone key={index} product={product}/>
+                    })
+                    : <LoadingIcon/>
+                }
             </div>
     )
 }

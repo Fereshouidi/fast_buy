@@ -3,6 +3,7 @@
 import { CSSProperties, useEffect, useState } from "react";
 import {getBulletinBoard_two} from "@/app/crud";
 import { useRouter } from "next/navigation";
+import LoadingIcon from "@/app/svg/icons/loading/loading";
 
 const BulletinBoard = () => {
 
@@ -68,10 +69,14 @@ const BulletinBoard = () => {
     }
     return(
         <div style={style} onClick={handleClick}>
-            <img style={styleIMG} 
-                src={bulletinBoard?.images?.[activeIndex] }
-                alt="Bulletin Board" 
-            />
+            {bulletinBoard ? 
+                <img style={styleIMG} 
+                    src={bulletinBoard?.images?.[activeIndex] }
+                    alt="Bulletin Board" 
+                />
+                : <LoadingIcon/>
+            }
+            
         </div>
     )
 }
