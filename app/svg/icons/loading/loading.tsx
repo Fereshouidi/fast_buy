@@ -4,7 +4,9 @@ import './loading.css';
 const LoadingIcon = () => {
 
     return (
-        <div id='loadingIcon'></div>
+        <div id='container'>
+            <div id='loadingIcon'></div>
+        </div>
     )
 }
 export default LoadingIcon;

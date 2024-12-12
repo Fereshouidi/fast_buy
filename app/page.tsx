@@ -19,6 +19,7 @@ import BulletinBoard_two_forComputer from "./components/bulletinBoard_two/forcom
 import CategoriesSection from "@/app/components/categories/categories";
 import About from "@/app/components/about/about";
 import { getConpanyInformations } from "./crud";
+import LoadingIcon from "./svg/icons/loading/loading";
 
 const App = () => {
   //const router = useRouter();
@@ -126,7 +127,7 @@ useEffect(() => {
   }
 
   if (!conpanyInformations) {
-    return <div>Loading company information...</div>; 
+    return <LoadingIcon/>; 
   }
   
 

@@ -5,7 +5,7 @@ import Price from "./price/price";
 import BoxIcon from "@/app/svg/icons/boxSmall";
 import StarRating from "./startingRating/StartRating";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 type productParams = {
     name: nameParams,
