@@ -6,6 +6,7 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import HomeIcon from "@/app/svg/icons/home";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
+import Link from "next/link";
 
 const Home = () => {
 
@@ -55,10 +56,10 @@ const Home = () => {
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
         >            
-            <a href="/">
+            <Link href="/">
                 <HomeIcon/>
                 <span>{activeLanguage.sideBar.homeW}</span>
-            </a>
+            </Link>
         </li>
     )
 }
