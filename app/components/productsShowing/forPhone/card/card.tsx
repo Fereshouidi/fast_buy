@@ -35,52 +35,52 @@ type discountParams = {
 const Card = ({product}: {product : productParams}) => {
 
     
-const languageContext = useContext(LanguageSelectorContext)
+    const languageContext = useContext(LanguageSelectorContext)
 
-if(!languageContext){
-  throw 'error languageContext'
-}
+    if(!languageContext){
+    throw 'error languageContext'
+    }
 
-const [cardHover, setCardHover] = useState<boolean>(false)
+    const [cardHover, setCardHover] = useState<boolean>(false)
 
-const setHover = () => {
-    setCardHover(true)
-}
-const unsetHover = () => {
-    setCardHover(false)
-}
+    const setHover = () => {
+        setCardHover(true)
+    }
+    const unsetHover = () => {
+        setCardHover(false)
+    }
 
-const router = useRouter();
+    const router = useRouter();
 
-const goToCardShow = () => {
-    router.push('/pages/productShow')
-}
+    const goToCardShow = () => {
+        router.push('/pages/productShow')
+    }
 
-const Style: CSSProperties = {
-    display: 'flex',
-    alignItems: "center",
-    flexDirection: 'column',
-    width: '150px',
-    maxHeight: '170px',
-    backgroundColor: 'var(--white)',
-    borderRadius: '10px',
-    margin: 'var(--extra-small-margin)',
-    padding: 'calc(var(--small-padding)/2)',
-    boxShadow: '0 5px 15px var(--black-almost-transparnt)',
-    cursor: "pointer",
-    transition: '0.5s ease',
-    flexShrink: '0',
-    flexGrow: '0',
-    flexBasis: window.innerWidth > 800 ? 'calc(90vw /6)' : window.innerWidth <= 800 && window.innerWidth >= 600 ? 'calc(90vw /4)' : 'calc(90vw /3)',
-    position: 'relative',
-}
+    const Style: CSSProperties = {
+        display: 'flex',
+        alignItems: "center",
+        flexDirection: 'column',
+        width: '160px',
+        height: '200px',
+        backgroundColor: 'var(--white)',
+        borderRadius: '10px',
+        margin: 'var(--extra-small-margin)',
+        padding: 'calc(var(--small-padding)/2)',
+        boxShadow: '0 5px 15px var(--black-almost-transparnt)',
+        cursor: "pointer",
+        transition: '0.5s ease',
+        flexShrink: '0',
+        flexGrow: '0',
+        flexBasis: window.innerWidth > 800 ? 'calc(90vw /6)' : window.innerWidth <= 800 && window.innerWidth >= 600 ? 'calc(90vw /4)' : 'calc(90vw /3)',
+        position: 'relative',
+    }
     const StyleWithHover: CSSProperties = {
         ...Style,
         transform: 'scale(1.05)',
     }
     const StyleImage: CSSProperties = {
         width: '100%',
-        height: '120px',
+        height: '700%',
         objectFit: 'cover',
         borderRadius: '20px',
         backgroundColor: 'var(--almost-white)',
@@ -97,10 +97,11 @@ const Style: CSSProperties = {
         position: 'relative'
     }
     const styleBoxAndPricesDiv: CSSProperties = {
-        margin: 'var(--small-margin) 0',
+        marginBottom: 'var(--extra-small-margin)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'end',
+        //backgroundColor: 'red',
         //position: 'absolute',
         //padding: '0 0 0 5px',
          //left: '10px',

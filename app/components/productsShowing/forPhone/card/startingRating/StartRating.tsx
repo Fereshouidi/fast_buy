@@ -43,7 +43,7 @@ const StarRating = ({product}: {product : productParams}) => {
             value={product.totalRating}
             //edit={false} 
             color2={`${companyInformation?.primaryColor}`} 
-            className= {languageContext?.activeLanguage == 'arabic' ? 'rating-stars-rtl' : 'rating-stars-ltr'}
+            className= {languageContext?.activeLanguage == 'arabic' ? 'rating-stars rating-stars-rtl' : 'rating-stars rating-stars-ltr'}
         />
     );
 };

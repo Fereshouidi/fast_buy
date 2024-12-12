@@ -1,3 +1,7 @@
+.rating-stars{
+    /* background-color: red; */
+}
+
 .rating-stars-rtl{
     direction: rtl;
     display: flex;
