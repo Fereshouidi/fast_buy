@@ -2,6 +2,8 @@
 import { CSSProperties, useContext, useEffect, useRef, useState } from "react";
 import Slide from "./slide/slide";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
+import LoadingIcon from "@/app/svg/icons/loading/loading";
+
 
 type sliderDataParams = {
     tittle: languageParams;
@@ -100,14 +102,16 @@ const Slides = ({ slideBarData }: { slideBarData: sliderDataParams }) => {
         padding: 0,
         margin: 0
     }
+
     return(
         <div style={style} ref={slidesRef}> {
-            slideBarData.products && slideBarData.products.map((product, index) => {
+            slideBarData.products ? slideBarData.products.map((product, index) => {
                 return <Slide 
                     key={index} 
                     product={product}
                 />
             })
+            : <LoadingIcon/>
         } </div>
     )
 }

@@ -54,8 +54,11 @@ const Home = () => {
             onClick={handleClick}
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
-        >            <HomeIcon/>
-            <span>{activeLanguage.sideBar.homeW}</span>
+        >            
+            <a href="/">
+                <HomeIcon/>
+                <span>{activeLanguage.sideBar.homeW}</span>
+            </a>
         </li>
     )
 }

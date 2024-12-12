@@ -56,8 +56,10 @@ const About = () => {
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
         >
-            <AboutIcon/>
-            <span>{activeLanguage.sideBar.aboutW}</span>
+            <a href="#about-section">
+                <AboutIcon/>
+                <span>{activeLanguage.sideBar.aboutW}</span>
+            </a>
         </li>
     )
 }
