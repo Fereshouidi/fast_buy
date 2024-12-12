@@ -5,6 +5,7 @@ import Price from "./price/price";
 import BoxIcon from "@/app/svg/icons/boxSmall";
 import StarRating from "./startingRating/StartRating";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
+import { useRouter } from "next/router";
 
 type productParams = {
     name: nameParams,
@@ -47,6 +48,12 @@ const setHover = () => {
 }
 const unsetHover = () => {
     setCardHover(false)
+}
+
+const router = useRouter();
+
+const goToCardShow = () => {
+    router.push('/pages/productShow')
 }
 
 const Style: CSSProperties = {
@@ -102,7 +109,7 @@ const Style: CSSProperties = {
         direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr'
     }
     return(
-        <div style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover}>
+        <div style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover} onClick={goToCardShow}>
             <img src={product.imagePrincipal} alt="" style={StyleImage} />
             <div style={StyleCartInformation}>
                 <h4 style={styleH4}>{
