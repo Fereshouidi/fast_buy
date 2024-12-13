@@ -34,7 +34,6 @@ const App = () => {
   });
   const [activeLanguage, setActiveLanguage] = useState("english");
   const [sideBarExist, setSideBarExist] = useState(false);
-  const [productSelectForShowing, setProductSelectForShowing] = useState<string>('')
 
   interface companyInformationsParams {
     name: nameParams,
