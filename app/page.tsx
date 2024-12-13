@@ -6,6 +6,7 @@ import HeaderForComputer from "@/app/components/header/headerForComputer/header"
 import HeaderForPhone from "@/app/components/header/headerForPhones/header";
 import { ThemeContext } from "@/app/contexts/ThemeContext";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
+import { ProductSelectForShowing } from "./contexts/productSelectForShowing";
 import { CompanyInformationContext } from "./contexts/companyInformation";
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import SideBarForComputer from "@/app/components/sideBar/sideBarForComputers/sidebar";
@@ -33,6 +34,7 @@ const App = () => {
   });
   const [activeLanguage, setActiveLanguage] = useState("english");
   const [sideBarExist, setSideBarExist] = useState(false);
+  const [productSelectForShowing, setProductSelectForShowing] = useState<string>('')
 
   interface companyInformationsParams {
     name: nameParams,
@@ -44,10 +46,10 @@ const App = () => {
     originalProductsPercentage: number,
     servises: string[]
 }
-type nameParams = {
-  arabic: string,
-  english: string
-}
+  type nameParams = {
+    arabic: string,
+    english: string
+  }
 const [conpanyInformations, setConpanyInformations] = useState<companyInformationsParams | undefined>();
 
 useEffect(() => {
@@ -137,16 +139,18 @@ useEffect(() => {
         <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
           <ThemeContext.Provider value={{ theme, setTheme }}>
             <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
-              {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
-              {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-              {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
-              <Slider/>
-              <ProductsShowing/>
-              {screenWidth > 800 ? <BulletinBoard_two_forComputer /> : <BulletinBoard_two_forPhone />}
-              <CategoriesSection/>
-              <About/>
-              {/* <div>home page</div>
-              <button onClick={goToAbout}>Go to About</button> */}
+              <ProductSelectForShowing.Provider value={{productSelectForShowing, setProductSelectForShowing}}>
+                {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
+                {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
+                {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
+                <Slider/>
+                <ProductsShowing/>
+                {screenWidth > 800 ? <BulletinBoard_two_forComputer /> : <BulletinBoard_two_forPhone />}
+                <CategoriesSection/>
+                <About/>
+                {/* <div>home page</div>
+                <button onClick={goToAbout}>Go to About</button> */}
+              </ProductSelectForShowing.Provider>
             </SideBarContext.Provider>
           </ThemeContext.Provider>
         </LanguageSelectorContext.Provider>

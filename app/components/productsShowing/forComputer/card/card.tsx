@@ -8,14 +8,15 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 import { useRouter } from "next/navigation";
 
 type productParams = {
+    _id: string,
     name: nameParams,
     imagePrincipal: string,
     price: number,
     discount: discountParams,
     totalRating: number,
     currencyType: string
-}
 
+}
 type nameParams = {
     english: string,
     arabic: string
@@ -51,9 +52,9 @@ const unsetHover = () => {
 
 const router = useRouter();
 
-const goToCardShow = () => {
-    router.push('/pages/productShow')
-}
+const goToCardShow = (product: productParams) => {
+    router.push(`/pages/productDetails/${product._id}`);
+};
 
     const Style: CSSProperties = {
         width: '250px',
@@ -98,7 +99,7 @@ const goToCardShow = () => {
         direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr'
     }
     return(
-        <div id="card" style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover} onClick={goToCardShow}>
+        <div id="card" style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover} onClick={() => goToCardShow(product)}>
             <img src={product.imagePrincipal} alt="" style={StyleImage} />
             <div style={StyleCartInformation}>
                 <h4 style={styleH4}>{

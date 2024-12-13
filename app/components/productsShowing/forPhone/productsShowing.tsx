@@ -16,13 +16,16 @@ type productsShowing = {
     setPageNumber: (showMore: number) => void;
     allProducts: productParams[]
 }
+
 type productParams = {
+    _id: string,
     name: nameParams,
     imagePrincipal: string,
     price: number,
     discount: discountParams,
     totalRating: number,
     currencyType: string
+
 }
 
 type nameParams = {

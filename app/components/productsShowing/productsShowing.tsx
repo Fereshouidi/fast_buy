@@ -31,13 +31,14 @@ const ProductsShowing = () => {
 
 
     type productParams = {
+        _id: string,
         name: nameParams,
         imagePrincipal: string,
         price: number,
         discount: discountParams,
         totalRating: number,
         currencyType: string
-
+    
     }
 
     type nameParams = {

@@ -6,8 +6,10 @@ import BoxIcon from "@/app/svg/icons/boxSmall";
 import StarRating from "./startingRating/StartRating";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { useRouter } from "next/navigation";
+import { ProductSelectForShowing } from "@/app/contexts/productSelectForShowing";
 
 type productParams = {
+    _id: string,
     name: nameParams,
     imagePrincipal: string,
     price: number,
@@ -22,7 +24,6 @@ type nameParams = {
     arabic: string
 }
 
-
 type discountParams = {
     createdAt: Date,
     discountSticker: string,
@@ -32,9 +33,10 @@ type discountParams = {
     startOfDiscount: Date, 
     endOfDiscount: Date
 };
+
 const Card = ({product}: {product : productParams}) => {
 
-    
+    const productSelectForShowing = useContext(ProductSelectForShowing)
     const languageContext = useContext(LanguageSelectorContext)
 
     if(!languageContext){
@@ -52,9 +54,12 @@ const Card = ({product}: {product : productParams}) => {
 
     const router = useRouter();
 
-    const goToCardShow = () => {
-        router.push('/pages/productShow')
-    }
+    const goToCardShow = (product: productParams) => {
+        alert(product._id)
+        productSelectForShowing?.setProductSelectForShowing("zzz");
+        router.push(`/pages/productDetails/${product._id}`);
+    };
+    
 
     const Style: CSSProperties = {
         display: 'flex',
@@ -110,7 +115,7 @@ const Card = ({product}: {product : productParams}) => {
         direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr'
     }
     return(
-        <div style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover} onClick={goToCardShow}>
+        <div style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover} onClick={() => goToCardShow(product)}>
             <img src={product.imagePrincipal} alt="" style={StyleImage} />
             <div style={StyleCartInformation}>
                 <h4 style={styleH4}>{

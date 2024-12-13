@@ -18,12 +18,14 @@ type productsShowing = {
 }
 
 type productParams = {
+    _id: string,
     name: nameParams,
     imagePrincipal: string,
     price: number,
     discount: discountParams,
     totalRating: number,
     currencyType: string
+
 }
 
 type nameParams = {

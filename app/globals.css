@@ -262,24 +262,8 @@ header div{
 
 .arabic *{
   direction: rtl;
-  /* --rtl: rtl;
-  --ltr: ltr;
-  --right: 0;
-  --left: 0; */
 }
 
-/* span{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-} */
-
-/* @media (max-width: 800px) {
-  .sideBar-background{
-    top: 0;
-  }
-} */
 .sideBar-background{
   text-decoration: dashed;
   height: 100vh;
@@ -322,7 +306,7 @@ header div{
 
 }
 .sideBar-background .sideBar li:not(.categoriesSelector):hover{
-  background-color: var(--primary-color);
+  /* background-color: var(--primary-color); */
   color: var(--white);
 }
 .sideBar-background .sideBar li svg:not(.toggle svg){
