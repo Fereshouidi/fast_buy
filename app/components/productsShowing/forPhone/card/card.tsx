@@ -6,7 +6,6 @@ import BoxIcon from "@/app/svg/icons/boxSmall";
 import StarRating from "./startingRating/StartRating";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { useRouter } from "next/navigation";
-import { ProductSelectForShowing } from "@/app/contexts/productSelectForShowing";
 
 type productParams = {
     _id: string,
@@ -36,7 +35,6 @@ type discountParams = {
 
 const Card = ({product}: {product : productParams}) => {
 
-    const productSelectForShowing = useContext(ProductSelectForShowing)
     const languageContext = useContext(LanguageSelectorContext)
 
     if(!languageContext){
@@ -55,8 +53,6 @@ const Card = ({product}: {product : productParams}) => {
     const router = useRouter();
 
     const goToCardShow = (product: productParams) => {
-        alert(product._id)
-        productSelectForShowing?.setProductSelectForShowing("zzz");
         router.push(`/pages/productDetails/${product._id}`);
     };
     

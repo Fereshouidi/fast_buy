@@ -6,7 +6,7 @@ import HeaderForComputer from "@/app/components/header/headerForComputer/header"
 import HeaderForPhone from "@/app/components/header/headerForPhones/header";
 import { ThemeContext } from "@/app/contexts/ThemeContext";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-import { ProductSelectForShowing } from "./contexts/productSelectForShowing";
+//import { ProductSelectForShowing } from "./contexts/productSelectForShowing";
 import { CompanyInformationContext } from "./contexts/companyInformation";
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import SideBarForComputer from "@/app/components/sideBar/sideBarForComputers/sidebar";
@@ -139,7 +139,6 @@ useEffect(() => {
         <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
           <ThemeContext.Provider value={{ theme, setTheme }}>
             <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
-              <ProductSelectForShowing.Provider value={{productSelectForShowing, setProductSelectForShowing}}>
                 {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
                 {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
                 {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
@@ -150,7 +149,6 @@ useEffect(() => {
                 <About/>
                 {/* <div>home page</div>
                 <button onClick={goToAbout}>Go to About</button> */}
-              </ProductSelectForShowing.Provider>
             </SideBarContext.Provider>
           </ThemeContext.Provider>
         </LanguageSelectorContext.Provider>
