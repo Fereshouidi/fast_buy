@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 interface propsParams {
     params: Promise<Params>;
-    searchParams: string
+    //searchParams: string
 }
 interface Params {
     productId: string;
