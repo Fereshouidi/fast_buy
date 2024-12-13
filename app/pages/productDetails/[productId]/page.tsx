@@ -1,4 +1,6 @@
-const ProductDetails = ({params, searchParams}: any) => {
+'use client';
+
+const ProductDetails = ({params}: any) => {
 
     const {productId} = params
     return (
