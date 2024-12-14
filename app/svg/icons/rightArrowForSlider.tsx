@@ -29,7 +29,7 @@ const RightArrow = () => {
         right: 0,
     }
     return (
-        <div style={style} className="arrow" onClick={handleClick}>
+        <div style={style} className="arrow arrow-in-slider" onClick={handleClick}>
             <FontAwesomeIcon icon={faChevronRight}/>
         </div>
     )
