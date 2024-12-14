@@ -1,6 +1,6 @@
 'use client';
 
-import { CSSProperties, useContext, useEffect, useState } from "react";
+import { CSSProperties, useContext } from "react";
 import Slides from "./slides/slides";
 import { ActiveImageContext } from "@/app/contexts/activeImage";
 type productParams = {

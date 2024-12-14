@@ -29,7 +29,7 @@ type discountParams = {
 const PageForPhone = ({product}: {product: productParams | undefined}) => {
 
     return (
-        <div>page for phone</div>
+        <div>page for phone {product?._id} </div>
     )
 }
 export default PageForPhone;

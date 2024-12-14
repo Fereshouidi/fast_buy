@@ -38,7 +38,7 @@ const InformationSection = ({product}: {product: productParams | undefined}) => 
     }
     
     return (
-        <div style={style}>InformationSection</div>
+        <div style={style}>InformationSection {product?._id} </div>
     )
 }
 export default InformationSection;

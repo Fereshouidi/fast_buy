@@ -1,13 +1,12 @@
 'use client';
 
-import { CSSProperties, useContext, useEffect, useState } from "react";
+import { CSSProperties, useContext } from "react";
 import Slider from "./slider/slider";
 import ImageDisplay from "./imageDisplay/imageDisplay";
 import RightArrow from "@/app/svg/icons/rightArrowForSlider";
 import LeftArrow from "@/app/svg/icons/leftArrowForSlider";
 
 import { ActiveImageContext } from "@/app/contexts/activeImage";
-import { relative } from "path";
 
 type productParams = {
     _id: string,
