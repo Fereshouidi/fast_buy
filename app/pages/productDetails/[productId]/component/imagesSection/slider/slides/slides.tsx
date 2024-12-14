@@ -43,7 +43,7 @@ const Slides = ({product}: {product: productParams | undefined}) => {
         return
     }
     
-
+const currentIndex = activeImageContext.currentIndex || 1;
     
     const style: CSSProperties = {
         width: 'auto',
@@ -53,7 +53,7 @@ const Slides = ({product}: {product: productParams | undefined}) => {
         alignItems: "start",
         padding: 0,
         margin: 0,
-        transform: languageContext?.activeLanguage != 'arabic' ? `translateX(${-activeImageContext?.imageWidth * activeImageContext.currentIndex}px)` : `translateX(${activeImageContext?.imageWidth * activeImageContext.currentIndex}px)`,
+        transform: languageContext?.activeLanguage != 'arabic' ? `translateX(${-activeImageContext?.imageWidth * currentIndex}px)` : `translateX(${activeImageContext?.imageWidth * currentIndex}px)`,
         transition: '0.5s ease'
     }
 
