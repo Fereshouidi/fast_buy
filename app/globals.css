@@ -53,6 +53,7 @@ a {
   --almost-black: rgb(23, 23, 23);
   --black-almost-transparnt: rgba(0, 0, 0, 0.148);
   --ashen: rgb(123, 123, 123);
+  --ashen-almost-white: rgb(220, 220, 220);
   --ashen-semi-transparent:  rgba(123, 123, 123, 0.463);
   --primary-color: #FF9B38;
   --primary-color-clicked: #ff9328;
@@ -118,6 +119,7 @@ a {
   --small-padding: 5px;
   --medium-padding: calc(var(--small-padding)*2);
   --large-padding: calc(var(--medium-padding)*2);
+  --extra-large-padding: calc(var(--large-padding)*2);
 
   /* gradients */
   --gradient-primary: linear-gradient(45deg, #FFD500, #FF6F00);
@@ -180,6 +182,7 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
 
 .computer {

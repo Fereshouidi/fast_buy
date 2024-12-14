@@ -21,6 +21,7 @@ import CategoriesSection from "@/app/components/categories/categories";
 import About from "@/app/components/about/about";
 import { getConpanyInformations } from "./crud";
 import LoadingIcon from "./svg/icons/loading/loading";
+import ProductDetails from "./pages/productDetails/[productId]/page";
 
 const App = () => {
   //const router = useRouter();
@@ -60,8 +61,6 @@ useEffect(() => {
     }
     fetchData();
 }, [])
-
-
 
   useEffect(() => {
     if (typeof window !== "undefined") {

@@ -1,11 +1,11 @@
-'use clent';
-import { createContext } from "react";
+'use client';
+
+import { CSSProperties } from "react";
 
 type productParams = {
     _id: string,
     name: nameParams,
     imagePrincipal: string,
-    images: string[],
     price: number,
     discount: discountParams,
     totalRating: number,
@@ -18,7 +18,6 @@ type nameParams = {
     arabic: string
 }
 
-
 type discountParams = {
     createdAt: Date,
     discountSticker: string,
@@ -29,8 +28,17 @@ type discountParams = {
     endOfDiscount: Date
 };
 
-type productSelect = {
-    product: productParams | undefined ,
-}
 
-export const  ProductSelectContext = createContext<productSelect | undefined>(undefined)
+const InformationSection = ({product}: {product: productParams | undefined}) => {
+
+    const style: CSSProperties = {
+        width: '50%',
+        display: 'flex',
+        justifyContent: "center"
+    }
+    
+    return (
+        <div style={style}>InformationSection</div>
+    )
+}
+export default InformationSection;

@@ -1,11 +1,9 @@
-'use clent';
-import { createContext } from "react";
+'use client';
 
 type productParams = {
     _id: string,
     name: nameParams,
     imagePrincipal: string,
-    images: string[],
     price: number,
     discount: discountParams,
     totalRating: number,
@@ -18,7 +16,6 @@ type nameParams = {
     arabic: string
 }
 
-
 type discountParams = {
     createdAt: Date,
     discountSticker: string,
@@ -29,8 +26,10 @@ type discountParams = {
     endOfDiscount: Date
 };
 
-type productSelect = {
-    product: productParams | undefined ,
-}
+const PageForPhone = ({product}: {product: productParams | undefined}) => {
 
-export const  ProductSelectContext = createContext<productSelect | undefined>(undefined)
+    return (
+        <div>page for phone</div>
+    )
+}
+export default PageForPhone;
