@@ -1,6 +1,6 @@
 'use client';
 
-import { ActiveImageContext } from "@/app/contexts/activeImage";
+import { ActiveImageContext } from "@/app/contexts/activeImageForComputer";
 import { CSSProperties, useContext } from "react";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 import { ProductSelectContext } from "@/app/contexts/productSelectForShowing";

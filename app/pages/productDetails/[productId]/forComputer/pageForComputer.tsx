@@ -1,7 +1,7 @@
 'use client';
 import { CSSProperties } from "react";
-import ImagesSection from "../component/imagesSection/imagesSection";
-import InformationSection from "../component/informationSection.tsx/informationSection";
+import ImagesSection from "./component/imagesSection/imagesSection";
+import InformationSection from "./component/informationSection.tsx/informationSection";
 
 type productParams = {
     _id: string,

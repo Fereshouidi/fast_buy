@@ -3,7 +3,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { CSSProperties, useContext } from "react";
-import { ActiveImageContext } from "@/app/contexts/activeImage";
+import { ActiveImageContext } from "@/app/contexts/activeImageForComputer";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { ProductSelectContext } from "@/app/contexts/productSelectForShowing";
 

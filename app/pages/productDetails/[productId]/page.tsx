@@ -15,7 +15,8 @@ import { getConpanyInformations, getProductById } from "@/app/crud";
 import LoadingIcon from "@/app/svg/icons/loading/loading";
 import PageForComputer from "./forComputer/pageForComputer";
 import PageForPhone from "./forPhone/pageForPhone";
-import { ActiveImageContext } from "@/app/contexts/activeImage";
+import { ActiveImageContext } from "@/app/contexts/activeImageForComputer";
+import { ActiveImageContext_ForPhone } from "@/app/contexts/activeImageForPhone";
 
 
 interface propsParams {
@@ -65,6 +66,7 @@ const ProductDetails = (props: propsParams) => {
     const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
     const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
     const [imageSliderWidth, setImageSliderWidth] = useState<number>(0);
+    const [imageSliderWidth_forPhone, setImageSliderWidth_forPhone] = useState<number>(0);
 
   const [screenWidth, setScreenWidth] = useState<number>(0); 
   const [theme, setTheme] = useState(() => {
@@ -89,6 +91,7 @@ const ProductDetails = (props: propsParams) => {
 
 useEffect(() => {
     setImageSliderWidth(screenWidth - (screenWidth * 0.96));
+    setImageSliderWidth_forPhone(screenWidth - (screenWidth * 0.93))
 }, [screenWidth])
 
   interface companyInformationsParams {
@@ -188,10 +191,13 @@ useEffect(() => {
                     <ProductSelectContext.Provider value={{product: product}}>
                         <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
                             <ActiveImageContext.Provider value={{activeImage: activeImage , setActiveImage: setActiveImage , activeImageIndex: activeImageIndex , setActiveImageIndex: setActiveImageIndex, currentIndex: currentSlideIndex , setCurrentIndex: setCurrentSlideIndex , imageWidth: imageSliderWidth , setImageWidth: setImageSliderWidth }}>
-                                {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
-                                {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-                                {screenWidth > 800 ? <PageForComputer product={product}/> : <PageForPhone product={product}/>}
-                                <About/>
+                                <ActiveImageContext_ForPhone.Provider value={{activeImage: activeImage , setActiveImage: setActiveImage , activeImageIndex: activeImageIndex , setActiveImageIndex: setActiveImageIndex, currentIndex: currentSlideIndex , setCurrentIndex: setCurrentSlideIndex , imageWidth: imageSliderWidth_forPhone , setImageWidth: setImageSliderWidth_forPhone }}>
+                                    {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
+                                    {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
+                                    {screenWidth > 800 ? <PageForComputer product={product}/> : <PageForPhone product={product}/>}
+                                    <About/>
+                                </ActiveImageContext_ForPhone.Provider>
+                                
                             </ActiveImageContext.Provider>
                         </SideBarContext.Provider>
                     </ProductSelectContext.Provider>

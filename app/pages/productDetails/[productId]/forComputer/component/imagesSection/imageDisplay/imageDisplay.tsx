@@ -1,7 +1,7 @@
 'use client';
 
 import { CSSProperties, useContext } from "react";
-import { ActiveImageContext } from "@/app/contexts/activeImage";
+import { ActiveImageContext } from "@/app/contexts/activeImageForComputer";
 import HeartIcon from "@/app/svg/icons/heart";
 import LeftArrow from "@/app/svg/icons/leftArowForImageDiplay";
 import RightArrow from "@/app/svg/icons/rightArowForImageDiplay";

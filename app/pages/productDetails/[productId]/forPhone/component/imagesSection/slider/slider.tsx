@@ -2,7 +2,8 @@
 
 import { CSSProperties, useContext } from "react";
 import Slides from "./slides/slides";
-import { ActiveImageContext } from "@/app/contexts/activeImage";
+import { ActiveImageContext_ForPhone } from "@/app/contexts/activeImageForPhone";
+
 type productParams = {
     _id: string,
     name: nameParams,
@@ -33,7 +34,7 @@ type discountParams = {
 
 const Slider = ({product}: {product: productParams | undefined}) => {
 
-    const activeImageContext = useContext(ActiveImageContext);
+    const activeImageContext = useContext(ActiveImageContext_ForPhone);
 
     
     const style: CSSProperties = {
@@ -44,7 +45,7 @@ const Slider = ({product}: {product: productParams | undefined}) => {
         display: 'flex',
         justifyContent: "start",
         alignItems: "start",
-        flexDirection: 'column'
+        flexDirection: 'column',
     }
     return (
         <div style={style}>

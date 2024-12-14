@@ -34,7 +34,8 @@ const InformationSection = ({product}: {product: productParams | undefined}) => 
     const style: CSSProperties = {
         width: '50%',
         display: 'flex',
-        justifyContent: "center"
+        justifyContent: "center",
+        backgroundColor: 'red'
     }
     
     return (

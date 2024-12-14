@@ -2,7 +2,7 @@
 
 import { CSSProperties, useContext } from "react";
 import Slide from "./slide/slide";
-import { ActiveImageContext } from "@/app/contexts/activeImage";
+import { ActiveImageContext } from "@/app/contexts/activeImageForComputer";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 
 type productParams = {
@@ -43,7 +43,7 @@ const Slides = ({product}: {product: productParams | undefined}) => {
         return
     }
     
-const currentIndex = activeImageContext.currentIndex || 1;
+const currentIndex = activeImageContext.currentIndex || 0;
     
     const style: CSSProperties = {
         width: 'auto',

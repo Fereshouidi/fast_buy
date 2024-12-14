@@ -6,7 +6,7 @@ import ImageDisplay from "./imageDisplay/imageDisplay";
 import RightArrow from "@/app/svg/icons/rightArrowForSlider";
 import LeftArrow from "@/app/svg/icons/leftArrowForSlider";
 
-import { ActiveImageContext } from "@/app/contexts/activeImage";
+import { ActiveImageContext } from "@/app/contexts/activeImageForComputer";
 
 type productParams = {
     _id: string,
