@@ -12,11 +12,14 @@
 
 .arrow *{
     font-size: 120%;
-    color: var(--black);
+    padding: 5px;
+    /* color: var(--black); */
     /* width: 100%;
     height: 100%; */
 }
 
 .arrowForImageDisplay {
     font-size: 150%;
+    color: white;
+    background-color: var(--ashen);
 }
