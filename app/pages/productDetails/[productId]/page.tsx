@@ -88,10 +88,10 @@ const ProductDetails = (props: propsParams) => {
     }
     getProduct()
 }, [])
-
+// screenWidth - (screenWidth * 0.96)
 useEffect(() => {
-    setImageSliderWidth(screenWidth - (screenWidth * 0.96));
-    setImageSliderWidth_forPhone(screenWidth - (screenWidth * 0.93))
+    setImageSliderWidth(70);
+    setImageSliderWidth_forPhone(50)
 }, [screenWidth])
 
   interface companyInformationsParams {
