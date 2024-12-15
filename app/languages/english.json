@@ -46,5 +46,6 @@
     "colorW": "color",
     "quantity": "quantity",
     "sizeW": "size",
-    "priceW": "price"
+    "priceW": "price",
+    "EvaluationW": "Evaluation"
 }

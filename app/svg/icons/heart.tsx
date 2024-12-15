@@ -25,7 +25,7 @@ const HeartIcon = () => {
 
     const styleIcon: CSSProperties = {
         fontSize: 'var(--double-size)',
-        color: 'var(--almost-white)'
+        color: 'white'
     }
 
     return (

@@ -25,6 +25,7 @@ const Price = ({product}: {product: productParams | undefined}) => {
         margin: 'var(--large-margin)',
     }
 
+
     return (
         <div style={style} id="price">
             <span style={stylePriceW}>{
