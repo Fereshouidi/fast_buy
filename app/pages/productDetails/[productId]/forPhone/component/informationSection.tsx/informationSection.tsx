@@ -17,10 +17,11 @@ const InformationSection = ({product}: {product: productParams | undefined}) => 
 
 
     const style: CSSProperties = {
-        width: '50%',
+        width: '100%',
         maxHeight: '100%',
         flexDirection: 'column',
-        margin: 'var(--extra-large-margin)'
+        padding: 'var(--extra-large-margin)',
+        boxSizing: 'border-box',
     }
     const styleInputDiv: CSSProperties = {
         //width: '100%',

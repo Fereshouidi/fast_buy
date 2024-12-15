@@ -10,6 +10,9 @@ const Categorie = ({product}: {product: productParams | undefined}) => {
 
     const languageSelectorContext = useContext(LanguageSelectorContext);
 
+    console.log(product);
+    
+
     const style: CSSProperties = {
         display: 'flex',
         alignItems: 'center',

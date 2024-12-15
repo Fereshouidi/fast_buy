@@ -17,8 +17,8 @@ const Color = ({product}: {product: productParams | undefined}) => {
         display: 'flex',
         alignItems: 'center',
         margin: 'var(--large-margin)',
-        fontSize: 'var(--big-size)',
-        fontWeight: '200'
+        fontSize: 'var(--primary-size)',
+        fontWeight: '500'
     }
     const styleColorDiv: CSSProperties = {
         width: '15px',

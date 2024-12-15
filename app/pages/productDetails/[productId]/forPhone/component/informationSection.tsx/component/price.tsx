@@ -13,7 +13,7 @@ const Price = ({product}: {product: productParams | undefined}) => {
         display: 'flex',
         alignItems: 'center',
         margin: 'var(--large-margin)',
-        fontSize: 'calc(var(--big-size)*1.5)',
+        fontSize: 'calc(var(--big-size)*1.1)',
         fontWeight: '700'
     }
     const stylePriceW: CSSProperties = {

@@ -15,16 +15,16 @@ const Quantity = ({product}: {product: productParams | undefined}) => {
         display: 'flex',
         alignItems: 'center',
         margin: 'var(--large-margin)',
-        fontSize: 'calc(var(--big-size)/1.2)',
+        fontSize: 'calc(var(--medium-size)/1.2)',
         fontWeight: '200'
     }
     const styleColorDiv: CSSProperties = {
-        width: 'var(--long-width)',
+        width: 'var(--double-width)',
         height: '30px',
         border: '1px solid var(--ashen)',
         backgroundColor: 'var(--almost-white)',
         color: 'var(--almost-black)',
-        margin: '0 var(--large-margin)',
+        margin: '0 var(--medium-margin)',
     }
     
     return (

@@ -1,5 +1,5 @@
 'use client';
-import englist from '@/app/languages/english.json';
+import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { CSSProperties, useContext } from 'react';
@@ -15,7 +15,7 @@ const Categorie = ({product}: {product: productParams | undefined}) => {
         display: 'flex',
         alignItems: 'center',
         margin: 'var(--large-margin)',
-        fontSize: 'calc(var(--big-size)/1.2)',
+        fontSize: 'calc(var(--medium-size)/1.2)',
         fontWeight: '200'
     }
     const styleCategorieName: CSSProperties = {
@@ -26,10 +26,10 @@ const Categorie = ({product}: {product: productParams | undefined}) => {
         <div style={style} id="categorie-div">
             <h4>{
                 languageSelectorContext?.activeLanguage == "english" ?
-                englist.categorieW + ' :'
+                english.categorieW + ' :'
                 : languageSelectorContext?.activeLanguage == "arabic" ?
                 arabic.categorieW + ' :'
-                : englist.categorieW + ' :'
+                : english.categorieW + ' :'
             }</h4>
             <span style={styleCategorieName}>{
                 languageSelectorContext?.activeLanguage == "english" ?

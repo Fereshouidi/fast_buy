@@ -5,35 +5,6 @@ import { productParams,  } from "@/app/contexts/productSelectForShowing";
 import { CSSProperties, useContext } from "react";
 
 
-//     _id: string,
-//     name: LanguageParams,
-//     description: LanguageParams,
-//     color: string,
-//     size: string,
-//     imagePrincipal: string,
-//     price: number,
-//     discount: discountParams,
-//     totalRating: number,
-//     currencyType: string,
-//     categorie: string,
-//     quantity: number,
-// }
-
-// type LanguageParams = {
-//     english: string,
-//     arabic: string
-// }
-
-// type discountParams = {
-//     createdAt: Date,
-//     discountSticker: string,
-//     newPrice: number,
-//     oldPrice: number,
-//     percentage: number,
-//     startOfDiscount: Date, 
-//     endOfDiscount: Date
-// };
-
 const Size = ({product}: {product: productParams | undefined}) => {
 
     const languageSelectorContext = useContext(LanguageSelectorContext);
@@ -44,11 +15,11 @@ const Size = ({product}: {product: productParams | undefined}) => {
         display: 'flex',
         alignItems: 'center',
         margin: 'var(--large-margin)',
-        fontSize: 'var(--big-size)',
+        fontSize: 'var(--primary-size)',
         fontWeight: '200'
     }
     const styleSizeSpan: CSSProperties = {
-        margin: '0 var(--medium-margin)',
+        margin: '0 var(--small-margin)',
         fontSize: 'var(--primary-size)',
     }
 

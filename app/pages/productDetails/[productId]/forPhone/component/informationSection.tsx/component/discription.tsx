@@ -29,9 +29,9 @@ const Description = ({product}: {product: productParams | undefined}) => {
     const styleName: CSSProperties = {
         width: '100%',
         color: "var(--black)",
-        fontSize: 'var(--primary-size)',
-        fontWeight: '50',
-        opacity: '0.8'
+        fontSize: 'var(--small-size)',
+        fontWeight: '100',
+        opacity: '0.9'
     }
     
     return (
