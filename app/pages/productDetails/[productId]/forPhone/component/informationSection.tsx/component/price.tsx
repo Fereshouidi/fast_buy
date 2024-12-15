@@ -14,10 +14,10 @@ const Price = ({product}: {product: productParams | undefined}) => {
         alignItems: 'center',
         margin: 'var(--large-margin)',
         fontSize: 'calc(var(--big-size)*1.1)',
-        fontWeight: '700'
+        fontWeight: '600'
     }
     const stylePriceW: CSSProperties = {
-        fontWeight: '200'
+        fontWeight: '400'
     }
     const stylePrice: CSSProperties = {
         margin: 'var(--large-margin)',

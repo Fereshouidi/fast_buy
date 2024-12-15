@@ -16,7 +16,7 @@ const Size = ({product}: {product: productParams | undefined}) => {
         alignItems: 'center',
         margin: 'var(--large-margin)',
         fontSize: 'var(--primary-size)',
-        fontWeight: '200'
+        fontWeight: '400'
     }
     const styleSizeSpan: CSSProperties = {
         margin: '0 var(--small-margin)',

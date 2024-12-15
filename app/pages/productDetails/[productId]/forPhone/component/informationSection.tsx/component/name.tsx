@@ -33,7 +33,9 @@ const Name = ({product}: {product: productParams | undefined}) => {
     const styleName: CSSProperties = {
         width: '100%',
         color: "var(--black)",
-        fontSize: 'var(--big-size)'
+        fontSize: 'var(--big-size)',
+        fontWeight: '600',
+
     }
 
     return (

@@ -30,7 +30,7 @@ const Description = ({product}: {product: productParams | undefined}) => {
         width: '100%',
         color: "var(--black)",
         fontSize: 'var(--small-size)',
-        fontWeight: '100',
+        fontWeight: '300',
         opacity: '0.9'
     }
     
