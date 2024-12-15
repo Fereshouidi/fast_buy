@@ -9,12 +9,12 @@ import arabic from '@/app/languages/arabic.json';
 
 const TotalRating = ({product}: {product: productParams | undefined}) => {
 
+    const companyInformation = useContext(CompanyInformationContext);
+    const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
+
     if(!product){
         return;
     }
-
-    const companyInformation = useContext(CompanyInformationContext);
-    const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage
 
     const style: CSSProperties = {
         display: 'flex',
