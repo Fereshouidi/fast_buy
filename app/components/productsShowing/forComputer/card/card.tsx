@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 
 type productParams = {
     _id: string,
-    name: nameParams,
+    name: LanguageParams,
     imagePrincipal: string,
     price: number,
     discount: discountParams,

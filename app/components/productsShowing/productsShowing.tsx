@@ -32,7 +32,7 @@ const ProductsShowing = () => {
 
     type productParams = {
         _id: string,
-        name: nameParams,
+        name: LanguageParams,
         imagePrincipal: string,
         price: number,
         discount: discountParams,
@@ -41,7 +41,7 @@ const ProductsShowing = () => {
     
     }
 
-    type nameParams = {
+    type LanguageParams = {
         english: string,
         arabic: string
     }
