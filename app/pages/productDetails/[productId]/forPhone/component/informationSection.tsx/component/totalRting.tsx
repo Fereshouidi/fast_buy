@@ -21,7 +21,7 @@ const TotalRating = ({product}: {product: productParams | undefined}) => {
         alignItems: 'center',
         margin: 'var(--large-margin)',
         fontSize: 'calc(var(--big-size)/1.2)',
-        fontWeight: '200',
+        fontWeight: '400',
         color: 'var(--black)'
 
     }
