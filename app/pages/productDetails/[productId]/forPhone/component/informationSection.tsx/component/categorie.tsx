@@ -16,7 +16,8 @@ const Categorie = ({product}: {product: productParams | undefined}) => {
         alignItems: 'center',
         margin: 'var(--large-margin)',
         fontSize: 'calc(var(--medium-size)/1.2)',
-        fontWeight: '400'
+        fontWeight: '400',
+        color: 'var(--black)'
     }
     const styleCategorieName: CSSProperties = {
         margin: 'var(--medium-margin)',

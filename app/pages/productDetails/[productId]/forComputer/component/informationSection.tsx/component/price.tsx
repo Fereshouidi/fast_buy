@@ -14,7 +14,9 @@ const Price = ({product}: {product: productParams | undefined}) => {
         alignItems: 'center',
         margin: 'var(--large-margin)',
         fontSize: 'calc(var(--big-size)*1.5)',
-        fontWeight: '700'
+        fontWeight: '700',
+        color: 'var(--black)'
+
     }
     const stylePriceW: CSSProperties = {
         fontWeight: '200'

@@ -45,7 +45,9 @@ const Size = ({product}: {product: productParams | undefined}) => {
         alignItems: 'center',
         margin: 'var(--large-margin)',
         fontSize: 'var(--big-size)',
-        fontWeight: '200'
+        fontWeight: '200',
+        color: 'var(--black)'
+
     }
     const styleSizeSpan: CSSProperties = {
         margin: '0 var(--medium-margin)',
