@@ -1,4 +1,4 @@
-const url = 'https://fast-buy-back-end-ctzb.vercel.app/api';
+const url = 'http://localhost:3002/api';
 import axios from "axios";
 
 
@@ -124,9 +124,7 @@ export const getProductById = async (id) => {
         return data;
 
     } catch (err) {
-
         throw err;
-
     }
 };
 

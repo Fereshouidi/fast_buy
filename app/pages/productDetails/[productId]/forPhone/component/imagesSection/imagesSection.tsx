@@ -5,35 +5,9 @@ import Slider from "./slider/slider";
 import ImageDisplay from "./imageDisplay/imageDisplay";
 import RightArrow from "@/app/svg/icons/rightArrowForSlider";
 import LeftArrow from "@/app/svg/icons/leftArrowForSlider";
-
 import { ActiveImageContext_ForPhone } from "@/app/contexts/activeImageForPhone";
+import { productParams } from "@/app/contexts/productSelectForShowing";
 
-type productParams = {
-    _id: string,
-    name: nameParams,
-    imagePrincipal: string,
-    images: string[],
-    price: number,
-    discount: discountParams,
-    totalRating: number,
-    currencyType: string
-
-}
-
-type nameParams = {
-    english: string,
-    arabic: string
-}
-
-type discountParams = {
-    createdAt: Date,
-    discountSticker: string,
-    newPrice: number,
-    oldPrice: number,
-    percentage: number,
-    startOfDiscount: Date, 
-    endOfDiscount: Date
-};
 
 
 const ImagesSection = ({product}: {product: productParams | undefined}) => {
@@ -64,11 +38,17 @@ const ImagesSection = ({product}: {product: productParams | undefined}) => {
     return (
         <div style={style}>
             <ImageDisplay product={product}/>
-            <div style={style_divSlider}>
-                <LeftArrow/>
-                <Slider product={product}/>
-                <RightArrow/>
-            </div>
+            {
+                product?.images && product.images.length > 0 ? 
+            
+                <div style={style_divSlider}>
+                    <LeftArrow/>
+                    <Slider product={product}/>
+                    <RightArrow/>
+                </div>
+
+                : null
+            }
         </div>
     )
 }

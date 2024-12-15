@@ -1,23 +1,26 @@
 'use clent';
 import { createContext } from "react";
 
-type productParams = {
+export type productParams = {
     _id: string,
-    name: nameParams,
+    name: LanguageParams,
+    description: LanguageParams,
+    color: string,
+    size: string,
     imagePrincipal: string,
     images: string[],
     price: number,
     discount: discountParams,
     totalRating: number,
-    currencyType: string
-
+    currencyType: string,
+    categorie: CategorieParams,
+    quantity: number,
 }
 
-type nameParams = {
+type LanguageParams = {
     english: string,
     arabic: string
 }
-
 
 type discountParams = {
     createdAt: Date,
@@ -27,6 +30,10 @@ type discountParams = {
     percentage: number,
     startOfDiscount: Date, 
     endOfDiscount: Date
+};
+
+type CategorieParams = {
+    name: LanguageParams,
 };
 
 type productSelect = {

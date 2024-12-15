@@ -17,6 +17,8 @@ import PageForComputer from "./forComputer/pageForComputer";
 import PageForPhone from "./forPhone/pageForPhone";
 import { ActiveImageContext } from "@/app/contexts/activeImageForComputer";
 import { ActiveImageContext_ForPhone } from "@/app/contexts/activeImageForPhone";
+import { productParams } from "@/app/contexts/productSelectForShowing";
+import { companyInformationsParams } from "@/app/contexts/companyInformation";
 
 
 interface propsParams {
@@ -27,33 +29,6 @@ interface Params {
 }
 
 const ProductDetails = (props: propsParams) => {
-
-    type productParams = {
-        _id: string,
-        name: nameParams,
-        imagePrincipal: string,
-        images: string[],
-        price: number,
-        discount: discountParams,
-        totalRating: number,
-        currencyType: string
-    
-    }
-
-    type nameParams = {
-        english: string,
-        arabic: string
-    }
-
-    type discountParams = {
-        createdAt: Date,
-        discountSticker: string,
-        newPrice: number,
-        oldPrice: number,
-        percentage: number,
-        startOfDiscount: Date, 
-        endOfDiscount: Date
-    };
 
     if(typeof window == 'undefined'){
         throw `error typeof window == 'undefined'`
@@ -93,17 +68,6 @@ useEffect(() => {
     setImageSliderWidth(70);
     setImageSliderWidth_forPhone(50)
 }, [screenWidth])
-
-  interface companyInformationsParams {
-    name: nameParams,
-    logo: string,
-    primaryColor: string,
-    biggestDiscount: number,
-    offersDetails : string,
-    entities: string[],
-    originalProductsPercentage: number,
-    servises: string[]
-}
 
 const [conpanyInformations, setConpanyInformations] = useState<companyInformationsParams | undefined>();
 

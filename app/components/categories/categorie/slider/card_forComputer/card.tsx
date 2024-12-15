@@ -17,7 +17,7 @@ type productParams = {
 
 }
 
-type nameParams = {
+type LanguageParams = {
     english: string,
     arabic: string
 }

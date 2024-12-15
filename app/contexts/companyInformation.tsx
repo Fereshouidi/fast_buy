@@ -1,7 +1,7 @@
 
 import { createContext } from "react";
 
-interface companyInformationsParams {
+export interface companyInformationsParams {
     name: nameParams,
     logo: string,
     primaryColor: string,

@@ -1,38 +1,13 @@
 'use client';
 
-import { CSSProperties, useContext } from "react";
+import { CSSProperties, useContext, useEffect } from "react";
 import { ActiveImageContext } from "@/app/contexts/activeImageForComputer";
 import HeartIcon from "@/app/svg/icons/heart";
 import LeftArrow from "@/app/svg/icons/leftArowForImageDiplay";
 import RightArrow from "@/app/svg/icons/rightArowForImageDiplay";
+import noAvailableImage from '@/app/images/OIP.jpg'
+import { productParams } from "@/app/contexts/productSelectForShowing";
 
-
-type productParams = {
-    _id: string,
-    name: nameParams,
-    imagePrincipal: string,
-    images: string[],
-    price: number,
-    discount: discountParams,
-    totalRating: number,
-    currencyType: string
-
-}
-
-type nameParams = {
-    english: string,
-    arabic: string
-}
-
-type discountParams = {
-    createdAt: Date,
-    discountSticker: string,
-    newPrice: number,
-    oldPrice: number,
-    percentage: number,
-    startOfDiscount: Date, 
-    endOfDiscount: Date
-};
 
 const ImageDisplay = ({product}: {product: productParams | undefined}) => {
 
@@ -63,11 +38,11 @@ const ImageDisplay = ({product}: {product: productParams | undefined}) => {
 
     return (
         <div style={style}>
-            <HeartIcon/>
+            {product?.name && product.images.length > 0 ? <HeartIcon/> : null}
             <LeftArrow/>
             <img 
                 style={styleImg}
-                src={product?.images[activeImageIndex]}/>
+                src={ product?.images && product.images.length > 0 ? product?.images[activeImageIndex] : noAvailableImage.src }/>
             <RightArrow/>
         </div>
     )
