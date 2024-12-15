@@ -11,6 +11,7 @@ import Quantity from "./component/quantity";
 import Size from "./component/size";
 import { productParams } from "@/app/contexts/productSelectForShowing";
 import './style.css';
+import TotalRating from "./component/totalRting";
 
 
 const InformationSection = ({product}: {product: productParams | undefined}) => {
@@ -40,6 +41,7 @@ const InformationSection = ({product}: {product: productParams | undefined}) => 
                 <Color product={product}/>
                 <Size product={product}/>
                 <Quantity product={product}/>
+                <TotalRating product={product}/>
             </div>
             <Categorie product={product}/>
             <Price product={product}/>
