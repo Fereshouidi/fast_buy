@@ -5,7 +5,7 @@ import { CSSProperties, useContext, useState } from "react";
 import tinycolor from "tinycolor2";
 
 type productParams = {
-  name: nameParams,
+  name: LanguageParams,
   imagePrincipal: string,
   price: number,
   discount: discountParams,
@@ -14,7 +14,7 @@ type productParams = {
 
 }
 
-type nameParams = {
+type LanguageParams = {
   english: string,
   arabic: string
 }

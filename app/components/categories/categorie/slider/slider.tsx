@@ -6,7 +6,7 @@ import { CSSProperties } from "react";
 
 
 type productParams = {
-    name: nameParams,
+    name: LanguageParams,
     imagePrincipal: string,
     price: number,
     discount: discountParams,

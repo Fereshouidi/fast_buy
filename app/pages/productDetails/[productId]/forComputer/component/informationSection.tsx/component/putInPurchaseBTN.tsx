@@ -11,6 +11,8 @@ const PutInPurchaseBTN = ({product}: {product: productParams | undefined}) => {
 
     const languageSelectorContext = useContext(LanguageSelectorContext);
 
+    console.log(product);
+    
     const style: CSSProperties = {
         width: 'var(--long-width)',
         height: 'calc(var(--long-width) /4)',

@@ -11,7 +11,6 @@ const Categorie = ({product}: {product: productParams | undefined}) => {
     const languageSelectorContext = useContext(LanguageSelectorContext);
 
     const style: CSSProperties = {
-        //width: '100%',
         display: 'flex',
         alignItems: 'center',
         margin: 'var(--large-margin)',

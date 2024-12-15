@@ -8,7 +8,7 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
 type productParams = {
-    name: nameParams,
+    name: LanguageParams,
     imagePrincipal: string,
     price: number,
     discount: discountParams,

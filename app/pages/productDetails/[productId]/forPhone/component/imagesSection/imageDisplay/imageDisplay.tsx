@@ -1,6 +1,6 @@
 'use client';
 
-import { CSSProperties, useContext, useEffect } from "react";
+import { CSSProperties, useContext } from "react";
 import { ActiveImageContext } from "@/app/contexts/activeImageForComputer";
 import HeartIcon from "@/app/svg/icons/heart";
 import LeftArrow from "@/app/svg/icons/leftArowForImageDiplay";

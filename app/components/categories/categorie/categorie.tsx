@@ -8,7 +8,7 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 
 type categorieParams = {
     _id: string;
-    name: nameParams;
+    name: LanguageParams;
     parentCategorie: string;
     childrenCategories: categorieParams[];
     childOpen: boolean;
@@ -16,7 +16,7 @@ type categorieParams = {
 }
 
 type productParams = {
-    name: nameParams;
+    name: LanguageParams;
     imagePrincipal: string;
     price: number;
     discount: discountParams;
