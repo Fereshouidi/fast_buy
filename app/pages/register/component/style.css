@@ -1,5 +1,5 @@
 .form {
-    width: calc(var(--long-width) * 1.5);
+    width: calc(var(--long-width) * 1.7);
     padding: var(--large-padding) var(--medium-padding);
     background-color: var(--white);
     border-radius: 20px;
