@@ -24,7 +24,7 @@ const Register = () => {
 
 
     if(typeof window == 'undefined'){
-        throw `error typeof window == 'undefined'`
+        //throw `error typeof window == 'undefined'`
     }
 
 
