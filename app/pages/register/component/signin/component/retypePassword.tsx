@@ -24,7 +24,7 @@ const RetypePasswordInput = ({passwordType, setPasswordType}: Params) => {
     
 
     const styleInput: CSSProperties = {
-        border: '1px solid' + companyInformationContext?.primaryColor,
+        border: '0.5px solid' + companyInformationContext?.primaryColor,
     }
     const styleIconsDiv: CSSProperties = {
         position: 'absolute',
