@@ -13,7 +13,7 @@ const UserNameInput = () => {
     const companyInformationContext = useContext(CompanyInformationContext)
 
     const styleInput: CSSProperties = {
-        border: '0.5px solid' + companyInformationContext?.primaryColor,
+        border: '0.7px solid' + companyInformationContext?.primaryColor,
     }
     const styleIconDiv: CSSProperties = {
         position: 'absolute',
