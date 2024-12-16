@@ -12,7 +12,7 @@ type switchFormsParams = {
     signinExist: boolean,
     setSignInExist: Function
 }
-const SwitchToSignin = ({logInExist, setLogInExist, signinExist, setSignInExist}: switchFormsParams) => {
+const SwitchToSignin = ({ setLogInExist, setSignInExist}: switchFormsParams) => {
 
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
     const companyInformationContext = useContext(CompanyInformationContext)

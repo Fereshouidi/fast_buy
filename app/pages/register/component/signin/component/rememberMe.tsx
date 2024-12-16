@@ -2,7 +2,7 @@
 import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
 import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
-import { CSSProperties, useContext, useRef, useState } from 'react';
+import { CSSProperties, useContext } from 'react';
 import { AccountSavedContext } from '@/app/contexts/saveAccountContext';
 
 
@@ -19,7 +19,6 @@ const RememberMe = () => {
 
     const style: CSSProperties = {
         width: '100%',
-        // padding: 'var(--medium-padding)',
         display: 'flex',
         alignItems: 'center'
     }

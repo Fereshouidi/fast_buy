@@ -1,5 +1,5 @@
 'use client';
-import { CSSProperties, useContext, useEffect, useState } from "react";
+import { CSSProperties, useContext } from "react";
 import Home from "./home/home";
 import Order from "./orders/orders";
 import About from "./about/about";
