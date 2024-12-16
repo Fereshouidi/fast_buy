@@ -8,6 +8,7 @@ import { ThemeContext } from "@/app/contexts/ThemeContext";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 //import { ProductSelectForShowing } from "./contexts/productSelectForShowing";
 import { CompanyInformationContext } from "./contexts/companyInformation";
+import { companyInformationsParams } from "./contexts/companyInformation";
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import SideBarForComputer from "@/app/components/sideBar/sideBarForComputers/sidebar";
 import SideBarForPhone from '@/app/components/sideBar/sideBarForPhones/SideBar';
@@ -23,7 +24,6 @@ import { getConpanyInformations } from "./crud";
 import LoadingIcon from "./svg/icons/loading/loading";
 
 const App = () => {
-  //const router = useRouter();
 
   const [screenWidth, setScreenWidth] = useState<number>(0); 
   const [theme, setTheme] = useState(() => {
@@ -35,20 +35,7 @@ const App = () => {
   const [activeLanguage, setActiveLanguage] = useState("english");
   const [sideBarExist, setSideBarExist] = useState(false);
 
-  interface companyInformationsParams {
-    name: nameParams,
-    logo: string,
-    primaryColor: string,
-    biggestDiscount: number,
-    offersDetails : string,
-    entities: string[],
-    originalProductsPercentage: number,
-    servises: string[]
-}
-  type nameParams = {
-    arabic: string,
-    english: string
-  }
+
 const [conpanyInformations, setConpanyInformations] = useState<companyInformationsParams | undefined>();
 
 useEffect(() => {
@@ -132,7 +119,7 @@ useEffect(() => {
 
 
   return (
-    <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.primaryColor}} >
+    <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage}} >
         <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
           <ThemeContext.Provider value={{ theme, setTheme }}>
             <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
