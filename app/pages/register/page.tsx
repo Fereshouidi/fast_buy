@@ -46,9 +46,7 @@ useEffect(() => {
     fetchData();
 }, [])
 
-    if(typeof window == 'undefined'){
-        throw `error typeof window == 'undefined'`
-    }
+    
 
     useEffect(() => {
     if (typeof window !== "undefined") {
