@@ -8,8 +8,8 @@ import { CSSProperties, useContext } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 
 type Params = {
-    passwordType: string,
-    setPasswordType: Function
+    passwordType: 'text' | 'password'; 
+    setPasswordType: (value: 'text' | 'password') => void; 
 }
 
 const RetypePasswordInput = ({passwordType, setPasswordType}: Params) => {
@@ -18,15 +18,9 @@ const RetypePasswordInput = ({passwordType, setPasswordType}: Params) => {
     const companyInformationContext = useContext(CompanyInformationContext)
 
 
-    const handlePasswordTipe = () => {
-        setPasswordType(() => {
-            if(passwordType == 'text'){
-                return 'password';
-            }else if (passwordType == 'password'){
-                return 'text'
-            }
-        });
-    }
+    const handlePasswordType = () => {
+        setPasswordType(passwordType === 'text' ? 'password' : 'text');
+    };
     
 
     const styleInput: CSSProperties = {
@@ -68,8 +62,8 @@ const RetypePasswordInput = ({passwordType, setPasswordType}: Params) => {
 
             <div className="icons-div" style={styleIconsDiv}>
                 {passwordType == 'text' ? 
-                    <FontAwesomeIcon icon={faEye} className=" icon fa-eye" style={styleFaEye} onClick={handlePasswordTipe}/> 
-                    : <FontAwesomeIcon icon={faEyeSlash} className="icon fa-eye" style={styleFaEye} onClick={handlePasswordTipe}/>
+                    <FontAwesomeIcon icon={faEye} className=" icon fa-eye" style={styleFaEye} onClick={handlePasswordType}/> 
+                    : <FontAwesomeIcon icon={faEyeSlash} className="icon fa-eye" style={styleFaEye} onClick={handlePasswordType}/>
                 }
 
                 <FontAwesomeIcon icon={faLock} 

@@ -8,9 +8,9 @@ import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 
 type switchFormsParams = {
     logInExist: boolean,
-    setLogInExist: Function,
+    setLogInExist: (value: boolean) => void,
     signinExist: boolean,
-    setSignInExist: Function
+    setSignInExist: (value: boolean) => void
 }
 const SwitchToSignin = ({ setLogInExist, setSignInExist}: switchFormsParams) => {
 

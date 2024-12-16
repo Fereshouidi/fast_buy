@@ -12,15 +12,15 @@ import '@/app/pages/register/component/style.css';
 
 type switchFormsParams = {
     logInExist: boolean,
-    setLogInExist: Function,
+    setLogInExist: (value: boolean) => void,
     signinExist: boolean,
-    setSignInExist: Function
+    setSignInExist: (value: boolean) => void
 }
 const LoginForm = ({logInExist, setLogInExist, signinExist, setSignInExist}: switchFormsParams) => {
 
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
 
-    const [passwordType, setPasswordType] = useState<string>('text')
+    const [passwordType, setPasswordType] = useState<'text' | 'password'>('text')
     
 
     // const style: CSSProperties = {
