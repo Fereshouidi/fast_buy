@@ -18,7 +18,6 @@ import { getConpanyInformations } from "@/app/crud";
 
 const Register = () => {
 
-    if(typeof window !== 'undefined'){
 
     const [logInExist, setLogInExist] = useState<boolean>(true);
     const [signinExist, setSignInExist] = useState<boolean>(false);
@@ -41,6 +40,9 @@ const Register = () => {
 
 
 const [conpanyInformations, setConpanyInformations] = useState<companyInformationsParams | undefined>();
+
+
+if(typeof window !== 'undefined'){
 
 useEffect(() => {
     const fetchData = async() => {
