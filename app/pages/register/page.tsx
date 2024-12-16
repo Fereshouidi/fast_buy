@@ -28,6 +28,7 @@ const Register = () => {
     }
 
 
+
     const [screenWidth, setScreenWidth] = useState<number>(0); 
     const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
