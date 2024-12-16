@@ -162,6 +162,11 @@ a {
   user-select: none;
   user-select: none;
 }
+
+.invisible {
+  display: none;
+}
+
 @media (max-width: 800px) {
   
   h2 {
@@ -182,7 +187,6 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
 }
 
 .computer {

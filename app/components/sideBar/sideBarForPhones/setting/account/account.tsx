@@ -6,6 +6,7 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import AccountIcon from "@/app/svg/icons/account";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
+import { useRouter } from "next/navigation";
 
 const Account = () => {
 
@@ -16,6 +17,9 @@ const Account = () => {
     const companyInformation = useContext(CompanyInformationContext);
     
     const sideBarContext = useContext(SideBarContext);
+
+    const router = useRouter();
+
     if (!sideBarContext) {
         throw new Error("SideBarContext must be used within a SideBarContext.Provider");
     }
@@ -39,7 +43,8 @@ const Account = () => {
     }, [languageSelectorContext])
 
     const handleClick = () => {
-        setSideBarExist(false)
+        setSideBarExist(false);
+        router.push('/pages/register');
     }
 
     const style: CSSProperties = {

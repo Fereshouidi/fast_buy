@@ -47,5 +47,15 @@
     "quantity": "Quantity",
     "sizeW": "Size",
     "priceW": "Price",
-    "EvaluationW": "Evaluation"
+    "EvaluationW": "Evaluation",
+    "loginW": "LogIn",
+    "signinW": "Sing In",
+    "rememberMe": "Remember Me",
+    "userNameW": "User name",
+    "passwordW": "Password",
+    "dontHaveAccountW": "Don't have accout ?",
+    "haveAccountAlready": "Have account already ?",
+    "emailW": "email",
+    "PhoneNumberW": "Phone Number"
+
 }

@@ -46,6 +46,15 @@
     "quantity": "الكمية",
     "sizeW": "الحجم",
     "priceW": "الثمن",
-    "EvaluationW": "التقييم"
+    "EvaluationW": "التقييم",
+    "loginW": "تسجيل الدخول",
+    "signinW": "انشاء حساب",
+    "rememberMe": "حفظ الحساب",
+    "userNameW": "اسم المستخدم",
+    "passwordW": "كلمة السر",
+    "dontHaveAccountW": "ليس لديك حساب ؟",
+    "haveAccountAlready": "لديك حساب بالفعل ؟",
+    "emailW": "البريد الالكتروني",
+    "PhoneNumberW": "رقم الهاتف"
 
 }

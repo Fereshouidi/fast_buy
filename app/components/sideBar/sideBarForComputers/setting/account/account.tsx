@@ -6,6 +6,7 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import AccountIcon from "@/app/svg/icons/account";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
+import { useRouter } from "next/navigation";
 
 const Account = () => {
 
@@ -14,6 +15,8 @@ const Account = () => {
     const [isHover, setIsHover] = useState<boolean>(false)
 
     const companyInformation = useContext(CompanyInformationContext);
+
+    const router = useRouter();
     
     const sideBarContext = useContext(SideBarContext);
     if (!sideBarContext) {
@@ -39,8 +42,10 @@ const Account = () => {
     }, [languageSelectorContext])
 
     const handleClick = () => {
-        setSideBarExist(false)
+        setSideBarExist(false);
+        router.push('/pages/register');
     }
+
 
     const style: CSSProperties = {
         display: sideBarExist? 'flex': 'none',

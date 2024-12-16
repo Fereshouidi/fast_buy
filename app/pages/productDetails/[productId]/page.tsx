@@ -165,7 +165,6 @@ useEffect(() => {
                             </ActiveImageContext.Provider>
                         </SideBarContext.Provider>
                     </ProductSelectContext.Provider>
-                    
                 </ThemeContext.Provider>
             </LanguageSelectorContext.Provider>
         </CompanyInformationContext.Provider>

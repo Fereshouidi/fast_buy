@@ -9,7 +9,8 @@ export interface companyInformationsParams {
     offersDetails : string,
     entities: string[],
     originalProductsPercentage: number,
-    servises: string[]
+    servises: string[],
+    backgroundOfRegisterPage: string
 }
 
 type nameParams = {

@@ -8,20 +8,16 @@ import Contact from "./contact/contact";
 import Favorite from "./favorite/favorite";
 import Setting from "./setting/setting";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-import english from '@/app/languages/english.json';
-import arabic from '@/app/languages/arabic.json';
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 
 
 const SideBar = () => {
 
-    const [activeLanguage, setActiveLanguage] = useState(english);
-
-    console.log(activeLanguage);
     
     const context = useContext(LanguageSelectorContext);
     const sideBarExistContext = useContext(SideBarContext);
     
+
 
     if (!context || !context.activeLanguage) {
         throw new Error("LanguageSelector must be used within a LanguageSelectorContext.Provider");
@@ -29,14 +25,6 @@ const SideBar = () => {
     if (!sideBarExistContext || !sideBarExistContext) {
         throw new Error("SideBarContext error");
     }
-
-    useEffect(() => {
-        if(context.activeLanguage == "english"){
-            setActiveLanguage(english);
-        }else if(context.activeLanguage == "arabic"){
-            setActiveLanguage(arabic);
-        }
-    }, [context.activeLanguage])
 
     const backgroundStyle: CSSProperties = {
         direction: context.activeLanguage == 'arabic'? 'rtl': 'ltr',
