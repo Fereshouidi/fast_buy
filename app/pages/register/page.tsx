@@ -18,14 +18,14 @@ import { getConpanyInformations } from "@/app/crud";
 
 const Register = () => {
 
+    if(typeof window !== 'undefined'){
+
     const [logInExist, setLogInExist] = useState<boolean>(true);
     const [signinExist, setSignInExist] = useState<boolean>(false);
     const [accountSaved, setAccountSaved] = useState<boolean>(false);
 
 
-    if(typeof window !== 'undefined'){
-        throw `error typeof window == 'undefined'`
-    }
+    
 
 
 
@@ -148,5 +148,7 @@ useEffect(() => {
             </LanguageSelectorContext.Provider>
         </CompanyInformationContext.Provider>
     )
+    }
+
 }
 export default Register;

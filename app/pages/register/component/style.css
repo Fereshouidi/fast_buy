@@ -17,7 +17,7 @@
 
 .form .input:not(.remember-me){
     width: 90%;
-    height: calc(var(--primary-height)/1.2);
+    height: var(--primary-height);
     border-radius: 50px;
     display: flex;
     align-items: center;
