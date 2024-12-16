@@ -23,7 +23,7 @@ const Register = () => {
     const [accountSaved, setAccountSaved] = useState<boolean>(false);
 
 
-    if(typeof window == 'undefined'){
+    if(typeof window !== 'undefined'){
         throw `error typeof window == 'undefined'`
     }
 
