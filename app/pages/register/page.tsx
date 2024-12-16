@@ -23,12 +23,6 @@ const Register = () => {
     const [accountSaved, setAccountSaved] = useState<boolean>(false);
 
 
-    if(typeof window == 'undefined'){
-        return;
-    }
-
-
-
     const [screenWidth, setScreenWidth] = useState<number>(0); 
     const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -51,6 +45,10 @@ useEffect(() => {
     }
     fetchData();
 }, [])
+
+    if(typeof window == 'undefined'){
+        throw `error typeof window == 'undefined'`
+    }
 
     useEffect(() => {
     if (typeof window !== "undefined") {
