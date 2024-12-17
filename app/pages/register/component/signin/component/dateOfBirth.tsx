@@ -6,19 +6,25 @@ import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext'
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { ChangeEvent, CSSProperties, useContext } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
-import { formDataParams, handleformDataParams } from '@/app/contexts/customerData';
+import { formDataParams } from '@/app/contexts/customerData';
 
-const DateOfBearthInput = ({setFormData}: handleformDataParams) => {
+type Params = {
+    formData: formDataParams;
+    setFormData: (data: formDataParams | ((prev: formDataParams) => formDataParams)) => void;
+}
+const DateOfBearthInput = ({setFormData}: Params) => {
     
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
     const companyInformationContext = useContext(CompanyInformationContext)
 
     const handleDateOfBirth = (event: ChangeEvent<HTMLInputElement>) => {
+        const dateValue = event.target.value ? new Date(event.target.value) : undefined;
         setFormData((prev: formDataParams) => ({
-            ...prev, 
-            dateOfBirth: event.target.value
+            ...prev,
+            dateOfBirth: dateValue,
         }));
-    }
+    };
+    
     
     const styleInput: CSSProperties = {
         border: '0.7px solid' + companyInformationContext?.primaryColor,

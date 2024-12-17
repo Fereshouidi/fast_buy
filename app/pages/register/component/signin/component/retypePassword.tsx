@@ -11,7 +11,7 @@ import { formDataParams } from '@/app/contexts/customerData';
 type Params = {
     passwordType: 'text' | 'password'; 
     setPasswordType: (value: 'text' | 'password') => void; 
-    setFormData:  (data: any) => void;
+    setFormData: (data: formDataParams | ((prev: formDataParams) => formDataParams)) => void;
 }
 
 const RetypePasswordInput = ({setFormData, passwordType, setPasswordType}: Params) => {
@@ -25,9 +25,9 @@ const RetypePasswordInput = ({setFormData, passwordType, setPasswordType}: Param
     };
     
     const handlePasswordInput = (event: ChangeEvent<HTMLInputElement>) => {
-        setFormData((prev: formDataParams) => ({
+        setFormData((prev) => ({
             ...prev, 
-            RetypePasswordInput: event.target.value
+            retypePassword: event.target.value
         }));
     }
 

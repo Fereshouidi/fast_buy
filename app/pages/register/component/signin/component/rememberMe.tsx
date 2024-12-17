@@ -4,17 +4,24 @@ import arabic from '@/app/languages/arabic.json';
 import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
 import { CSSProperties, useContext } from 'react';
 import { AccountSavedContext } from '@/app/contexts/saveAccountContext';
+import { formDataParams } from '@/app/contexts/customerData';
 
+type Params = {
+    formData: formDataParams;
+    setFormData: (data: formDataParams | ((prev: formDataParams) => formDataParams)) => void;
+}
 
-
-const RememberMe = () => {
+const RememberMe = ({setFormData}: Params) => {
     
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
     const accountSavedContext = useContext(AccountSavedContext);
 
     const handleCheckBox = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(event.target.checked);
         accountSavedContext?.setAccountSaved(event.target.checked)
+        setFormData((prev) => ({
+            ...prev,
+            saveAccount: event.target.checked,
+        }));
     }
 
     const style: CSSProperties = {

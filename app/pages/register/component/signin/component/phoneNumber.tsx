@@ -8,15 +8,20 @@ import { ChangeEvent, CSSProperties, useContext } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 import { formDataParams, handleformDataParams } from '@/app/contexts/customerData';
 
-const PhoneNumberInput = ({setFormData}: handleformDataParams) => {
+type Params = {
+    formData: formDataParams;
+    setFormData: (data: formDataParams | ((prev: formDataParams) => formDataParams)) => void;
+}
+const PhoneNumberInput = ({setFormData}: Params) => {
     
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
     const companyInformationContext = useContext(CompanyInformationContext)
 
     const handlePhone = (event: ChangeEvent<HTMLInputElement>) => {
-        setFormData((prev: formDataParams) => ({
-            ...prev, 
-            phone: event.target.value
+        const Value = event.target.value ? Number(event.target.value) : undefined;
+        setFormData((prev) => ({
+            ...prev,
+            phone: Value,
         }));
     }
 

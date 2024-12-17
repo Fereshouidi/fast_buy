@@ -8,7 +8,11 @@ import { ChangeEvent, CSSProperties, useContext } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 import { formDataParams, handleformDataParams } from '@/app/contexts/customerData';
 
-const EmailInput = ({setFormData}: handleformDataParams) => {
+type Params = {
+    formData: formDataParams;
+    setFormData: (data: formDataParams | ((prev: formDataParams) => formDataParams)) => void;
+}
+const EmailInput = ({setFormData}: Params) => {
     
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
     const companyInformationContext = useContext(CompanyInformationContext)

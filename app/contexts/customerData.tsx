@@ -2,7 +2,7 @@ import { createContext } from "react"
 
 export interface handleformDataParams {
     formData: formDataParams | undefined,
-    setFormData: Function
+    setFormData: (data: formDataParams | ((prev: formDataParams) => formDataParams)) => void;
 }
 
 export interface formDataParams {

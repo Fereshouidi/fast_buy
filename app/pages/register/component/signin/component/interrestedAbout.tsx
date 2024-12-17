@@ -9,13 +9,17 @@ import { ChangeEvent, CSSProperties, useContext } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 import { formDataParams, handleformDataParams } from '@/app/contexts/customerData';
 
-const InterrestedAbout = ({setFormData}: handleformDataParams) => {
+type Params = {
+    formData: formDataParams;
+    setFormData: (data: formDataParams | ((prev: formDataParams) => formDataParams)) => void;
+}
+const InterrestedAbout = ({setFormData}: Params) => {
     
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
     const companyInformationContext = useContext(CompanyInformationContext);
 
     const handleInterrestedAbout = (event: ChangeEvent<HTMLInputElement>) => {
-        setFormData((prev: formDataParams) => ({
+        setFormData((prev) => ({
             ...prev, 
             interrestedAbout: event.target.value
         }));

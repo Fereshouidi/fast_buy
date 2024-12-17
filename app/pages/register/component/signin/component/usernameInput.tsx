@@ -2,19 +2,24 @@
 
 import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
-import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons/faUser";
 import { ChangeEvent, CSSProperties, useContext } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
-import { formDataParams, handleformDataParams } from '@/app/contexts/customerData';
+import { formDataParams } from '@/app/contexts/customerData';
 
-const UserNameInput = ({setFormData}: handleformDataParams) => {
+type Params = {
+    formData: formDataParams;
+    setFormData: (data: formDataParams | ((prev: formDataParams) => formDataParams)) => void;
+}
+const UserNameInput = ({setFormData}: Params) => {
     
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
     const companyInformationContext = useContext(CompanyInformationContext)
 
     const handleUserName = (event: ChangeEvent<HTMLInputElement>) => {
-        setFormData((prev: formDataParams) => ({
+        setFormData((prev) => ({
             ...prev, 
             userName: event.target.value
         }));

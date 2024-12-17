@@ -30,7 +30,7 @@ const SigninForm = ({logInExist, setLogInExist, signinExist, setSignInExist}: sw
     const registerRequiredData = useContext(CompanyInformationContext)?.registerRequiredData;
 
     const [passwordType, setPasswordType] = useState<'text' | 'password'>('text');
-    const [formData, setFormData] = useState<formDataParams>();
+    const [formData, setFormData] = useState<formDataParams>({userName: '', email: '', password: '', retypePassword: '', dateOfBirth: undefined, adress: '', interrestedAbout: '', phone: undefined, saveAccount: false});
 
     useEffect(() => {
         console.log(formData)
@@ -57,7 +57,7 @@ const SigninForm = ({logInExist, setLogInExist, signinExist, setSignInExist}: sw
             
             <PasswordInput passwordType={passwordType} setPasswordType={setPasswordType} setFormData={setFormData}/>
             <RetypePasswordInput passwordType={passwordType} setPasswordType={setPasswordType} setFormData={setFormData}/>
-            <RememberMe/>
+            <RememberMe formData={formData} setFormData={setFormData}/> 
             <SubmateBTN/>
             <SwitchToSignin logInExist={logInExist} setLogInExist={setLogInExist} signinExist={signinExist} setSignInExist={setSignInExist} />
 
