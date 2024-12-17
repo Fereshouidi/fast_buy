@@ -1,45 +1,4 @@
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-} */
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Serif+Ahom&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
@@ -87,14 +46,14 @@ a {
   --extra-small-size: 12px;
 
   /* fonts weight */
-  --font-weight-thin: 100;      /* Thin */
-  --font-weight-extra-light: 200; /* Extra Light */
-  --font-weight-light: 300;    /* Light */
-  --font-weight-regular: 400;  /* Regular */
-  --font-weight-medium: 500;   /* Medium */
-  --font-weight-semi-bold: 600; /* Semi Bold */
-  --font-weight-bold: 700;     /* Bold */
-  --font-weight-extra-bold: 800; /* Extra Bold */
+  --font-weight-thin: 100;     
+  --font-weight-extra-light: 200; 
+  --font-weight-light: 300;    
+  --font-weight-regular: 400;  
+  --font-weight-medium: 500;   
+  --font-weight-semi-bold: 600; 
+  --font-weight-bold: 700;     
+  --font-weight-extra-bold: 800;
   --font-weight-black: 900;
 
   /* borders */
@@ -176,9 +135,7 @@ a {
     color: var(--black);
   }
 
-  /* :root {
-    --header-height: calc(var(--header-height) + var(var(--header-height)))
-  } */
+  
 }
 
 body{
@@ -200,7 +157,6 @@ svg {
   width: 20px;
   height: 20px;
   border-radius: 50px;
-  /* color: var(--black); */
 }
 
 
@@ -262,10 +218,7 @@ header div{
   --black-almost-transparnt: rgba(255, 255, 255, 0.082);
   --border-color: #616161a2;
 }
-/* #app.arabic *{
-  direction: rtl;
-  background-color: red;
-} */
+
 
 .arabic *{
   direction: rtl;
@@ -292,7 +245,6 @@ header div{
 .sideBar-background .sideBar li{
   width: 100%;
   height: var(--primary-height);
-  /* padding: var(--small-padding); */
   border-bottom: var(--border-width) solid var(--border-color);
   justify-content: start;
   align-items: center;
@@ -313,7 +265,6 @@ header div{
 
 }
 .sideBar-background .sideBar li:not(.categoriesSelector):hover{
-  /* background-color: var(--primary-color); */
   color: var(--white);
 }
 .sideBar-background .sideBar li svg:not(.toggle svg){

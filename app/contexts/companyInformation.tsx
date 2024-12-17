@@ -11,7 +11,9 @@ export interface companyInformationsParams {
     originalProductsPercentage: number,
     servises: string[],
     backgroundOfRegisterPage: string,
-    registerRequiredData: registerRequiredDataParams
+    registerRequiredData: registerRequiredDataParams,
+    email: string,
+    password: string
 }
 
 type nameParams = {

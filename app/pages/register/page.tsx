@@ -12,10 +12,13 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 import { ThemeContext } from "@/app/contexts/ThemeContext";
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import { AccountSavedContext } from "@/app/contexts/saveAccountContext";
-// import { formDataContext } from "@/app/contexts/customerData";
+import { BannersContext } from "@/app/contexts/banners";
 import LoadingIcon from "@/app/svg/icons/loading/loading";
 import '@/app/components/about/about.css';
 import { getConpanyInformations } from "@/app/crud";
+import PasswordsNotMatchBanner from '@/app/banners/passwordsNotMatch';
+
+
 
 const Register = () => {
 
@@ -32,7 +35,8 @@ const Register = () => {
     const [logInExist, setLogInExist] = useState<boolean>(true);
     const [signinExist, setSignInExist] = useState<boolean>(false);
     const [accountSaved, setAccountSaved] = useState<boolean>(false);
-    // const [formData, setFormData] = useState<formDataParams | undefined>(undefined);
+    const [isPasswordsNotMatchBannerExist, setIsPasswordsNotMatchBannerExist] = useState<boolean>(false);
+
 
     const [screenWidth, setScreenWidth] = useState<number>(0); 
     const [theme, setTheme] = useState(() => {
@@ -121,9 +125,6 @@ useEffect(() => {
     return <LoadingIcon/>; 
     }
       
-    // useEffect(() => {
-    //     alert(customerData.userName)
-    // }, [customerData])
 
     const styleRegesterPage: CSSProperties = {
         width: '100%',
@@ -139,20 +140,21 @@ useEffect(() => {
     }
     
     return (
-        <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData}} >
+        <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData}} >
             <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
                 <ThemeContext.Provider value={{ theme, setTheme }}>
                         <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
                             <AccountSavedContext.Provider value={{accountSaved: accountSaved, setAccountSaved: setAccountSaved}}>
-                                {/* <formDataContext.Provider value={{formData: formData , setFormData: setFormData}}> */}
+                                <BannersContext.Provider value={{passwordsNotMatch: isPasswordsNotMatchBannerExist , setPasswordsNotMatch: setIsPasswordsNotMatchBannerExist}}>
                                     {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
                                     {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-                                    
+                                    <PasswordsNotMatchBanner/>
+
                                     <div id="regester-page" style={styleRegesterPage}>
                                         <LoginForm logInExist={logInExist} setLogInExist={setLogInExist} signinExist={signinExist} setSignInExist={setSignInExist}/>
                                         <SigninForm logInExist={logInExist} setLogInExist={setLogInExist} signinExist={signinExist} setSignInExist={setSignInExist}/>
                                     </div>
-                                {/* </formDataContext.Provider> */}
+                                </BannersContext.Provider>
                             </AccountSavedContext.Provider>           
                         </SideBarContext.Provider>
                 </ThemeContext.Provider>

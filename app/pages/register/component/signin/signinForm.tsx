@@ -58,7 +58,7 @@ const SigninForm = ({logInExist, setLogInExist, signinExist, setSignInExist}: sw
             <PasswordInput passwordType={passwordType} setPasswordType={setPasswordType} setFormData={setFormData}/>
             <RetypePasswordInput passwordType={passwordType} setPasswordType={setPasswordType} setFormData={setFormData}/>
             <RememberMe formData={formData} setFormData={setFormData}/> 
-            <SubmateBTN/>
+            <SubmateBTN formData={formData} setFormData={setFormData}/> 
             <SwitchToSignin logInExist={logInExist} setLogInExist={setLogInExist} signinExist={signinExist} setSignInExist={setSignInExist} />
 
         </div>

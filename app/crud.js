@@ -1,4 +1,4 @@
-const url = 'https://fast-buy-back-end-ctzb.vercel.app/api';
+const url = 'https://fast-buy-back-end.vercel.app/api';
 import axios from "axios";
 
 
@@ -128,6 +128,27 @@ export const getProductById = async (id) => {
     }
 };
 
+export const createAccount = async(customerData) => {
+    try{
+        const response = await axios.post(url + '/add/customer', {customerData});
+        console.log(response);
+        
+    }catch(err) {
+        throw err
+    }
+}
+
+export const sendActivationToken = async(email, username, companyEmail, companyPassword, activeLanguage, activationToken) => {
+    try{
+        const response = await axios.post(url + '/send/activationToken', {
+            email, username, companyEmail, companyPassword, activeLanguage, activationToken
+        });
+        console.log(response);
+        
+    }catch(err) {
+        throw err
+    }
+}
 
 
 
