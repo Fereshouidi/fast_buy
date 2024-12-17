@@ -14,9 +14,9 @@ const SubmateBTN = () => {
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
     const companyInformationContext = useContext(CompanyInformationContext)
 
-    const handleClick = () => {
+    // const handleClick = () => {
         
-    }
+    // }
 
     const style: CSSProperties = {
         backgroundColor: companyInformationContext?.primaryColor

@@ -12,7 +12,7 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 import { ThemeContext } from "@/app/contexts/ThemeContext";
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import { AccountSavedContext } from "@/app/contexts/saveAccountContext";
-import { formDataContext } from "@/app/contexts/customerData";
+// import { formDataContext } from "@/app/contexts/customerData";
 import { formDataParams } from "@/app/contexts/customerData";
 import LoadingIcon from "@/app/svg/icons/loading/loading";
 import '@/app/components/about/about.css';
@@ -20,20 +20,20 @@ import { getConpanyInformations } from "@/app/crud";
 
 const Register = () => {
 
-    const CustomerDefaultData = {
-        userName: '',
-        email: '',
-        phone: undefined,
-        dateOfBirth: undefined,
-        adress: '',
-        interrestedAbout: '',
-        password: '',
-    }
+    // const CustomerDefaultData = {
+    //     userName: '',
+    //     email: '',
+    //     phone: undefined,
+    //     dateOfBirth: undefined,
+    //     adress: '',
+    //     interrestedAbout: '',
+    //     password: '',
+    // }
 
     const [logInExist, setLogInExist] = useState<boolean>(true);
     const [signinExist, setSignInExist] = useState<boolean>(false);
     const [accountSaved, setAccountSaved] = useState<boolean>(false);
-    const [formData, setFormData] = useState<formDataParams | undefined>(undefined);
+    // const [formData, setFormData] = useState<formDataParams | undefined>(undefined);
 
     const [screenWidth, setScreenWidth] = useState<number>(0); 
     const [theme, setTheme] = useState(() => {
