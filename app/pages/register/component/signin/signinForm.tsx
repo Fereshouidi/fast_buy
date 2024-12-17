@@ -7,11 +7,16 @@ import PasswordInput from "./component/passwordInput";
 import RememberMe from './component/rememberMe';
 import SubmateBTN from './component/submateBTN';
 import SwitchToSignin from './component/switchToSignin';
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import '@/app/pages/register/component/style.css';
 import EmailInput from './component/emailInput';
 import PhoneNumberInput from './component/phoneNumber';
 import RetypePasswordInput from './component/retypePassword';
+import { CompanyInformationContext } from '@/app/contexts/companyInformation';
+import DateOfBearthInput from './component/dateOfBirth';
+import Adress from './component/adress';
+import InterrestedAbout from './component/interrestedAbout';
+import { formDataParams } from '@/app/contexts/customerData';
 
 type switchFormsParams = {
     logInExist: boolean,
@@ -22,15 +27,15 @@ type switchFormsParams = {
 const SigninForm = ({logInExist, setLogInExist, signinExist, setSignInExist}: switchFormsParams) => {
 
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
+    const registerRequiredData = useContext(CompanyInformationContext)?.registerRequiredData;
 
-    const [passwordType, setPasswordType] = useState<'text' | 'password'>('text')
-    
+    const [passwordType, setPasswordType] = useState<'text' | 'password'>('text');
+    const [formData, setFormData] = useState<formDataParams>();
 
-    // const style: CSSProperties = {
-    //     padding: 'var(--medium-padding)',
-    //     backgroundColor: 'var(--white)'
-    // }
-    
+    useEffect(() => {
+        console.log(formData)
+    }, [formData])
+
     return (
         <div className={signinExist ? 'form' : 'invisible'}>
 
@@ -42,11 +47,16 @@ const SigninForm = ({logInExist, setLogInExist, signinExist, setSignInExist}: sw
                 : english.signinW
             }</h2>
 
-            <UserNameInput/>
-            <EmailInput/>
-            <PhoneNumberInput/>
-            <PasswordInput passwordType={passwordType} setPasswordType={setPasswordType}/>
-            <RetypePasswordInput passwordType={passwordType} setPasswordType={setPasswordType}/>
+            <UserNameInput formData={formData} setFormData={setFormData}/>
+            <EmailInput formData={formData} setFormData={setFormData}/>
+            {registerRequiredData?.phoneNumber ? <PhoneNumberInput formData={formData} setFormData={setFormData}/> : null}
+            {registerRequiredData?.dateOfBearth ? <DateOfBearthInput formData={formData} setFormData={setFormData}/> : null}
+            {registerRequiredData?.adress ? <Adress formData={formData} setFormData={setFormData}/> : null}
+            {registerRequiredData?.interrestedAbout ? <InterrestedAbout formData={formData} setFormData={setFormData}/> : null}
+
+            
+            <PasswordInput passwordType={passwordType} setPasswordType={setPasswordType} setFormData={setFormData}/>
+            <RetypePasswordInput passwordType={passwordType} setPasswordType={setPasswordType} setFormData={setFormData}/>
             <RememberMe/>
             <SubmateBTN/>
             <SwitchToSignin logInExist={logInExist} setLogInExist={setLogInExist} signinExist={signinExist} setSignInExist={setSignInExist} />

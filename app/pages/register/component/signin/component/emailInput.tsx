@@ -4,13 +4,21 @@ import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
 import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { CSSProperties, useContext } from 'react';
+import { ChangeEvent, CSSProperties, useContext } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
+import { formDataParams, handleformDataParams } from '@/app/contexts/customerData';
 
-const EmailInput = () => {
+const EmailInput = ({setFormData}: handleformDataParams) => {
     
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
     const companyInformationContext = useContext(CompanyInformationContext)
+
+    const handleEmail = (event: ChangeEvent<HTMLInputElement>) => {
+        setFormData((prev: formDataParams) => ({
+            ...prev, 
+            email: event.target.value
+        }));
+    }
 
     const styleInput: CSSProperties = {
         border: '0.7px solid' + companyInformationContext?.primaryColor,
@@ -41,6 +49,7 @@ const EmailInput = () => {
                     : english.emailW + ' ... '
                 }
                 style={styleInput}
+                onChange={(event) => {handleEmail(event)}}
             />
 
             <div className='icon-div' style={styleIconDiv}>

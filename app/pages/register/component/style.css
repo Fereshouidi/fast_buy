@@ -38,9 +38,14 @@
     border: none;
 }
 
+.form .input-date::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
 .form .input:not(.remember-me) .icon{
     color: var(--black);
 }
+
 
 .form .remember-me {
     color: var(--black);
@@ -60,6 +65,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .form .submate-btn * {
     margin: var(--small-margin);
     color: white;
@@ -77,4 +83,5 @@
 .form .switch-forms span {
     margin: 0 var(--small-margin);
     color: blue;
+    cursor: pointer;
 }

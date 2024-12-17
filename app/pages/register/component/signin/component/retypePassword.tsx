@@ -4,15 +4,17 @@ import arabic from '@/app/languages/arabic.json';
 import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
 import { faEye,faEyeSlash ,faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CSSProperties, useContext } from 'react';
+import { ChangeEvent, CSSProperties, useContext } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
+import { formDataParams } from '@/app/contexts/customerData';
 
 type Params = {
     passwordType: 'text' | 'password'; 
     setPasswordType: (value: 'text' | 'password') => void; 
+    setFormData:  (data: any) => void;
 }
 
-const RetypePasswordInput = ({passwordType, setPasswordType}: Params) => {
+const RetypePasswordInput = ({setFormData, passwordType, setPasswordType}: Params) => {
 
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
     const companyInformationContext = useContext(CompanyInformationContext)
@@ -22,6 +24,12 @@ const RetypePasswordInput = ({passwordType, setPasswordType}: Params) => {
         setPasswordType(passwordType === 'text' ? 'password' : 'text');
     };
     
+    const handlePasswordInput = (event: ChangeEvent<HTMLInputElement>) => {
+        setFormData((prev: formDataParams) => ({
+            ...prev, 
+            RetypePasswordInput: event.target.value
+        }));
+    }
 
     const styleInput: CSSProperties = {
         border: '0.7px solid' + companyInformationContext?.primaryColor,
@@ -52,12 +60,13 @@ const RetypePasswordInput = ({passwordType, setPasswordType}: Params) => {
 
             <input type={passwordType} placeholder= {
                     activeLanguage == 'english' ?
-                        english.passwordW + ' ... '
+                        english.retypePasswordW + ' ... '
                     : activeLanguage == "arabic" ?
-                        arabic.passwordW + ' ... '
-                    : english.passwordW + ' ... '
+                        arabic.retypePasswordW + ' ... '
+                    : english.retypePasswordW + ' ... '
                 }
                 style={styleInput}
+                onChange={(event) => handlePasswordInput(event)}
             />
 
             <div className="icons-div" style={styleIconsDiv}>

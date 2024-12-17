@@ -4,13 +4,21 @@ import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
 import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
-import { CSSProperties, useContext } from 'react';
+import { ChangeEvent, CSSProperties, useContext } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
+import { formDataParams, handleformDataParams } from '@/app/contexts/customerData';
 
-const PhoneNumberInput = () => {
+const PhoneNumberInput = ({setFormData}: handleformDataParams) => {
     
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
     const companyInformationContext = useContext(CompanyInformationContext)
+
+    const handlePhone = (event: ChangeEvent<HTMLInputElement>) => {
+        setFormData((prev: formDataParams) => ({
+            ...prev, 
+            phone: event.target.value
+        }));
+    }
 
     const styleInput: CSSProperties = {
         border: '0.7px solid' + companyInformationContext?.primaryColor,
@@ -41,6 +49,7 @@ const PhoneNumberInput = () => {
                     : english.PhoneNumberW + ' ... '
                 }
                 style={styleInput}
+                onChange={(event) => handlePhone(event)}
             />
 
             <div className='icon-div' style={styleIconDiv}>

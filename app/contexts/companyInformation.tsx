@@ -10,12 +10,28 @@ export interface companyInformationsParams {
     entities: string[],
     originalProductsPercentage: number,
     servises: string[],
-    backgroundOfRegisterPage: string
+    backgroundOfRegisterPage: string,
+    registerRequiredData: registerRequiredDataParams
 }
 
 type nameParams = {
     arabic: string,
     english: string
+}
+
+type registerRequiredDataParams = {
+    dateOfBearth: {
+        type: boolean,
+    },
+    phoneNumber: {
+        type: boolean,
+    },
+    adress: {
+        type: boolean,
+    },
+    interrestedAbout: {
+        type: boolean,
+    }
 }
 
 export const CompanyInformationContext = createContext<companyInformationsParams | undefined>(undefined);

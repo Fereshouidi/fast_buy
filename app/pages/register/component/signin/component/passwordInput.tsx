@@ -4,15 +4,17 @@ import arabic from '@/app/languages/arabic.json';
 import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
 import { faEye,faEyeSlash ,faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CSSProperties, useContext } from 'react';
+import { ChangeEvent, CSSProperties, useContext } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
+import { formDataParams, handleformDataParams } from '@/app/contexts/customerData';
 
 type Params = {
     passwordType: 'text' | 'password'; 
     setPasswordType: (value: 'text' | 'password') => void; 
+    setFormData:  (data: any) => void;
 }
 
-const PasswordInput = ({passwordType, setPasswordType}: Params) => {
+const PasswordInput = ({setFormData, passwordType, setPasswordType}: Params) => {
 
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
     const companyInformationContext = useContext(CompanyInformationContext)
@@ -22,6 +24,12 @@ const PasswordInput = ({passwordType, setPasswordType}: Params) => {
         setPasswordType(passwordType === 'text' ? 'password' : 'text');
     };
     
+    const handlePasswordInput = (event: ChangeEvent<HTMLInputElement>) => {
+        setFormData((prev: formDataParams) => ({
+            ...prev, 
+            password: event.target.value
+        }));
+    }
 
     const styleInput: CSSProperties = {
         border: '0.7px solid' + companyInformationContext?.primaryColor,
@@ -58,6 +66,7 @@ const PasswordInput = ({passwordType, setPasswordType}: Params) => {
                     : english.passwordW + ' ... '
                 }
                 style={styleInput}
+                onChange={(event) => handlePasswordInput(event)}
             />
 
             <div className="icons-div" style={styleIconsDiv}>

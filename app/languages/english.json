@@ -53,9 +53,12 @@
     "rememberMe": "Remember Me",
     "userNameW": "User name",
     "passwordW": "Password",
+    "retypePasswordW": "retypr password",
     "dontHaveAccountW": "Don't have accout ?",
     "haveAccountAlready": "Have account already ?",
     "emailW": "email",
-    "PhoneNumberW": "Phone Number"
-
+    "PhoneNumberW": "Phone Number",
+    "dateOfBorthW": "Date of birth",
+    "fullAdressW": "Full Adress",
+    "areaOfInterest": "Area of ​​interest"
 }

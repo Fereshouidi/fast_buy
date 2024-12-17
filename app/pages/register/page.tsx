@@ -12,16 +12,28 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 import { ThemeContext } from "@/app/contexts/ThemeContext";
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import { AccountSavedContext } from "@/app/contexts/saveAccountContext";
+import { formDataContext } from "@/app/contexts/customerData";
+import { formDataParams } from "@/app/contexts/customerData";
 import LoadingIcon from "@/app/svg/icons/loading/loading";
 import '@/app/components/about/about.css';
 import { getConpanyInformations } from "@/app/crud";
 
 const Register = () => {
 
+    const CustomerDefaultData = {
+        userName: '',
+        email: '',
+        phone: undefined,
+        dateOfBirth: undefined,
+        adress: '',
+        interrestedAbout: '',
+        password: '',
+    }
+
     const [logInExist, setLogInExist] = useState<boolean>(true);
     const [signinExist, setSignInExist] = useState<boolean>(false);
     const [accountSaved, setAccountSaved] = useState<boolean>(false);
-
+    const [formData, setFormData] = useState<formDataParams | undefined>(undefined);
 
     const [screenWidth, setScreenWidth] = useState<number>(0); 
     const [theme, setTheme] = useState(() => {
@@ -44,9 +56,7 @@ useEffect(() => {
         
     }
     fetchData();
-}, [])
-
-    
+}, [])    
 
     useEffect(() => {
     if (typeof window !== "undefined") {
@@ -112,6 +122,10 @@ useEffect(() => {
     return <LoadingIcon/>; 
     }
       
+    // useEffect(() => {
+    //     alert(customerData.userName)
+    // }, [customerData])
+
     const styleRegesterPage: CSSProperties = {
         width: '100%',
         minHeight: 'calc(100vh - var(--header-height))',
@@ -126,18 +140,20 @@ useEffect(() => {
     }
     
     return (
-        <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage}} >
+        <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData}} >
             <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
                 <ThemeContext.Provider value={{ theme, setTheme }}>
                         <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
                             <AccountSavedContext.Provider value={{accountSaved: accountSaved, setAccountSaved: setAccountSaved}}>
-                                {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
-                                {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-                                
-                                <div id="regester-page" style={styleRegesterPage}>
-                                    <LoginForm logInExist={logInExist} setLogInExist={setLogInExist} signinExist={signinExist} setSignInExist={setSignInExist}/>
-                                    <SigninForm logInExist={logInExist} setLogInExist={setLogInExist} signinExist={signinExist} setSignInExist={setSignInExist}/>
-                                </div>
+                                {/* <formDataContext.Provider value={{formData: formData , setFormData: setFormData}}> */}
+                                    {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
+                                    {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
+                                    
+                                    <div id="regester-page" style={styleRegesterPage}>
+                                        <LoginForm logInExist={logInExist} setLogInExist={setLogInExist} signinExist={signinExist} setSignInExist={setSignInExist}/>
+                                        <SigninForm logInExist={logInExist} setLogInExist={setLogInExist} signinExist={signinExist} setSignInExist={setSignInExist}/>
+                                    </div>
+                                {/* </formDataContext.Provider> */}
                             </AccountSavedContext.Provider>           
                         </SideBarContext.Provider>
                 </ThemeContext.Provider>

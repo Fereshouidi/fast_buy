@@ -52,9 +52,14 @@
     "rememberMe": "حفظ الحساب",
     "userNameW": "اسم المستخدم",
     "passwordW": "كلمة السر",
+    "retypePasswordW": "اعد كتابة كلمة السر",
     "dontHaveAccountW": "ليس لديك حساب ؟",
     "haveAccountAlready": "لديك حساب بالفعل ؟",
     "emailW": "البريد الالكتروني",
-    "PhoneNumberW": "رقم الهاتف"
+    "PhoneNumberW": "رقم الهاتف",
+    "dateOfBorthW": "تاريخ الولادة",
+    "fullAdressW": "العنوان الكامل",
+    "areaOfInterest": "مجال الاهتمام"
+
 
 }

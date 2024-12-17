@@ -2,28 +2,27 @@
 
 import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
-import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { ChangeEvent, CSSProperties, useContext } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 import { formDataParams, handleformDataParams } from '@/app/contexts/customerData';
 
-const DateOfBearthInput = ({setFormData}: handleformDataParams) => {
+const InterrestedAbout = ({setFormData}: handleformDataParams) => {
     
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
-    const companyInformationContext = useContext(CompanyInformationContext)
+    const companyInformationContext = useContext(CompanyInformationContext);
 
-    const handleDateOfBirth = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleInterrestedAbout = (event: ChangeEvent<HTMLInputElement>) => {
         setFormData((prev: formDataParams) => ({
             ...prev, 
-            dateOfBirth: event.target.value
+            interrestedAbout: event.target.value
         }));
     }
-    
+
     const styleInput: CSSProperties = {
         border: '0.7px solid' + companyInformationContext?.primaryColor,
-        direction: 'ltr',
-        textAlign: activeLanguage !== 'arabic' ? 'left' : 'right',
     }
     const styleIconDiv: CSSProperties = {
         position: 'absolute',
@@ -42,23 +41,22 @@ const DateOfBearthInput = ({setFormData}: handleformDataParams) => {
     return (
         <div className="input">
             
-            <input type='date' 
+            <input type='text' 
                 placeholder= {
                     activeLanguage == 'english' ?
-                        english.dateOfBorthW + ' ... '
+                        english.areaOfInterest + ' ... '
                     : activeLanguage == "arabic" ?
-                        arabic.dateOfBorthW + ' ... '
-                    : english.dateOfBorthW + ' ... '
+                        arabic.areaOfInterest + ' ... '
+                    : english.areaOfInterest + ' ... '
                 }
                 style={styleInput}
-                className='input-date'
-                onChange={(event) => {handleDateOfBirth(event)}}
+                onChange={(event) => handleInterrestedAbout(event)}
             />
 
             <div className='icon-div' style={styleIconDiv}>
-                <FontAwesomeIcon icon={faCalendar} className="icon fa-Phone" />
+                <FontAwesomeIcon icon={faStar} className="icon fa-Phone" />
             </div>
         </div>
     )
 }
-export default DateOfBearthInput;
+export default InterrestedAbout;

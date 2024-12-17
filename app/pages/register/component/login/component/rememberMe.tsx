@@ -39,7 +39,7 @@ const RememberMe = () => {
                 activeLanguage == 'english' ?
                     english.rememberMe
                 : activeLanguage == 'arabic' ?
-                    arabic.loginW
+                    arabic.rememberMe
                 : english.rememberMe
             }</span>
 
