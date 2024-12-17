@@ -13,7 +13,6 @@ import { ThemeContext } from "@/app/contexts/ThemeContext";
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import { AccountSavedContext } from "@/app/contexts/saveAccountContext";
 // import { formDataContext } from "@/app/contexts/customerData";
-import { formDataParams } from "@/app/contexts/customerData";
 import LoadingIcon from "@/app/svg/icons/loading/loading";
 import '@/app/components/about/about.css';
 import { getConpanyInformations } from "@/app/crud";
