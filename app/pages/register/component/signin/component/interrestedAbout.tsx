@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { ChangeEvent, CSSProperties, useContext } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
-import { formDataParams, handleformDataParams } from '@/app/contexts/customerData';
+import { formDataParams } from '@/app/contexts/customerData';
 
 type Params = {
     formData: formDataParams;
