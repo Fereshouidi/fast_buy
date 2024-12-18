@@ -4,7 +4,7 @@ import arabic from '@/app/languages/arabic.json';
 import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
 import { CSSProperties, useContext } from 'react';
 import { AccountSavedContext } from '@/app/contexts/saveAccountContext';
-import { formDataParams } from '@/app/contexts/customerData';
+import { formDataParams } from '@/app/contexts/signinFormData';
 
 type Params = {
     formData: formDataParams;

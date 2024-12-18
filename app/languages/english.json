@@ -60,5 +60,8 @@
     "PhoneNumberW": "Phone Number",
     "dateOfBorthW": "Date of birth",
     "fullAdressW": "Full Adress",
-    "areaOfInterest": "Area of ​​interest"
+    "areaOfInterest": "Area of ​​interest",
+    "emailNotValid": "Email not valid !",
+    "passwordsDoNotMatch": "Passwords do not match !",
+    "verificationMessage" : "We have sent you an activation link. Click on it and then refresh the page ."
 }

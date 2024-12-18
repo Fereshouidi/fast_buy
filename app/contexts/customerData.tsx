@@ -1,11 +1,7 @@
 import { createContext } from "react"
 
-export interface handleformDataParams {
-    formData: formDataParams | undefined,
-    setFormData: (data: formDataParams | ((prev: formDataParams) => formDataParams)) => void;
-}
-
-export interface formDataParams {
+export interface CustomerDataParams {
+    _id: string,
     userName: string,
     email: string,
     phone: number | undefined,
@@ -14,7 +10,8 @@ export interface formDataParams {
     interrestedAbout: string,
     password: string,
     retypePassword: string,
-    saveAccount: boolean
+    saveAccount: boolean,
+    verification: boolean
 }
 
-export const formDataContext = createContext<formDataParams | undefined>(undefined)
+export const CustomerDataContext = createContext<CustomerDataParams | undefined>(undefined)

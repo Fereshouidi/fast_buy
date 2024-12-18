@@ -9,12 +9,11 @@ import { faX } from "@fortawesome/free-solid-svg-icons";
 import { faBan } from "@fortawesome/free-solid-svg-icons";
 import '@/app/banners/style.css';
 
-const PasswordsNotMatchBanner = () => {
+const EmailNotValidBanner = () => {
 
-    const bannerExist = useContext(BannersContext)?.passwordsNotMatch;
-    const setBannerExist = useContext(BannersContext)?.setPasswordsNotMatch;
+    const bannerExist = useContext(BannersContext)?.emailNotValide;
+    const setBannerExist = useContext(BannersContext)?.setemailNotValide;
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
-
 
     if(typeof bannerExist == 'undefined' || typeof setBannerExist == 'undefined'){
         return;
@@ -35,8 +34,8 @@ const PasswordsNotMatchBanner = () => {
                     <FontAwesomeIcon icon={faBan} className="fa-ban"/>
                     <p>{
                         activeLanguage == 'arabic' ?
-                            arabic.passwordsDoNotMatch
-                        :   english.passwordsDoNotMatch
+                            arabic.emailNotValid
+                        :   english.emailNotValid
                     }</p>
                 </div>
 
@@ -45,4 +44,4 @@ const PasswordsNotMatchBanner = () => {
         </div>
     )
 }
-export default PasswordsNotMatchBanner;
+export default EmailNotValidBanner;

@@ -13,7 +13,8 @@ export interface companyInformationsParams {
     backgroundOfRegisterPage: string,
     registerRequiredData: registerRequiredDataParams,
     email: string,
-    password: string
+    password: string,
+    ActivateAccountWhileSignin: boolean
 }
 
 type nameParams = {

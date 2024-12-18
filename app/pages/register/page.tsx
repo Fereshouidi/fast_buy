@@ -11,31 +11,41 @@ import { CompanyInformationContext, companyInformationsParams } from "@/app/cont
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { ThemeContext } from "@/app/contexts/ThemeContext";
 import { SideBarContext } from "@/app/contexts/SideBarContext";
+import { LoadingIconContext } from "@/app/contexts/loadingIcon";
 import { AccountSavedContext } from "@/app/contexts/saveAccountContext";
 import { BannersContext } from "@/app/contexts/banners";
-import LoadingIcon from "@/app/svg/icons/loading/loading";
+import LoadingIcon_theHolePage from "@/app/svg/icons/loading/loadingHoleOfThePage";
 import '@/app/components/about/about.css';
 import { getConpanyInformations } from "@/app/crud";
 import PasswordsNotMatchBanner from '@/app/banners/passwordsNotMatch';
-
+import EmailNotValidBanner from "@/app/banners/emailNotValid";
+import VerificatinEmailBanner from "@/app/banners/verificationEmail";
+import { CustomerDataContext, CustomerDataParams } from "@/app/contexts/customerData";
+import { useRouter } from "next/navigation";
+import { getCustomerById } from "@/app/crud";
 
 
 const Register = () => {
 
-    // const CustomerDefaultData = {
-    //     userName: '',
-    //     email: '',
-    //     phone: undefined,
-    //     dateOfBirth: undefined,
-    //     adress: '',
-    //     interrestedAbout: '',
-    //     password: '',
-    // }
+    const router = useRouter();
 
+    const [loadingIconExist, setLoadingIconExit] = useState<boolean>(false);
     const [logInExist, setLogInExist] = useState<boolean>(true);
     const [signinExist, setSignInExist] = useState<boolean>(false);
     const [accountSaved, setAccountSaved] = useState<boolean>(false);
     const [isPasswordsNotMatchBannerExist, setIsPasswordsNotMatchBannerExist] = useState<boolean>(false);
+    const [isEmailNotValideBannerExist, setIsEmailNotValideBannerExist] = useState<boolean>(false);
+    const [isVerificationBannerExist, setIsVerificationBannerExist] = useState<boolean>(false);
+
+    const [customerData, setCustomerData] = useState<CustomerDataParams | undefined>(undefined);
+
+    useEffect(() => {
+        if(customerData && customerData.verification){
+            router.push('/')
+        }
+    }, [customerData])
+
+    // localStorage.removeItem('customerData')
 
 
     const [screenWidth, setScreenWidth] = useState<number>(0); 
@@ -60,6 +70,38 @@ useEffect(() => {
     }
     fetchData();
 }, [])    
+
+useEffect(() => {
+    const refreshAccount = async (id: string): Promise<CustomerDataParams | null> => {
+      try {
+        const customerAccount = await getCustomerById(id);
+        return customerAccount || null;
+      } catch (error) {
+        console.error("Failed to refresh account:", error);
+        return null;
+      }
+    };
+  
+    const fetchAndUpdateCustomerData = async () => {
+      if (typeof window !== "undefined") {
+        const storedData = localStorage.getItem("customerData");
+        if (storedData) {
+          try {
+            const parsedData = JSON.parse(storedData) as CustomerDataParams;
+  
+            const freshAccount = await refreshAccount(parsedData._id);
+            setCustomerData(freshAccount || parsedData);
+          } catch (error) {
+            console.error("Failed to parse customerData from localStorage:", error);
+            setCustomerData(undefined);
+          }
+        }
+      }
+    };
+  
+    fetchAndUpdateCustomerData();
+  }, []);
+  
 
     useEffect(() => {
     if (typeof window !== "undefined") {
@@ -122,7 +164,7 @@ useEffect(() => {
     }
 
     if (!conpanyInformations) {
-    return <LoadingIcon/>; 
+    return <LoadingIcon_theHolePage/>; 
     }
       
 
@@ -140,20 +182,26 @@ useEffect(() => {
     }
     
     return (
-        <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData}} >
+        <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , ActivateAccountWhileSignin: conpanyInformations.ActivateAccountWhileSignin}} >
             <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
                 <ThemeContext.Provider value={{ theme, setTheme }}>
                         <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
                             <AccountSavedContext.Provider value={{accountSaved: accountSaved, setAccountSaved: setAccountSaved}}>
-                                <BannersContext.Provider value={{passwordsNotMatch: isPasswordsNotMatchBannerExist , setPasswordsNotMatch: setIsPasswordsNotMatchBannerExist}}>
-                                    {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
-                                    {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-                                    <PasswordsNotMatchBanner/>
-
-                                    <div id="regester-page" style={styleRegesterPage}>
-                                        <LoginForm logInExist={logInExist} setLogInExist={setLogInExist} signinExist={signinExist} setSignInExist={setSignInExist}/>
-                                        <SigninForm logInExist={logInExist} setLogInExist={setLogInExist} signinExist={signinExist} setSignInExist={setSignInExist}/>
-                                    </div>
+                                <BannersContext.Provider value={{passwordsNotMatch: isPasswordsNotMatchBannerExist , setPasswordsNotMatch: setIsPasswordsNotMatchBannerExist , emailNotValide: isEmailNotValideBannerExist , setemailNotValide: setIsEmailNotValideBannerExist , verificatinEmailBanner: isVerificationBannerExist, setVerificatinEmailBanner: setIsVerificationBannerExist }}>
+                                    <LoadingIconContext.Provider value={{exist: loadingIconExist , setExist: setLoadingIconExit}}>
+                                        <CustomerDataContext.Provider value={customerData}>
+                                            {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
+                                            {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
+                                            <PasswordsNotMatchBanner/>
+                                            <EmailNotValidBanner/>
+                                            <VerificatinEmailBanner/>
+                                            <LoadingIcon_theHolePage/>
+                                            <div id="regester-page" style={styleRegesterPage}>
+                                                <LoginForm logInExist={logInExist} setLogInExist={setLogInExist} signinExist={signinExist} setSignInExist={setSignInExist}/>
+                                                <SigninForm logInExist={logInExist} setLogInExist={setLogInExist} signinExist={signinExist} setSignInExist={setSignInExist}/>
+                                            </div>
+                                        </CustomerDataContext.Provider>
+                                    </LoadingIconContext.Provider>
                                 </BannersContext.Provider>
                             </AccountSavedContext.Provider>           
                         </SideBarContext.Provider>

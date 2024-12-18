@@ -34,7 +34,6 @@ type discountParams = {
 const Card = ({product}: {product : productParams}) => {
 
     const companyInformation = useContext(CompanyInformationContext);
-    console.log(companyInformation);
     
     if(typeof window == 'undefined'){
         throw 'window.innerWidth == "undefind"'

@@ -16,7 +16,7 @@ import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 import DateOfBearthInput from './component/dateOfBirth';
 import Adress from './component/adress';
 import InterrestedAbout from './component/interrestedAbout';
-import { formDataParams } from '@/app/contexts/customerData';
+import { formDataParams } from '@/app/contexts/signinFormData';
 
 type switchFormsParams = {
     logInExist: boolean,

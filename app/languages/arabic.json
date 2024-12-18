@@ -59,7 +59,18 @@
     "PhoneNumberW": "رقم الهاتف",
     "dateOfBorthW": "تاريخ الولادة",
     "fullAdressW": "العنوان الكامل",
-    "areaOfInterest": "مجال الاهتمام"
+    "areaOfInterest": "مجال الاهتمام",
+    "emailNotValid": "البريد الالكتروني غير صالح !",
+    "passwordsDoNotMatch": " كلمات المرور غير متطابقة !",
+    "verificationMessage" : "لقد ارسلنا لك رابطا للتفعيل . انقر عليه ثم حدث الصفحة"
 
 
 }
+
+
+
+
+
+
+
+

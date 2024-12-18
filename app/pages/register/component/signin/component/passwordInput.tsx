@@ -6,7 +6,7 @@ import { faEye,faEyeSlash ,faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ChangeEvent, CSSProperties, useContext } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
-import { formDataParams } from '@/app/contexts/customerData';
+import { formDataParams } from '@/app/contexts/signinFormData';
 
 type Params = {
     passwordType: 'text' | 'password'; 

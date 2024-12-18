@@ -9,12 +9,11 @@ import { faX } from "@fortawesome/free-solid-svg-icons";
 import { faBan } from "@fortawesome/free-solid-svg-icons";
 import '@/app/banners/style.css';
 
-const PasswordsNotMatchBanner = () => {
+const VerificatinEmailBanner = () => {
 
-    const bannerExist = useContext(BannersContext)?.passwordsNotMatch;
-    const setBannerExist = useContext(BannersContext)?.setPasswordsNotMatch;
+    const bannerExist = useContext(BannersContext)?.verificatinEmailBanner;
+    const setBannerExist = useContext(BannersContext)?.setVerificatinEmailBanner;
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
-
 
     if(typeof bannerExist == 'undefined' || typeof setBannerExist == 'undefined'){
         return;
@@ -32,11 +31,11 @@ const PasswordsNotMatchBanner = () => {
                 <div className="header"> <FontAwesomeIcon icon={faX} className="icon"/> </div>
 
                 <div className="content"> 
-                    <FontAwesomeIcon icon={faBan} className="fa-ban"/>
-                    <p>{
+                    {/* <FontAwesomeIcon icon={faBan} className="fa-ban"/> */}
+                    <p className="verification-p">{
                         activeLanguage == 'arabic' ?
-                            arabic.passwordsDoNotMatch
-                        :   english.passwordsDoNotMatch
+                            arabic.verificationMessage
+                        :   english.verificationMessage
                     }</p>
                 </div>
 
@@ -45,4 +44,4 @@ const PasswordsNotMatchBanner = () => {
         </div>
     )
 }
-export default PasswordsNotMatchBanner;
+export default VerificatinEmailBanner;

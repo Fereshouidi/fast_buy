@@ -6,7 +6,8 @@ import HeaderForComputer from "@/app/components/header/headerForComputer/header"
 import HeaderForPhone from "@/app/components/header/headerForPhones/header";
 import { ThemeContext } from "@/app/contexts/ThemeContext";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-//import { ProductSelectForShowing } from "./contexts/productSelectForShowing";
+import { CustomerDataContext } from "./contexts/customerData";
+import { CustomerDataParams } from "./contexts/customerData";
 import { CompanyInformationContext } from "./contexts/companyInformation";
 import { companyInformationsParams } from "./contexts/companyInformation";
 import { SideBarContext } from "@/app/contexts/SideBarContext";
@@ -32,6 +33,8 @@ const App = () => {
     }
     return "light";
   });
+  const [customerData, setCustomerData] = useState<CustomerDataParams | undefined>(undefined);
+  
   const [activeLanguage, setActiveLanguage] = useState("english");
   const [sideBarExist, setSideBarExist] = useState(false);
 
@@ -70,8 +73,24 @@ useEffect(() => {
       if (savedTheme) {
         setTheme(savedTheme);
       }
+
+      const storedData = localStorage.getItem("customerData");
+      if (storedData && typeof storedData !== null) {
+        try {
+          setCustomerData(JSON.parse(storedData) as CustomerDataParams) ;
+          console.log(JSON.parse(storedData));
+          console.log(customerData);
+          
+        } catch (error) {
+          console.error("Failed to parse customerData from localStorage:", error);
+          setCustomerData(undefined) ;
+          
+        }
+      }
     }
-  }, []);
+  }, [localStorage.getItem('customerData')]);
+
+ // localStorage.removeItem('customerData')
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -119,20 +138,20 @@ useEffect(() => {
 
 
   return (
-    <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData}} >
+    <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , ActivateAccountWhileSignin: conpanyInformations.ActivateAccountWhileSignin}} >
         <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
           <ThemeContext.Provider value={{ theme, setTheme }}>
             <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
-                {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
-                {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-                {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
-                <Slider/>
-                <ProductsShowing/>
-                {screenWidth > 800 ? <BulletinBoard_two_forComputer /> : <BulletinBoard_two_forPhone />}
-                <CategoriesSection/>
-                <About/>
-                {/* <div>home page</div>
-                <button onClick={goToAbout}>Go to About</button> */}
+              <CustomerDataContext.Provider value={customerData}>
+                  {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
+                  {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
+                  {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
+                  <Slider/>
+                  <ProductsShowing/>
+                  {screenWidth > 800 ? <BulletinBoard_two_forComputer /> : <BulletinBoard_two_forPhone />}
+                  <CategoriesSection/>
+                  <About/>
+              </CustomerDataContext.Provider>
             </SideBarContext.Provider>
           </ThemeContext.Provider>
         </LanguageSelectorContext.Provider>
