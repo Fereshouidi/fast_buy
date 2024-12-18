@@ -7,8 +7,18 @@ import PasswordInput from "./component/passwordInput";
 import RememberMe from './component/rememberMe';
 import SubmateBTN from './component/submateBTN';
 import SwitchToSignin from './component/switchToSignin';
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import '@/app/pages/register/component/style.css';
+
+export type formStateParams = {
+    form: formParams,
+    setForm: (value: formParams) => void
+}
+export type formParams = {
+    userName: string,
+    password: string,
+    rememberMe: boolean
+}
 
 type switchFormsParams = {
     logInExist: boolean,
@@ -22,11 +32,11 @@ const LoginForm = ({logInExist, setLogInExist, signinExist, setSignInExist}: swi
 
     const [passwordType, setPasswordType] = useState<'text' | 'password'>('text')
     
+    const [form, setForm] = useState<formParams>({userName: '', password: '', rememberMe: false});
 
-    // const style: CSSProperties = {
-    //     padding: 'var(--medium-padding)',
-    //     backgroundColor: 'var(--white)'
-    // }
+    useEffect(() => {
+        console.log(form)
+    }, [form])
     
     return (
         <div className={logInExist ? 'form' : 'invisible'}>
@@ -39,10 +49,10 @@ const LoginForm = ({logInExist, setLogInExist, signinExist, setSignInExist}: swi
                 : english.loginW
             }</h2>
 
-            <UserNameInput/>
-            <PasswordInput passwordType={passwordType} setPasswordType={setPasswordType}/>
+            <UserNameInput form={form} setForm={setForm} />
+            <PasswordInput passwordType={passwordType} setPasswordType={setPasswordType} form={form} setForm={setForm}/>
             <RememberMe/>
-            <SubmateBTN/>
+            <SubmateBTN form={form}/>
             <SwitchToSignin logInExist={logInExist} setLogInExist={setLogInExist} signinExist={signinExist} setSignInExist={setSignInExist} />
 
         </div>

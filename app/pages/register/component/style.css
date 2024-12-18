@@ -65,6 +65,10 @@
     align-items: center;
     justify-content: center;
 }
+.form .submate-btn:active {
+    background-color: blue;
+    /* width: 15px; */
+}
 
 .form .submate-btn * {
     margin: var(--small-margin);

@@ -4,26 +4,81 @@ import arabic from '@/app/languages/arabic.json';
 import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
-import { CSSProperties, useContext } from 'react';
+import { CSSProperties, useContext, useRef } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
+import { logIn } from '@/app/crud';
+import { formParams } from '../loginForm';
+import { BannersContext } from '@/app/contexts/banners';
+import { useRouter } from 'next/navigation';
+import LoadingIcon_theHolePage from '@/app/svg/icons/loading/loadingHoleOfThePage';
+import { darken } from 'polished';
 
-
-
-const SubmateBTN = () => {
+const SubmateBTN = ({form}: {form: formParams}) => {
     
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
     const companyInformationContext = useContext(CompanyInformationContext)
+    const bannersContext = useContext(BannersContext);
 
-    // const handleClick = () => {
+    const router = useRouter();
+
+    const btnRef = useRef<HTMLDivElement | null>(null);
+
+    const handleClick = async() => {
+
+        if(btnRef.current){
+            btnRef.current.style.backgroundColor = darken(0.1,  companyInformationContext?.primaryColor || '');
+            setTimeout(() => {
+                if (btnRef.current) {
+                    btnRef.current.style.backgroundColor = companyInformationContext?.primaryColor || '';
+                }
+            }, 100);
+        }
+        <LoadingIcon_theHolePage/>
+
+        const customerData = await logIn(form.userName, form.password);
+
+        if(customerData.status == 400){
+
+            bannersContext?.setLoginStatusBanner(true);
+            bannersContext?.setLoginStatus(400);
+            return;
+
+        }if(customerData.status == 404){
+
+            bannersContext?.setLoginStatusBanner(true);
+            bannersContext?.setLoginStatus(404);
+            return;
+
+        }else if(customerData.status == 401){
+
+            bannersContext?.setLoginStatusBanner(true);
+            bannersContext?.setLoginStatus(401);
+            return;
+
+        }else if(customerData.data && companyInformationContext?.activateAccountWhileSignin && !customerData.data.verification){
+
+            bannersContext?.setLoginStatusBanner(true);
+            bannersContext?.setLoginStatus(0);
+            localStorage.setItem('customerData', JSON.stringify(customerData.data));
+            return;
+
+        }
+
         
-    // }
+        localStorage.setItem('customerData', JSON.stringify(customerData.data));
+        router.push('/');
+
+        
+    }
+
+
 
     const style: CSSProperties = {
         backgroundColor: companyInformationContext?.primaryColor
     }
     
     return (
-        <div style={style} className='submate-btn'>
+        <div style={style} className='submate-btn' onClick={handleClick} ref={btnRef}>
 
             <FontAwesomeIcon icon={faRightToBracket}/>
 

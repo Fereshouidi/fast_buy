@@ -17,6 +17,7 @@
     "chroma-js": "^3.1.2",
     "next": "15.0.3",
     "nodemailer": "^6.9.16",
+    "polished": "^4.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-stars": "^2.2.5",

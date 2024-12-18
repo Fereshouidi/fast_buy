@@ -23,8 +23,11 @@ import CategoriesSection from "@/app/components/categories/categories";
 import About from "@/app/components/about/about";
 import { getConpanyInformations } from "./crud";
 import LoadingIcon from "./svg/icons/loading/loading";
+import { useRouter } from "next/navigation";
 
 const App = () => {
+
+  const router = useRouter();
 
   const [screenWidth, setScreenWidth] = useState<number>(0); 
   const [theme, setTheme] = useState(() => {
@@ -126,9 +129,16 @@ useEffect(() => {
     //alert(document.body.classList)
   }, [theme, activeLanguage, screenWidth]);
 
-  // const goToAbout = () => {
-  //   router.push("/pages/about");
-  // };
+
+  useEffect(() => {
+    if(customerData && !customerData?.verification && conpanyInformations?.activateAccountWhileSignin){
+        router.push('/pages/register')
+    }
+    console.log(!customerData?.verification , conpanyInformations);
+    
+}, [customerData, conpanyInformations])
+
+
 
   if (screenWidth === null) {
     return <div>Loading...</div>; 
@@ -141,7 +151,7 @@ useEffect(() => {
 
 
   return (
-    <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , ActivateAccountWhileSignin: conpanyInformations.ActivateAccountWhileSignin}} >
+    <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin}} >
         <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
           <ThemeContext.Provider value={{ theme, setTheme }}>
             <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>

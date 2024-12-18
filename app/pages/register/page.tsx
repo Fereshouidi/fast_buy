@@ -20,6 +20,7 @@ import { getConpanyInformations } from "@/app/crud";
 import PasswordsNotMatchBanner from '@/app/banners/passwordsNotMatch';
 import EmailNotValidBanner from "@/app/banners/emailNotValid";
 import VerificatinEmailBanner from "@/app/banners/verificationEmail";
+import LoginStatusBanner from "@/app/banners/loginStatus";
 import { CustomerDataContext, CustomerDataParams } from "@/app/contexts/customerData";
 import { useRouter } from "next/navigation";
 import { getCustomerById } from "@/app/crud";
@@ -29,23 +30,28 @@ const Register = () => {
 
     const router = useRouter();
 
+    const [conpanyInformations, setConpanyInformations] = useState<companyInformationsParams | undefined>();
+
+
     const [loadingIconExist, setLoadingIconExit] = useState<boolean>(false);
     const [logInExist, setLogInExist] = useState<boolean>(true);
     const [signinExist, setSignInExist] = useState<boolean>(false);
     const [accountSaved, setAccountSaved] = useState<boolean>(false);
+    
+    //banners 
     const [isPasswordsNotMatchBannerExist, setIsPasswordsNotMatchBannerExist] = useState<boolean>(false);
     const [isEmailNotValideBannerExist, setIsEmailNotValideBannerExist] = useState<boolean>(false);
     const [isVerificationBannerExist, setIsVerificationBannerExist] = useState<boolean>(false);
+    const [loginStatusBanner, setLoginStatusBanner] = useState<boolean>(false);
+    const [loginStatus, setLoginStatus] = useState<number>(404);
 
     const [customerData, setCustomerData] = useState<CustomerDataParams | undefined>(undefined);
 
     useEffect(() => {
-        if(customerData && customerData.verification){
+        if(customerData && ((customerData.verification && conpanyInformations?.activateAccountWhileSignin) || (!customerData.verification && !conpanyInformations?.activateAccountWhileSignin))){
             router.push('/')
         }
     }, [customerData])
-
-    // localStorage.removeItem('customerData')
 
 
     const [screenWidth, setScreenWidth] = useState<number>(0); 
@@ -58,8 +64,6 @@ const Register = () => {
     const [activeLanguage, setActiveLanguage] = useState("english");
     const [sideBarExist, setSideBarExist] = useState(false);
 
-
-const [conpanyInformations, setConpanyInformations] = useState<companyInformationsParams | undefined>();
 
 useEffect(() => {
     const fetchData = async() => {
@@ -182,12 +186,12 @@ useEffect(() => {
     }
     
     return (
-        <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , ActivateAccountWhileSignin: conpanyInformations.ActivateAccountWhileSignin}} >
+        <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin}} >
             <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
                 <ThemeContext.Provider value={{ theme, setTheme }}>
                         <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
                             <AccountSavedContext.Provider value={{accountSaved: accountSaved, setAccountSaved: setAccountSaved}}>
-                                <BannersContext.Provider value={{passwordsNotMatch: isPasswordsNotMatchBannerExist , setPasswordsNotMatch: setIsPasswordsNotMatchBannerExist , emailNotValide: isEmailNotValideBannerExist , setemailNotValide: setIsEmailNotValideBannerExist , verificatinEmailBanner: isVerificationBannerExist, setVerificatinEmailBanner: setIsVerificationBannerExist }}>
+                                <BannersContext.Provider value={{passwordsNotMatch: isPasswordsNotMatchBannerExist , setPasswordsNotMatch: setIsPasswordsNotMatchBannerExist , emailNotValide: isEmailNotValideBannerExist , setemailNotValide: setIsEmailNotValideBannerExist , verificatinEmailBanner: isVerificationBannerExist, setVerificatinEmailBanner: setIsVerificationBannerExist, loginStatusBanner: loginStatusBanner, setLoginStatusBanner: setLoginStatusBanner, loginStatus: loginStatus, setLoginStatus: setLoginStatus}}>
                                     <LoadingIconContext.Provider value={{exist: loadingIconExist , setExist: setLoadingIconExit}}>
                                         <CustomerDataContext.Provider value={customerData}>
                                             {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
@@ -195,6 +199,7 @@ useEffect(() => {
                                             <PasswordsNotMatchBanner/>
                                             <EmailNotValidBanner/>
                                             <VerificatinEmailBanner/>
+                                            <LoginStatusBanner status={loginStatus}/>
                                             <LoadingIcon_theHolePage/>
                                             <div id="regester-page" style={styleRegesterPage}>
                                                 <LoginForm logInExist={logInExist} setLogInExist={setLogInExist} signinExist={signinExist} setSignInExist={setSignInExist}/>

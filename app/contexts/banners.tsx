@@ -7,6 +7,10 @@ interface bannersParams{
     setemailNotValide: (value: boolean) => void,
     verificatinEmailBanner: boolean,
     setVerificatinEmailBanner: (value: boolean) => void,
+    loginStatusBanner : boolean,
+    setLoginStatusBanner : (value: boolean) => void
+    loginStatus : number,
+    setLoginStatus : (value: number) => void
 }
 
 export const BannersContext = createContext<bannersParams | undefined>(undefined)

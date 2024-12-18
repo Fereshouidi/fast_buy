@@ -63,5 +63,9 @@
     "areaOfInterest": "Area of ​​interest",
     "emailNotValid": "Email not valid !",
     "passwordsDoNotMatch": "Passwords do not match !",
-    "verificationMessage" : "We have sent you an activation link. Click on it and then refresh the page ."
+    "verificationMessage" : "We have sent you an activation link. Click on it and then refresh the page .",
+    "formEmptyP": "you shouldn't let the form empty !",
+    "accountNotExistP": "account is not exist !",
+    "passwordWrongP": "password is wrong !",
+    "accountNotVerificateP": "you have to verificate your account first !"
 }

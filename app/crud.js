@@ -1,7 +1,8 @@
-const url = 'https://fast-buy-back-end.vercel.app/api';
+const url = 'http://localhost:3002/api';
 import axios from "axios";
 
-
+//https://fast-buy-back-end.vercel.app/api
+//http://localhost:3002/api
 
 export const getBulletinBoard = async() => {
     try{
@@ -165,4 +166,18 @@ export const getCustomerById = async (id) => {
     }
 };
 
+export const logIn = async (userName, password) => {
+    
+    try {
+        const response = await axios.get(url + `/get/customer/byCredentials`, {
+            params: {userName, password}
+        });
+        
+        return {data: response.data, status: response.status};
 
+    } catch (err) {
+        console.log(err.response.status);
+        
+        return {status: err.response.status};
+    }
+};

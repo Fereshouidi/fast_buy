@@ -4,13 +4,19 @@ import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
 import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons/faUser";
-import { CSSProperties, useContext } from 'react';
+import { ChangeEvent, CSSProperties, useContext } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
+import { formStateParams } from '../loginForm';
 
-const UserNameInput = () => {
+const UserNameInput = ({form, setForm}: formStateParams) => {
     
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
-    const companyInformationContext = useContext(CompanyInformationContext)
+    const companyInformationContext = useContext(CompanyInformationContext);
+
+
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setForm({...form, userName: event.target.value})
+    }
 
     const styleInput: CSSProperties = {
         border: '0.7px solid' + companyInformationContext?.primaryColor,
@@ -41,6 +47,7 @@ const UserNameInput = () => {
                     : english.userNameW + ' ... '
                 }
                 style={styleInput}
+                onChange={(event) => handleChange(event)}
             />
 
             <div className='icon-div' style={styleIconDiv}>

@@ -62,9 +62,11 @@
     "areaOfInterest": "مجال الاهتمام",
     "emailNotValid": "البريد الالكتروني غير صالح !",
     "passwordsDoNotMatch": " كلمات المرور غير متطابقة !",
-    "verificationMessage" : "لقد ارسلنا لك رابطا للتفعيل . انقر عليه ثم حدث الصفحة"
-
-
+    "verificationMessage" : "لقد ارسلنا لك رابطا للتفعيل . انقر عليه ثم حدث الصفحة",
+    "formEmptyP": "لا يجدر بك ترك الاستمارة فارغة !",
+    "accountNotExistP": "الحساب غير موجود !",
+    "passwordWrongP": "كلمة المرور خاطئة !",
+    "accountNotVerificateP": "عليك تفعيل حسابك اولا !"
 }
 
 

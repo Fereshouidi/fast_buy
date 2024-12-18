@@ -14,7 +14,7 @@ export interface companyInformationsParams {
     registerRequiredData: registerRequiredDataParams,
     email: string,
     password: string,
-    ActivateAccountWhileSignin: boolean
+    activateAccountWhileSignin: boolean
 }
 
 type nameParams = {

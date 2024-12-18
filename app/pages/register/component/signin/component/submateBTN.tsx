@@ -4,7 +4,7 @@ import arabic from '@/app/languages/arabic.json';
 import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
-import { CSSProperties, useContext } from 'react';
+import { CSSProperties, useContext, useRef } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 import { formDataParams } from '@/app/contexts/signinFormData';
 import { BannersContext } from '@/app/contexts/banners';
@@ -12,7 +12,7 @@ import { sendActivationToken } from '@/app/crud';
 import { createAccount } from '@/app/crud';
 import { useRouter } from 'next/navigation';
 import { LoadingIconContext } from '@/app/contexts/loadingIcon';
-import { CustomerDataContext } from '@/app/contexts/customerData';
+import { darken } from 'polished';
 
 
 
@@ -31,9 +31,8 @@ const SubmateBTN = ({formData}: Params) => {
     const setEmailNotValidBanner = useContext(BannersContext)?.setemailNotValide;
     const setVerificationBanner = useContext(BannersContext)?.setVerificatinEmailBanner;
     const loadingIconContext = useContext(LoadingIconContext);
-    const customerData = useContext(CustomerDataContext);
 
-console.log(customerData);
+    const btnRef = useRef<HTMLDivElement | null>(null);
 
     if(!setPasswordsNotMatchExist || !setEmailNotValidBanner || !setVerificationBanner){
         throw 'error banner is undefind !'
@@ -43,6 +42,15 @@ console.log(customerData);
     const randomActivationCode = Math.round(Math.random() * 10000);
 
     const handleClick = async() => {
+
+        if(btnRef.current){
+            btnRef.current.style.backgroundColor = darken(0.1,  companyInformationContext?.primaryColor || '');
+            setTimeout(() => {
+                if (btnRef.current) {
+                    btnRef.current.style.backgroundColor = companyInformationContext?.primaryColor || '';
+                }
+            }, 100);
+        }
 
         loadingIconContext?.setExist(true);
 
@@ -79,7 +87,7 @@ console.log(customerData);
 
         localStorage.setItem('customerData', JSON.stringify(customerAccount))
 
-        if(companyInformationContext?.ActivateAccountWhileSignin){
+        if(companyInformationContext?.activateAccountWhileSignin){
             setVerificationBanner(true);
             loadingIconContext?.setExist(false)
             return;
@@ -95,7 +103,7 @@ console.log(customerData);
     }
     
     return (
-        <div style={style} className='submate-btn' onClick={handleClick}>
+        <div style={style} className='submate-btn' onClick={handleClick} ref={btnRef}>
 
             <FontAwesomeIcon icon={faRightToBracket}/>
 
