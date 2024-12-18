@@ -167,10 +167,17 @@ useEffect(() => {
     return <div>Loading...</div>; 
     }
 
-    if (!conpanyInformations) {
-    return <LoadingIcon_theHolePage/>; 
+    useEffect(() => {
+        if(!conpanyInformations) {
+            setLoadingIconExit(true)
+        }else{
+            setLoadingIconExit(false)
+        }
+    }, [conpanyInformations])
+
+    if(!conpanyInformations) {
+        return;
     }
-      
 
     const styleRegesterPage: CSSProperties = {
         width: '100%',
