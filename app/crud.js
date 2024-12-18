@@ -146,6 +146,7 @@ export const sendActivationToken = async(email, username, companyEmail, companyP
         return true;
 
     }catch(err) {
+        console.log(err);
         return false;
     }
 }
