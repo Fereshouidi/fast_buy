@@ -139,7 +139,7 @@ export const createAccount = async(customerData) => {
 
 export const sendActivationToken = async(email, username, companyEmail, companyPassword, activeLanguage, activationToken) => {
     try{
-        const response = await axios.post(url + '/send/activationToken', {
+        await axios.post(url + '/send/activationToken', {
             email, username, companyEmail, companyPassword, activeLanguage, activationToken
         });
         

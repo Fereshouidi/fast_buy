@@ -6,7 +6,6 @@ import { useContext } from "react";
 import { BannersContext } from "../contexts/banners";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
-import { faBan } from "@fortawesome/free-solid-svg-icons";
 import '@/app/banners/style.css';
 
 const VerificatinEmailBanner = () => {
