@@ -21,7 +21,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-
+    color: var(--black);
 }
 
 .banner-exist .banner {
