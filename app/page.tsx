@@ -88,7 +88,7 @@ useEffect(() => {
         }
       }
     }
-  }, [localStorage.getItem('customerData')]);
+  }, []);
 
  // localStorage.removeItem('customerData')
 
