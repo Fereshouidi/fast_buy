@@ -90,7 +90,10 @@ useEffect(() => {
     }
   }, []);
 
- // localStorage.removeItem('customerData')
+  const closeAccount = () => {
+    localStorage.removeItem('customerData')
+  }
+
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -151,6 +154,7 @@ useEffect(() => {
                   {screenWidth > 800 ? <BulletinBoard_two_forComputer /> : <BulletinBoard_two_forPhone />}
                   <CategoriesSection/>
                   <About/>
+                  <span onClick={closeAccount}>x</span>
               </CustomerDataContext.Provider>
             </SideBarContext.Provider>
           </ThemeContext.Provider>
