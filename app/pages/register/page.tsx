@@ -163,10 +163,6 @@ useEffect(() => {
     }, [theme, activeLanguage, screenWidth]);
 
 
-    if (screenWidth === null) {
-    return <div>Loading...</div>; 
-    }
-
     useEffect(() => {
         if(!conpanyInformations) {
             setLoadingIconExit(true)
@@ -174,6 +170,12 @@ useEffect(() => {
             setLoadingIconExit(false)
         }
     }, [conpanyInformations])
+
+    
+    if (screenWidth === null) {
+    return <div>Loading...</div>; 
+    }
+
 
     if(!conpanyInformations) {
         return;
