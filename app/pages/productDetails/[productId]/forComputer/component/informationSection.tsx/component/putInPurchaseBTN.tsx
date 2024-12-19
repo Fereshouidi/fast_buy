@@ -15,9 +15,8 @@ import { purchaseParams } from '@/app/contexts/purchaseData';
 type Params = {
     product: productParams | undefined,
     purchaseData: purchaseParams | undefined,
-    setPurchaseData: (value: purchaseParams) => void
 }
-const PutInPurchaseBTN = ({product, purchaseData, setPurchaseData}: Params) => {
+const PutInPurchaseBTN = ({product, purchaseData}: Params) => {
 
     console.log(product);
     const router = useRouter();

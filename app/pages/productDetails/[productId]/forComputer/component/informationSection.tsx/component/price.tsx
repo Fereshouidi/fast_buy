@@ -3,7 +3,7 @@ import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { productParams } from "@/app/contexts/productSelectForShowing";
-import { CSSProperties, useContext, useRef } from "react";
+import { CSSProperties, useContext } from "react";
 
 const Price = ({product}: {product: productParams | undefined}) => {
 

@@ -35,6 +35,7 @@ type discountParams = {
 };
 const Card = ({product}: {product : productParams}) => {
 
+    const router = useRouter();
 
 const languageContext = useContext(LanguageSelectorContext)
 const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
@@ -54,8 +55,6 @@ const setHover = () => {
 const unsetHover = () => {
     setCardHover(false)
 }
-
-const router = useRouter();
 
 const goToCardShow = (product: productParams) => {
     setLoadingIcon(true);

@@ -63,7 +63,7 @@ const InformationSection = ({product}: {product: productParams | undefined}) => 
             </div>
             {product?.categorie? <Categorie product={product}/> : null}
             <Price product={product}/>
-            <PutInPurchaseBTN product={product} purchaseData={purchaseData} setPurchaseData={setPurchaseData}/>
+            <PutInPurchaseBTN product={product} purchaseData={purchaseData} />
         </div>
     )
 }
