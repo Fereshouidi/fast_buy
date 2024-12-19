@@ -25,11 +25,12 @@ const PutInPurchaseBTN = ({product, purchaseData}: Params) => {
     const languageSelectorContext = useContext(LanguageSelectorContext);
     const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
     const setLoadingIcon = useContext(LoadingIconContext)?.setExist
+
+    const btnRef = useRef<HTMLDivElement | null>(null)
+
     if(!setLoadingIcon){
         return;
     }
-
-    const btnRef = useRef<HTMLDivElement | null>(null)
 
     const handleClick = async() => {
 
