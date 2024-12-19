@@ -24,3 +24,7 @@
     color: white;
     background-color: var(--ashen-semi-transparent);
 }
+
+.arrowForImageDisplay:active {
+    background-color: var(--black);
+}

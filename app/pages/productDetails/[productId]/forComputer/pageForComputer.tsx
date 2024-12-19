@@ -1,11 +1,15 @@
 'use client';
-import { CSSProperties } from "react";
+import { CSSProperties, useEffect } from "react";
 import ImagesSection from "./component/imagesSection/imagesSection";
 import InformationSection from "./component/informationSection.tsx/informationSection";
 import { productParams } from "@/app/contexts/productSelectForShowing";
 
 
 const PageForComputer = ({product}: {product: productParams | undefined}) => {
+    
+    useEffect(() => {
+        console.log(product);
+    }, [product])
     
 
     const style: CSSProperties = {

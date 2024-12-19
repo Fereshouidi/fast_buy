@@ -2,13 +2,25 @@
 import englist from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-import { CSSProperties, useContext } from 'react';
+import { ChangeEvent, CSSProperties, useContext } from 'react';
 import { productParams } from "@/app/contexts/productSelectForShowing";
+import { purchaseParams } from '@/app/contexts/purchaseData';
 
-
-const Quantity = ({product}: {product: productParams | undefined}) => {
+type Params = {
+    product: productParams | undefined,
+    purchaseData: purchaseParams | undefined,
+    setPurchaseData: (value: purchaseParams) => void
+}
+const Quantity = ({product, purchaseData, setPurchaseData}: Params) => {
 
     const languageSelectorContext = useContext(LanguageSelectorContext);
+
+    const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+        if(purchaseData ){
+            setPurchaseData({...purchaseData, quantity: parseInt(event.target.value)})
+        }
+      //  console.log(typeof parseInt(event.target.value) );
+    }
 
     const style: CSSProperties = {
         //width: '100%',
@@ -40,7 +52,7 @@ const Quantity = ({product}: {product: productParams | undefined}) => {
                 : englist.quantity + ' : '
             }</span>
 
-            <select style={styleColorDiv} id="selectQuantitue">
+            <select style={styleColorDiv} id="selectQuantitue" onChange={(event) => handleChange(event)}>
                 {Array.from({ length: product?.quantity? product?.quantity : 0 }, (_, count) => (
                     <option key={count} value={count + 1}>{count + 1}</option>
                 ))}

@@ -12,7 +12,7 @@ const LoadingIcon_theHolePage = () => {
 
     const styleLoadingIcon: CSSProperties = {
         borderTop: `5px solid ${companyInformation?.primaryColor}`,
-        borderRight: `5px solid ${companyInformation?.primaryColor}`,
+        // borderRight: `5px solid ${companyInformation?.primaryColor}`,
     }
     return (
         <div id='x' className={exist? 'container-of-loading-icon-hole-page' : 'invisible'} >

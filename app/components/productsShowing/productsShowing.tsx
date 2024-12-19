@@ -5,30 +5,15 @@ import ProductsShowingForComputer from '@/app/components/productsShowing/forComp
 import ProductsShowingForPhone from '@/app/components/productsShowing/forPhone/productsShowing';
 import { useContext, useEffect, useState } from "react";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-// import english from '@/app/languages/english.json';
-// import arabic from '@/app/languages/arabic.json';
+
 
 const ProductsShowing = () => {
 
-    // const [activeLanguage, setActiveLanguage] = useState(english);
     const languageContext = useContext(LanguageSelectorContext);
 
     if(!languageContext){
         throw 'error languageContext';
     }
-
-    // useEffect(() => {
-
-    //     if(languageContext.activeLanguage == 'english'){
-    //         setActiveLanguage(english);
-    //     }else if(languageContext.activeLanguage == 'arabic'){
-    //         setActiveLanguage(arabic);
-    //     }
-
-    // }, [languageContext.activeLanguage])
-
-
-
 
     type productParams = {
         _id: string,
@@ -46,7 +31,6 @@ const ProductsShowing = () => {
         arabic: string
     }
     
-    
     type discountParams = {
         createdAt: Date,
         discountSticker: string,
@@ -56,6 +40,7 @@ const ProductsShowing = () => {
         startOfDiscount: Date, 
         endOfDiscount: Date
     };
+
     const [allProducts, setAllProducts] = useState<productParams[]>([]);
     const [pageNumber, setPageNumber] = useState<number>(1);
     useEffect(() => {
@@ -67,9 +52,6 @@ const ProductsShowing = () => {
         fetchData()
     }, [pageNumber])
 
-    // const handleShowMore = () => {
-    //     setPageNumber((prev) => prev + 1)
-    // }
     
     if (typeof window == 'undefined') {
         return ;

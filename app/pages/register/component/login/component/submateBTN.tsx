@@ -10,14 +10,19 @@ import { logIn } from '@/app/crud';
 import { formParams } from '../loginForm';
 import { BannersContext } from '@/app/contexts/banners';
 import { useRouter } from 'next/navigation';
-import LoadingIcon_theHolePage from '@/app/svg/icons/loading/loadingHoleOfThePage';
 import { darken } from 'polished';
+import { LoadingIconContext } from '@/app/contexts/loadingIcon';
 
 const SubmateBTN = ({form}: {form: formParams}) => {
     
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
     const companyInformationContext = useContext(CompanyInformationContext)
     const bannersContext = useContext(BannersContext);
+    const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
+    if(!setLoadingIcon){
+        return;
+    }
+    
 
     const router = useRouter();
 
@@ -33,7 +38,7 @@ const SubmateBTN = ({form}: {form: formParams}) => {
                 }
             }, 100);
         }
-        <LoadingIcon_theHolePage/>
+        setLoadingIcon(true);
 
         const customerData = await logIn(form.userName, form.password);
 

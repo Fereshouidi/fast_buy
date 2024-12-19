@@ -15,8 +15,6 @@ const LeftArrow = () => {
 
     const imagesLength = productSelect?.images.length || 0;
 
-
-
     const currentIndex = activeImageContext?.activeImageIndex || 0 ;
 
     const handleClick = () => {

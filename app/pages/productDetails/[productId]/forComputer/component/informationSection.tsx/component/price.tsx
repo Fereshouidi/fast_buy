@@ -3,11 +3,13 @@ import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { productParams } from "@/app/contexts/productSelectForShowing";
-import { CSSProperties, useContext } from "react";
+import { CSSProperties, useContext, useRef } from "react";
 
 const Price = ({product}: {product: productParams | undefined}) => {
 
     const languageSelectorContext = useContext(LanguageSelectorContext);
+
+    
 
     const style: CSSProperties = {
         display: 'flex',
@@ -15,8 +17,7 @@ const Price = ({product}: {product: productParams | undefined}) => {
         margin: 'var(--large-margin)',
         fontSize: 'calc(var(--big-size)*1.5)',
         fontWeight: '700',
-        color: 'var(--black)'
-
+        color: 'var(--black)',
     }
     const stylePriceW: CSSProperties = {
         fontWeight: '200'
@@ -27,7 +28,7 @@ const Price = ({product}: {product: productParams | undefined}) => {
 
 
     return (
-        <div style={style} id="price">
+        <div style={style} id="price" >
             <span style={stylePriceW}>{
                 languageSelectorContext?.activeLanguage ==  'english' ?
                     english.priceW + ' : '

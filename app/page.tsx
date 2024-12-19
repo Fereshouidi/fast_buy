@@ -22,9 +22,9 @@ import BulletinBoard_two_forComputer from "./components/bulletinBoard_two/forcom
 import CategoriesSection from "@/app/components/categories/categories";
 import About from "@/app/components/about/about";
 import { getConpanyInformations } from "./crud";
-import LoadingIcon from "./svg/icons/loading/loading";
 import { useRouter } from "next/navigation";
-
+import { LoadingIconContext } from "./contexts/loadingIcon";
+import LoadingIcon_theHolePage from "./svg/icons/loading/loadingHoleOfThePage";
 const App = () => {
 
   const router = useRouter();
@@ -40,6 +40,8 @@ const App = () => {
   
   const [activeLanguage, setActiveLanguage] = useState("english");
   const [sideBarExist, setSideBarExist] = useState(false);
+  const [loadingIconExist, setLoadingIconExit] = useState<boolean>(false);
+
 
 
 const [conpanyInformations, setConpanyInformations] = useState<companyInformationsParams | undefined>();
@@ -134,7 +136,7 @@ useEffect(() => {
     if(customerData && !customerData?.verification && conpanyInformations?.activateAccountWhileSignin){
         router.push('/pages/register')
     }
-    console.log(!customerData?.verification , conpanyInformations);
+    console.log(customerData);
     
 }, [customerData, conpanyInformations])
 
@@ -145,9 +147,10 @@ useEffect(() => {
   }
 
   if (!conpanyInformations) {
-    return <LoadingIcon/>; 
+    return <LoadingIcon_theHolePage/>; 
   }
   
+  // return <LoadingIcon_theHolePage/>
 
 
   return (
@@ -156,15 +159,18 @@ useEffect(() => {
           <ThemeContext.Provider value={{ theme, setTheme }}>
             <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
               <CustomerDataContext.Provider value={customerData}>
-                  {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
-                  {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-                  {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
-                  <Slider/>
-                  <ProductsShowing/>
-                  {screenWidth > 800 ? <BulletinBoard_two_forComputer /> : <BulletinBoard_two_forPhone />}
-                  <CategoriesSection/>
-                  <About/>
-                  <span onClick={closeAccount}>x</span>
+                <LoadingIconContext.Provider value={{exist: loadingIconExist , setExist: setLoadingIconExit}}>
+                    {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
+                    {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
+                    {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
+                    <Slider/>
+                    <LoadingIcon_theHolePage/>
+                    <ProductsShowing/>
+                    {screenWidth > 800 ? <BulletinBoard_two_forComputer /> : <BulletinBoard_two_forPhone />}
+                    <CategoriesSection/>
+                    <About/>
+                    <span onClick={closeAccount}>x</span>
+                </LoadingIconContext.Provider>
               </CustomerDataContext.Provider>
             </SideBarContext.Provider>
           </ThemeContext.Provider>

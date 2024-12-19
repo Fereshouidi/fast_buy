@@ -23,6 +23,7 @@ type LanguageParams = {
 }
 
 type discountParams = {
+    _id: string,
     createdAt: Date,
     discountSticker: string,
     newPrice: number,

@@ -6,6 +6,7 @@ import BoxIcon from "@/app/svg/icons/boxSmall";
 import StarRating from "./startingRating/StartRating";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { useRouter } from "next/navigation";
+import { LoadingIconContext } from "@/app/contexts/loadingIcon";
 
 type productParams = {
     _id: string,
@@ -35,10 +36,14 @@ type discountParams = {
 
 const Card = ({product}: {product : productParams}) => {
 
-    const languageContext = useContext(LanguageSelectorContext)
+    const languageContext = useContext(LanguageSelectorContext);
+    const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
 
     if(!languageContext){
-    throw 'error languageContext'
+        throw 'error languageContext'
+    }
+    if(!setLoadingIcon){
+        return;
     }
 
     const [cardHover, setCardHover] = useState<boolean>(false)
@@ -53,6 +58,7 @@ const Card = ({product}: {product : productParams}) => {
     const router = useRouter();
 
     const goToCardShow = (product: productParams) => {
+        setLoadingIcon(true);
         router.push(`/pages/productDetails/${product._id}`);
     };
     

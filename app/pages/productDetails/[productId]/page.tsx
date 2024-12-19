@@ -19,6 +19,9 @@ import { ActiveImageContext } from "@/app/contexts/activeImageForComputer";
 import { ActiveImageContext_ForPhone } from "@/app/contexts/activeImageForPhone";
 import { productParams } from "@/app/contexts/productSelectForShowing";
 import { companyInformationsParams } from "@/app/contexts/companyInformation";
+import LoadingIcon_theHolePage from "@/app/svg/icons/loading/loadingHoleOfThePage";
+import { LoadingIconContext } from "@/app/contexts/loadingIcon";
+import { CustomerDataContext, CustomerDataParams } from "@/app/contexts/customerData";
 
 
 interface propsParams {
@@ -35,6 +38,7 @@ const ProductDetails = (props: propsParams) => {
     }
 
 
+    const [loadingIconExist, setLoadingIconExit] = useState<boolean>(false);
 
     const [product, setProduct] = useState<productParams | undefined>(undefined);
     const [activeImage, setActiveImage] = useState<string | undefined>();
@@ -52,6 +56,8 @@ const ProductDetails = (props: propsParams) => {
   });
   const [activeLanguage, setActiveLanguage] = useState("english");
   const [sideBarExist, setSideBarExist] = useState(false);
+
+  const [customerData, setCustomerData] = useState<CustomerDataParams | undefined>(undefined);
 
   useEffect(() => {
     const getProduct = async() => {
@@ -102,6 +108,20 @@ useEffect(() => {
       const savedTheme = localStorage.getItem("activeTheme");
       if (savedTheme) {
         setTheme(savedTheme);
+      }
+
+      const storedData = localStorage.getItem("customerData");
+      if (storedData && typeof storedData !== null) {
+        try {
+          setCustomerData(JSON.parse(storedData) as CustomerDataParams) ;
+          console.log(JSON.parse(storedData));
+          console.log(customerData);
+          
+        } catch (error) {
+          console.error("Failed to parse customerData from localStorage:", error);
+          setCustomerData(undefined) ;
+          
+        }
       }
     }
   }, []);
@@ -156,12 +176,18 @@ useEffect(() => {
                         <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
                             <ActiveImageContext.Provider value={{activeImage: activeImage , setActiveImage: setActiveImage , activeImageIndex: activeImageIndex , setActiveImageIndex: setActiveImageIndex, currentIndex: currentSlideIndex , setCurrentIndex: setCurrentSlideIndex , imageWidth: imageSliderWidth , setImageWidth: setImageSliderWidth }}>
                                 <ActiveImageContext_ForPhone.Provider value={{activeImage: activeImage , setActiveImage: setActiveImage , activeImageIndex: activeImageIndex , setActiveImageIndex: setActiveImageIndex, currentIndex: currentSlideIndex , setCurrentIndex: setCurrentSlideIndex , imageWidth: imageSliderWidth_forPhone , setImageWidth: setImageSliderWidth_forPhone }}>
-                                    {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
-                                    {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-                                    {screenWidth > 800 ? <PageForComputer product={product}/> : <PageForPhone product={product}/>}
-                                    <About/>
+                                  <LoadingIconContext.Provider value={{exist: loadingIconExist , setExist: setLoadingIconExit}}>
+                                    <CustomerDataContext.Provider value={customerData}>
+                                        
+                                      <LoadingIcon_theHolePage/>
+                                      {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
+                                      {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
+                                      {screenWidth > 800 ? <PageForComputer product={product}/> : <PageForPhone product={product}/>}
+                                      <About/>
+
+                                    </CustomerDataContext.Provider>
+                                  </LoadingIconContext.Provider>
                                 </ActiveImageContext_ForPhone.Provider>
-                                
                             </ActiveImageContext.Provider>
                         </SideBarContext.Provider>
                     </ProductSelectContext.Provider>
