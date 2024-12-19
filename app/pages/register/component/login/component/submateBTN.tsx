@@ -19,14 +19,17 @@ const SubmateBTN = ({form}: {form: formParams}) => {
     const companyInformationContext = useContext(CompanyInformationContext)
     const bannersContext = useContext(BannersContext);
     const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
+
+    
+    const router = useRouter();
+
+    const btnRef = useRef<HTMLDivElement | null>(null);
+    
     if(!setLoadingIcon){
         return;
     }
     
 
-    const router = useRouter();
-
-    const btnRef = useRef<HTMLDivElement | null>(null);
 
     const handleClick = async() => {
 

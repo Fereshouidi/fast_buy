@@ -40,14 +40,16 @@ const Card = ({product}: {product : productParams}) => {
 const languageContext = useContext(LanguageSelectorContext)
 const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
 
-if(!languageContext){
-  throw 'error languageContext'
-}
-if(!setLoadingIcon){
-    return;
-}
+const [cardHover, setCardHover] = useState<boolean>(false);
 
-const [cardHover, setCardHover] = useState<boolean>(false)
+
+if(!languageContext){
+    throw 'error languageContext'
+  }
+  if(!setLoadingIcon){
+      return;
+  }
+
 
 const setHover = () => {
     setCardHover(true)
