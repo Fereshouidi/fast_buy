@@ -3,6 +3,7 @@
 import { CSSProperties, useContext } from "react";
 import Slider from "./slider/slider";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
+import { productParams } from "@/app/contexts/productSelectForShowing";
 
 
 
@@ -15,14 +16,14 @@ type categorieParams = {
     margin: number;
 }
 
-type productParams = {
-    name: LanguageParams;
-    imagePrincipal: string;
-    price: number;
-    discount: discountParams;
-    totalRating: number;
-    currencyType: string;
-}
+// type productParams = {
+//     name: LanguageParams;
+//     imagePrincipal: string;
+//     price: number;
+//     discount: discountParams;
+//     totalRating: number;
+//     currencyType: string;
+// }
 
 type LanguageParams = {
     english: string,

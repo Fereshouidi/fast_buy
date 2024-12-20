@@ -2,6 +2,7 @@
 import { CSSProperties, useEffect, useState } from "react";
 import Categorie from "./categorie/categorie";
 import { getCategoriesSection } from "@/app/crud";
+import { productParams } from "@/app/contexts/productSelectForShowing";
 
 const CategoriesSection = () => {
 
@@ -13,7 +14,6 @@ const CategoriesSection = () => {
         catgorie: categorieParams;
         products: productParams[];
     }[];
-    
 
     type categorieParams = {
         _id: string;
@@ -24,14 +24,14 @@ const CategoriesSection = () => {
         margin: number;
     };
 
-    type productParams = {
-        name: nameParams;
-        imagePrincipal: string;
-        price: number;
-        discount: discountParams;
-        totalRating: number;
-        currencyType: string;
-    };
+    // type productParams = {
+    //     name: nameParams;
+    //     imagePrincipal: string;
+    //     price: number;
+    //     discount: discountParams;
+    //     totalRating: number;
+    //     currencyType: string;
+    // };
 
     type nameParams = {
         english: string,
