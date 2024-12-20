@@ -38,15 +38,15 @@ const CategoriesSection = () => {
         arabic: string
     }
     
-    type discountParams = {
-        createdAt: Date;
-        discountSticker: string;
-        newPrice: number;
-        oldPrice: number;
-        percentage: number;
-        startOfDiscount: Date;
-        endOfDiscount: Date;
-    };
+    // type discountParams = {
+    //     createdAt: Date;
+    //     discountSticker: string;
+    //     newPrice: number;
+    //     oldPrice: number;
+    //     percentage: number;
+    //     startOfDiscount: Date;
+    //     endOfDiscount: Date;
+    // };
 
     const [categoriesSection, setCategoriesSection] = useState<categoriesSectionParams>();
 

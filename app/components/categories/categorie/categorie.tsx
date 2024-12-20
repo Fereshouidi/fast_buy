@@ -30,15 +30,15 @@ type LanguageParams = {
     arabic: string
 }
 
-type discountParams = {
-    createdAt: Date;
-    discountSticker: string;
-    newPrice: number;
-    oldPrice: number;
-    percentage: number;
-    startOfDiscount: Date;
-    endOfDiscount: Date;
-};
+// type discountParams = {
+//     createdAt: Date;
+//     discountSticker: string;
+//     newPrice: number;
+//     oldPrice: number;
+//     percentage: number;
+//     startOfDiscount: Date;
+//     endOfDiscount: Date;
+// };
 
 const Categorie = ({ categorie, products }: { categorie: categorieParams, products: productParams[] }) => {
 
