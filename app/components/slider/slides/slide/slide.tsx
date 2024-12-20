@@ -8,48 +8,15 @@ import { productParams } from "@/app/contexts/productSelectForShowing";
 import { LoadingIconContext } from "@/app/contexts/loadingIcon";
 import { useRouter } from "next/navigation";
 
-// type productParams = {
-//     name: languageParams,
-//     images: string[],
-//     imagePrincipal: string,
-//     startOfDiscount: Date,
-//     endOfDiscount: Date,
-//     discount: discountParams,
-//     discountSticker: string,
-//     currencyType: string
-// }
-// type discountParams = {
-//     createdAt: Date,
-//     discountSticker: string,
-//     newPrice: number,
-//     oldPrice: number,
-//     percentage: number,
-//     startOfDiscount: Date, 
-//     endOfDiscount: Date
-// };
-
-// type languageParams = {
-//     english: string,
-//     arabic: string
-// }
 
 const Slide = ({product} : {product: productParams}) => {
 
     const router = useRouter();
 
-    if(typeof window == 'undefined'){
-        throw 'window is undefined !'
-    }
     const companyInformation = useContext(CompanyInformationContext)
     const languageContext = useContext(LanguageSelectorContext);
     const setLoadingIcon = useContext(LoadingIconContext)?.setExist
 
-    if(!languageContext){
-        throw 'error languageContext';
-    }
-    if(!setLoadingIcon){
-        return;
-    }
 
     const slideRef = useRef<HTMLDivElement>(null);
     const [imageWidth, setImageWidth] = useState<number>(0);
@@ -83,6 +50,17 @@ const Slide = ({product} : {product: productParams}) => {
             };
         }
     }, []);
+
+    
+    if(typeof window == 'undefined'){
+        throw 'window is undefined !'
+    }
+    if(!languageContext){
+        throw 'error languageContext';
+    }
+    if(!setLoadingIcon){
+        return;
+    }
 
     const goToDetailPage = (product: productParams) => {
         setLoadingIcon(true);

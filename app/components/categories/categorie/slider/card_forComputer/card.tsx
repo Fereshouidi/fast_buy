@@ -14,7 +14,9 @@ const Card = ({product}: {product : productParams}) => {
 
     const router = useRouter();
     const companyInformation = useContext(CompanyInformationContext);
-    const setLoadingIcon = useContext(LoadingIconContext)?.setExist
+    const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
+    const [cardHover, setCardHover] = useState<boolean>(false)
+
     
     if(typeof window == 'undefined'){
         throw 'window.innerWidth == "undefind"'
@@ -34,7 +36,6 @@ const goToDetailPage = (product: productParams) => {
     router.push(`/pages/productDetails/${product._id}`);
 };
 
-const [cardHover, setCardHover] = useState<boolean>(false)
 
 const setHover = () => {
     setCardHover(true)

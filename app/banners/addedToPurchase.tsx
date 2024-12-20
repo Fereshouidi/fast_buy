@@ -10,9 +10,7 @@ import { faBan } from "@fortawesome/free-solid-svg-icons";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import '@/app/banners/style.css';
 
-type statusParams = {
-    status: number,
-}
+
 const PurchaseStatusBanner = () => {
 
     const bannerExist = useContext(BannersContext)?.purchaseStatusBanner;

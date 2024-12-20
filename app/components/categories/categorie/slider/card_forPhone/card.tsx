@@ -15,7 +15,8 @@ const Card = ({product}: {product : productParams}) => {
     const router = useRouter();
     const companyInformation = useContext(CompanyInformationContext);
     const setLoadingIcon = useContext(LoadingIconContext)?.setExist
-    const languageContext = useContext(LanguageSelectorContext)
+    const languageContext = useContext(LanguageSelectorContext);
+    const [cardHover, setCardHover] = useState<boolean>(false)
 
 if(!languageContext){
   throw 'error languageContext'
@@ -28,8 +29,6 @@ const goToDetailPage = (product: productParams) => {
     setLoadingIcon(true);
     router.push(`/pages/productDetails/${product._id}`);
 };
-
-const [cardHover, setCardHover] = useState<boolean>(false)
 
 const setHover = () => {
     setCardHover(true)
