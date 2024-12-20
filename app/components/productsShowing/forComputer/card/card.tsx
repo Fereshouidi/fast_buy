@@ -70,13 +70,14 @@ const goToCardShow = (product: productParams) => {
         borderRadius: '20px',
         margin: 'var(--medium-margin)',
         padding: 'var(--small-padding)',
-        boxShadow: '0 5px 15px var(--black-almost-transparnt)',
+       // boxShadow: '0 5px 15px var(--black-almost-transparnt)',
         cursor: "pointer",
         transition: '0.5s ease'
     }
     const StyleWithHover: CSSProperties = {
         ...Style,
-        transform: 'scale(1.05)',
+       // transform: 'scale(1.05)',
+       backgroundColor: 'var(--black-almost-transparent)'
     }
     const StyleImage: CSSProperties = {
         width: '100%',

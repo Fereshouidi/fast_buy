@@ -6,6 +6,8 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import ShoppingCartIcon from "@/app/svg/icons/shoppingCart";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
+import Link from "next/link";
+import { CustomerDataContext } from "@/app/contexts/customerData";
 
 const Purchase = () => {
 
@@ -14,6 +16,7 @@ const Purchase = () => {
     const [isHover, setIsHover] = useState<boolean>(false)
 
     const companyInformation = useContext(CompanyInformationContext);
+    const customerId = useContext(CustomerDataContext)?._id
     
     const sideBarContext = useContext(SideBarContext);
     if (!sideBarContext) {
@@ -56,8 +59,10 @@ const Purchase = () => {
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
         >  
-            <ShoppingCartIcon/>
-            <span>{activeLanguage.sideBar.purchaseW}</span>
+            <Link href={`/pages/purchase/${customerId}`}>
+                <ShoppingCartIcon/>
+                <span>{activeLanguage.sideBar.purchaseW}</span>
+            </Link> 
         </li>
     )
 }

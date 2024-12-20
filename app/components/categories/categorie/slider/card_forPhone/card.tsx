@@ -37,28 +37,29 @@ const unsetHover = () => {
     setCardHover(false)
 }
 
-const Style: CSSProperties = {
-    border: `0.1px solid ${companyInformation?.primaryColor}`,
-    display: 'flex',
-    alignItems: "center",
-    flexDirection: 'column',
-    width: '120px',
-    height: 'auto',
-    minHeight: '180px',
-    backgroundColor: 'var(--white)',
-    borderRadius: '10px',
-    margin: 'var(--extra-small-margin)',
-    padding: 'calc(var(--small-padding)/2)',
-    cursor: "pointer",
-    transition: '0.5s ease',
-    flexShrink: '0',
-    flexGrow: '0',
-    flexBasis: window.innerWidth > 800 ? 'calc(90vw /6)' : window.innerWidth <= 800 && window.innerWidth >= 600 ? 'calc(90vw /4)' : 'calc(90vw /3)',
-    position: 'relative',
-}
+    const Style: CSSProperties = {
+        border: `0.1px solid ${companyInformation?.primaryColor}`,
+        display: 'flex',
+        alignItems: "center",
+        flexDirection: 'column',
+        width: '120px',
+        height: 'auto',
+        minHeight: '180px',
+        backgroundColor: 'var(--white)',
+        borderRadius: '10px',
+        margin: 'var(--extra-small-margin)',
+        padding: 'calc(var(--small-padding)/2)',
+        cursor: "pointer",
+        transition: '0.5s ease',
+        flexShrink: '0',
+        flexGrow: '0',
+        flexBasis: window.innerWidth > 800 ? 'calc(90vw /6)' : window.innerWidth <= 800 && window.innerWidth >= 600 ? 'calc(90vw /4)' : 'calc(90vw /3)',
+        position: 'relative',
+    }
     const StyleWithHover: CSSProperties = {
         ...Style,
-        transform: 'scale(1.05)',
+        // transform: 'scale(1.05)',
+       backgroundColor: 'var(--black-almost-transparent)'
     }
     const StyleImage: CSSProperties = {
         width: '100%',

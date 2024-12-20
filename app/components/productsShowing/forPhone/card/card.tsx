@@ -83,7 +83,8 @@ const Card = ({product}: {product : productParams}) => {
     }
     const StyleWithHover: CSSProperties = {
         ...Style,
-        transform: 'scale(1.05)',
+        // transform: 'scale(1.05)',
+       backgroundColor: 'var(--black-almost-transparent)'
     }
     const StyleImage: CSSProperties = {
         width: '100%',

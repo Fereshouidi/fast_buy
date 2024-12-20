@@ -63,7 +63,8 @@ const unsetHover = () => {
     }
     const StyleWithHover: CSSProperties = {
         ...Style,
-        transform: 'scale(1.05)',
+        // transform: 'scale(1.05)',
+       backgroundColor: 'var(--almost-white)'
     }
     const StyleImage: CSSProperties = {
         width: '100%',
