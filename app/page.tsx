@@ -21,7 +21,7 @@ import BulletinBoard_two_forPhone from "./components/bulletinBoard_two/forPhone/
 import BulletinBoard_two_forComputer from "./components/bulletinBoard_two/forcomputer/bulletinBoard";
 import CategoriesSection from "@/app/components/categories/categories";
 import About from "@/app/components/about/about";
-import { getConpanyInformations } from "./crud";
+import { getConpanyInformations, getCustomerById } from "./crud";
 import { useRouter } from "next/navigation";
 import { LoadingIconContext } from "./contexts/loadingIcon";
 import LoadingIcon_theHolePage from "./svg/icons/loading/loadingHoleOfThePage";
@@ -51,7 +51,6 @@ useEffect(() => {
         const conpanyInformationsData = await getConpanyInformations();
         setConpanyInformations(conpanyInformationsData);
         console.log(conpanyInformationsData);
-        
     }
     fetchData();
 }, [])
@@ -73,32 +72,40 @@ useEffect(() => {
   }, []);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const savedTheme = localStorage.getItem("activeTheme");
-      if (savedTheme) {
-        setTheme(savedTheme);
-      }
+    const fetchCustomer = async() => {
 
-      const storedData = localStorage.getItem("customerData");
-      if (storedData && typeof storedData !== null) {
-        try {
-          setCustomerData(JSON.parse(storedData) as CustomerDataParams) ;
-          console.log(JSON.parse(storedData));
-          console.log(customerData);
-          
-        } catch (error) {
-          console.error("Failed to parse customerData from localStorage:", error);
-          setCustomerData(undefined) ;
+      if (typeof window !== "undefined") {
+        const savedTheme = localStorage.getItem("activeTheme");
+        if (savedTheme) {
+          setTheme(savedTheme);
+        }
+
+        const storedData = localStorage.getItem("customerData");
+        if (storedData && typeof storedData !== null) {
+          try {
+            setCustomerData(JSON.parse(storedData) as CustomerDataParams) ;
+            const customer = await getCustomerById(JSON.parse(storedData)._id);
+            setCustomerData(customer as CustomerDataParams) ;
+            console.log(customer);
+            
+            
+          } catch (error) {
+            console.error("Failed to parse customerData from localStorage:", error);
+            setCustomerData(undefined) ;
+            
+          }
+        }else{
+          console.log(storedData);
           
         }
       }
     }
+    fetchCustomer()
   }, []);
 
   const closeAccount = () => {
     localStorage.removeItem('customerData')
   }
-
 
   useEffect(() => {
     if (typeof window !== "undefined") {

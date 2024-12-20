@@ -11,7 +11,7 @@ import { ProductSelectContext } from "@/app/contexts/productSelectForShowing";
 import SideBarForComputer from "@/app/components/sideBar/sideBarForComputers/sidebar";
 import SideBarForPhone from '@/app/components/sideBar/sideBarForPhones/SideBar';
 import About from "@/app/components/about/about";
-import { getConpanyInformations, getProductById } from "@/app/crud";
+import { getConpanyInformations, getCustomerById, getProductById } from "@/app/crud";
 import LoadingIcon from "@/app/svg/icons/loading/loading";
 import PageForComputer from "./forComputer/pageForComputer";
 import PageForPhone from "./forPhone/pageForPhone";
@@ -22,6 +22,8 @@ import { companyInformationsParams } from "@/app/contexts/companyInformation";
 import LoadingIcon_theHolePage from "@/app/svg/icons/loading/loadingHoleOfThePage";
 import { LoadingIconContext } from "@/app/contexts/loadingIcon";
 import { CustomerDataContext, CustomerDataParams } from "@/app/contexts/customerData";
+import { BannersContext } from "@/app/contexts/banners";
+import PurchaseStatusBanner from "@/app/banners/addedToPurchase";
 
 
 interface propsParams {
@@ -46,6 +48,8 @@ const ProductDetails = (props: propsParams) => {
     const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
     const [imageSliderWidth, setImageSliderWidth] = useState<number>(0);
     const [imageSliderWidth_forPhone, setImageSliderWidth_forPhone] = useState<number>(0);
+    const [purchaseStatusBanner, setPurchaseStatusBanner] = useState<boolean>(false);
+    const [purchaseStatus, setPurchaseStatus] = useState<number>(404);
 
   const [screenWidth, setScreenWidth] = useState<number>(0); 
   const [theme, setTheme] = useState(() => {
@@ -63,13 +67,12 @@ const ProductDetails = (props: propsParams) => {
     const getProduct = async() => {
         const productId = (await props.params).productId;
         const product_ = await getProductById(productId);
-        console.log(product_.name.arabic);
         
         setProduct(product_);
     }
     getProduct()
 }, [])
-// screenWidth - (screenWidth * 0.96)
+
 useEffect(() => {
     setImageSliderWidth(70);
     setImageSliderWidth_forPhone(50)
@@ -81,8 +84,6 @@ useEffect(() => {
     const fetchData = async() => {
         const conpanyInformationsData = await getConpanyInformations();
         setConpanyInformations(conpanyInformationsData);
-        console.log(conpanyInformationsData);
-        
     }
     fetchData();
 }, [])
@@ -104,27 +105,36 @@ useEffect(() => {
   }, []);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const savedTheme = localStorage.getItem("activeTheme");
-      if (savedTheme) {
-        setTheme(savedTheme);
-      }
+      if (typeof window !== "undefined") {
+        const savedTheme = localStorage.getItem("activeTheme");
+        if (savedTheme) {
+          setTheme(savedTheme);
+        }
 
-      const storedData = localStorage.getItem("customerData");
-      if (storedData && typeof storedData !== null) {
-        try {
-          setCustomerData(JSON.parse(storedData) as CustomerDataParams) ;
-          console.log(JSON.parse(storedData));
-          console.log(customerData);
-          
-        } catch (error) {
-          console.error("Failed to parse customerData from localStorage:", error);
-          setCustomerData(undefined) ;
+        const fetchCustomer = async() => {
+
+        const storedData = localStorage.getItem("customerData");
+        if (storedData && typeof storedData !== null) {
+          try {
+            setCustomerData(JSON.parse(storedData) as CustomerDataParams) ;
+            const customer = await getCustomerById(JSON.parse(storedData)._id);
+            setCustomerData(customer as CustomerDataParams) ;
+            console.log(customer);
+            
+            
+          } catch (error) {
+            console.error("Failed to parse customerData from localStorage:", error);
+            setCustomerData(undefined) ;
+            
+          }
+        }else{
+          console.log(storedData);
           
         }
       }
+      fetchCustomer()
     }
-  }, []);
+  }, [typeof window != 'undefined' && localStorage.getItem("customerData")]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -178,13 +188,14 @@ useEffect(() => {
                                 <ActiveImageContext_ForPhone.Provider value={{activeImage: activeImage , setActiveImage: setActiveImage , activeImageIndex: activeImageIndex , setActiveImageIndex: setActiveImageIndex, currentIndex: currentSlideIndex , setCurrentIndex: setCurrentSlideIndex , imageWidth: imageSliderWidth_forPhone , setImageWidth: setImageSliderWidth_forPhone }}>
                                   <LoadingIconContext.Provider value={{exist: loadingIconExist , setExist: setLoadingIconExit}}>
                                     <CustomerDataContext.Provider value={customerData}>
-                                        
-                                      <LoadingIcon_theHolePage/>
-                                      {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
-                                      {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-                                      {screenWidth > 800 ? <PageForComputer product={product}/> : <PageForPhone product={product}/>}
-                                      <About/>
-
+                                      <BannersContext.Provider value={{purchaseStatusBanner: purchaseStatusBanner, setPurchaseStatusBanner: setPurchaseStatusBanner, purchaseStatus: purchaseStatus , setPurchaseStatus: setPurchaseStatus , passwordsNotMatch: false , setPasswordsNotMatch: ()=> null , emailNotValide: false , setemailNotValide: ()=> null , verificatinEmailBanner: false, setVerificatinEmailBanner: ()=> null, loginStatusBanner: false, setLoginStatusBanner: ()=> null, loginStatus: 404, setLoginStatus: ()=> null }}>
+                                        <LoadingIcon_theHolePage/>
+                                        <PurchaseStatusBanner/>
+                                        {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
+                                        {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
+                                        {screenWidth > 800 ? <PageForComputer product={product}/> : <PageForPhone product={product}/>}
+                                        <About/>
+                                      </BannersContext.Provider>
                                     </CustomerDataContext.Provider>
                                   </LoadingIconContext.Provider>
                                 </ActiveImageContext_ForPhone.Provider>

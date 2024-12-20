@@ -7,8 +7,6 @@ const PurchaseIcon = () => {
 
 
   const styleDiv: CSSProperties = {
-    // width: 'var(--primary-width)',
-    // height: 'var(--primary-height)',
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
@@ -16,8 +14,6 @@ const PurchaseIcon = () => {
     position: 'relative'
   }
   const styleSvg: CSSProperties = {
-    // width: 'var(--half-width)',
-    // height: 'var(--half-height)',
     color: 'var(--white)',
   }
 

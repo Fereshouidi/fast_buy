@@ -11,7 +11,17 @@ export interface CustomerDataParams {
     password: string,
     retypePassword: string,
     saveAccount: boolean,
-    verification: boolean
+    verification: boolean,
+    ShoppingCarts: shoppingCart
 }
+
+export interface shoppingCart {
+    _id: string,
+    customer: string,
+    products: string[],
+    purchases: string[]
+}
+
+
 
 export const CustomerDataContext = createContext<CustomerDataParams | undefined>(undefined)

@@ -11,6 +11,7 @@ import { addPurchase } from '@/app/crud';
 import { CustomerDataContext } from '@/app/contexts/customerData';
 import { useRouter } from 'next/navigation';
 import { purchaseParams } from '@/app/contexts/purchaseData';
+import { BannersContext } from '@/app/contexts/banners';
 
 type Params = {
     product: productParams | undefined,
@@ -18,17 +19,18 @@ type Params = {
 }
 const PutInPurchaseBTN = ({product, purchaseData}: Params) => {
 
-    console.log(product);
     const router = useRouter();
     
     const customer = useContext(CustomerDataContext);
     const languageSelectorContext = useContext(LanguageSelectorContext);
     const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
-    const setLoadingIcon = useContext(LoadingIconContext)?.setExist
+    const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
+    const setBannerExist = useContext(BannersContext)?.setPurchaseStatusBanner;
+    const setBannerStatus = useContext(BannersContext)?.setPurchaseStatus;
 
     const btnRef = useRef<HTMLDivElement | null>(null)
 
-    if(!setLoadingIcon){
+    if(!setLoadingIcon || !setBannerStatus || !setBannerExist){
         return;
     }
 
@@ -48,13 +50,13 @@ const PutInPurchaseBTN = ({product, purchaseData}: Params) => {
         if(!customer){
             return router.push('/pages/register');
         }
-        console.log(purchaseData);
         const newPurchase = await addPurchase(purchaseData);
         
         
         if(newPurchase){
             setLoadingIcon(false);
-            alert('added to purchase successfully !')
+            setBannerStatus(201);
+            setBannerExist(true);
             btnRef.current.style.backgroundColor = 'var(--black)';
 
         }

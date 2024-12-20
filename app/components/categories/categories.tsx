@@ -37,7 +37,6 @@ const CategoriesSection = () => {
         english: string,
         arabic: string
     }
-
     
     type discountParams = {
         createdAt: Date;

@@ -2,43 +2,32 @@
 
 import { CSSProperties, useContext, useState } from "react";
 import Price from "./price/price";
-//import BoxIcon from "@/app/svg/icons/boxSmall";
 import StarRating from "./startingRating/StartRating";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
+import { LoadingIconContext } from "@/app/contexts/loadingIcon";
+import { useRouter } from "next/navigation";
+import { productParams } from "@/app/contexts/productSelectForShowing";
 
-type productParams = {
-    name: LanguageParams,
-    imagePrincipal: string,
-    price: number,
-    discount: discountParams,
-    totalRating: number,
-    currencyType: string
 
-}
-
-type LanguageParams = {
-    english: string,
-    arabic: string
-}
-
-type discountParams = {
-    createdAt: Date,
-    discountSticker: string,
-    newPrice: number,
-    oldPrice: number,
-    percentage: number,
-    startOfDiscount: Date, 
-    endOfDiscount: Date
-};
 const Card = ({product}: {product : productParams}) => {
 
-const companyInformation = useContext(CompanyInformationContext)
-const languageContext = useContext(LanguageSelectorContext)
+    const router = useRouter();
+    const companyInformation = useContext(CompanyInformationContext);
+    const setLoadingIcon = useContext(LoadingIconContext)?.setExist
+    const languageContext = useContext(LanguageSelectorContext)
 
 if(!languageContext){
   throw 'error languageContext'
 }
+if(!setLoadingIcon){
+    return;
+}
+
+const goToDetailPage = (product: productParams) => {
+    setLoadingIcon(true);
+    router.push(`/pages/productDetails/${product._id}`);
+};
 
 const [cardHover, setCardHover] = useState<boolean>(false)
 
@@ -98,7 +87,7 @@ const Style: CSSProperties = {
         bottom: '0',
     }
     return(
-        <div style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover}>
+        <div style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover} onClick={() => goToDetailPage(product)}>
             <img src={product.imagePrincipal} alt="" style={StyleImage} />
             <div style={StyleCartInformation}>
             <h4 style={styleH4}>{
@@ -110,7 +99,6 @@ const Style: CSSProperties = {
                 }</h4>
                 <StarRating product={product}/>
                 <div style={styleBoxAndPricesDiv}>
-                    {/* <BoxIcon  /> */}
                     <Price product={product}/>
                 </div>
             </div>

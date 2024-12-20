@@ -44,6 +44,8 @@ const Register = () => {
     const [isVerificationBannerExist, setIsVerificationBannerExist] = useState<boolean>(false);
     const [loginStatusBanner, setLoginStatusBanner] = useState<boolean>(false);
     const [loginStatus, setLoginStatus] = useState<number>(404);
+    const [purchaseStatusBanner, setPurchaseStatusBanner] = useState<boolean>(false);
+    const [purchaseStatus, setPurchaseStatus] = useState<number>(404);
 
     const [customerData, setCustomerData] = useState<CustomerDataParams | undefined>(undefined);
 
@@ -171,7 +173,7 @@ useEffect(() => {
         }
     }, [conpanyInformations])
 
-    
+
     if (screenWidth === null) {
     return <div>Loading...</div>; 
     }
@@ -200,7 +202,7 @@ useEffect(() => {
                 <ThemeContext.Provider value={{ theme, setTheme }}>
                         <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
                             <AccountSavedContext.Provider value={{accountSaved: accountSaved, setAccountSaved: setAccountSaved}}>
-                                <BannersContext.Provider value={{passwordsNotMatch: isPasswordsNotMatchBannerExist , setPasswordsNotMatch: setIsPasswordsNotMatchBannerExist , emailNotValide: isEmailNotValideBannerExist , setemailNotValide: setIsEmailNotValideBannerExist , verificatinEmailBanner: isVerificationBannerExist, setVerificatinEmailBanner: setIsVerificationBannerExist, loginStatusBanner: loginStatusBanner, setLoginStatusBanner: setLoginStatusBanner, loginStatus: loginStatus, setLoginStatus: setLoginStatus}}>
+                                <BannersContext.Provider value={{passwordsNotMatch: isPasswordsNotMatchBannerExist , setPasswordsNotMatch: setIsPasswordsNotMatchBannerExist , emailNotValide: isEmailNotValideBannerExist , setemailNotValide: setIsEmailNotValideBannerExist , verificatinEmailBanner: isVerificationBannerExist, setVerificatinEmailBanner: setIsVerificationBannerExist, loginStatusBanner: loginStatusBanner, setLoginStatusBanner: setLoginStatusBanner, loginStatus: loginStatus, setLoginStatus: setLoginStatus, purchaseStatusBanner: purchaseStatusBanner, setPurchaseStatusBanner: setPurchaseStatusBanner, purchaseStatus: purchaseStatus, setPurchaseStatus: setPurchaseStatus }}>
                                     <LoadingIconContext.Provider value={{exist: loadingIconExist , setExist: setLoadingIconExit}}>
                                         <CustomerDataContext.Provider value={customerData}>
                                             {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}

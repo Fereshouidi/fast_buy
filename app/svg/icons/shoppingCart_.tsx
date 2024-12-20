@@ -1,16 +1,13 @@
 'use client';
 import { CustomerDataContext } from "@/app/contexts/customerData";
-import { useContext } from "react";
+import { CSSProperties, useContext } from "react";
 
 const ShoppingCartIcon = () => {
 
 
   const customer = useContext(CustomerDataContext)
 
-  console.log(customer);
-  
-
-  const styleDiv = {
+  const styleDiv: CSSProperties = {
     width: 'var(--primary-width)',
     height: 'var(--primary-height)',
     cursor: 'pointer',
@@ -19,12 +16,12 @@ const ShoppingCartIcon = () => {
     justifyContent: 'center',
     position: 'relative'
   }
-  const styleSvg = {
+  const styleSvg: CSSProperties = {
     width: 'var(--half-width)',
     height: 'var(--half-height)',
     color: 'var(--black)',
   }
-  const styleSpan = {
+  const styleSpan: CSSProperties = {
     width: 'calc(var(--half-width) - 5px)',
     height: 'calc(var(--half-height) - 5px)',
     fontSize: 'var(--small-size)',
@@ -46,7 +43,7 @@ const ShoppingCartIcon = () => {
           <circle cx="17" cy="20" r="2" fill="none" stroke="currentColor" />
           <line x1="6" y1="6" x2="4" y2="6" stroke="currentColor" />
       </svg>
-      <span style={styleSpan}>{customer?.ShoppingCarts && customer?.ShoppingCarts.purchases ? customer?.ShoppingCarts.purchases.length : 0}</span>
+      <span style={styleSpan}>{customer?.ShoppingCarts.purchases.length}</span>
     </div>
     
   )

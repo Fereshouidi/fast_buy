@@ -3,32 +3,8 @@ import CardForComputer from "@/app/components/categories/categorie/slider/card_f
 import CardForPhone from "@/app/components/categories/categorie/slider/card_forPhone/card";
 import LoadingIcon from "@/app/svg/icons/loading/loading";
 import { CSSProperties } from "react";
+import { productParams } from "@/app/contexts/productSelectForShowing";
 
-
-type productParams = {
-    name: LanguageParams,
-    imagePrincipal: string,
-    price: number,
-    discount: discountParams,
-    totalRating: number,
-    currencyType: string
-
-}
-
-type LanguageParams = {
-    english: string,
-    arabic: string
-}
-
-type discountParams = {
-    createdAt: Date,
-    discountSticker: string,
-    newPrice: number,
-    oldPrice: number,
-    percentage: number,
-    startOfDiscount: Date, 
-    endOfDiscount: Date
-};
 
 const Slider = ({ products }: {products: productParams[] }) => {
     

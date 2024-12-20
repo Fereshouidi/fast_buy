@@ -70,5 +70,6 @@
     "formEmptyP": "you shouldn't let the form empty !",
     "accountNotExistP": "account is not exist !",
     "passwordWrongP": "password is wrong !",
-    "accountNotVerificateP": "you have to verificate your account first !"
+    "accountNotVerificateP": "you have to verificate your account first !",
+    "addedToPurChaseSuccessP": "The product has been added to the cart successfully "
 }

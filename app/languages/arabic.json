@@ -69,7 +69,9 @@
     "formEmptyP": "لا يجدر بك ترك الاستمارة فارغة !",
     "accountNotExistP": "الحساب غير موجود !",
     "passwordWrongP": "كلمة المرور خاطئة !",
-    "accountNotVerificateP": "عليك تفعيل حسابك اولا !"
+    "accountNotVerificateP": "عليك تفعيل حسابك اولا !",
+    "addedToPurChaseSuccessP": "تم اظافة المنتج الى السلة بنجاح"
+
 }
 
 

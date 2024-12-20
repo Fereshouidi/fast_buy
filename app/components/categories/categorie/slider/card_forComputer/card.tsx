@@ -2,41 +2,25 @@
 
 import { CSSProperties, useContext, useState } from "react";
 import Price from "./price/price";
-//import BoxIcon from "@/app/svg/icons/box";
 import StarRating from "./startingRating/StartRating";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
+import { LoadingIconContext } from "@/app/contexts/loadingIcon";
+import { useRouter } from "next/navigation";
+import { productParams } from "@/app/contexts/productSelectForShowing";
 
-type productParams = {
-    name: LanguageParams,
-    imagePrincipal: string,
-    price: number,
-    discount: discountParams,
-    totalRating: number,
-    currencyType: string
 
-}
-
-type LanguageParams = {
-    english: string,
-    arabic: string
-}
-
-type discountParams = {
-    createdAt: Date,
-    discountSticker: string,
-    newPrice: number,
-    oldPrice: number,
-    percentage: number,
-    startOfDiscount: Date, 
-    endOfDiscount: Date
-};
 const Card = ({product}: {product : productParams}) => {
 
+    const router = useRouter();
     const companyInformation = useContext(CompanyInformationContext);
+    const setLoadingIcon = useContext(LoadingIconContext)?.setExist
     
     if(typeof window == 'undefined'){
         throw 'window.innerWidth == "undefind"'
+    }
+    if(!setLoadingIcon){
+        return;
     }
     
 const languageContext = useContext(LanguageSelectorContext)
@@ -45,6 +29,10 @@ if(!languageContext){
   throw 'error languageContext'
 }
 
+const goToDetailPage = (product: productParams) => {
+    setLoadingIcon(true);
+    router.push(`/pages/productDetails/${product._id}`);
+};
 
 const [cardHover, setCardHover] = useState<boolean>(false)
 
@@ -66,7 +54,6 @@ const unsetHover = () => {
         borderRadius: '20px',
         margin: 'var(--medium-margin)',
         padding: 'var(--small-padding)',
-        //boxShadow: '0 5px 15px var(--black-almost-transparnt)',
         cursor: "pointer",
         transition: '0.5s ease',
         flexShrink: '0',
@@ -100,7 +87,7 @@ const unsetHover = () => {
         direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr'
     }
     return(
-        <div style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover}>
+        <div style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover} onClick={() => goToDetailPage(product)}>
             <img src={product.imagePrincipal} alt="" style={StyleImage} />
             <div style={StyleCartInformation}>
                 <h4 style={styleH4}>{
@@ -112,7 +99,6 @@ const unsetHover = () => {
                 }</h4>
                 <StarRating product={product}/>
                 <div style={styleBoxAndPricesDiv}>
-                    {/* <BoxIcon  /> */}
                     <Price product={product}/>
                 </div>
             </div>

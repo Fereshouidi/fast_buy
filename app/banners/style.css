@@ -63,6 +63,11 @@
     margin: 5px;
     color: red;
 }
+.banner-exist .fa-check{
+    margin: 5px;
+    color: green;
+}
+
 
 .banner-exist p{
     font-size: var(--primary-size);
