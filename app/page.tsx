@@ -27,6 +27,8 @@ import { LoadingIconContext } from "./contexts/loadingIcon";
 import LoadingIcon_theHolePage from "./svg/icons/loading/loadingHoleOfThePage";
 const App = () => {
 
+  alert('hi')
+
   const router = useRouter();
 
   const [screenWidth, setScreenWidth] = useState<number>(0); 
@@ -100,7 +102,7 @@ useEffect(() => {
         }
       }
     }
-    false ? fetchCustomer() : null
+    fetchCustomer()
   }, []);
 
   const closeAccount = () => {
