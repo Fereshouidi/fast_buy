@@ -7,7 +7,7 @@ import { productParams } from "@/app/contexts/productSelectForShowing";
 import PurchaseIcon from '@/app/svg/icons/purchase';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 import { LoadingIconContext } from '@/app/contexts/loadingIcon';
-import { addPurchase } from '@/app/crud';
+import { addPurchase, getCustomerById } from '@/app/crud';
 import { CustomerDataContext } from '@/app/contexts/customerData';
 import { useRouter } from 'next/navigation';
 import { purchaseParams } from '@/app/contexts/purchaseData';
@@ -51,14 +51,17 @@ const PutInPurchaseBTN = ({product, purchaseData}: Params) => {
             return router.push('/pages/register');
         }
         const newPurchase = await addPurchase(purchaseData);
+        const refreshAccount = await getCustomerById(newPurchase.newPurchase.buyer);
+        console.log(refreshAccount)
         
-        
-        if(newPurchase){
+        if(newPurchase && typeof window != 'undefined'){
             setLoadingIcon(false);
             setBannerStatus(201);
             setBannerExist(true);
             btnRef.current.style.backgroundColor = 'var(--black)';
-
+            localStorage.setItem('customerData', JSON.stringify(refreshAccount))
+            console.log(refreshAccount);
+            
         }
     }
     
