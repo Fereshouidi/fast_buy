@@ -27,7 +27,7 @@ import { LoadingIconContext } from "./contexts/loadingIcon";
 import LoadingIcon_theHolePage from "./svg/icons/loading/loadingHoleOfThePage";
 const App = () => {
 
-  //alert('hi')
+  alert('hi')
 
   const router = useRouter();
 
