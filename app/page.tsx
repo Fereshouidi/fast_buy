@@ -97,13 +97,13 @@ useEffect(() => {
           }
         }else{
           console.log(storedData);
-          alert('hi')
+          throw 'error fetching data !'
         }
       }
     }
     fetchCustomer()
-  }, []);
-
+  }, [typeof window != 'undefined' ? localStorage.getItem("customerData") : null]);
+  
   const closeAccount = () => {
     localStorage.removeItem('customerData')
   }

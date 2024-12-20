@@ -60,6 +60,8 @@ const PutInPurchaseBTN = ({product, purchaseData}: Params) => {
             setBannerExist(true);
             btnRef.current.style.backgroundColor = 'var(--black)';
             localStorage.setItem('customerData', JSON.stringify(refreshAccount))
+            console.log(refreshAccount);
+            
         }
     }
     

@@ -49,18 +49,21 @@ const SubmateBTN = ({form}: {form: formParams}) => {
 
             bannersContext?.setLoginStatusBanner(true);
             bannersContext?.setLoginStatus(400);
+            setLoadingIcon(false);
             return;
 
         }if(customerData.status == 404){
 
             bannersContext?.setLoginStatusBanner(true);
             bannersContext?.setLoginStatus(404);
+            setLoadingIcon(false);
             return;
 
         }else if(customerData.status == 401){
 
             bannersContext?.setLoginStatusBanner(true);
             bannersContext?.setLoginStatus(401);
+            setLoadingIcon(false);
             return;
 
         }else if(customerData.data && companyInformationContext?.activateAccountWhileSignin && !customerData.data.verification){

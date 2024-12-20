@@ -13,7 +13,6 @@ const RememberMe = () => {
     const accountSavedContext = useContext(AccountSavedContext);
 
     const handleCheckBox = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(event.target.checked);
         accountSavedContext?.setAccountSaved(event.target.checked)
     }
 
