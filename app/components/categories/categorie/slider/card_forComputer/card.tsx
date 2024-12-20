@@ -15,6 +15,8 @@ const Card = ({product}: {product : productParams}) => {
     const router = useRouter();
     const companyInformation = useContext(CompanyInformationContext);
     const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
+    const languageContext = useContext(LanguageSelectorContext)
+
     const [cardHover, setCardHover] = useState<boolean>(false)
 
     
@@ -25,8 +27,6 @@ const Card = ({product}: {product : productParams}) => {
         return;
     }
     
-const languageContext = useContext(LanguageSelectorContext)
-
 if(!languageContext){
   throw 'error languageContext'
 }
