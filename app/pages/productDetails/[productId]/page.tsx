@@ -134,7 +134,7 @@ useEffect(() => {
       }
       fetchCustomer()
     }
-  }, [typeof window != 'undefined' && localStorage.getItem("customerData")]);
+  }, [typeof window != 'undefined' ? localStorage.getItem("customerData") : null]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
