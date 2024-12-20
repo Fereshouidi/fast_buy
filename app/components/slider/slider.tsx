@@ -3,6 +3,8 @@ import { CSSProperties, useContext, useEffect, useState } from "react";
 import Slides from "./slides/slides";
 import { getSliderData } from "@/app/crud";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
+import { productParams } from "@/app/contexts/productSelectForShowing";
+
 
 const Slider = () => {
 
@@ -14,35 +16,35 @@ const Slider = () => {
 
     type sliderDataParams = {
         tittle: languageParams;
-        products: slideDataParams[];
+        products: productParams[];
         changingTime: number;
     };
     
-    type slideDataParams = {
-        name: languageParams;
-        images: string[];
-        imagePrincipal: string,
-        startOfDiscount: Date,
-        endOfDiscount: Date,
-        discount: discountParams,
-        discountSticker: string,
-        currencyType: string
-    };
+    // type slideDataParams = {
+    //     name: languageParams;
+    //     images: string[];
+    //     imagePrincipal: string,
+    //     startOfDiscount: Date,
+    //     endOfDiscount: Date,
+    //     discount: discountParams,
+    //     discountSticker: string,
+    //     currencyType: string
+    // };
 
     type languageParams = {
         english: string,
         arabic: string
     }
 
-    type discountParams = {
-        createdAt: Date,
-        discountSticker: string,
-        newPrice: number,
-        oldPrice: number,
-        percentage: number,
-        startOfDiscount: Date, 
-        endOfDiscount: Date
-    };
+    // type discountParams = {
+    //     createdAt: Date,
+    //     discountSticker: string,
+    //     newPrice: number,
+    //     oldPrice: number,
+    //     percentage: number,
+    //     startOfDiscount: Date, 
+    //     endOfDiscount: Date
+    // };
     
     const [sliderData, setSliderData] = useState<sliderDataParams>();
 

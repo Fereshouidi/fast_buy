@@ -3,39 +3,40 @@ import { CSSProperties, useContext, useEffect, useRef, useState } from "react";
 import Slide from "./slide/slide";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import LoadingIcon from "@/app/svg/icons/loading/loading";
+import { productParams } from "@/app/contexts/productSelectForShowing";
 
 
 type sliderDataParams = {
     tittle: languageParams;
-    products: slideDataParams[];
+    products: productParams[];
     changingTime: number;
 };
 
-type slideDataParams = {
-    name: languageParams;
-    images: string[];
-    imagePrincipal: string,
-    startOfDiscount: Date,
-    endOfDiscount: Date,
-    discount: discountParams,
-    discountSticker: string
-    currencyType: string
-};
+// type slideDataParams = {
+//     name: languageParams;
+//     images: string[];
+//     imagePrincipal: string,
+//     startOfDiscount: Date,
+//     endOfDiscount: Date,
+//     discount: discountParams,
+//     discountSticker: string
+//     currencyType: string
+// };
 
 type languageParams = {
     english: string,
     arabic: string
 }
 
-type discountParams = {
-    createdAt: Date,
-    discountSticker: string,
-    newPrice: number,
-    oldPrice: number,
-    percentage: number,
-    startOfDiscount: Date, 
-    endOfDiscount: Date
-};
+// type discountParams = {
+//     createdAt: Date,
+//     discountSticker: string,
+//     newPrice: number,
+//     oldPrice: number,
+//     percentage: number,
+//     startOfDiscount: Date, 
+//     endOfDiscount: Date
+// };
 
 const Slides = ({ slideBarData }: { slideBarData: sliderDataParams }) => {
 
