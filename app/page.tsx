@@ -71,37 +71,37 @@ useEffect(() => {
     }
   }, []);
 
-  useEffect(() => {
-    const fetchCustomer = async() => {
+  // useEffect(() => {
+  //   const fetchCustomer = async() => {
 
-      if (typeof window !== "undefined") {
-        const savedTheme = localStorage.getItem("activeTheme");
-        if (savedTheme) {
-          setTheme(savedTheme);
-        }
+  //     if (typeof window !== "undefined") {
+  //       const savedTheme = localStorage.getItem("activeTheme");
+  //       if (savedTheme) {
+  //         setTheme(savedTheme);
+  //       }
 
-        const storedData = localStorage.getItem("customerData");
-        if (storedData && typeof storedData !== null) {
-          try {
-            setCustomerData(JSON.parse(storedData) as CustomerDataParams) ;
-            const customer = await getCustomerById(JSON.parse(storedData)._id);
-            setCustomerData(customer as CustomerDataParams) ;
-            console.log(customer);
+  //       const storedData = localStorage.getItem("customerData");
+  //       if (storedData && typeof storedData !== null) {
+  //         try {
+  //           setCustomerData(JSON.parse(storedData) as CustomerDataParams) ;
+  //           const customer = await getCustomerById(JSON.parse(storedData)._id);
+  //           setCustomerData(customer as CustomerDataParams) ;
+  //           console.log(customer);
             
             
-          } catch (error) {
-            console.error("Failed to parse customerData from localStorage:", error);
-            setCustomerData(undefined) ;
+  //         } catch (error) {
+  //           console.error("Failed to parse customerData from localStorage:", error);
+  //           setCustomerData(undefined) ;
             
-          }
-        }else{
-          console.log(storedData);
+  //         }
+  //       }else{
+  //         console.log(storedData);
           
-        }
-      }
-    }
-    fetchCustomer()
-  }, []);
+  //       }
+  //     }
+  //   }
+  //   fetchCustomer()
+  // }, []);
 
   const closeAccount = () => {
     localStorage.removeItem('customerData')
