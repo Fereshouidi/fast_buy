@@ -82,7 +82,8 @@ const CartContent = ({shoppingCart}: {shoppingCart: shoppingCartParams | undefin
     const stylePrice: CSSProperties = {
        padding: window.innerWidth > 800 ? 'var(--medium-padding)' : 'var(--small-padding)',
        margin: window.innerWidth > 800 ? '0 var(--large-margin)' : 'var(--medium-margin)', 
-       borderRadius: '20px'
+       borderRadius: '20px',
+       fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'var(--small-size)'
     }
     return (
             <section className="products-section" style={style}>
