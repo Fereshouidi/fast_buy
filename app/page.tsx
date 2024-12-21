@@ -1,6 +1,7 @@
 "use client";
 
-// import { useRouter } from "next/navigation";
+import english from '@/app/languages/english.json';
+import arabic from '@/app/languages/arabic.json';
 import { useState, useEffect } from "react";
 import HeaderForComputer from "@/app/components/header/headerForComputer/header";
 import HeaderForPhone from "@/app/components/header/headerForPhones/header";
@@ -25,6 +26,7 @@ import { getConpanyInformations, getCustomerById } from "./crud";
 import { useRouter } from "next/navigation";
 import { LoadingIconContext } from "./contexts/loadingIcon";
 import LoadingIcon_theHolePage from "./svg/icons/loading/loadingHoleOfThePage";
+import { ActiveLanguageContext } from "./contexts/activeLanguage";
 const App = () => {
 
 
@@ -40,6 +42,7 @@ const App = () => {
   const [customerData, setCustomerData] = useState<CustomerDataParams | undefined>(undefined);
   
   const [activeLanguage, setActiveLanguage] = useState("english");
+  const [activeLanguage_, setActiveLanguage_] = useState<typeof english | typeof arabic>(english);
   const [sideBarExist, setSideBarExist] = useState(false);
   const [loadingIconExist, setLoadingIconExit] = useState<boolean>(false);
 
@@ -97,13 +100,13 @@ useEffect(() => {
           }
         }else{
           console.log(storedData);
-          throw 'error fetching data !'
+          //throw 'error fetching data !'
         }
       }
     }
     fetchCustomer()
   }, [typeof window != 'undefined' ? localStorage.getItem("customerData") : null]);
-  
+
   const closeAccount = () => {
     localStorage.removeItem('customerData')
   }
@@ -164,24 +167,26 @@ useEffect(() => {
   return (
     <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin}} >
         <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
-          <ThemeContext.Provider value={{ theme, setTheme }}>
-            <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
-              <CustomerDataContext.Provider value={customerData}>
-                <LoadingIconContext.Provider value={{exist: loadingIconExist , setExist: setLoadingIconExit}}>
-                    {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
-                    {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-                    {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
-                    <Slider/>
-                    <LoadingIcon_theHolePage/>
-                    <ProductsShowing/>
-                    {screenWidth > 800 ? <BulletinBoard_two_forComputer /> : <BulletinBoard_two_forPhone />}
-                    <CategoriesSection/>
-                    <About/>
-                    <span onClick={closeAccount}>x</span>
-                </LoadingIconContext.Provider>
-              </CustomerDataContext.Provider>
-            </SideBarContext.Provider>
-          </ThemeContext.Provider>
+          <ActiveLanguageContext.Provider value={{activeLanguage: activeLanguage_, setAtiveLanguage: setActiveLanguage_}}>
+            <ThemeContext.Provider value={{ theme, setTheme }}>
+              <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
+                <CustomerDataContext.Provider value={customerData}>
+                  <LoadingIconContext.Provider value={{exist: loadingIconExist , setExist: setLoadingIconExit}}>
+                      {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
+                      {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
+                      {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
+                      <Slider/>
+                      <LoadingIcon_theHolePage/>
+                      <ProductsShowing/>
+                      {screenWidth > 800 ? <BulletinBoard_two_forComputer /> : <BulletinBoard_two_forPhone />}
+                      <CategoriesSection/>
+                      <About/>
+                      <span onClick={closeAccount}>x</span>
+                  </LoadingIconContext.Provider>
+                </CustomerDataContext.Provider>
+              </SideBarContext.Provider>
+            </ThemeContext.Provider>
+          </ActiveLanguageContext.Provider>
         </LanguageSelectorContext.Provider>
     </CompanyInformationContext.Provider>
 

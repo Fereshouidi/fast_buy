@@ -31,7 +31,7 @@ const InformationSection = ({product}: {product: productParams | undefined}) => 
         if (customer && product) {
             setPurchaseData({
                 buyer: customer._id, 
-                product: product._id, 
+                product: product, 
                 discount: product?.discount ? product.discount._id : null, 
                 quantity: 1
             })

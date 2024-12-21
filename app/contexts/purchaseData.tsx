@@ -1,15 +1,8 @@
-// import { createContext } from "react";
+import { productParams } from "./productSelectForShowing"
 
-
-// export interface purchaseParams {
-//     buyer: string,
-//     product: string,
-//     discount: string,
-//     quantity: number
-// }
 export interface purchaseParams {
     buyer: string,
-    product: string,
+    product: productParams,
     discount: string | null,
     quantity: number
 }

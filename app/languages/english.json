@@ -71,5 +71,7 @@
     "accountNotExistP": "account is not exist !",
     "passwordWrongP": "password is wrong !",
     "accountNotVerificateP": "you have to verificate your account first !",
-    "addedToPurChaseSuccessP": "The product has been added to the cart successfully "
+    "addedToPurChaseSuccessP": "The product has been added to the cart successfully ",
+    "shoppingCart": "Shopping Cart",
+    "deleteW": "Delete"
 }

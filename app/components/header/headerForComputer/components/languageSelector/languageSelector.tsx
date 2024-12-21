@@ -1,8 +1,11 @@
 'use client';
+import english from '@/app/languages/english.json';
+import arabic from '@/app/languages/arabic.json';
 import { useEffect, useState, useContext, CSSProperties } from 'react';
 import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
 import LanguageIcon from '@/app/svg/icons/language';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
+import { ActiveLanguageContext } from '@/app/contexts/activeLanguage';
 
 const LanguageSelector = () => {
 
@@ -10,6 +13,7 @@ const LanguageSelector = () => {
     const context = useContext(LanguageSelectorContext);
     const [hoveredOption, setHoveredOption] = useState<string | null>(null);
 
+    const activeLanguage_ = useContext(ActiveLanguageContext);
 
       if (!context) {
         throw new Error("LanguageSelector must be used within a LanguageSelectorContext.Provider");
@@ -21,6 +25,8 @@ const LanguageSelector = () => {
         const languageSelected = value.target.value;
         localStorage.setItem('activeLanguage', languageSelected);
         setActiveLanguage(languageSelected);
+        activeLanguage_?.setAtiveLanguage(languageSelected === 'arabic' ? arabic : english);
+
     }
 
     useEffect(() => {

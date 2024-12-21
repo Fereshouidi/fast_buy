@@ -5,6 +5,7 @@ import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 const Logo = () => {
 
     const companyInformations = useContext(CompanyInformationContext);
+    
     if(!companyInformations){
         throw 'error companyInformation !'
     }

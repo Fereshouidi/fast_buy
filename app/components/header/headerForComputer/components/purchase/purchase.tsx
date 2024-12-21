@@ -7,7 +7,7 @@ import { useContext } from "react";
 
 const Purchase = () => {
 
-    const customerId = useContext(CustomerDataContext)?._id
+    const customerId = useContext(CustomerDataContext)?._id    
 
     return (
         <div>

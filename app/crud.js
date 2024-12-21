@@ -1,4 +1,4 @@
-const url = 'https://fast-buy-back-end.vercel.app/api';
+const url = 'http://localhost:3002/api';
 import axios from "axios";
 
 //https://fast-buy-back-end.vercel.app/api
@@ -192,3 +192,16 @@ export const addPurchase = async (purchase) => {
     }
 }
 
+export const getShoppingCartsByCustomerId = async (customerId) => {
+    
+    try {
+        const shoppingCarts = await axios.get(url + '/get/activeShoppingCart/by/customer' , {
+            params: {customerId}
+        })
+        console.log(shoppingCarts.data);
+        
+        return shoppingCarts.data;
+    }catch(err) {
+        throw err;
+    }
+}
