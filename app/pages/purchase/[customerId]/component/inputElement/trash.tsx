@@ -7,6 +7,8 @@ import { CSSProperties, useContext } from "react";
 
 const Trash = ({shoppingCart}: {shoppingCart: shoppingCartParams | undefined}) => {
 
+    console.log(shoppingCart);
+    
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
 
     const style: CSSProperties = {

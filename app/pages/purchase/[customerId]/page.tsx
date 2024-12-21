@@ -2,7 +2,7 @@
 
 import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
-import { useState, useEffect, useContext, CSSProperties } from "react";
+import { useState, useEffect, CSSProperties } from "react";
 import HeaderForComputer from "@/app/components/header/headerForComputer/header";
 import HeaderForPhone from "@/app/components/header/headerForPhones/header";
 import { ThemeContext } from "@/app/contexts/ThemeContext";
@@ -47,7 +47,6 @@ const PurchasePage = (props: propsParams) => {
     const [purchaseStatus, setPurchaseStatus] = useState<number>(404);
     const [shoppingCart, setShoppingCart] = useState<shoppingCartParams | undefined>(undefined);
     const [conpanyInformations, setConpanyInformations] = useState<companyInformationsParams | undefined>();
-    const activeLanguageContext = useContext(ActiveLanguageContext);
     
 
   const [screenWidth, setScreenWidth] = useState<number>(0); 

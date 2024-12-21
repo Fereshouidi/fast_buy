@@ -1,5 +1,5 @@
 'use client';
-import english from '@/app/languages/english.json';
+// import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
 import { shoppingCartParams } from '@/app/contexts/shoppingCart';
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";

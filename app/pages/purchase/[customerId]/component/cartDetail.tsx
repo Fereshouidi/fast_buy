@@ -5,6 +5,8 @@ import { CSSProperties } from "react";
 
 const CartDetail = ({shoppingCart}: {shoppingCart: shoppingCartParams | undefined}) => {
 
+    console.log(shoppingCart);
+    
     if(typeof window == 'undefined'){
         return;
     }
