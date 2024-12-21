@@ -34,7 +34,7 @@ const CartContent = ({shoppingCart}: {shoppingCart: shoppingCartParams | undefin
     const styleH2: CSSProperties = {
         color: 'var(--black)',
         margin: 'var(--large-margin)',
-        fontSize: 'var(--primary-size)',
+        fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'var(--small-size)',
         fontWeight: 600,
         opacity: 0.5
     }
@@ -49,7 +49,7 @@ const CartContent = ({shoppingCart}: {shoppingCart: shoppingCartParams | undefin
         width:'90%',
         backgroundColor: 'var(--white)',
         borderBottom: '0.2px solid var(--black-almost-transparnt)',
-        padding: 'var(--medium-padding) var(--medium-padding) 0 var(--medium-padding)',
+        padding: window.innerWidth > 800 ? 'var(--medium-padding) var(--medium-padding) 0 var(--medium-padding)' : 'var(--small-padding) var(--small-padding) 0 var(--small-padding)',
         borderRadius: '20px'
 
     }
@@ -64,22 +64,23 @@ const CartContent = ({shoppingCart}: {shoppingCart: shoppingCartParams | undefin
         alignItems: 'center'
     }
     const styleIMG: CSSProperties = {
-        width: 'calc(var(--primary-width) *1.5)',
-        height: 'calc(var(--primary-width) *1.5)',
+        width: window.innerWidth > 800 ? 'calc(var(--primary-width) *1.5)' : 'var(--primary-width)',
+        height: window.innerWidth > 800 ? 'calc(var(--primary-width) *1.5)' : 'var(--primary-width)',
         borderRadius: '10px'
     }
     const styleName: CSSProperties = {
-        margin: '0 var(--large-margin)'
+        margin: window.innerWidth > 800 ? '0 var(--large-margin)' : '0 var(--medium-margin)',
+        fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'var(--small-size)'
     }
     const styleBottomPart: CSSProperties = {
         ...styleUpperPart,
-       padding: 'var(--medium-padding)',
-        margin: 'var(--small-margin)',
+        padding: window.innerWidth > 800 ? 'var(--medium-padding)' : 'var(--small-padding)',
+        margin: window.innerWidth > 800 ? 'var(--medium-margin)' : 'var(--small-margin)' ,
         borderRadius: '20px'
     }
     const stylePrice: CSSProperties = {
-       padding: 'var(--medium-padding)',
-       margin: '0 var(--large-margin)',
+       padding: window.innerWidth > 800 ? 'var(--medium-padding)' : 'var(--small-padding)',
+       margin: window.innerWidth > 800 ? '0 var(--large-margin)' : 'var(--medium-margin)', 
        borderRadius: '20px'
     }
     return (

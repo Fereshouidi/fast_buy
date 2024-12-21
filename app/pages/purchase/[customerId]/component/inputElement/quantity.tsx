@@ -22,17 +22,21 @@ const Quantity = ({shoppingCart, purchase}: params) => {
     if(!shoppingCart || !purchase){
         return;
     }
+    if(typeof window == 'undefined'){
+        return;
+    }
 
     const style: CSSProperties = {
         display: 'flex',
         alignItems: "center",
-        justifyContent: 'center'
+        justifyContent: 'center',
+        fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'calc(var(--primary-size) / 1.7)'
     }
     const style_plus_minus: CSSProperties = {
         backgroundColor: primaryColor,
         color: 'white',
-        padding: 'var(--small-padding)',
-        margin: '0 var(--large-margin)',
+        padding: window.innerWidth > 800 ? 'var(--small-padding)' : 'var(--small-padding)',
+        margin: window.innerWidth > 800 ? '0 var(--large-margin)' : '0 var(--medium-margin)',
         borderRadius: '10px'
     }
     return (

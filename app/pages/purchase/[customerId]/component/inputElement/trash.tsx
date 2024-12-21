@@ -11,8 +11,12 @@ const Trash = ({shoppingCart}: {shoppingCart: shoppingCartParams | undefined}) =
     
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
 
+    if(typeof window == 'undefined'){
+        return;
+    }
     const style: CSSProperties = {
-        color: 'red'
+        color: 'red',
+        fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'var(--small-size)'
     }
     return (
         <div style={style}>
