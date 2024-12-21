@@ -30,6 +30,7 @@ const CartContent = ({shoppingCart}: {shoppingCart: shoppingCartParams | undefin
     }
     const style: CSSProperties = {
         width: window.innerWidth > 800 ? '50%' : '100%',
+        color: 'var(--black)'
     }
     const styleH2: CSSProperties = {
         color: 'var(--black)',

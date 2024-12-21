@@ -30,7 +30,8 @@ const Quantity = ({shoppingCart, purchase}: params) => {
         display: 'flex',
         alignItems: "center",
         justifyContent: 'center',
-        fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'calc(var(--primary-size) / 1.7)'
+        fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'calc(var(--primary-size) / 1.7)',
+        color: 'var(--black)'
     }
     const style_plus_minus: CSSProperties = {
         backgroundColor: primaryColor,
