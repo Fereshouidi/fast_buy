@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { shoppingCartParams } from "@/app/contexts/shoppingCart";
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
-import { CSSProperties, ReactElement, useContext, useState } from "react";
+import { CSSProperties, useContext, useState } from "react";
 import { deletePurchaseById } from "@/app/crud";
 import { purchaseParams } from "@/app/contexts/purchaseData";
 import { LoadingIconContext } from "@/app/contexts/loadingIcon";
