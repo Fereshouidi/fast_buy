@@ -20,7 +20,6 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
     const router = useRouter();
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
     const [hoveredItemId, setHoveredItemId] = useState<string | undefined>(undefined);
-    const [quantity, setQuantity] = useState()
 
     // if(!purchase.quantity){
     //     return

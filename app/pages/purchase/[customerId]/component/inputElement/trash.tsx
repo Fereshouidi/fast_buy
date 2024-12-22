@@ -7,7 +7,6 @@ import { CSSProperties, useContext, useState } from "react";
 import { deletePurchaseById } from "@/app/crud";
 import { purchaseParams } from "@/app/contexts/purchaseData";
 import { LoadingIconContext } from "@/app/contexts/loadingIcon";
-import { BannersContext } from "@/app/contexts/banners";
 import { BannerContext } from "@/app/contexts/bannerForEverything";
 
 type params = {
