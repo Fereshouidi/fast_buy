@@ -60,6 +60,8 @@ const ProductDetails = (props: propsParams) => {
       setBannerText(text);
       setBannerStatus(status? status : null)
     }
+    console.log(bannerStatus);
+    
 
   const [screenWidth, setScreenWidth] = useState<number>(0); 
   const [theme, setTheme] = useState(() => {

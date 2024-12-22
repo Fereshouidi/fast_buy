@@ -11,30 +11,7 @@ import '@/app/svg/icons/loading/loading.css';
 import { productParams } from "@/app/contexts/productSelectForShowing";
 
 
-// type productParams = {
-//     _id: string,
-//     name: LanguageParams,
-//     imagePrincipal: string,
-//     price: number,
-//     discount: discountParams,
-//     totalRating: number,
-//     currencyType: string
 
-// }
-type LanguageParams = {
-    english: string,
-    arabic: string
-}
-
-type discountParams = {
-    createdAt: Date,
-    discountSticker: string,
-    newPrice: number,
-    oldPrice: number,
-    percentage: number,
-    startOfDiscount: Date, 
-    endOfDiscount: Date
-};
 const Card = ({product}: {product : productParams}) => {
 
     const router = useRouter();

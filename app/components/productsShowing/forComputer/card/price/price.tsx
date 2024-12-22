@@ -5,30 +5,7 @@ import { CSSProperties, useContext, useState } from "react";
 import tinycolor from "tinycolor2";
 import { productParams } from "@/app/contexts/productSelectForShowing";
 
-// type productParams = {
-//     name: LanguageParams,
-//     imagePrincipal: string,
-//     price: number,
-//     discount: discountParams,
-//     totalRating: number,
-//     currencyType: string
-// }
 
-type LanguageParams = {
-  english: string,
-  arabic: string
-}
-
-
-type discountParams = {
-    createdAt: Date,
-    discountSticker: string,
-    newPrice: number,
-    oldPrice: number,
-    percentage: number,
-    startOfDiscount: Date, 
-    endOfDiscount: Date
-};
 const Price = ({product}: {product : productParams}) => {
 
   const companyInformation = useContext(CompanyInformationContext)
