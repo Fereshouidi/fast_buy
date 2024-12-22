@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { shoppingCartParams } from "@/app/contexts/shoppingCart";
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
-import { CSSProperties, useContext, useState } from "react";
+import { CSSProperties, ReactElement, useContext, useState } from "react";
 import { deletePurchaseById } from "@/app/crud";
 import { purchaseParams } from "@/app/contexts/purchaseData";
 import { LoadingIconContext } from "@/app/contexts/loadingIcon";
@@ -25,8 +25,9 @@ const Trash = ({shoppingCart, setShoppingCart, purchase}: params) => {
         return;
     }
 
-    const deletePurchase = async () => {
+    const deletePurchase = async (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 
+        event.stopPropagation();
         setIconColor('rgb(201, 1, 1)')
         setLoadingIcon(true);
         const updatedCustomerData = await deletePurchaseById(purchase?._id);
@@ -63,7 +64,7 @@ const Trash = ({shoppingCart, setShoppingCart, purchase}: params) => {
         <div 
             className="icon" 
             style={style} 
-            onClick={deletePurchase}
+            onClick={(event) => deletePurchase(event)}
         >
             <FontAwesomeIcon icon={faTrash}/> {activeLanguage?.deleteW}
         </div>
