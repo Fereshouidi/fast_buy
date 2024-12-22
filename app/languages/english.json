@@ -73,5 +73,6 @@
     "accountNotVerificateP": "you have to verificate your account first !",
     "addedToPurChaseSuccessP": "The product has been added to the cart successfully ",
     "shoppingCart": "Shopping Cart",
-    "deleteW": "Delete"
+    "deleteW": "Delete",
+    "productRemovedFromShoppingCart": "The product has been successfully removed from your shopping cart"
 }

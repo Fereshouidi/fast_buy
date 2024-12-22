@@ -24,6 +24,8 @@ import CartContent from "./component/cartContent";
 import { shoppingCartParams } from "@/app/contexts/shoppingCart";
 import { ActiveLanguageContext } from '@/app/contexts/activeLanguage';
 import CartDetail from './component/cartDetail';
+import { BannerContext } from '@/app/contexts/bannerForEverything';
+import Banner from '@/app/banners/bannerForEveryThing';
 // import '@/app/pages/purchase/[customerId]/style.css'
 
 
@@ -48,7 +50,16 @@ const PurchasePage = (props: propsParams) => {
     const [purchaseStatus, setPurchaseStatus] = useState<number>(404);
     const [shoppingCart, setShoppingCart] = useState<shoppingCartParams | undefined>(undefined);
     const [conpanyInformations, setConpanyInformations] = useState<companyInformationsParams | undefined>();
-    
+    const [bannerForEveryThing, setBannerForEveryThing] = useState<boolean>(false);
+    const [bannerText, setBannerText] = useState<string | undefined>(undefined);
+    const [bannerStatus, setBannerStatus] = useState<'success' | 'fail' | null>(null);
+
+    const setBanner = (visibility: boolean, text: string | undefined, status?: 'success' | 'fail' | null) => {
+      setBannerForEveryThing(visibility),
+      setBannerText(text);
+      setBannerStatus(status? status : null)
+    }
+
 
   const [screenWidth, setScreenWidth] = useState<number>(0); 
   const [theme, setTheme] = useState(() => {
@@ -133,7 +144,7 @@ useEffect(() => {
 
   const getDependency = () => {
     if (shoppingCart && shoppingCart.purchases) {
-        return shoppingCart.purchases.length;
+        return shoppingCart;
     }
     return null;
 };
@@ -218,11 +229,10 @@ useEffect(() => {
   
   const style: CSSProperties = {
     width: '100vw',
-    //padding: screenWidth > 800 ? '0 10%' : '0',
+    minHeight: '100vh',
     backgroundColor: 'var(--almost-white)',
     display: 'flex',
     justifyContent: screenWidth > 800 ? 'center' : '',
-    // alignItems: screenWidth > 800 ? 'center' : '',
     flexDirection: screenWidth > 800 ? 'row' : 'column',
   }
 
@@ -237,7 +247,9 @@ useEffect(() => {
                       <ActiveLanguageContext.Provider value={{activeLanguage: activeLanguage_, setAtiveLanguage: setActiveLanguage_}}>
                         <CustomerDataContext.Provider value={customerData}>
                           <BannersContext.Provider value={{purchaseStatusBanner: purchaseStatusBanner, setPurchaseStatusBanner: setPurchaseStatusBanner, purchaseStatus: purchaseStatus , setPurchaseStatus: setPurchaseStatus , passwordsNotMatch: false , setPasswordsNotMatch: ()=> null , emailNotValide: false , setemailNotValide: ()=> null , verificatinEmailBanner: false, setVerificatinEmailBanner: ()=> null, loginStatusBanner: false, setLoginStatusBanner: ()=> null, loginStatus: 404, setLoginStatus: ()=> null }}>
+                          <BannerContext.Provider value={{bannerexist: bannerForEveryThing, bannerText: bannerText, bannerStatus: bannerStatus , setBanner: setBanner}}>
                             <LoadingIcon_theHolePage/>
+                            <Banner/>
                             <PurchaseStatusBanner/>
                             {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
                             {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
@@ -246,6 +258,7 @@ useEffect(() => {
                               <CartDetail shoppingCart={shoppingCart}/>
                             </div>
                             <About/>
+                          </BannerContext.Provider>
                           </BannersContext.Provider>
                         </CustomerDataContext.Provider>
                       </ActiveLanguageContext.Provider>

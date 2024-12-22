@@ -7,7 +7,9 @@ import { CSSProperties, useContext, useState } from "react";
 import Trash from './inputElement/trash';
 import Quantity from './inputElement/quantity';
 import { purchaseParams } from '@/app/contexts/purchaseData';
-import '@/app/pages/purchase/[customerId]/style.css'
+import '@/app/pages/purchase/[customerId]/style.css';
+import { useRouter } from 'next/navigation';
+import { productParams } from '@/app/contexts/productSelectForShowing';
 
 type Params = {
     shoppingCart: shoppingCartParams | undefined
@@ -15,26 +17,28 @@ type Params = {
 }
 const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
 
+    const router = useRouter();
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
     const [hoveredItemId, setHoveredItemId] = useState<string | undefined>(undefined);
+    const [quantity, setQuantity] = useState()
 
-    // const [shoppingCartList, setShoppingCartList] = useState<purchaseParams[] | undefined>(undefined);
-
-
-    // useEffect(() => {
-    //     setShoppingCartList(shoppingCart?.purchases)
-    //     console.log(shoppingCart?.purchases);
-        
-    // }, [shoppingCartList?.length]);
-
+    // if(!purchase.quantity){
+    //     return
+    // }
 
     const calcTotalPrice = (purchase: purchaseParams) => {
-        if(purchase.discount){
+        if(purchase.product && purchase.product.discount?.newPrice && purchase.quantity && purchase.discount){
             const totalPrice = purchase.quantity * purchase.product.discount.newPrice
             return totalPrice;
-        }else {
+        }else if( purchase.product && purchase.product.price && purchase.quantity) {
             const totalPrice = purchase.quantity * purchase.product.price
             return totalPrice;
+        }
+    }
+
+    const goToProductsDetaiPage = (product: productParams | undefined) => {
+        if(product){
+            router.push('/pages/productDetails/'+ product._id)
         }
     }
 
@@ -52,7 +56,7 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
     const styleH2: CSSProperties = {
         color: 'var(--black)',
         margin: 'var(--large-margin)',
-        fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'var(--small-size)',
+        fontSize: window.innerWidth > 1000 ? 'var(--primary-size)' : 'var(--small-size)',
         fontWeight: 600,
         opacity: 0.5
     }
@@ -65,10 +69,10 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
     }
     const styleItem: CSSProperties = {
         width:'90%',
-        height: window.innerWidth > 800 ? 'calc(var(--double-height) * 1.5)' : 'var(--double-height)',
+        height: window.innerWidth > 1000 ? 'calc(var(--double-height) * 1.5)' : 'var(--double-height)',
         backgroundColor: 'var(--white)',
         borderBottom: '0.2px solid var(--black-almost-transparnt)',
-        padding: window.innerWidth > 800 ? 'var(--medium-padding) var(--medium-padding) 0 var(--medium-padding)' : 'var(--small-padding) var(--small-padding) 0 var(--small-padding)',
+        padding: window.innerWidth > 1000 ? 'var(--medium-padding) var(--medium-padding) 0 var(--medium-padding)' : 'var(--small-padding) var(--small-padding) 0 var(--small-padding)',
         borderRadius: '20px',
         display: 'flex',
         justifyContent: 'space-between',
@@ -94,13 +98,13 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
         alignItems: 'center',
     }
     const styleIMG: CSSProperties = {
-        width: window.innerWidth > 800 ? 'calc(var(--primary-width) *1.5)' : 'var(--primary-width)',
-        height: window.innerWidth > 800 ? 'calc(var(--primary-width) *1.5)' : 'var(--primary-width)',
+        width: window.innerWidth > 1000 ? 'calc(var(--primary-width) *1.5)' : 'var(--primary-width)',
+        height: window.innerWidth > 1000 ? 'calc(var(--primary-width) *1.5)' : 'var(--primary-width)',
         borderRadius: '10px'
     }
     const styleName: CSSProperties = {
-        margin: window.innerWidth > 800 ? '0 var(--large-margin)' : '0 var(--medium-margin)',
-        fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'var(--small-size)'
+        margin: window.innerWidth > 1000 ? '0 var(--large-margin)' : '0 var(--medium-margin)',
+        fontSize: window.innerWidth > 1000 ? 'var(--primary-size)' : 'var(--small-size)'
     }
     const styleBottomPart: CSSProperties = {
         width: 'var(--large-width)',
@@ -113,9 +117,9 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
         borderRadius: '20px'
     }
     const stylePrice: CSSProperties = {
-       padding: window.innerWidth > 800 ? 'var(--medium-padding)' : 'var(--small-padding)',
+       padding: window.innerWidth > 1000 ? 'var(--medium-padding)' : 'var(--small-padding)',
        borderRadius: '20px',
-       fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'var(--small-size)'
+       fontSize: window.innerWidth > 1000 ? 'var(--primary-size)' : 'var(--small-size)'
     }
     return (
         <section className="products-section" style={style}>
@@ -132,6 +136,7 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
                             style={isHovered ? styleItemHover : styleItem}
                             onMouseEnter={() => setHoveredItemId(purchase._id)}
                             onMouseLeave={() => setHoveredItemId(undefined)}
+                            onClick={() => goToProductsDetaiPage(purchase.product)}
                         >
                             <div className="left-part" style={styleUpperPart}>
                                 <div style={styleIMGAndName}>
@@ -160,6 +165,7 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
                                 </span>
                                 <Quantity
                                     shoppingCart={shoppingCart}
+                                    setShoppingCart={setShoppingCart}
                                     purchase={purchase}
                                 />
                             </div>

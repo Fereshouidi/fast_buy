@@ -72,7 +72,8 @@
     "accountNotVerificateP": "عليك تفعيل حسابك اولا !",
     "addedToPurChaseSuccessP": "تم اظافة المنتج الى السلة بنجاح",
     "shoppingCart": "سلة المشتريات",
-    "deleteW": "مسح"
+    "deleteW": "مسح",
+    "productRemovedFromShoppingCart": "تم الغاء اخراج المنتج من سلة المشتريات بنجاح"
 
 }
 

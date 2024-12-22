@@ -5,6 +5,7 @@ import ProductsShowingForComputer from '@/app/components/productsShowing/forComp
 import ProductsShowingForPhone from '@/app/components/productsShowing/forPhone/productsShowing';
 import { useContext, useEffect, useState } from "react";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
+import { productParams } from "@/app/contexts/productSelectForShowing";
 
 
 const ProductsShowing = () => {
@@ -15,16 +16,16 @@ const ProductsShowing = () => {
         throw 'error languageContext';
     }
 
-    type productParams = {
-        _id: string,
-        name: LanguageParams,
-        imagePrincipal: string,
-        price: number,
-        discount: discountParams,
-        totalRating: number,
-        currencyType: string
+    // type productParams = {
+    //     _id: string,
+    //     name: LanguageParams,
+    //     imagePrincipal: string,
+    //     price: number,
+    //     discount: discountParams,
+    //     totalRating: number,
+    //     currencyType: string
     
-    }
+    // }
 
     type LanguageParams = {
         english: string,

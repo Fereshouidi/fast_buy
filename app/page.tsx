@@ -27,6 +27,7 @@ import { useRouter } from "next/navigation";
 import { LoadingIconContext } from "./contexts/loadingIcon";
 import LoadingIcon_theHolePage from "./svg/icons/loading/loadingHoleOfThePage";
 import { ActiveLanguageContext } from "./contexts/activeLanguage";
+import { BannerContext } from './contexts/bannerForEverything';
 const App = () => {
 
 
@@ -45,6 +46,13 @@ const App = () => {
   const [activeLanguage_, setActiveLanguage_] = useState<typeof english | typeof arabic>(english);
   const [sideBarExist, setSideBarExist] = useState(false);
   const [loadingIconExist, setLoadingIconExit] = useState<boolean>(false);
+  const [bannerForEveryThing, setBannerForEveryThing] = useState<boolean>(false);
+  const [bannerText, setBannerText] = useState<string | undefined>(undefined);
+
+  const setBanner = (visibility: boolean, text: string | undefined) => {
+    setBannerForEveryThing(visibility),
+    setBannerText(text);
+  }
 
 
 
@@ -172,16 +180,18 @@ useEffect(() => {
               <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
                 <CustomerDataContext.Provider value={customerData}>
                   <LoadingIconContext.Provider value={{exist: loadingIconExist , setExist: setLoadingIconExit}}>
+                    <BannerContext.Provider value={{bannerexist: bannerForEveryThing,bannerText: bannerText , setBanner: setBanner}}>
                       {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
-                      {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-                      {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
-                      <Slider/>
-                      <LoadingIcon_theHolePage/>
-                      <ProductsShowing/>
-                      {screenWidth > 800 ? <BulletinBoard_two_forComputer /> : <BulletinBoard_two_forPhone />}
-                      <CategoriesSection/>
-                      <About/>
-                      <span onClick={closeAccount}>x</span>
+                        {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
+                        {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
+                        <Slider/>
+                        <LoadingIcon_theHolePage/>
+                        <ProductsShowing/>
+                        {screenWidth > 800 ? <BulletinBoard_two_forComputer /> : <BulletinBoard_two_forPhone />}
+                        <CategoriesSection/>
+                        <About/>
+                        <span onClick={closeAccount}>x</span>
+                    </BannerContext.Provider>
                   </LoadingIconContext.Provider>
                 </CustomerDataContext.Provider>
               </SideBarContext.Provider>

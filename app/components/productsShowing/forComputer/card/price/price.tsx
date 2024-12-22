@@ -1,18 +1,18 @@
 'use client';
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-
 import { CSSProperties, useContext, useState } from "react";
 import tinycolor from "tinycolor2";
+import { productParams } from "@/app/contexts/productSelectForShowing";
 
-type productParams = {
-    name: LanguageParams,
-    imagePrincipal: string,
-    price: number,
-    discount: discountParams,
-    totalRating: number,
-    currencyType: string
-}
+// type productParams = {
+//     name: LanguageParams,
+//     imagePrincipal: string,
+//     price: number,
+//     discount: discountParams,
+//     totalRating: number,
+//     currencyType: string
+// }
 
 type LanguageParams = {
   english: string,
@@ -40,7 +40,7 @@ const Price = ({product}: {product : productParams}) => {
     throw 'error languageContext'
   }
   
-  const darkenedColor = tinycolor(companyInformation?.primaryColor || '#111111').darken(10).toString();  
+const darkenedColor = tinycolor(companyInformation?.primaryColor || '#111111').darken(10).toString();  
 
 const stylePriceDiv: CSSProperties = {
   direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr'
@@ -73,6 +73,8 @@ const newPriceHover: CSSProperties = {
   ...styleNewPrice,
   backgroundColor: darkenedColor
 }
+console.log(product);
+
   
     return (
         <div style={stylePriceDiv}>

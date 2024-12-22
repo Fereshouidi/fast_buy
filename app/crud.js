@@ -216,3 +216,16 @@ export const deletePurchaseById = async (id) => {
         throw err;
     }
 }
+
+export const updateQuantitiy = async (id, quantity) => {
+    try {
+        const response = await axios.put(url+ '/update/quantity', {
+            id, 
+            quantity
+        })
+        console.log(response.data);
+        return response.data
+    }catch (err) {
+        throw err;
+    }
+}

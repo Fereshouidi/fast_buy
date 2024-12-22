@@ -9,6 +9,7 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 import tinycolor from 'tinycolor2';
 import LoadingIcon from "@/app/svg/icons/loading/loading";
+import { productParams } from "@/app/contexts/productSelectForShowing";
 
 
 type productsShowing = {
@@ -17,16 +18,16 @@ type productsShowing = {
     allProducts: productParams[]  
 }
 
-type productParams = {
-    _id: string,
-    name: LanguageParams,
-    imagePrincipal: string,
-    price: number,
-    discount: discountParams,
-    totalRating: number,
-    currencyType: string
+// type productParams = {
+//     _id: string,
+//     name: LanguageParams,
+//     imagePrincipal: string,
+//     price: number,
+//     discount: discountParams,
+//     totalRating: number,
+//     currencyType: string
 
-}
+// }
 
 type LanguageParams = {
     english: string,

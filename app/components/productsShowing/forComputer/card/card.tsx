@@ -7,18 +7,20 @@ import StarRating from "./startingRating/StartRating";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { useRouter } from "next/navigation";
 import { LoadingIconContext } from "@/app/contexts/loadingIcon";
-import '@/app/svg/icons/loading/loading.css'
+import '@/app/svg/icons/loading/loading.css';
+import { productParams } from "@/app/contexts/productSelectForShowing";
 
-type productParams = {
-    _id: string,
-    name: LanguageParams,
-    imagePrincipal: string,
-    price: number,
-    discount: discountParams,
-    totalRating: number,
-    currencyType: string
 
-}
+// type productParams = {
+//     _id: string,
+//     name: LanguageParams,
+//     imagePrincipal: string,
+//     price: number,
+//     discount: discountParams,
+//     totalRating: number,
+//     currencyType: string
+
+// }
 type LanguageParams = {
     english: string,
     arabic: string

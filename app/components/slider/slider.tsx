@@ -71,7 +71,6 @@ const Slider = () => {
         width: '90vw',
         height: 'auto',
         overflowX: 'hidden',
-     //   margin:  window.innerWidth > 800? 'calc(var(--extra-large-margin)*2) 0' : 'calc(var(--extra-large-margin)/2) 0',
         marginTop: 'var(--extra-large-margin)',
         position: 'relative',
         borderRadius: '25px',

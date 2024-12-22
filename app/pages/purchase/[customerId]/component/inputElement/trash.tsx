@@ -3,11 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { shoppingCartParams } from "@/app/contexts/shoppingCart";
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
-import { CSSProperties, useContext } from "react";
+import { CSSProperties, useContext, useState } from "react";
 import { deletePurchaseById } from "@/app/crud";
 import { purchaseParams } from "@/app/contexts/purchaseData";
 import { LoadingIconContext } from "@/app/contexts/loadingIcon";
 import { BannersContext } from "@/app/contexts/banners";
+import { BannerContext } from "@/app/contexts/bannerForEverything";
 
 type params = {
     shoppingCart: shoppingCartParams | undefined
@@ -16,23 +17,29 @@ type params = {
 }
 const Trash = ({shoppingCart, setShoppingCart, purchase}: params) => {
 
-    const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
-    const setBannerExist = useContext(BannersContext)?.setPurchaseStatusBanner;
-    const setBannerStatus = useContext(BannersContext)?.setPurchaseStatus;    
+    const setLoadingIcon = useContext(LoadingIconContext)?.setExist;   
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
-    if(!setLoadingIcon || !setBannerStatus || !setBannerExist){
+    const setBanner = useContext(BannerContext)?.setBanner;
+    const [iconColor, setIconColor] = useState<string>('red');
+
+    if(!setLoadingIcon || !setBanner ){
         return;
     }
 
     const deletePurchase = async () => {
+
+        setIconColor('rgb(201, 1, 1)')
         setLoadingIcon(true);
         const updatedCustomerData = await deletePurchaseById(purchase?._id);
+
         if(typeof window != 'undefined'){
+
             setLoadingIcon(false);
-            setBannerStatus(201);
-            setBannerExist(true);
+
+            setBanner(true, activeLanguage?.productRemovedFromShoppingCart, 'success');
+
             localStorage.setItem('customerData', JSON.stringify(updatedCustomerData))
-               
+
             const updateShoppingCart = {
                 ...shoppingCart,
                 purchases: shoppingCart?.purchases?.filter(item => item !== purchase)
@@ -48,11 +55,17 @@ const Trash = ({shoppingCart, setShoppingCart, purchase}: params) => {
         return;
     }
     const style: CSSProperties = {
-        color: 'red',
-        fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'var(--small-size)',
+        color: iconColor,
+        fontSize: window.innerWidth > 1000 ? 'var(--primary-size)' : 'var(--small-size)',
+        cursor: "pointer",
+
     }
     return (
-        <div style={style} onClick={deletePurchase}>
+        <div 
+            className="icon" 
+            style={style} 
+            onClick={deletePurchase}
+        >
             <FontAwesomeIcon icon={faTrash}/> {activeLanguage?.deleteW}
         </div>
     )

@@ -30,7 +30,6 @@ const VerificatinEmailBanner = () => {
                 <div className="header"> <FontAwesomeIcon icon={faX} className="icon"/> </div>
 
                 <div className="content"> 
-                    {/* <FontAwesomeIcon icon={faBan} className="fa-ban"/> */}
                     <p className="verification-p">{
                         activeLanguage == 'arabic' ?
                             arabic.verificationMessage
