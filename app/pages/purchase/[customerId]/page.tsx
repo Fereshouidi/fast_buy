@@ -24,6 +24,7 @@ import CartContent from "./component/cartContent";
 import { shoppingCartParams } from "@/app/contexts/shoppingCart";
 import { ActiveLanguageContext } from '@/app/contexts/activeLanguage';
 import CartDetail from './component/cartDetail';
+// import '@/app/pages/purchase/[customerId]/style.css'
 
 
 interface propsParams {

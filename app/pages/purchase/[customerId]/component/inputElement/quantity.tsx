@@ -31,7 +31,9 @@ const Quantity = ({shoppingCart, purchase}: params) => {
         alignItems: "center",
         justifyContent: 'center',
         fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'calc(var(--primary-size) / 1.7)',
-        color: 'var(--black)'
+        color: 'var(--black)',
+        marginTop: 'var(--large-margin)'
+
     }
     const style_plus_minus: CSSProperties = {
         backgroundColor: primaryColor,

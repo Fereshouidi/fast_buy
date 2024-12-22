@@ -3,14 +3,19 @@
 import arabic from '@/app/languages/arabic.json';
 import { shoppingCartParams } from '@/app/contexts/shoppingCart';
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
-import { CSSProperties, useContext } from "react";
+import { CSSProperties, useContext, useRef, useState } from "react";
 import Trash from './inputElement/trash';
 import Quantity from './inputElement/quantity';
 import { purchaseParams } from '@/app/contexts/purchaseData';
+import '@/app/pages/purchase/[customerId]/style.css'
 
 const CartContent = ({shoppingCart}: {shoppingCart: shoppingCartParams | undefined}) => {
 
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
+    const [hoveredItemId, setHoveredItemId] = useState<string | undefined>(undefined);
+
+    // const itemRef = useRef<HTMLDivElement>(null);
+
 
     const calcTotalPrice = (purchase: purchaseParams) => {
         if(purchase.discount){
@@ -21,6 +26,14 @@ const CartContent = ({shoppingCart}: {shoppingCart: shoppingCartParams | undefin
             return totalPrice;
         }
     }
+
+    // const handleStyle = () => {
+    //     if(itemRef.current){
+    //         itemRef.current.style.backgroundColor = 'red';
+    //         alert('n')
+
+    //     }
+    // }
 
     if(!shoppingCart){
         return;
@@ -48,21 +61,33 @@ const CartContent = ({shoppingCart}: {shoppingCart: shoppingCartParams | undefin
     }
     const styleItem: CSSProperties = {
         width:'90%',
+        height: 'calc(var(--double-height) * 1.5)',
         backgroundColor: 'var(--white)',
         borderBottom: '0.2px solid var(--black-almost-transparnt)',
         padding: window.innerWidth > 800 ? 'var(--medium-padding) var(--medium-padding) 0 var(--medium-padding)' : 'var(--small-padding) var(--small-padding) 0 var(--small-padding)',
-        borderRadius: '20px'
+        borderRadius: '20px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        
+    }
+    const styleItemHover: CSSProperties = {
+        ...styleItem,
+        backgroundColor: 'var(--ashen-almost-transparent)',
 
     }
     const styleUpperPart: CSSProperties = {
         width:'100%',
+        height: '100%',
         display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center'
+        justifyContent: 'space-around',
+        alignItems: 'space-between',
+        flexDirection: 'column',
+        borderRadius: '20px'
     }
     const styleIMGAndName: CSSProperties = {
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
     }
     const styleIMG: CSSProperties = {
         width: window.innerWidth > 800 ? 'calc(var(--primary-width) *1.5)' : 'var(--primary-width)',
@@ -74,38 +99,67 @@ const CartContent = ({shoppingCart}: {shoppingCart: shoppingCartParams | undefin
         fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'var(--small-size)'
     }
     const styleBottomPart: CSSProperties = {
-        ...styleUpperPart,
-        padding: window.innerWidth > 800 ? 'var(--medium-padding)' : 'var(--small-padding)',
-        margin: window.innerWidth > 800 ? 'var(--medium-margin)' : 'var(--small-margin)' ,
+        width: 'var(--large-width)',
+        height: '100%',
+        margin: 0,
+        display: 'flex',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        flexDirection: 'column',
         borderRadius: '20px'
     }
     const stylePrice: CSSProperties = {
        padding: window.innerWidth > 800 ? 'var(--medium-padding)' : 'var(--small-padding)',
-       margin: window.innerWidth > 800 ? '0 var(--large-margin)' : 'var(--medium-margin)', 
        borderRadius: '20px',
        fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'var(--small-size)'
     }
     return (
-            <section className="products-section" style={style}>
-                <h2 style={styleH2}>{activeLanguage?.shoppingCart} (<span>{shoppingCart.purchases.length}</span>)</h2>
-                <div className="container" style={styleContainer}>{
-                    shoppingCart.purchases.map((purchase, index) => {
-                        return <div key={index} className='item' style={styleItem}>
-                            <div className='upper-part' style={styleUpperPart}>
+        <section className="products-section" style={style}>
+            <h2 style={styleH2}>
+                {activeLanguage?.shoppingCart} (<span>{shoppingCart.purchases.length}</span>)
+            </h2>
+            <div className="container" style={styleContainer}>
+                {shoppingCart.purchases.map((purchase) => {
+                    const isHovered = hoveredItemId === purchase._id;
+                    return (
+                        <div
+                            key={purchase._id}
+                            className="item-product"
+                            style={isHovered ? styleItemHover : styleItem}
+                            onMouseEnter={() => setHoveredItemId(purchase._id)}
+                            onMouseLeave={() => setHoveredItemId(undefined)}
+                        >
+                            <div className="left-part" style={styleUpperPart}>
                                 <div style={styleIMGAndName}>
-                                    <img src={purchase.product.imagePrincipal} style={styleIMG} alt="" />
-                                    <h4 style={styleName}>{activeLanguage == arabic ? purchase.product.name.arabic : purchase.product.name.english}</h4>
+                                    <img
+                                        src={purchase.product.imagePrincipal}
+                                        style={styleIMG}
+                                        alt=""
+                                    />
+                                    <h4 style={styleName}>
+                                        {activeLanguage == arabic
+                                            ? purchase.product.name.arabic
+                                            : purchase.product.name.english}
+                                    </h4>
                                 </div>
-                                <span style={stylePrice}>{calcTotalPrice(purchase) +' '+ purchase.product.currencyType}</span>
+                                <Trash shoppingCart={shoppingCart} />
                             </div>
-                            <div className='bottom-part' style={styleBottomPart}>
-                                <Trash shoppingCart={shoppingCart}/>
-                                <Quantity shoppingCart={shoppingCart} purchase={purchase}/>
+                            <div className="right-part" style={styleBottomPart}>
+                                <span style={stylePrice}>
+                                    {calcTotalPrice(purchase) +
+                                        " " +
+                                        purchase.product.currencyType}
+                                </span>
+                                <Quantity
+                                    shoppingCart={shoppingCart}
+                                    purchase={purchase}
+                                />
                             </div>
                         </div>
-                    })
-                }</div>
-            </section>
-    )
+                    );
+                })}
+            </div>
+        </section>
+    );
 }
 export default CartContent;

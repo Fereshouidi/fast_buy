@@ -16,7 +16,8 @@ const Trash = ({shoppingCart}: {shoppingCart: shoppingCartParams | undefined}) =
     }
     const style: CSSProperties = {
         color: 'red',
-        fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'var(--small-size)'
+        fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'var(--small-size)',
+        //margin: 'var(--medium-margin)'
     }
     return (
         <div style={style}>
