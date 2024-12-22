@@ -97,7 +97,8 @@ useEffect(() => {
     }
   }, []);
 
-  useEffect(() => {
+  useEffect(() => {    
+
       if (typeof window !== "undefined") {
         const savedTheme = localStorage.getItem("activeTheme");
         if (savedTheme) {
@@ -126,9 +127,16 @@ useEffect(() => {
         }
       }
       fetchCustomer()
+      
     }
   }, [typeof window != 'undefined' ? localStorage.getItem("customerData") : null]);
 
+  const getDependency = () => {
+    if (shoppingCart && shoppingCart.purchases) {
+        return shoppingCart.purchases.length;
+    }
+    return null;
+};
   useEffect(() => {
     const fetchChoppingCart = async() => {
       const shoppingCarts = await getShoppingCartsByCustomerId(customer?._id);
@@ -141,7 +149,7 @@ useEffect(() => {
       })            
     }
     fetchChoppingCart()
-  }, [customer])
+  }, [customer || getDependency() ])
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -206,6 +214,7 @@ useEffect(() => {
   if (!conpanyInformations) {
     return <LoadingIcon/>; 
   }
+
   
   const style: CSSProperties = {
     width: '100vw',
@@ -217,7 +226,7 @@ useEffect(() => {
     flexDirection: screenWidth > 800 ? 'row' : 'column',
   }
 
-    
+
     return (
 
         <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin}} >
@@ -233,7 +242,7 @@ useEffect(() => {
                             {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
                             {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
                             <div style={style}>
-                              <CartContent shoppingCart={shoppingCart}/>
+                              <CartContent shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>
                               <CartDetail shoppingCart={shoppingCart}/>
                             </div>
                             <About/>

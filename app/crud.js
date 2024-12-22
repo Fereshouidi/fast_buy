@@ -205,3 +205,14 @@ export const getShoppingCartsByCustomerId = async (customerId) => {
         throw err;
     }
 }
+
+export const deletePurchaseById = async (id) => {
+    try {
+        const response = await axios.delete(url + '/delete/purchase/byId', {
+            params: {id}
+        })
+        return response.data.customer;
+    }catch(err) {
+        throw err;
+    }
+}
