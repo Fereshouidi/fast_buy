@@ -50,7 +50,7 @@ const App = () => {
   const [bannerText, setBannerText] = useState<string | undefined>(undefined);
 
   const setBanner = (visibility: boolean, text: string | undefined) => {
-    setBannerForEveryThing(visibility),
+    setBannerForEveryThing(visibility)
     setBannerText(text);
   }
 
