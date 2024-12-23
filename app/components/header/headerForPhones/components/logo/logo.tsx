@@ -17,7 +17,7 @@ const Logo = () => {
                 src={companyInformation?.logo}
                 alt="Logo"   
             />
-            <h3 >{companyInformation?.name.english}</h3>
+            <h3 >{companyInformation?.name?.english}</h3>
         </div>
     )
 }
