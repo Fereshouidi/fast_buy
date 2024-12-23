@@ -18,7 +18,7 @@ const Logo = () => {
     return (
         <div style={style} className='logo'>
             <img 
-                src={companyInformations.logo}
+                src={companyInformations?.logo}
                 alt="Logo"   
             />
             <h1>{companyInformations && companyInformations.name?.english}</h1>
