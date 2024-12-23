@@ -5,7 +5,6 @@ import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 import { faCcMastercard, faPaypal } from "@fortawesome/free-brands-svg-icons";
 import { faTruck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { border, borderColor } from "polished";
 import { CSSProperties, useContext } from "react";
 
 const PaymentMethod = () => {
