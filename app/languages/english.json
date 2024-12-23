@@ -75,5 +75,11 @@
     "shoppingCart": "Shopping Cart",
     "deleteW": "Delete",
     "productRemovedFromShoppingCart": "The product has been successfully removed from your shopping cart",
-    "CompleteYourPurchaseW": "Complete your purchase"
+    "CompleteYourPurchaseW": "Complete your purchase",
+    "purchasesPriceW": "Purchases price",
+    "shippingCostW": "Shipping Cost",
+    "totalPriceW": "Total price",
+    "paymentMethodW": "payment method",
+    "orderNowW": "Order now",
+    "discountCodeW": "Discount code"
 }

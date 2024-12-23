@@ -1,5 +1,4 @@
 'use client';
-// import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
 import { shoppingCartParams } from '@/app/contexts/shoppingCart';
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
@@ -10,6 +9,7 @@ import { purchaseParams } from '@/app/contexts/purchaseData';
 import '@/app/pages/purchase/[customerId]/style.css';
 import { useRouter } from 'next/navigation';
 import { productParams } from '@/app/contexts/productSelectForShowing';
+import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 
 type Params = {
     shoppingCart: shoppingCartParams | undefined
@@ -19,11 +19,8 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
 
     const router = useRouter();
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
+    const companyInformationContext = useContext(CompanyInformationContext);
     const [hoveredItemId, setHoveredItemId] = useState<string | undefined>(undefined);
-
-    // if(!purchase.quantity){
-    //     return
-    // }
 
     const calcTotalPrice = (purchase: purchaseParams) => {
         if(purchase.product && purchase.product.discount?.newPrice && purchase.quantity && purchase.discount){
@@ -160,7 +157,8 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
                                 <span style={stylePrice}>
                                     {calcTotalPrice(purchase) +
                                         " " +
-                                        purchase.product?.currencyType}
+                                        companyInformationContext?.currencyType
+                                    }
                                 </span>
                                 <Quantity
                                     shoppingCart={shoppingCart}

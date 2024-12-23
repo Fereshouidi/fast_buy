@@ -7,5 +7,6 @@ export interface shoppingCartParams {
     products?: productParams[] | undefined;
     status?: string | null | undefined;
     paymentMethod?: string | undefined;
-    totalPrice?: number
+    totalPrice?: number,
+    shippingCost?: number,
 }

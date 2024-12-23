@@ -74,8 +74,13 @@
     "shoppingCart": "سلة المشتريات",
     "deleteW": "مسح",
     "productRemovedFromShoppingCart": "تم الغاء اخراج المنتج من سلة المشتريات بنجاح",
-    "CompleteYourPurchaseW": "اكمل عملية الشراء"
-
+    "CompleteYourPurchaseW": "اكمل عملية الشراء",
+    "purchasesPriceW": "ثمن المشتريات",
+    "shippingCostW": "تكلفة التوصيل",
+    "totalPriceW": "الثمن الاجمالي",
+    "paymentMethodW": "طريقة الدفع",
+    "orderNowW": "اطلب الان",
+    "discountCodeW": "رمز الخصم"
 }
 
 

@@ -88,6 +88,7 @@ useEffect(() => {
     const fetchData = async() => {
         const conpanyInformationsData = await getConpanyInformations();
         setConpanyInformations(conpanyInformationsData);
+        console.log(conpanyInformationsData);
     }
     fetchData();
 }, [])
@@ -234,12 +235,13 @@ useEffect(() => {
     display: 'flex',
     justifyContent: screenWidth > 800 ? 'center' : '',
     flexDirection: screenWidth > 800 ? 'row' : 'column',
+    marginBottom: 'var(--extra-large-margin)'
   }
 
 
     return (
 
-        <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin}} >
+        <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType}} >
             <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
                 <ThemeContext.Provider value={{ theme, setTheme }}>
                   <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
@@ -257,7 +259,7 @@ useEffect(() => {
                               <CartContent shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>
                               <CartDetail shoppingCart={shoppingCart}/>
                             </div>
-                            <About/>
+                              <About/>
                           </BannerContext.Provider>
                           </BannersContext.Provider>
                         </CustomerDataContext.Provider>
