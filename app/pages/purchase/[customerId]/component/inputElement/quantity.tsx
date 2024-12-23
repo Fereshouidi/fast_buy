@@ -20,38 +20,50 @@ const Quantity = ({shoppingCart, setShoppingCart, purchase}: params) => {
 
     const plusOne = async(event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
         event.stopPropagation();
-        if(purchase?.product?.quantity && quantity < purchase?.product.quantity){
+        if(purchase?.product?.quantity && quantity < purchase?.product.quantity && shoppingCart?.totalPrice){
             setQuantity(quantity + 1)
-            await updateQuantitiy(purchase._id, quantity + 1)
             const updatedPurchase = {
                 ...purchase,
-                quantity: quantity + 1 
+                quantity: quantity + 1 ,
+                totalPrice: purchase.product.discount ?
+                    purchase.product.discount.newPrice * (quantity + 1 ) :
+                    purchase.product.price * (quantity + 1 )
             }
             const updatedShoppingCart = {
                 ...shoppingCart,
                 purchases: shoppingCart?.purchases?.map(item =>
                     item._id === purchase._id ? updatedPurchase : item
-                ) || []
+                ) || [],
+                totalPrice: purchase.product.discount ?
+                    shoppingCart?.totalPrice + purchase.product.discount.newPrice :
+                    shoppingCart?.totalPrice + purchase.product.price
             };
             setShoppingCart(updatedShoppingCart)
+            await updateQuantitiy(purchase._id, quantity + 1)
         }
     }
     const minusOne = async(event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
         event.stopPropagation();
-        if(purchase && quantity > 1){
+        if(purchase?.product?.quantity && purchase && quantity > 1 && shoppingCart?.totalPrice){
             setQuantity(quantity - 1)
-            await updateQuantitiy(purchase._id, quantity - 1);
             const updatedPurchase = {
                 ...purchase,
-                quantity: quantity - 1 
+                quantity: quantity - 1,
+                totalPrice: purchase.product.discount ?
+                    purchase.product.discount.newPrice * (quantity - 1 ) :
+                    purchase.product.price * (quantity - 1 )
             }
             const updatedShoppingCart = {
                 ...shoppingCart,
                 purchases: shoppingCart?.purchases?.map(item =>
                     item._id === purchase._id ? updatedPurchase : item
-                ) || []
+                ) || [],
+                totalPrice: purchase.product.discount ?
+                    shoppingCart?.totalPrice - purchase.product.discount.newPrice :
+                    shoppingCart?.totalPrice - purchase.product.price
             };
             setShoppingCart(updatedShoppingCart)
+            await updateQuantitiy(purchase._id, quantity - 1);
         }
     }
 

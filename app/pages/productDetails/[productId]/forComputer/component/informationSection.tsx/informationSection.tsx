@@ -33,7 +33,9 @@ const InformationSection = ({product}: {product: productParams | undefined}) => 
                 buyer: customer._id, 
                 product: product, 
                 discount: product?.discount ? product.discount._id : null, 
-                quantity: 1
+                quantity: 1,
+                totalPrice: product.discount? product.discount.newPrice : product.price,
+                shoppingCart: customer.ShoppingCarts? customer.ShoppingCarts._id : null
             })
         }
         

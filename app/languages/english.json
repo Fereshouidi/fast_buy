@@ -74,5 +74,6 @@
     "addedToPurChaseSuccessP": "The product has been added to the cart successfully ",
     "shoppingCart": "Shopping Cart",
     "deleteW": "Delete",
-    "productRemovedFromShoppingCart": "The product has been successfully removed from your shopping cart"
+    "productRemovedFromShoppingCart": "The product has been successfully removed from your shopping cart",
+    "CompleteYourPurchaseW": "Complete your purchase"
 }

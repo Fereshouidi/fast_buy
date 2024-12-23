@@ -2,19 +2,20 @@
 import { createContext } from "react";
 
 export interface companyInformationsParams {
-    name: nameParams,
-    logo: string,
-    primaryColor: string,
-    biggestDiscount: number,
-    offersDetails : string,
-    entities: string[],
-    originalProductsPercentage: number,
-    servises: string[],
-    backgroundOfRegisterPage: string,
-    registerRequiredData: registerRequiredDataParams,
-    email: string,
-    password: string,
-    activateAccountWhileSignin: boolean
+    name?: nameParams,
+    logo?: string,
+    primaryColor?: string,
+    biggestDiscount?: number,
+    offersDetails? : string,
+    entities?: string[],
+    originalProductsPercentage?: number,
+    servises?: string[],
+    backgroundOfRegisterPage?: string,
+    registerRequiredData?: registerRequiredDataParams,
+    email?: string,
+    password?: string,
+    activateAccountWhileSignin?: boolean,
+    companyInformations?: string
 }
 
 type nameParams = {

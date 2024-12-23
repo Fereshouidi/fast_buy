@@ -16,10 +16,15 @@ const Quantity = ({product, purchaseData, setPurchaseData}: Params) => {
     const languageSelectorContext = useContext(LanguageSelectorContext);
 
     const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-        if(purchaseData ){
-            setPurchaseData({...purchaseData, quantity: parseInt(event.target.value)})
+        if(purchaseData && product?.price){
+            setPurchaseData({
+                ...purchaseData, 
+                quantity: parseInt(event.target.value),
+                totalPrice: product?.discount ? 
+                    product.discount.newPrice * parseInt(event.target.value) : 
+                    product?.price * parseInt(event.target.value) 
+            })   
         }
-      //  console.log(typeof parseInt(event.target.value) );
     }
 
     const style: CSSProperties = {

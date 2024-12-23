@@ -32,7 +32,7 @@ const Trash = ({shoppingCart, setShoppingCart, purchase}: params) => {
         setLoadingIcon(true);
         const updatedCustomerData = await deletePurchaseById(purchase?._id);
 
-        if(typeof window != 'undefined'){
+        if(typeof window != 'undefined' && shoppingCart?.totalPrice && purchase?.totalPrice){
 
             setLoadingIcon(false);
 
@@ -42,7 +42,8 @@ const Trash = ({shoppingCart, setShoppingCart, purchase}: params) => {
 
             const updateShoppingCart = {
                 ...shoppingCart,
-                purchases: shoppingCart?.purchases?.filter(item => item !== purchase)
+                purchases: shoppingCart?.purchases?.filter(item => item !== purchase),
+                totalPrice: shoppingCart?.totalPrice - purchase?.totalPrice
             };
             
             setShoppingCart(updateShoppingCart);
