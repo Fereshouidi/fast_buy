@@ -20,7 +20,7 @@ const Logo = () => {
                 src={companyInformations.logo}
                 alt="Logo"   
             />
-            <h1>{companyInformations && companyInformations.name.english}</h1>
+            <h1>{companyInformations && companyInformations.name?.english}</h1>
         </div>
     )
 }
