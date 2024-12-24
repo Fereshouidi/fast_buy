@@ -1,7 +1,7 @@
 'use client';
 
 import { shoppingCartParams } from "@/app/contexts/shoppingCart";
-import { CSSProperties, useContext } from "react";
+import { CSSProperties, useContext, useState } from "react";
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 import PaymentMethod from "./inputElement/paymentMethod";
 import DiscountCode from "./inputElement/discountCode";
@@ -10,9 +10,9 @@ import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
 const CartDetail = ({shoppingCart}: {shoppingCart: shoppingCartParams | undefined}) => {
 
-    console.log(shoppingCart);
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
     const companyInformation = useContext(CompanyInformationContext);
+    const [paymentMethod, setPaymentMethod] = useState<'paypal' | 'masterCart' | 'cash' | undefined>('cash')
     
     if(typeof window == 'undefined'){
         return;
@@ -38,7 +38,9 @@ const CartDetail = ({shoppingCart}: {shoppingCart: shoppingCartParams | undefine
         flexDirection: 'column'
     }
     const styleH4: CSSProperties = {
-        marginBottom: 'var(--large-margin)'
+        marginBottom: window.innerWidth > 500 ? 'var(--large-margin)' : 'var(--medium-margin)',
+        fontSize: window.innerWidth > 500 ? 'var(--primary-size)' : 'var(--small-size)',
+
     }
     const styleCart: CSSProperties = {
         maxWidth: '90%',
@@ -70,7 +72,7 @@ const CartDetail = ({shoppingCart}: {shoppingCart: shoppingCartParams | undefine
                         <h5>{activeLanguage?.totalPriceW + " : ____________ ("}</h5>
                         <span>{shoppingCart?.totalPrice + shoppingCart?.shippingCost + ' ' + companyInformation?.currencyType + ')'}</span>
                     </div>
-                    <PaymentMethod/>
+                    <PaymentMethod paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} />
                     <DiscountCode/>
                     <OrderNow/>
                 </div>

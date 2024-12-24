@@ -6,7 +6,7 @@ export interface shoppingCartParams {
     customer?: string | undefined;
     products?: productParams[] | undefined;
     status?: string | null | undefined;
-    paymentMethod?: string | undefined;
+    paymentMethod?: 'paypal' | 'masterCart' | 'cash' | undefined;
     totalPrice?: number,
     shippingCost?: number,
 }

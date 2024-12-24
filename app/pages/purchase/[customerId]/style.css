@@ -14,13 +14,19 @@
     width: 100%;
     display: flex;
     margin: var(--small-margin);
-
-}
-/* 
-.payment-method *{
-    margin: var(--small-margin);
+    font-size: var(--primary-size);
 }
 
-.master-cart {
+.payment-method .payment-selected{
+    background-color: blue;
+}
+
+/* .master-cart {
     color: rgb(147, 71, 5);
 } */
+
+@media (max-width: 500px) {
+    .item {
+        font-size: var(--small-size);
+    }
+}

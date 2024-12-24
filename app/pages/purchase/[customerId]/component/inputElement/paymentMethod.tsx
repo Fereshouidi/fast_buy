@@ -7,7 +7,12 @@ import { faTruck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CSSProperties, useContext } from "react";
 
-const PaymentMethod = () => {
+type params = {
+    paymentMethod: 'paypal' | 'masterCart' | 'cash' | undefined,
+    setPaymentMethod: (value: 'paypal' | 'masterCart' | 'cash' | undefined) => void
+}
+
+const PaymentMethod = ({paymentMethod, setPaymentMethod}: params) => {
 
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
     const companyInformation = useContext(CompanyInformationContext);
@@ -27,7 +32,6 @@ const PaymentMethod = () => {
     const stylePaypal:CSSProperties = {
         color: 'rgb(0, 48, 135)',
         margin: 'var(--small-margin)',
-        border: `1px solid ${companyInformation?.primaryColor}`
 
     }
     const styleMasterCart:CSSProperties = {
@@ -35,24 +39,38 @@ const PaymentMethod = () => {
        margin: 'var(--small-margin)'
     }
     const styleTruck = {
-        color: companyInformation?.primaryColor,
-        borderColor: 'red',
         margin: 'var(--medium-margin)',
     }
+    const stylePaymentSelected: CSSProperties = {
+        border: `1px solid ${companyInformation?.primaryColor}`
+     }
+
     return (
         <div className="payment-method item" style={style}>
+
             <h5>{activeLanguage?.paymentMethodW + " : "}</h5>
+
             <div style={styleContainer}>
-                <div style={stylePaypal}>
+                <div style={paymentMethod === 'paypal' ? {...stylePaypal, ...stylePaymentSelected} : stylePaypal} 
+                    // className={paymentMethod == 'paypal' ? 'payment-selected' : ''}
+                    onClick={() => setPaymentMethod('paypal')}
+                >
                     <FontAwesomeIcon icon={faPaypal} />
                 </div> 
-                <div style={styleMasterCart} >
-                    <FontAwesomeIcon icon={faCcMastercard} className="master-cart"/>
+                <div style={paymentMethod === 'masterCart' ? {...styleMasterCart, ...stylePaymentSelected} : styleMasterCart} 
+                    // className={paymentMethod == 'masterCart' ? 'payment-selected' : ''}
+                    onClick={() => setPaymentMethod('masterCart')}
+                >
+                    <FontAwesomeIcon icon={faCcMastercard} className="master-cart "/>
                 </div>
-                <div style={styleTruck}>
+                <div style={paymentMethod === 'cash' ? {...styleTruck, ...stylePaymentSelected} : styleTruck} 
+                    // className={paymentMethod == 'cash' ? 'payment-selected' : ''}
+                    onClick={() => setPaymentMethod('cash')}
+                >
                     <FontAwesomeIcon icon={faTruck} />
                 </div>
             </div>
+
         </div>
     )
 }
