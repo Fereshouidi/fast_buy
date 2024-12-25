@@ -28,7 +28,7 @@ const Name = ({product}: {product: productParams | undefined}) => {
 
     const style: CSSProperties = {
         width: '100%',
-        margin: 'var(--large-margin) 0',
+        margin: 'var(--large-margin) 0', 
     }
     const styleName: CSSProperties = {
         width: '100%',
