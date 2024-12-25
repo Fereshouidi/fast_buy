@@ -31,7 +31,7 @@ const Quantity = ({product, purchaseData, setPurchaseData}: Params) => {
         display: 'flex',
         alignItems: 'center',
         margin: 'var(--large-margin)',
-        fontSize: 'calc(var(--primary-size)/1.2)',
+        fontSize: 'var(--primary-size)',
         fontWeight: '200',
         color: 'var(--black)'
 
