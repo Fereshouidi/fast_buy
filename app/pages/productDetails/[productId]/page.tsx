@@ -213,7 +213,7 @@ useEffect(() => {
                                             <PurchaseStatusBanner/>
                                             {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
                                             {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-                                            {screenWidth > 800 ? <PageForComputer product={product} setProduct={setProduct}/> : <PageForPhone product={product}/>}
+                                            {screenWidth > 800 ? <PageForComputer product={product} setProduct={setProduct}/> : <PageForPhone product={product} setProduct={setProduct}/>}
                                             <About/>
                                           </ActiveLanguageContext.Provider>
                                         </BannerContext.Provider>

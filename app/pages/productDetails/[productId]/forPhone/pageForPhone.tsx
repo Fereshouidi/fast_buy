@@ -1,12 +1,19 @@
 'use client';
-
-import { CSSProperties } from "react";
+import { CSSProperties, useEffect } from "react";
 import ImagesSection from "./component/imagesSection/imagesSection";
 import InformationSection from "./component/informationSection.tsx/informationSection";
 import { productParams } from "@/app/contexts/productSelectForShowing";
 
-
-const PageForPhone = ({product}: {product: productParams | undefined}) => {
+type Params = {
+    product: productParams | undefined,
+    setProduct: (value: productParams) => void
+}
+const PageForPhone = ({product, setProduct}: Params) => {
+    
+    useEffect(() => {
+        console.log(product);
+    }, [product])
+    
 
     const style: CSSProperties = {
         backgroundColor: "var(--almost-white)",
@@ -18,7 +25,7 @@ const PageForPhone = ({product}: {product: productParams | undefined}) => {
     return (
         <div id="the-product-detail-page-of-computer" style={style}>
             <ImagesSection product={product}/>
-            <InformationSection product={product}/>
+            <InformationSection product={product} setProduct={setProduct}/>
         </div>
     )
 }

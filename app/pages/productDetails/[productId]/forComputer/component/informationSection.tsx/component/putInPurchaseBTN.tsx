@@ -52,7 +52,6 @@ const PutInPurchaseBTN = ({product, purchaseData}: Params) => {
         }
         const newPurchase = await addPurchase(purchaseData);
         const refreshAccount = await getCustomerById(newPurchase.newPurchase.buyer);
-        console.log(refreshAccount)
         
         if(newPurchase && typeof window != 'undefined'){
             setLoadingIcon(false);

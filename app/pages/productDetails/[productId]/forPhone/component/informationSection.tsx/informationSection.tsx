@@ -15,16 +15,31 @@ import Availablity from "./component/availability";
 import './style.css';
 import { purchaseParams } from "@/app/contexts/purchaseData";
 import { CustomerDataContext } from '@/app/contexts/customerData';
+import DiscountCode from "./component/discountCode";
 
 
+type Params = {
+    product: productParams | undefined,
+    setProduct: (value: productParams) => void
+}
 
-
-const InformationSection = ({product}: {product: productParams | undefined}) => {
+const InformationSection = ({product, setProduct}: Params) => {
 
     const customer = useContext(CustomerDataContext);
 
     const [purchaseData, setPurchaseData] = useState<purchaseParams | undefined>(undefined);
-    
+    const [discountCodeAmount, setDiscountCodeAmount] = useState<{discount?: number | null, discountPercent?: number | null}>({discount: 0, discountPercent: 0});
+    const [price, setPrice] = useState<number | undefined>(product?.discount? product.discount.newPrice : product?.price);
+
+
+    useEffect(() => {
+        if(purchaseData){
+            setPurchaseData({
+                ...purchaseData,
+                totalPrice: price && purchaseData?.quantity ? price * purchaseData?.quantity : 0,
+            })
+        }
+    }, [price])
 
     useEffect(() => {
         
@@ -34,8 +49,9 @@ const InformationSection = ({product}: {product: productParams | undefined}) => 
                 product: product, 
                 discount: product?.discount ? product.discount._id : null, 
                 quantity: 1,
-                totalPrice: product.discount? product.discount.newPrice  : product.price,
-                shoppingCart: customer.ShoppingCart? customer.ShoppingCart._id : null
+                totalPrice: product.discount? product.discount.newPrice : product.price,
+                shoppingCart: customer.ShoppingCart? customer.ShoppingCart._id : null,
+                discountCode: discountCodeAmount.discount && discountCodeAmount.discountPercent ? product.discountCode?._id : null
             })
         }
         
@@ -65,7 +81,15 @@ const InformationSection = ({product}: {product: productParams | undefined}) => 
                 <TotalRating product={product}/>
             </div>
             {product?.categorie? <Categorie product={product}/> : null}
-            <Price product={product}/>
+            {product?.discountCode? <DiscountCode 
+                product={product} 
+                setProduct={setProduct} 
+                purchaseData={purchaseData} 
+                setPurchaseData={setPurchaseData}
+                discountCodeAmount={discountCodeAmount}
+                setDiscountCodeAmount={setDiscountCodeAmount}
+            /> : null } 
+            <Price product={product} setProduct={setProduct} discountCodeAmount={discountCodeAmount} price={price} setPrice={setPrice} purchaseData={purchaseData} setPurchaseData={setPurchaseData}/>
             <PutInPurchaseBTN product={product} purchaseData={purchaseData} />
         </div>
     )
