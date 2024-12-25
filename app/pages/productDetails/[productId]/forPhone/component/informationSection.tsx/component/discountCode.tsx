@@ -31,11 +31,12 @@ const DiscountCode = ({product, setDiscountCodeAmount}: Params) => {
 
 
     const style :CSSProperties = {
-        width: 'var(--extra-long-width)',
+        width: 'var(--long-width)',
         height: 'var(--primary-height)',
         borderRadius: '20px',
         paddingTop: '5px',
-        position: 'relative'
+        position: 'relative',
+        color: 'var(--black)'
     }
     const styleH6 :CSSProperties = {
         top: 0,
