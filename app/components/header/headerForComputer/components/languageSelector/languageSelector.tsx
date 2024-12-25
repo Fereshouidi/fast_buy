@@ -26,7 +26,7 @@ const LanguageSelector = () => {
         localStorage.setItem('activeLanguage', languageSelected);
         setActiveLanguage(languageSelected);
         activeLanguage_?.setAtiveLanguage(languageSelected === 'arabic' ? arabic : english);
-
+        localStorage.setItem('activeLanguage_', JSON.stringify(languageSelected === 'arabic' ? arabic : english));
     }
 
     useEffect(() => {

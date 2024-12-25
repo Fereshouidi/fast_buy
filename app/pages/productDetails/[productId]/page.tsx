@@ -1,5 +1,7 @@
 "use client";
 
+import english from '@/app/languages/english.json';
+import arabic from '@/app/languages/arabic.json';
 import { useState, useEffect } from "react";
 import HeaderForComputer from "@/app/components/header/headerForComputer/header";
 import HeaderForPhone from "@/app/components/header/headerForPhones/header";
@@ -25,6 +27,7 @@ import { CustomerDataContext, CustomerDataParams } from "@/app/contexts/customer
 import { BannersContext } from "@/app/contexts/banners";
 import PurchaseStatusBanner from "@/app/banners/addedToPurchase";
 import { BannerContext } from "@/app/contexts/bannerForEverything";
+import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 
 
 interface propsParams {
@@ -54,13 +57,14 @@ const ProductDetails = (props: propsParams) => {
     const [bannerForEveryThing, setBannerForEveryThing] = useState<boolean>(false);
     const [bannerText, setBannerText] = useState<string | undefined>(undefined);
     const [bannerStatus, setBannerStatus] = useState<'success' | 'fail' | null>(null);
+    const [activeLanguage_, setActiveLanguage_] = useState<typeof english | typeof arabic>(english);
+
 
     const setBanner = (visibility: boolean, text: string | undefined, status?: 'success' | 'fail' | null) => {
       setBannerForEveryThing(visibility)
       setBannerText(text);
       setBannerStatus(status? status : null)
     }
-    console.log(bannerStatus);
     
 
   const [screenWidth, setScreenWidth] = useState<number>(0); 
@@ -202,12 +206,14 @@ useEffect(() => {
                                     <CustomerDataContext.Provider value={customerData}>
                                       <BannersContext.Provider value={{purchaseStatusBanner: purchaseStatusBanner, setPurchaseStatusBanner: setPurchaseStatusBanner, purchaseStatus: purchaseStatus , setPurchaseStatus: setPurchaseStatus , passwordsNotMatch: false , setPasswordsNotMatch: ()=> null , emailNotValide: false , setemailNotValide: ()=> null , verificatinEmailBanner: false, setVerificatinEmailBanner: ()=> null, loginStatusBanner: false, setLoginStatusBanner: ()=> null, loginStatus: 404, setLoginStatus: ()=> null }}>
                                         <BannerContext.Provider value={{bannerexist: bannerForEveryThing,bannerText: bannerText , setBanner: setBanner}}>
-                                          <LoadingIcon_theHolePage/>
-                                          <PurchaseStatusBanner/>
-                                          {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
-                                          {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-                                          {screenWidth > 800 ? <PageForComputer product={product}/> : <PageForPhone product={product}/>}
-                                          <About/>
+                                          <ActiveLanguageContext.Provider value={{activeLanguage: activeLanguage_, setAtiveLanguage: setActiveLanguage_}}>
+                                            <LoadingIcon_theHolePage/>
+                                            <PurchaseStatusBanner/>
+                                            {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
+                                            {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
+                                            {screenWidth > 800 ? <PageForComputer product={product} setProduct={setProduct}/> : <PageForPhone product={product}/>}
+                                            <About/>
+                                          </ActiveLanguageContext.Provider>
                                         </BannerContext.Provider>
                                       </BannersContext.Provider>
                                     </CustomerDataContext.Provider>

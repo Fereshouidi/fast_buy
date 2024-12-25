@@ -1,4 +1,4 @@
-const url = 'https://fast-buy-back-end.vercel.app/api';
+const url = 'http://localhost:3002/api';
 import axios from "axios";
 
 //https://fast-buy-back-end.vercel.app/api
@@ -229,3 +229,16 @@ export const updateQuantitiy = async (id, quantity) => {
         throw err;
     }
 }
+
+export const addOrder = async (order) => {   
+    
+    try{
+        const response = await axios.post(url + '/add/order', order);
+        console.log(order);
+        
+        return response.data;
+    }catch(err) {
+        throw err
+    }
+}
+

@@ -12,7 +12,7 @@ export interface CustomerDataParams {
     retypePassword: string,
     saveAccount: boolean,
     verification: boolean,
-    ShoppingCarts: shoppingCart
+    ShoppingCart: shoppingCart
 }
 
 export interface shoppingCart {

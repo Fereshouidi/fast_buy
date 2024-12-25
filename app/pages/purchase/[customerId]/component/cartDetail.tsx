@@ -8,7 +8,11 @@ import DiscountCode from "./inputElement/discountCode";
 import OrderNow from "./inputElement/orderNow";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
-const CartDetail = ({shoppingCart}: {shoppingCart: shoppingCartParams | undefined}) => {
+type Params = {
+    shoppingCart: shoppingCartParams | undefined
+    setShoppingCart: (value: shoppingCartParams) => void;
+}
+const CartDetail = ({shoppingCart, setShoppingCart}: Params) => {
 
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
     const companyInformation = useContext(CompanyInformationContext);
@@ -74,7 +78,10 @@ const CartDetail = ({shoppingCart}: {shoppingCart: shoppingCartParams | undefine
                     </div>
                     <PaymentMethod paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} />
                     <DiscountCode/>
-                    <OrderNow/>
+                    <OrderNow
+                        shoppingCart={shoppingCart}
+                        setShoppingCart={setShoppingCart}
+                    />
                 </div>
             </div>
         </div>

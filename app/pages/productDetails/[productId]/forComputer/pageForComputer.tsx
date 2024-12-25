@@ -4,8 +4,11 @@ import ImagesSection from "./component/imagesSection/imagesSection";
 import InformationSection from "./component/informationSection.tsx/informationSection";
 import { productParams } from "@/app/contexts/productSelectForShowing";
 
-
-const PageForComputer = ({product}: {product: productParams | undefined}) => {
+type Params = {
+    product: productParams | undefined,
+    setProduct: (value: productParams) => void
+}
+const PageForComputer = ({product, setProduct}: Params) => {
     
     useEffect(() => {
         console.log(product);
@@ -22,7 +25,7 @@ const PageForComputer = ({product}: {product: productParams | undefined}) => {
     return (
         <div id="the-product-detail-page-of-computer" style={style}>
             <ImagesSection product={product}/>
-            <InformationSection product={product}/>
+            <InformationSection product={product} setProduct={setProduct}/>
         </div>
     )
 }

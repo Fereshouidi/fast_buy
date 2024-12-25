@@ -2,21 +2,37 @@
 
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
+import { purchaseParams } from "@/app/contexts/purchaseData";
+import { shoppingCartParams } from "@/app/contexts/shoppingCart";
+import { addOrder } from "@/app/crud";
 import { faTruck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CSSProperties, useContext } from "react";
 
-const OrderNow = () => {
+
+type params = {
+    shoppingCart: shoppingCartParams | undefined
+    setShoppingCart: (value: shoppingCartParams) => void;
+}
+const OrderNow = ({shoppingCart, setShoppingCart}: params) => {
 
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
     const companyInformation = useContext(CompanyInformationContext);
 
+    const handleClick = async() => {
+        await addOrder({
+            ...shoppingCart,
+            status: 'processing'
+        })
+        setShoppingCart({})
+    }
 
     const style :CSSProperties = {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        fontSize: window.innerWidth > 500 ? 'var(--primary-size)' : 'var(--small-size)',
     }
     const styleBTN :CSSProperties = {
         display: 'flex',
@@ -34,7 +50,7 @@ const OrderNow = () => {
     }
     return (
         <div className="item" style={style}>
-            <div style={styleBTN}>
+            <div style={styleBTN} onClick={handleClick}>
                 <FontAwesomeIcon icon={faTruck} style={styleIcon}/>
                 <h3>{activeLanguage?.orderNowW}</h3>
             </div>

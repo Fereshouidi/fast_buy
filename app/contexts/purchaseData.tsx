@@ -7,5 +7,6 @@ export interface purchaseParams {
     shoppingCart: string | null,
     discount: string | null | undefined,
     quantity: number | undefined,
-    totalPrice: number
+    totalPrice: number | undefined,
+    discountCode?: string | undefined
 }

@@ -46,7 +46,7 @@ const ShoppingCartIcon = () => {
           <circle cx="17" cy="20" r="2" fill="none" stroke="currentColor" />
           <line x1="6" y1="6" x2="4" y2="6" stroke="currentColor" />
       </svg>
-      <span style={styleSpan}>{customer?.ShoppingCarts && customer?.ShoppingCarts.purchases ? customer?.ShoppingCarts.purchases.length : 0}</span>
+      <span style={styleSpan}>{customer?.ShoppingCart && customer?.ShoppingCart.purchases ? customer?.ShoppingCart.purchases?.length : 0}</span>
     </div>
     
   )

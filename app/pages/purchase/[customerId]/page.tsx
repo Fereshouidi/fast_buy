@@ -60,6 +60,7 @@ const PurchasePage = (props: propsParams) => {
       setBannerStatus(status? status : null)
     }
 
+    
 
   const [screenWidth, setScreenWidth] = useState<number>(0); 
   const [theme, setTheme] = useState(() => {
@@ -83,6 +84,14 @@ const PurchasePage = (props: propsParams) => {
     }
     getCustomer()
 }, [])
+
+useEffect(() => {
+  if (typeof window !== "undefined") {
+    const storedLanguage = localStorage.getItem('activeLanguage_');    
+    setActiveLanguage_(storedLanguage ? JSON.parse(storedLanguage) : null);
+  }
+
+  }, []) 
 
 useEffect(() => {
     const fetchData = async() => {
@@ -124,12 +133,13 @@ useEffect(() => {
           try {
             setCustomerData(JSON.parse(storedData) as CustomerDataParams) ;
             const customer = await getCustomerById(JSON.parse(storedData)._id);
+            console.log(customer)
             setCustomerData(customer as CustomerDataParams) ;
             console.log(customer);
             
             
           } catch (error) {
-            console.error("Failed to parse customerData from localStorage:", error);
+            console.log("Failed to parse customerData from localStorage:", error);
             setCustomerData(undefined) ;
             
           }
@@ -152,13 +162,10 @@ useEffect(() => {
   useEffect(() => {
     const fetchChoppingCart = async() => {
       const shoppingCarts = await getShoppingCartsByCustomerId(customer?._id);
-      setShoppingCart(() => {
-        for (const choppingCart of shoppingCarts){
-          if (choppingCart.status == "cart" || choppingCart.status == "canceled" || choppingCart.status == "payment_failed" || choppingCart.status == "ready_for_pickup") {
-             return choppingCart         
-          }
-        }
-      })            
+      setShoppingCart(shoppingCarts[0])
+      const updatedCustomerData = {...customer, shoppingCart: shoppingCarts[0]};
+      localStorage.setItem('customerData', JSON.stringify(updatedCustomerData));
+      
     }
     fetchChoppingCart()
   }, [customer || getDependency() ])
@@ -169,29 +176,29 @@ useEffect(() => {
     }
   }, [theme]);
 
-  useEffect(() => {
+  // useEffect(() => {
     
-    if(theme == 'dark'){
-      document.body.classList.remove('light');
-      document.body.classList.add(theme);
-    }else if(theme == 'light'){
-      document.body.classList.remove('dark');
-      document.body.classList.add(theme);
-    }
+  //   if(theme == 'dark'){
+  //     document.body.classList.remove('light');
+  //     document.body.classList.add(theme);
+  //   }else if(theme == 'light'){
+  //     document.body.classList.remove('dark');
+  //     document.body.classList.add(theme);
+  //   }
 
-    if(activeLanguage_ != arabic){
-      document.body.classList.remove('arabic');
-    }else{
-      document.body.classList.add('english');
-    }
+  //   if(activeLanguage_ != arabic){
+  //     document.body.classList.remove('arabic');
+  //   }else{
+  //     document.body.classList.add('english');
+  //   }
 
-    if(window.innerWidth > 800){
-      document.body.classList.add('computer');
-    }else{
-      document.body.classList.add('phone');
-    }
+  //   if(window.innerWidth > 800){
+  //     document.body.classList.add('computer');
+  //   }else{
+  //     document.body.classList.add('phone');
+  //   }
     
-  }, [theme, activeLanguage, screenWidth]);
+  // }, [theme, activeLanguage, screenWidth]);
 
 
   useEffect(() => {
@@ -249,18 +256,18 @@ useEffect(() => {
                       <ActiveLanguageContext.Provider value={{activeLanguage: activeLanguage_, setAtiveLanguage: setActiveLanguage_}}>
                         <CustomerDataContext.Provider value={customerData}>
                           <BannersContext.Provider value={{purchaseStatusBanner: purchaseStatusBanner, setPurchaseStatusBanner: setPurchaseStatusBanner, purchaseStatus: purchaseStatus , setPurchaseStatus: setPurchaseStatus , passwordsNotMatch: false , setPasswordsNotMatch: ()=> null , emailNotValide: false , setemailNotValide: ()=> null , verificatinEmailBanner: false, setVerificatinEmailBanner: ()=> null, loginStatusBanner: false, setLoginStatusBanner: ()=> null, loginStatus: 404, setLoginStatus: ()=> null }}>
-                          <BannerContext.Provider value={{bannerexist: bannerForEveryThing, bannerText: bannerText, bannerStatus: bannerStatus , setBanner: setBanner}}>
-                            <LoadingIcon_theHolePage/>
-                            <Banner/>
-                            <PurchaseStatusBanner/>
-                            {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
-                            {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-                            <div style={style}>
-                              <CartContent shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>
-                              <CartDetail shoppingCart={shoppingCart}/>
-                            </div>
-                              <About/>
-                          </BannerContext.Provider>
+                            <BannerContext.Provider value={{bannerexist: bannerForEveryThing, bannerText: bannerText, bannerStatus: bannerStatus , setBanner: setBanner}}>
+                              <LoadingIcon_theHolePage/>
+                              <Banner/>
+                              <PurchaseStatusBanner/>
+                              {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
+                              {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
+                              <div style={style}>
+                                <CartContent shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>
+                                <CartDetail shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>
+                              </div>
+                                <About/>
+                            </BannerContext.Provider>
                           </BannersContext.Provider>
                         </CustomerDataContext.Provider>
                       </ActiveLanguageContext.Provider>

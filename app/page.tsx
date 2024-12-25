@@ -54,9 +54,20 @@ const App = () => {
     setBannerText(text);
   }
 
-
-
 const [conpanyInformations, setConpanyInformations] = useState<companyInformationsParams | undefined>();
+
+useEffect(() => {
+  // if (typeof window !== "undefined") {
+  //   setActiveLanguage_(() => {
+  //     if(localStorage.getItem('activeLanguage') == 'english') 
+  //   })
+  // }
+  if (typeof window !== "undefined") {
+    const storedLanguage = localStorage.getItem('activeLanguage_');
+    setActiveLanguage_(storedLanguage ? JSON.parse(storedLanguage) : null);
+  }
+
+  }, []) 
 
 useEffect(() => {
     const fetchData = async() => {
@@ -93,12 +104,15 @@ useEffect(() => {
         }
 
         const storedData = localStorage.getItem("customerData");
+        console.log(storedData);
+
         if (storedData && typeof storedData !== null) {
           try {
             setCustomerData(JSON.parse(storedData) as CustomerDataParams) ;
+          //  alert(JSON.parse(storedData)._id)
             const customer = await getCustomerById(JSON.parse(storedData)._id);
             setCustomerData(customer as CustomerDataParams) ;
-            console.log(customer);
+            console.log(storedData);
             
             
           } catch (error) {
@@ -108,7 +122,6 @@ useEffect(() => {
           }
         }else{
           console.log(storedData);
-          //throw 'error fetching data !'
         }
       }
     }
@@ -118,6 +131,9 @@ useEffect(() => {
   const closeAccount = () => {
     localStorage.removeItem('customerData')
   }
+
+  //alert(customerData?.ShoppingCart.purchases.length)
+
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -147,7 +163,6 @@ useEffect(() => {
       document.body.classList.add('phone');
     }
     
-    //alert(document.body.classList)
   }, [theme, activeLanguage, screenWidth]);
 
 
@@ -155,7 +170,6 @@ useEffect(() => {
     if(customerData && !customerData?.verification && conpanyInformations?.activateAccountWhileSignin){
         router.push('/pages/register')
     }
-    console.log(customerData);
     
 }, [customerData, conpanyInformations])
 

@@ -1,5 +1,7 @@
 'use clent';
 import { createContext } from "react";
+import { discountCodeParams } from "./discountCode";
+import { CategorieParams } from "./categories";
 
 export type productParams = {
     _id: string,
@@ -15,6 +17,7 @@ export type productParams = {
     currencyType: string,
     categorie: CategorieParams,
     quantity: number,
+    discountCode?: discountCodeParams | undefined,
 }
 
 type LanguageParams = {
@@ -33,9 +36,9 @@ type discountParams = {
     endOfDiscount: Date
 };
 
-type CategorieParams = {
-    name: LanguageParams,
-};
+// type CategorieParams = {
+//     name: LanguageParams,
+// };
 
 type productSelect = {
     product: productParams | undefined ,

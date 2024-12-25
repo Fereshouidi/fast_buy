@@ -32,6 +32,9 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
         }
     }
 
+    console.log(typeof arabic == typeof activeLanguage);
+    
+
     const goToProductsDetaiPage = (product: productParams | undefined) => {
         if(product){
             router.push('/pages/productDetails/'+ product._id)
@@ -142,7 +145,7 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
                                         alt=""
                                     />
                                     <h4 style={styleName}>
-                                        {activeLanguage == arabic
+                                        {activeLanguage?.activeLanguage ==  'arabic'
                                             ? purchase.product?.name.arabic
                                             : purchase.product?.name.english}
                                     </h4>
