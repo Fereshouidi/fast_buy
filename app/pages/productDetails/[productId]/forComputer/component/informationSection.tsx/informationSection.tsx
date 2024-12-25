@@ -51,7 +51,7 @@ const InformationSection = ({product, setProduct}: Params) => {
                 quantity: 1,
                 totalPrice: product.discount? product.discount.newPrice : product.price,
                 shoppingCart: customer.ShoppingCart? customer.ShoppingCart._id : null,
-                discountCode: product.discountCode?._id
+                discountCode: discountCodeAmount.discount && discountCodeAmount.discountPercent ? product.discountCode?._id : null
             })
         }
         

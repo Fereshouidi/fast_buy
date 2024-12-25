@@ -59,6 +59,8 @@ const ProductDetails = (props: propsParams) => {
     const [bannerStatus, setBannerStatus] = useState<'success' | 'fail' | null>(null);
     const [activeLanguage_, setActiveLanguage_] = useState<typeof english | typeof arabic>(english);
 
+    console.log(bannerStatus);
+    
 
     const setBanner = (visibility: boolean, text: string | undefined, status?: 'success' | 'fail' | null) => {
       setBannerForEveryThing(visibility)

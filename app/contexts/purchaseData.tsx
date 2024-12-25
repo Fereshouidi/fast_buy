@@ -8,5 +8,5 @@ export interface purchaseParams {
     discount: string | null | undefined,
     quantity: number | undefined,
     totalPrice: number | undefined,
-    discountCode?: string | undefined
+    discountCode?: string | null
 }

@@ -3,7 +3,7 @@ import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { productParams } from "@/app/contexts/productSelectForShowing";
-import { CSSProperties, useContext, useEffect, useState } from "react";
+import { CSSProperties, useContext, useEffect } from "react";
 import { purchaseParams } from '@/app/contexts/purchaseData';
 
 type Params = {

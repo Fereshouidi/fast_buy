@@ -18,7 +18,6 @@ const Availablity = ({product}: {product: productParams | undefined}) => {
     }
 
     const style: CSSProperties = {
-        //width: '100%',
         display: 'flex',
         alignItems: 'center',
         margin: 'var(--large-margin)',

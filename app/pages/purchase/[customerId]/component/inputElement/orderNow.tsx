@@ -2,7 +2,6 @@
 
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
-import { purchaseParams } from "@/app/contexts/purchaseData";
 import { shoppingCartParams } from "@/app/contexts/shoppingCart";
 import { addOrder } from "@/app/crud";
 import { faTruck } from "@fortawesome/free-solid-svg-icons";
