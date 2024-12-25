@@ -54,7 +54,7 @@ const DiscountCode = ({product, setDiscountCodeAmount}: Params) => {
         borderRadius: '20px',
         backgroundColor: 'var(--almost-white)',
         padding: '0 var(--large-padding)',
-
+        color: 'var(--black)'
     }
     return (
         <div className="item" style={style}>
