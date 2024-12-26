@@ -7,6 +7,7 @@ import { shoppingCartParams } from "@/app/contexts/shoppingCart";
 import { purchaseParams } from "@/app/contexts/purchaseData";
 import { CSSProperties, useContext, useState } from "react";
 import { updateQuantitiy } from "@/app/crud";
+import { log } from "util";
 
 type params = {
     shoppingCart: shoppingCartParams | undefined
@@ -16,54 +17,145 @@ type params = {
 const Quantity = ({shoppingCart, setShoppingCart, purchase}: params) => {
 
     const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
-    const [quantity, setQuantity] = useState(purchase?.quantity? purchase?.quantity : 2)
+    const [quantity, setQuantity] = useState(purchase?.quantity? purchase?.quantity : 1)
 
+
+    const calcTotalPrice = (purchase: purchaseParams, quantity: number,  editType?: '+' | '-') => {
+        const discountCode_discount = purchase.product?.discountCode?.discount ?? 0;
+        const discountCode_percentage = purchase.product?.discountCode?.discountPercent ?? 0;
+        
+
+        if(editType === '+'){
+
+            if(purchase.product?.discount){
+                
+                if(purchase.discountCode && purchase.product.discountCode?.discount) {                    
+                    return (purchase.product.discount.newPrice - purchase.product.discountCode?.discount) * quantity
+                
+                } else if(purchase.discountCode && purchase.product.discountCode?.discountPercent) {
+                    return (purchase.product.discount.newPrice - (purchase.product.discount.newPrice * (purchase.product.discountCode?.discountPercent / 100))) * quantity
+                    
+                }
+
+                else {
+                    return purchase.product.discount.newPrice * quantity;
+                }
+
+            }else{
+
+                if(purchase.discountCode && purchase.product?.discountCode?.discount) {
+                    return (purchase.product.price - purchase.product.discountCode?.discount) * quantity
+                
+                } else if(purchase.discountCode && purchase.product?.discountCode?.discountPercent) {
+                    return (purchase.product.price - (purchase.product.price * (purchase.product.discountCode?.discountPercent / 100))) * quantity
+                }
+
+                else { 
+                    return purchase?.product?.price ? purchase?.product?.price * quantity : undefined;
+                }
+
+            }
+
+        }else if(editType === '-'){
+            
+            if(purchase.product?.discount){
+                
+                if(purchase.discountCode && purchase.product.discountCode?.discount) {
+                    return (purchase.product.discount.newPrice - purchase.product.discountCode?.discount) * quantity
+                
+                } else if(purchase.discountCode && purchase.product.discountCode?.discountPercent) {
+                    return (purchase.product.discount.newPrice - (purchase.product.discount.newPrice * (purchase.product.discountCode?.discountPercent / 100))) * quantity
+                }
+
+                else {
+                    return purchase.product.discount.newPrice * quantity;
+                }
+
+            }else{
+
+                if(purchase.discountCode && purchase.product?.discountCode?.discount) {
+                    return (purchase.product.price - purchase.product.discountCode?.discount) * quantity
+                
+                } else if(purchase.discountCode && purchase.product?.discountCode?.discountPercent) {
+                    return (purchase.product.price - (purchase.product.price * (purchase.product.discountCode?.discountPercent / 100))) * quantity
+                }
+
+                else {
+                    return purchase?.product?.price ? purchase?.product?.price * quantity : undefined;
+                }
+
+            }
+            
+        }else {
+            throw 'editType should be only " + " or " - " ';
+        }
+    }
+
+    const getTotalPriceOfShoppingCart = (shoppingCart: shoppingCartParams) => {
+        let totalPrice = 0;
+            shoppingCart.purchases?.forEach(purchase => {
+                totalPrice = purchase.totalPrice ? totalPrice + purchase.totalPrice : 0
+            });
+        return totalPrice;
+    }
     const plusOne = async(event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
         event.stopPropagation();
-        if(purchase?.product?.quantity && quantity < purchase?.product.quantity && shoppingCart?.totalPrice){
+
+        if(purchase?.product?.quantity && quantity < purchase?.product.quantity && shoppingCart?.totalPrice  ){
             setQuantity(quantity + 1)
+
             const updatedPurchase = {
                 ...purchase,
                 quantity: quantity + 1 ,
-                totalPrice: purchase.product.discount ?
-                    purchase.product.discount.newPrice * (quantity + 1 ) :
-                    purchase.product.price * (quantity + 1 )
-            }
+                totalPrice: calcTotalPrice(purchase, quantity + 1 ,'+')
+            }            
+            
             const updatedShoppingCart = {
                 ...shoppingCart,
                 purchases: shoppingCart?.purchases?.map(item =>
                     item._id === purchase._id ? updatedPurchase : item
                 ) || [],
-                totalPrice: purchase.product.discount ?
-                    shoppingCart?.totalPrice + purchase.product.discount.newPrice :
-                    shoppingCart?.totalPrice + purchase.product.price
+                totalPrice: (shoppingCart?.purchases || []).reduce((total, item) => {
+                    const itemTotalPrice = item._id === purchase._id
+                        ? updatedPurchase.totalPrice
+                        : item.totalPrice || 0;
+                    return itemTotalPrice ? total + itemTotalPrice : total
+                }, 0),
             };
+            
+            
             setShoppingCart(updatedShoppingCart)
-            await updateQuantitiy(purchase._id, quantity + 1)
+            await updateQuantitiy(updatedPurchase)
         }
     }
+
     const minusOne = async(event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
         event.stopPropagation();
+
         if(purchase?.product?.quantity && purchase && quantity > 1 && shoppingCart?.totalPrice){
             setQuantity(quantity - 1)
+
             const updatedPurchase = {
                 ...purchase,
                 quantity: quantity - 1,
-                totalPrice: purchase.product.discount ?
-                    purchase.product.discount.newPrice * (quantity - 1 ) :
-                    purchase.product.price * (quantity - 1 )
+                totalPrice: calcTotalPrice(purchase, quantity - 1 ,'-')
+
             }
             const updatedShoppingCart = {
                 ...shoppingCart,
                 purchases: shoppingCart?.purchases?.map(item =>
                     item._id === purchase._id ? updatedPurchase : item
                 ) || [],
-                totalPrice: purchase.product.discount ?
-                    shoppingCart?.totalPrice - purchase.product.discount.newPrice :
-                    shoppingCart?.totalPrice - purchase.product.price
+                totalPrice: (shoppingCart?.purchases || []).reduce((total, item) => {
+                    const itemTotalPrice = item._id === purchase._id
+                        ? updatedPurchase.totalPrice
+                        : item.totalPrice || 0;
+                    return itemTotalPrice ? total + itemTotalPrice : total
+                }, 0),
             };
-            setShoppingCart(updatedShoppingCart)
-            await updateQuantitiy(purchase._id, quantity - 1);
+
+            setShoppingCart(updatedShoppingCart)            
+            await updateQuantitiy(updatedPurchase);
         }
     }
 

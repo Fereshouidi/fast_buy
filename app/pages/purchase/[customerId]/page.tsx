@@ -133,10 +133,8 @@ useEffect(() => {
           try {
             setCustomerData(JSON.parse(storedData) as CustomerDataParams) ;
             const customer = await getCustomerById(JSON.parse(storedData)._id);
-            console.log(customer)
-            setCustomerData(customer as CustomerDataParams) ;
-            console.log(customer);
-            
+
+            setCustomerData(customer as CustomerDataParams) ;            
             
           } catch (error) {
             console.log("Failed to parse customerData from localStorage:", error);
@@ -163,6 +161,8 @@ useEffect(() => {
     const fetchChoppingCart = async() => {
       const shoppingCarts = await getShoppingCartsByCustomerId(customer?._id);
       setShoppingCart(shoppingCarts[0])
+      console.log(shoppingCarts[0]);
+      
       const updatedCustomerData = {...customer, shoppingCart: shoppingCarts[0]};
       localStorage.setItem('customerData', JSON.stringify(updatedCustomerData));
       
@@ -242,7 +242,7 @@ useEffect(() => {
     display: 'flex',
     justifyContent: screenWidth > 800 ? 'center' : '',
     flexDirection: screenWidth > 800 ? 'row' : 'column',
-    marginBottom: 'var(--extra-large-margin)'
+    //marginBottom: 'var(--extra-large-margin)'
   }
 
 
@@ -262,7 +262,7 @@ useEffect(() => {
                               <PurchaseStatusBanner/>
                               {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
                               {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-                              <div style={style}>
+                              <div style={style} className='page'>
                                 <CartContent shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>
                                 <CartDetail shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>
                               </div>

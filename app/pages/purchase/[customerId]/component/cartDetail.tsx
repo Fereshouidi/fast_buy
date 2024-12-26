@@ -27,19 +27,21 @@ const CartDetail = ({shoppingCart, setShoppingCart}: Params) => {
     
 
     const style: CSSProperties = {
-        width: window.innerWidth > 800 ? '50%' : '100%',
+        width: window.innerWidth > 800 ? '40%' : '100%',
+       // borderLeft: activeLanguage?.activeLanguage == 'arabic' ? '' :` 1px solid ${companyInformation?.primaryColor}`,
+      // boxShadow: `0 5px 25px var(--ashen-almost-white)`
     }
     const styleContainer: CSSProperties = {
         width: '100%',
         position: 'sticky',
         zIndex: 0,
         top: 'var(--header-height)',
-        paddingTop: window.innerWidth > 800 ? 'calc(var(--extra-large-padding) * 2)' : 'var(--small-padding)',
+        paddingTop: window.innerWidth > 1000 ? 'calc(var(--extra-large-padding) * 2)' : 'var(--small-padding)',
         borderRadius: '20px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        flexDirection: 'column'
+        flexDirection: 'column',
     }
     const styleH4: CSSProperties = {
         marginBottom: window.innerWidth > 500 ? 'var(--large-margin)' : 'var(--medium-margin)',
@@ -49,8 +51,8 @@ const CartDetail = ({shoppingCart, setShoppingCart}: Params) => {
     const styleCart: CSSProperties = {
         maxWidth: '90%',
         width:  window.innerWidth > 900  ? '' : '90%',
-        margin: window.innerWidth > 1200 ? 'var(--extra-large-margin)' : 'var(--extra-large-margin)',
-        padding: window.innerWidth > 900  ? 'calc(var(--extra-large-padding) * 2)' : 'var(--extra-large-padding)',
+        margin: window.innerWidth > 1500 ? 'var(--extra-large-margin)' : 'var(--extra-large-margin)',
+        padding: window.innerWidth > 1500  ? 'calc(var(--extra-large-padding) * 2)' : window.innerWidth > 800 && window.innerWidth < 1500  ?  'calc(var(--large-padding) * 1.2)' : 'var(--extra-large-padding)',
         backgroundColor: 'var(--white)',
         borderRadius: '20px',
         display: 'flex',
@@ -60,7 +62,7 @@ const CartDetail = ({shoppingCart, setShoppingCart}: Params) => {
         color: 'var(--black)'
     }
     return (
-        <div style={style}>
+        <div style={style} className="cart-details">
             <div className="container" style={styleContainer}>
                 <div className="cart" style={styleCart}>
                     <h4 style={styleH4}>{activeLanguage?.CompleteYourPurchaseW}</h4>

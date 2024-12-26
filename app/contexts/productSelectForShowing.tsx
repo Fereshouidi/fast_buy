@@ -18,6 +18,7 @@ export type productParams = {
     categorie: CategorieParams,
     quantity: number,
     discountCode?: discountCodeParams | undefined,
+    finalPrice: number ,
 }
 
 type LanguageParams = {

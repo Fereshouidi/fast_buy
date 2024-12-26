@@ -56,18 +56,31 @@ const Trash = ({shoppingCart, setShoppingCart, purchase}: params) => {
         return;
     }
     const style: CSSProperties = {
+        //backgroundColor: 'blue',
         color: iconColor,
         fontSize: window.innerWidth > 1000 ? 'var(--primary-size)' : 'var(--small-size)',
+    }
+    const styleIconDiv: CSSProperties = {
+        display: 'flex',
+        //backgroundColor: 'blue',
+    }
+    const styleIcon: CSSProperties = {
+        display: 'flex',
+       // backgroundColor: 'green',
+        color: iconColor,
+        padding : 'var(--small-padding)',
+        borderRadius: '50px',
         cursor: "pointer",
-
     }
     return (
         <div 
-            className="icon" 
+            className="icon trash" 
             style={style} 
             onClick={(event) => deletePurchase(event)}
         >
-            <FontAwesomeIcon icon={faTrash}/> {activeLanguage?.deleteW}
+            <div style={styleIconDiv}>
+                <p style={styleIcon}> <FontAwesomeIcon icon={faTrash}/> {activeLanguage?.deleteW}</p>
+            </div>
         </div>
     )
 }

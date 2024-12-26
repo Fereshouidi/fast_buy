@@ -21,8 +21,29 @@
     background-color: blue;
 }
 
+/* .trash {
+    width: auto;
+    background-color: blueviolet;
+    margin: 0;
+    padding: 0;
+}
+.trash *{
+    width: auto;
+    background-color: blueviolet;
+    margin: 0;
+    padding: 0;
+} */
+
+
 /* .master-cart {
     color: rgb(147, 71, 5);
+} */
+
+/* .page {
+    background-image: url('https://static.vecteezy.com/system/resources/previews/003/461/898/large_2x/shopping-cart-with-yellow-background-free-photo.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 } */
 
 @media (max-width: 500px) {

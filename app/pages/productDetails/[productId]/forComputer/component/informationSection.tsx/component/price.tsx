@@ -24,7 +24,7 @@ const Price = ({product, setPrice, discountCodeAmount, purchaseData}: Params) =>
     }, [discountCodeAmount])
 
     const handlePrice = () => {
-        const discount = product?.discount?.newPrice ;
+        const discount = product?.discount?.newPrice || product?.price;
         const discountValue = discountCodeAmount.discount || 0;
         const discountPercent = discountCodeAmount.discountPercent || 0;
         let finalPrice = 0;
@@ -36,22 +36,22 @@ const Price = ({product, setPrice, discountCodeAmount, purchaseData}: Params) =>
 
         if (discount && discountValue) {
             finalPrice = discount - discountValue;
-            return finalPrice;
+            return  discount - discountValue;
         }
         if (!discount && discountValue) {
             finalPrice = product?.price - discountValue;
-            return finalPrice;
+            return  product?.price - discountValue;
         }
         if (discount && discountPercent) {
             finalPrice = discount - discount * (discountPercent / 100);
-            return finalPrice;
+            return discount - discount * (discountPercent / 100);
         }
         if (!discount && discountPercent) {
             finalPrice = product?.price - product?.price * (discountPercent / 100);
-            return finalPrice;
+            return product?.price - product?.price * (discountPercent / 100);
         }else{
             finalPrice = product?.discount ? product.discount.newPrice : product?.price;
-            return finalPrice;
+            return 0;
         }
 
     }
@@ -73,18 +73,17 @@ const Price = ({product, setPrice, discountCodeAmount, purchaseData}: Params) =>
     }
 
 
-   return (
-    <div style={style} id="price">
-        <span style={stylePriceW}>
-            {languageSelectorContext?.activeLanguage === 'english' 
-                ? english.priceW + ' : ' 
-                : arabic.priceW + ' : '}
-        </span>
+    return (
+        <div style={style} id="price">
+            <span style={stylePriceW}>
+                {languageSelectorContext?.activeLanguage === 'english' 
+                    ? english.priceW + ' : ' 
+                    : arabic.priceW + ' : '}
+            </span>
 
-        <span style={stylePrice}>{purchaseData?.totalPrice}</span>
-        <span>{product?.currencyType}</span>
-    </div>
-);
-
+            <span style={stylePrice}>{purchaseData?.totalPrice}</span>
+            <span>{product?.currencyType}</span>
+        </div>
+    )
 }
 export default Price;

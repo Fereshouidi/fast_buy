@@ -33,13 +33,13 @@ const InformationSection = ({product, setProduct}: Params) => {
 
 
     useEffect(() => {
-        if(purchaseData){
+        if(purchaseData && price){
             setPurchaseData({
                 ...purchaseData,
                 totalPrice: price && purchaseData?.quantity ? price * purchaseData?.quantity : 0,
             })
         }
-    }, [price])
+    }, [price, purchaseData?.quantity])
 
     useEffect(() => {
         

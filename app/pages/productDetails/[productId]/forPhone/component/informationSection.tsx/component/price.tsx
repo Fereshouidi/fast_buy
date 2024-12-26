@@ -36,22 +36,22 @@ const Price = ({product, setPrice, discountCodeAmount, purchaseData}: Params) =>
 
         if (discount && discountValue) {
             finalPrice = discount - discountValue;
-            return finalPrice;
+            return  discount - discountValue;
         }
         if (!discount && discountValue) {
             finalPrice = product?.price - discountValue;
-            return finalPrice;
+            return  product?.price - discountValue;
         }
         if (discount && discountPercent) {
             finalPrice = discount - discount * (discountPercent / 100);
-            return finalPrice;
+            return discount - discount * (discountPercent / 100);
         }
         if (!discount && discountPercent) {
             finalPrice = product?.price - product?.price * (discountPercent / 100);
-            return finalPrice;
+            return product?.price - product?.price * (discountPercent / 100);
         }else{
             finalPrice = product?.discount ? product.discount.newPrice : product?.price;
-            return finalPrice;
+            return 0;
         }
 
     }

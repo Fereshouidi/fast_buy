@@ -35,7 +35,7 @@ const Color = ({product}: {product: productParams | undefined}) => {
 
             <span>{
                 languageSelectorContext?.activeLanguage == 'english' ? 
-                    englist.colorW + ' : '
+                    englist.colorW + " : " 
                 : languageSelectorContext?.activeLanguage == 'arabic' ? 
                 arabic.colorW + ' : '
                 : englist.colorW + ' : '

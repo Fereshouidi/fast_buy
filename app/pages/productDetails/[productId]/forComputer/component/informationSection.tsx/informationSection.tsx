@@ -33,25 +33,28 @@ const InformationSection = ({product, setProduct}: Params) => {
 
 
     useEffect(() => {
-        if(purchaseData){
+        if(purchaseData && price){
             setPurchaseData({
                 ...purchaseData,
                 totalPrice: price && purchaseData?.quantity ? price * purchaseData?.quantity : 0,
+                discountCode: discountCodeAmount.discount || discountCodeAmount.discountPercent ? product?.discountCode?._id : null
             })
         }
-    }, [price])
+    }, [price, purchaseData?.quantity, discountCodeAmount])
 
     useEffect(() => {
         
+      //  alert(discountCodeAmount.discount)
+
         if (customer && product) {
             setPurchaseData({
                 buyer: customer._id, 
                 product: product, 
                 discount: product?.discount ? product.discount._id : null, 
                 quantity: 1,
-                totalPrice: product.discount? product.discount.newPrice : product.price,
+                totalPrice: product?.discount? product.discount.newPrice : product.price,
                 shoppingCart: customer.ShoppingCart? customer.ShoppingCart._id : null,
-                discountCode: discountCodeAmount.discount && discountCodeAmount.discountPercent ? product.discountCode?._id : null
+                discountCode: discountCodeAmount.discount || discountCodeAmount.discountPercent ? product.discountCode?._id : null
             })
         }
         

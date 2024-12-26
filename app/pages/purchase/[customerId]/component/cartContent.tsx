@@ -2,7 +2,7 @@
 import arabic from '@/app/languages/arabic.json';
 import { shoppingCartParams } from '@/app/contexts/shoppingCart';
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
-import { CSSProperties, useContext, useState } from "react";
+import { CSSProperties, useContext, useEffect, useState } from "react";
 import Trash from './inputElement/trash';
 import Quantity from './inputElement/quantity';
 import { purchaseParams } from '@/app/contexts/purchaseData';
@@ -10,6 +10,7 @@ import '@/app/pages/purchase/[customerId]/style.css';
 import { useRouter } from 'next/navigation';
 import { productParams } from '@/app/contexts/productSelectForShowing';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
+import Purchase from '@/app/components/sideBar/sideBarForPhones/purchase/purchase';
 
 type Params = {
     shoppingCart: shoppingCartParams | undefined
@@ -21,18 +22,16 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
     const companyInformationContext = useContext(CompanyInformationContext);
     const [hoveredItemId, setHoveredItemId] = useState<string | undefined>(undefined);
+    // const [priceAfterDiscount, setPriceAfterDiscount] = useState<number | undefined>(undefined);
 
-    const calcTotalPrice = (purchase: purchaseParams) => {
-        if(purchase.product && purchase.product.discount?.newPrice && purchase.quantity && purchase.discount){
-            const totalPrice = purchase.quantity * purchase.product.discount.newPrice
-            return totalPrice;
-        }else if( purchase.product && purchase.product.price && purchase.quantity) {
-            const totalPrice = purchase.quantity * purchase.product.price
-            return totalPrice;
-        }
-    }
 
-    console.log(typeof arabic == typeof activeLanguage);
+    // const calcTotalPrice = (purchase: purchaseParams) => {
+    //         if(purchase.product && purchase.product.discount?.newPrice && purchase.quantity && purchase.discount && purchase.totalPrice){
+    //             const totalPrice = purchase.quantity * purchase.totalPrice
+    //             return totalPrice;
+    //         }
+
+    // }
     
 
     const goToProductsDetaiPage = (product: productParams | undefined) => {
@@ -49,8 +48,10 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
         return;
     }
     const style: CSSProperties = {
-        width: window.innerWidth > 800 ? '50%' : '100%',
-        color: 'var(--black)'
+        width: window.innerWidth > 800 ? '60%' : '100%',
+        color: 'var(--black)',
+        marginBottom: 'var(--extra-large-margin)',
+        
     }
     const styleH2: CSSProperties = {
         color: 'var(--black)',
@@ -68,10 +69,11 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
     }
     const styleItem: CSSProperties = {
         width:'90%',
-        height: window.innerWidth > 1000 ? 'calc(var(--double-height) * 1.5)' : 'var(--double-height)',
+        height: window.innerWidth > 1000 ? 'calc(var(--double-height) * 1.3)' : 'var(--double-height)',
         backgroundColor: 'var(--white)',
         borderBottom: '0.2px solid var(--black-almost-transparnt)',
-        padding: window.innerWidth > 1000 ? 'var(--medium-padding) var(--medium-padding) 0 var(--medium-padding)' : 'var(--small-padding) var(--small-padding) 0 var(--small-padding)',
+        //padding: window.innerWidth > 1000 ? 'var(--medium-padding) var(--medium-padding) var(--medium-padding)' : 'var(--small-padding) var(--small-padding) 100px var(--small-padding)',
+        padding: window.innerWidth > 1000 ? '0 var(--medium-padding)' : '0 var(--small-padding)',
         borderRadius: '20px',
         display: 'flex',
         justifyContent: 'space-between',
@@ -80,7 +82,7 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
     }
     const styleItemHover: CSSProperties = {
         ...styleItem,
-        backgroundColor: 'var(--ashen-almost-transparent)',
+        backgroundColor: 'var(--almost-white)',
 
     }
     const styleUpperPart: CSSProperties = {
@@ -158,7 +160,7 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
                             </div>
                             <div className="right-part" style={styleBottomPart}>
                                 <span style={stylePrice}>
-                                    {calcTotalPrice(purchase) +
+                                    {purchase.totalPrice +
                                         " " +
                                         companyInformationContext?.currencyType
                                     }

@@ -1,3 +1,4 @@
+import { discountCodeParams } from "./discountCode"
 import { productParams } from "./productSelectForShowing"
 
 export interface purchaseParams {
@@ -8,5 +9,5 @@ export interface purchaseParams {
     discount: string | null | undefined,
     quantity: number | undefined,
     totalPrice: number | undefined,
-    discountCode?: string | null
+    discountCode?: discountCodeParams | string | null
 }
