@@ -7,7 +7,6 @@ import { shoppingCartParams } from "@/app/contexts/shoppingCart";
 import { purchaseParams } from "@/app/contexts/purchaseData";
 import { CSSProperties, useContext, useState } from "react";
 import { updateQuantitiy } from "@/app/crud";
-import { log } from "util";
 
 type params = {
     shoppingCart: shoppingCartParams | undefined
@@ -21,10 +20,7 @@ const Quantity = ({shoppingCart, setShoppingCart, purchase}: params) => {
 
 
     const calcTotalPrice = (purchase: purchaseParams, quantity: number,  editType?: '+' | '-') => {
-        const discountCode_discount = purchase.product?.discountCode?.discount ?? 0;
-        const discountCode_percentage = purchase.product?.discountCode?.discountPercent ?? 0;
         
-
         if(editType === '+'){
 
             if(purchase.product?.discount){
@@ -91,13 +87,6 @@ const Quantity = ({shoppingCart, setShoppingCart, purchase}: params) => {
         }
     }
 
-    const getTotalPriceOfShoppingCart = (shoppingCart: shoppingCartParams) => {
-        let totalPrice = 0;
-            shoppingCart.purchases?.forEach(purchase => {
-                totalPrice = purchase.totalPrice ? totalPrice + purchase.totalPrice : 0
-            });
-        return totalPrice;
-    }
     const plusOne = async(event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
         event.stopPropagation();
 
