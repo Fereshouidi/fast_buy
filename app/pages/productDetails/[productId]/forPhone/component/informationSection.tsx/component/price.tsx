@@ -24,10 +24,10 @@ const Price = ({product, setPrice, discountCodeAmount, purchaseData}: Params) =>
     }, [discountCodeAmount])
 
     const handlePrice = () => {
-        const discount = product?.discount?.newPrice ;
+        const discount = product?.discount?.newPrice || product?.price;
         const discountValue = discountCodeAmount.discount || 0;
         const discountPercent = discountCodeAmount.discountPercent || 0;
-       // let finalPrice = 0;
+        //let finalPrice = 0;
 
         if(typeof discount == 'undefined' || typeof discountValue == 'undefined' || typeof discountPercent == undefined || typeof product?.price == 'undefined'){
             
@@ -35,26 +35,28 @@ const Price = ({product, setPrice, discountCodeAmount, purchaseData}: Params) =>
         }
 
         if (discount && discountValue) {
-          //  finalPrice = discount - discountValue;
+           // finalPrice = discount - discountValue;
             return  discount - discountValue;
         }
         if (!discount && discountValue) {
-          //  finalPrice = product?.price - discountValue;
+           // finalPrice = product?.price - discountValue;
             return  product?.price - discountValue;
         }
         if (discount && discountPercent) {
-          //  finalPrice = discount - discount * (discountPercent / 100);
+           // finalPrice = discount - discount * (discountPercent / 100);
             return discount - discount * (discountPercent / 100);
         }
         if (!discount && discountPercent) {
-           // finalPrice = product?.price - product?.price * (discountPercent / 100);
+          //  finalPrice = product?.price - product?.price * (discountPercent / 100);
             return product?.price - product?.price * (discountPercent / 100);
         }else{
-          //  finalPrice = product?.discount ? product.discount.newPrice : product?.price;
+           // finalPrice = product?.discount ? product.discount.newPrice : product?.price;
             return 0;
         }
 
     }
+    
+
     
 
     const style: CSSProperties = {
