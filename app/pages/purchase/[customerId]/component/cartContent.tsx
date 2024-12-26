@@ -1,16 +1,13 @@
 'use client';
-import arabic from '@/app/languages/arabic.json';
 import { shoppingCartParams } from '@/app/contexts/shoppingCart';
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
-import { CSSProperties, useContext, useEffect, useState } from "react";
+import { CSSProperties, useContext, useState } from "react";
 import Trash from './inputElement/trash';
 import Quantity from './inputElement/quantity';
-import { purchaseParams } from '@/app/contexts/purchaseData';
 import '@/app/pages/purchase/[customerId]/style.css';
 import { useRouter } from 'next/navigation';
 import { productParams } from '@/app/contexts/productSelectForShowing';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
-import Purchase from '@/app/components/sideBar/sideBarForPhones/purchase/purchase';
 
 type Params = {
     shoppingCart: shoppingCartParams | undefined
@@ -22,17 +19,6 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
     const companyInformationContext = useContext(CompanyInformationContext);
     const [hoveredItemId, setHoveredItemId] = useState<string | undefined>(undefined);
-    // const [priceAfterDiscount, setPriceAfterDiscount] = useState<number | undefined>(undefined);
-
-
-    // const calcTotalPrice = (purchase: purchaseParams) => {
-    //         if(purchase.product && purchase.product.discount?.newPrice && purchase.quantity && purchase.discount && purchase.totalPrice){
-    //             const totalPrice = purchase.quantity * purchase.totalPrice
-    //             return totalPrice;
-    //         }
-
-    // }
-    
 
     const goToProductsDetaiPage = (product: productParams | undefined) => {
         if(product){
