@@ -4,10 +4,12 @@ import { CSSProperties, useContext } from "react";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 import { useRouter } from "next/navigation";
 import LoadingIcon_theHolePage from "./loading/loadingHoleOfThePage";
+import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 
 const EmptyShoppingCart = () => {
 
     const companyInformation = useContext(CompanyInformationContext);
+    const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
     const router = useRouter();
 
     const goToHomePage = () => {
@@ -32,6 +34,9 @@ const EmptyShoppingCart = () => {
         marginBottom: '1rem',
         color: '#aaa',
     };
+    const styleP: CSSProperties = {
+        
+    };
     const styleLink: CSSProperties = {
         color: companyInformation?.primaryColor,
         textDecoration: 'underline',
@@ -41,8 +46,8 @@ const EmptyShoppingCart = () => {
     return (
         <div style={style}> 
             <FontAwesomeIcon icon={faCartArrowDown} style={iconStyle} aria-label="Empty shopping cart icon" />
-            <p>
-                Your shopping cart is empty. Go to the <span onClick={goToHomePage} style={styleLink}>market</span> to add items!
+            <p style={styleP}>
+                {activeLanguage?.emptyPurchaseP.part1} <span onClick={goToHomePage} style={styleLink}>{activeLanguage?.marketW}</span> {activeLanguage?.emptyPurchaseP.part2}
             </p>
         </div>
     );

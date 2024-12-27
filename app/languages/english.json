@@ -88,5 +88,10 @@
         "p1": "Get a discount of up to ",
         "p2": " on your purchase through a discount code ."
     },
-    "warningForWrongDataP": "We will not conduct any verification of the data you will enter, so if you enter incorrect data, you will not receive the package ."
+    "warningForWrongDataP": "We will not conduct any verification of the data you will enter, so if you enter incorrect data, you will not receive the package .",
+    "emptyPurchaseP": {
+        "part1": "Your shopping cart is empty. Go to the ",
+        "part2": " to add items!"
+    },
+    "marketW": "market"
 }

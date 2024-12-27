@@ -109,6 +109,8 @@ const DiscountCode = ({shoppingCart, setShoppingCart, allDiscountCodes}: Params)
     const style :CSSProperties = {
         width: '100%',
         display: 'flex',
+        justifyContent: "center",
+        alignItems: "center",
         flexDirection: 'column',
         margin: 'var(--small-margin)',
     }
