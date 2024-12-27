@@ -31,8 +31,6 @@ const OrderNow = ({customer, shoppingCart, setShoppingCart}: Params) => {
 
     const handleClick = async() => {
 
-        setBanner(true, activeLanguage?.orderSendedSuccessflyP, "success");
-
         if (shoppingCart && customer?.adress && customer?.phone) {
             
             setLoadingIcon(true);
