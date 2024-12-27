@@ -26,6 +26,7 @@ const EmptyShoppingCart = () => {
         alignItems: 'center',
         textAlign: 'center',
         color: '#555',
+        fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'var(--small-size)'
     };
     const iconStyle: CSSProperties = {
         width: '90%',
