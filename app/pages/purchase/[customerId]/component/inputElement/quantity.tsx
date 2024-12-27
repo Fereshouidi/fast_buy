@@ -15,7 +15,7 @@ type params = {
     totalPriceChange: 'byDiscount' | 'byDiscountPercent' | undefined, 
     setTotalPriceChange: (value: 'byDiscount' | 'byDiscountPercent' | undefined) => void
 }
-const Quantity = ({shoppingCart, setShoppingCart, purchase, totalPriceChange, setTotalPriceChange}: params) => {
+const Quantity = ({shoppingCart, setShoppingCart, purchase, setTotalPriceChange}: params) => {
 
     const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
     const [quantity, setQuantity] = useState(purchase?.quantity? purchase?.quantity : 1)
