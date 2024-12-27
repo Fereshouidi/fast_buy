@@ -43,7 +43,7 @@ const InputAdress = ({customer, setCustomer}: Params) => {
         <div style={style}>
             <input 
                 type="text" 
-                placeholder={activeLanguage?.emailW + '...'}
+                placeholder={activeLanguage?.fullAdressW + '...'}
                 style={styleInput} 
                 onChange={(event) => handleChange(event)}
             />

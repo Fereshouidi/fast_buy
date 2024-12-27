@@ -8,6 +8,8 @@ import { addOrder } from "@/app/crud";
 import { faTruck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CSSProperties, useContext } from "react";
+import { LoadingIconContext } from "@/app/contexts/loadingIcon";
+import { BannerContext } from "@/app/contexts/bannerForEverything";
 
 
 type Params = {
@@ -20,21 +22,31 @@ const OrderNow = ({customer, shoppingCart, setShoppingCart}: Params) => {
 
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
     const companyInformation = useContext(CompanyInformationContext);
+    const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
+    const setBanner = useContext(BannerContext)?.setBanner;
 
     const handleClick = async() => {
+        
+        setBanner ? setBanner(true, activeLanguage?.orderSendedSuccessflyP, "success") : null
 
-        if (customer?.adress && customer?.phone) {
+        if (shoppingCart && customer?.adress && customer?.phone) {
             
+            setLoadingIcon? setLoadingIcon(true): null;
+
             await addOrder({
                 ...shoppingCart,
                 status: 'processing',
                 customer: customer
             })
             setShoppingCart({})
+
+            setBanner ? setBanner(true, activeLanguage?.orderSendedSuccessflyP, "success") : null
+            setLoadingIcon? setLoadingIcon(false): null;
             
         }
         
     }
+
 
     const style :CSSProperties = {
         display: 'flex',
@@ -49,7 +61,7 @@ const OrderNow = ({customer, shoppingCart, setShoppingCart}: Params) => {
         alignItems: 'center',
         borderRadius: '20px',
         position: 'relative',
-        backgroundColor: customer?.adress && customer.phone ? companyInformation?.primaryColor : 'var(--ashen-semi-transparent)',
+        backgroundColor: customer?.adress && customer.phone && shoppingCart ? companyInformation?.primaryColor : 'var(--ashen-semi-transparent)',
         padding: 'var(--medium-padding) var(--medium-padding)',
         fontSize: 'calc(var(--primary-size) /1.3)',
         color: 'white',

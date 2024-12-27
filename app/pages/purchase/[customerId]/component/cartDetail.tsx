@@ -30,7 +30,11 @@ const CartDetail = ({customer, setCustomer, shoppingCart, setShoppingCart, total
 
     //const [isThereDiscountCode, setIsThereDiscountCode] = useState<boolean>(false)
 
-    
+    useEffect(() => {
+        console.log(shoppingCart?.customer?.phone);
+        
+    }, [customer])
+
     useEffect(() => {
         const fetchData = async () => {
             const allDiscountCodes = await getAllDiscountCodesForShoppingCarts();
@@ -118,8 +122,8 @@ const CartDetail = ({customer, setCustomer, shoppingCart, setShoppingCart, total
                         <span>{(shoppingCart?.totalPrice || 0) + (shoppingCart?.shippingCost || 0) + ' ' + companyInformation?.currencyType + ')'}</span>
                     </div>
                     <PaymentMethod paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>
-                    {shoppingCart?.customer?.phone ? null : <InputPhoneNumber customer={customer} setCustomer={setCustomer} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>}
-                    {shoppingCart?.customer?.adress ? null : <InputAdress customer={customer} setCustomer={setCustomer} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>}
+                    {shoppingCart?.customer?.phone || !shoppingCart ? null : <InputPhoneNumber customer={customer} setCustomer={setCustomer} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>}
+                    {shoppingCart?.customer?.adress || !shoppingCart ? null : <InputAdress customer={customer} setCustomer={setCustomer} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>}
                     {discountCodesForShoppingCarts.length > 0 ? <DiscountCode shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} allDiscountCodes={discountCodesForShoppingCarts} setAllDiscountCodes={setDiscountCodesForShoppingCarts} totalPriceChange={totalPriceChange} setTotalPriceChange={setTotalPriceChange}/> : null} 
                     <OrderNow
                         shoppingCart={shoppingCart}

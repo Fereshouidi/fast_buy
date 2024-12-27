@@ -35,7 +35,9 @@ const DiscountCode = ({product, setDiscountCodeAmount}: Params) => {
         height: 'var(--primary-height)',
         borderRadius: '20px',
         paddingTop: '5px',
-        position: 'relative'
+        position: 'relative',
+        color: 'var(--black)'
+
     }
     const styleH6 :CSSProperties = {
         top: 0,
@@ -53,7 +55,7 @@ const DiscountCode = ({product, setDiscountCodeAmount}: Params) => {
         borderRadius: '20px',
         backgroundColor: 'var(--almost-white)',
         padding: '0 var(--large-padding)',
-
+        color: 'var(--black)'
     }
     return (
         <div className="item" style={style}>
