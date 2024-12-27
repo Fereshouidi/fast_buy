@@ -1,4 +1,4 @@
-const url = 'https://fast-buy-back-end.vercel.app/api';
+const url = 'http://localhost:3002/api';
 import axios from "axios";
 
 //https://fast-buy-back-end.vercel.app/api
@@ -122,7 +122,6 @@ export const getProductById = async (id) => {
             params: {id}
         });
         const data = response.data;
-        
         return data;
 
     } catch (err) {
@@ -198,7 +197,7 @@ export const getShoppingCartsByCustomerId = async (customerId) => {
     try {
         const shoppingCarts = await axios.get(url + '/get/activeShoppingCart/by/customer' , {
             params: {customerId}
-        })
+        })        
         console.log(shoppingCarts.data);
         
         return shoppingCarts.data;
@@ -221,7 +220,6 @@ export const deletePurchaseById = async (id) => {
 export const updateQuantitiy = async (updatedPurchase) => {
     try {
         const response = await axios.put(url+ '/update/quantity', updatedPurchase)
-        console.log(response.data);
         return response.data
     }catch (err) {
         throw err;
@@ -232,6 +230,16 @@ export const addOrder = async (order) => {
     
     try{
         const response = await axios.post(url + '/add/order', order);        
+        return response.data;
+    }catch(err) {
+        throw err
+    }
+}
+
+export const getAllDiscountCodesForShoppingCarts = async () => {   
+    
+    try{
+        const response = await axios.get(url + '/get/discountCodes/for/shoppingCarts');   
         return response.data;
     }catch(err) {
         throw err

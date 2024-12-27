@@ -158,13 +158,15 @@ useEffect(() => {
     return null;
 };
   useEffect(() => {
+    console.log(customer);
+    
     const fetchChoppingCart = async() => {
       const shoppingCarts = await getShoppingCartsByCustomerId(customer?._id);
       setShoppingCart(shoppingCarts[0])
-      console.log(shoppingCarts[0]);
-      
-      const updatedCustomerData = {...customer, shoppingCart: shoppingCarts[0]};
-      localStorage.setItem('customerData', JSON.stringify(updatedCustomerData));
+      if(shoppingCarts[0]){
+        const updatedCustomerData = {...customer, shoppingCart: shoppingCarts[0]};
+        localStorage.setItem('customerData', JSON.stringify(updatedCustomerData));
+      }
       
     }
     fetchChoppingCart()
@@ -175,30 +177,6 @@ useEffect(() => {
       localStorage.setItem("activeTheme", theme);
     }
   }, [theme]);
-
-  // useEffect(() => {
-    
-  //   if(theme == 'dark'){
-  //     document.body.classList.remove('light');
-  //     document.body.classList.add(theme);
-  //   }else if(theme == 'light'){
-  //     document.body.classList.remove('dark');
-  //     document.body.classList.add(theme);
-  //   }
-
-  //   if(activeLanguage_ != arabic){
-  //     document.body.classList.remove('arabic');
-  //   }else{
-  //     document.body.classList.add('english');
-  //   }
-
-  //   if(window.innerWidth > 800){
-  //     document.body.classList.add('computer');
-  //   }else{
-  //     document.body.classList.add('phone');
-  //   }
-    
-  // }, [theme, activeLanguage, screenWidth]);
 
 
   useEffect(() => {
@@ -242,7 +220,6 @@ useEffect(() => {
     display: 'flex',
     justifyContent: screenWidth > 800 ? 'center' : '',
     flexDirection: screenWidth > 800 ? 'row' : 'column',
-    //marginBottom: 'var(--extra-large-margin)'
   }
 
 
@@ -264,7 +241,7 @@ useEffect(() => {
                               {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
                               <div style={style} className='page'>
                                 <CartContent shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>
-                                <CartDetail shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>
+                                <CartDetail shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} customer={customer} setCustomer={setCustomer}/>
                               </div>
                                 <About/>
                             </BannerContext.Provider>

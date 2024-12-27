@@ -79,6 +79,7 @@
   --medium-padding: calc(var(--small-padding)*2);
   --large-padding: calc(var(--medium-padding)*2);
   --extra-large-padding: calc(var(--large-padding)*2);
+  --extra-small-padding: calc(var(--small-padding)/2);
 
   /* gradients */
   --gradient-primary: linear-gradient(45deg, #FFD500, #FF6F00);

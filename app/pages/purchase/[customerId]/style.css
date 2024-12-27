@@ -21,6 +21,14 @@
     background-color: blue;
 }
 
+.payment-method img{
+    width: calc(var(--short-width) * 2);
+    height: calc(var(--short-width) * 1.7);
+    padding: 0 var(--extra-small-padding);
+    margin: 0;
+}
+
+
 /* .trash {
     width: auto;
     background-color: blueviolet;
@@ -47,7 +55,53 @@
 } */
 
 @media (max-width: 500px) {
+
     .item {
         font-size: var(--small-size);
     }
+
+    .payment-method img{
+        width: calc(var(--short-width) * 1.4);
+        height: calc(var(--short-width) * 1);
+    }
+
+    .input-text {
+        height: calc(var(--primary-height) / 1.5);
+        width: 90%;
+    }
+
+}
+
+@media ((min-width: 500px) and (max-width: 800px )) {
+    .item {
+        font-size: var(--medium-size);
+    }
+
+    .input-text {
+        height: calc(var(--primary-height) / 1.2);
+    }
+}
+
+@media ((min-width: 800px) and (max-width: 1000px )) {
+    .item {
+        font-size: var(--small-size);
+    }
+    .payment-method img{
+        width: calc(var(--short-width) * 1.4);
+        height: calc(var(--short-width) * 1);
+    }
+
+    .input-text {
+        height: calc(var(--primary-height) / 1.5);
+        width: 90%;
+    }
+}
+
+@media (min-width: 1000px) {
+
+    .input-text {
+        height: var(--primary-height);
+        width: 100%;
+    }
+
 }

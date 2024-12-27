@@ -2,11 +2,11 @@ import { createContext } from "react"
 
 export interface CustomerDataParams {
     _id: string,
-    userName: string,
+    userName: string | undefined,
     email: string,
     phone: number | undefined,
     dateOfBirth: Date | undefined,
-    adress: string,
+    adress: string | undefined,
     interrestedAbout: string,
     password: string,
     retypePassword: string,

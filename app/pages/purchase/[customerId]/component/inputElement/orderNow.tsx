@@ -2,6 +2,7 @@
 
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
+import { CustomerDataParams } from "@/app/contexts/customerData";
 import { shoppingCartParams } from "@/app/contexts/shoppingCart";
 import { addOrder } from "@/app/crud";
 import { faTruck } from "@fortawesome/free-solid-svg-icons";
@@ -9,21 +10,30 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CSSProperties, useContext } from "react";
 
 
-type params = {
+type Params = {
+    customer: CustomerDataParams | undefined,
+    setCustomer: (value: CustomerDataParams) => void;
     shoppingCart: shoppingCartParams | undefined
     setShoppingCart: (value: shoppingCartParams) => void;
 }
-const OrderNow = ({shoppingCart, setShoppingCart}: params) => {
+const OrderNow = ({customer, setCustomer, shoppingCart, setShoppingCart}: Params) => {
 
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
     const companyInformation = useContext(CompanyInformationContext);
 
     const handleClick = async() => {
-        await addOrder({
-            ...shoppingCart,
-            status: 'processing'
-        })
-        setShoppingCart({})
+
+        if (customer?.adress && customer?.phone) {
+            
+            await addOrder({
+                ...shoppingCart,
+                status: 'processing',
+                customer: customer
+            })
+            setShoppingCart({})
+            
+        }
+        
     }
 
     const style :CSSProperties = {
@@ -39,7 +49,7 @@ const OrderNow = ({shoppingCart, setShoppingCart}: params) => {
         alignItems: 'center',
         borderRadius: '20px',
         position: 'relative',
-        backgroundColor: companyInformation?.primaryColor,
+        backgroundColor: customer?.adress && customer.phone ? companyInformation?.primaryColor : 'var(--black-almost-transparnt)',
         padding: 'var(--medium-padding) var(--medium-padding)',
         fontSize: 'calc(var(--primary-size) /1.3)',
         color: 'white',

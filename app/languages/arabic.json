@@ -1,6 +1,6 @@
 {
     "activeLanguage": "arabic",
-    
+
     "general": {
         "appName": "Fast Buy"
     },
@@ -82,7 +82,13 @@
     "totalPriceW": "الثمن الاجمالي",
     "paymentMethodW": "طريقة الدفع",
     "orderNowW": "اطلب الان",
-    "discountCodeW": "رمز الخصم"
+    "discountCodeW": "رمز الخصم",
+    "discountCodeForChoppingCart": {
+        "p1": " احصل على تخفيض يصل الى ",
+        "p2": " .على عملية الشراء من خلال كود خصم"
+    },
+    "warningForWrongDataP": "نحن لن نجري اي تحقق على البيانات التي ستدخلها لذا اذا ادخلت بيانات خاطئة لن تصلك الطرد ."
+
 }
 
 

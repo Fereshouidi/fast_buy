@@ -1,6 +1,6 @@
 {
     "activeLanguage": "english",
-    
+
     "general": {
         "appName": "Fast Buy"
     },
@@ -83,5 +83,10 @@
     "totalPriceW": "Total price",
     "paymentMethodW": "payment method",
     "orderNowW": "Order now",
-    "discountCodeW": "Discount code"
+    "discountCodeW": "Discount code",
+    "discountCodeForChoppingCart": {
+        "p1": "Get a discount of up to ",
+        "p2": " on your purchase through a discount code ."
+    },
+    "warningForWrongDataP": "We will not conduct any verification of the data you will enter, so if you enter incorrect data, you will not receive the package ."
 }

@@ -8,6 +8,7 @@ import '@/app/pages/purchase/[customerId]/style.css';
 import { useRouter } from 'next/navigation';
 import { productParams } from '@/app/contexts/productSelectForShowing';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
+import EmptyShoppingCart from '@/app/svg/icons/emptyChoppingCart';
 
 type Params = {
     shoppingCart: shoppingCartParams | undefined
@@ -27,9 +28,11 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
     }
 
 
-    if(!shoppingCart){
-        return;
-    }
+    // if(!shoppingCart){
+    //     return;
+    // }
+
+
     if(typeof window == 'undefined'){
         return;
     }
@@ -108,13 +111,15 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
        borderRadius: '20px',
        fontSize: window.innerWidth > 1000 ? 'var(--primary-size)' : 'var(--small-size)'
     }
+    
     return (
         <section className="products-section" style={style}>
             <h2 style={styleH2}>
-                {activeLanguage?.shoppingCart} (<span>{shoppingCart.purchases?.length}</span>)
+                {activeLanguage?.shoppingCart} (<span>{shoppingCart?.purchases?.length || 0}</span>)
             </h2>
             <div className="container" style={styleContainer}>
-                {shoppingCart.purchases?.map((purchase) => {
+                {!shoppingCart?.purchases?.length ? <EmptyShoppingCart/> : 
+                shoppingCart.purchases?.map((purchase) => {
                     const isHovered = hoveredItemId === purchase._id;
                     return (
                         <div
