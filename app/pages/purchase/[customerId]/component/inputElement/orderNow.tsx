@@ -31,7 +31,7 @@ const OrderNow = ({customer, shoppingCart, setShoppingCart}: Params) => {
 
     const handleClick = async() => {
 
-        setBanner ? setBanner(true, activeLanguage?.orderSendedSuccessflyP, "success") : null
+        setBanner(true, activeLanguage?.orderSendedSuccessflyP, "success");
 
         if (shoppingCart && customer?.adress && customer?.phone) {
             
@@ -44,7 +44,7 @@ const OrderNow = ({customer, shoppingCart, setShoppingCart}: Params) => {
             })
             setShoppingCart({})
 
-            setBanner(true, activeLanguage?.orderSendedSuccessflyP, "success")
+            setBanner(true, activeLanguage?.orderSendedSuccessflyP, "success");
             setLoadingIcon(false);
             
         }
