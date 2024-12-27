@@ -49,7 +49,7 @@ const OrderNow = ({customer, shoppingCart, setShoppingCart}: Params) => {
         alignItems: 'center',
         borderRadius: '20px',
         position: 'relative',
-        backgroundColor: customer?.adress && customer.phone ? companyInformation?.primaryColor : 'var(--black-almost-transparnt)',
+        backgroundColor: customer?.adress && customer.phone ? companyInformation?.primaryColor : 'var(--ashen-semi-transparent)',
         padding: 'var(--medium-padding) var(--medium-padding)',
         fontSize: 'calc(var(--primary-size) /1.3)',
         color: 'white',

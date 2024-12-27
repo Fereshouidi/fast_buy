@@ -33,6 +33,8 @@ const InputAdress = ({customer, setCustomer}: Params) => {
         padding: 'var(--medium-padding)',
         borderRadius: '50px',
         width: '100%',
+        backgroundColor: 'var(--almost-white)',
+        color: 'var(--black)'
     }
     return (
         <div style={style}>
