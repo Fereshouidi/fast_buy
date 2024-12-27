@@ -1,8 +1,9 @@
 'use client';
 
+import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 import { CustomerDataParams } from "@/app/contexts/customerData";
 import { shoppingCartParams } from "@/app/contexts/shoppingCart";
-import { CSSProperties } from "react";
+import { CSSProperties, useContext } from "react";
 
 
 type Params = {
@@ -12,6 +13,8 @@ type Params = {
     setShoppingCart: (value: shoppingCartParams) => void;
 }
 const InputAdress = ({customer, setCustomer}: Params) => {
+
+    const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -40,7 +43,7 @@ const InputAdress = ({customer, setCustomer}: Params) => {
         <div style={style}>
             <input 
                 type="text" 
-                placeholder="Adress ..." 
+                placeholder={activeLanguage?.emailW + '...'}
                 style={styleInput} 
                 onChange={(event) => handleChange(event)}
             />
