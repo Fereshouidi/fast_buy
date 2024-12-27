@@ -53,6 +53,8 @@ const PurchasePage = (props: propsParams) => {
     const [bannerForEveryThing, setBannerForEveryThing] = useState<boolean>(false);
     const [bannerText, setBannerText] = useState<string | undefined>(undefined);
     const [bannerStatus, setBannerStatus] = useState<'success' | 'fail' | null>(null);
+    const [totalPriceChange, setTotalPriceChange] = useState<'byDiscount' | 'byDiscountPercent' | undefined>(undefined);
+    //const [discountCodeValue, setDiscount]
 
     const setBanner = (visibility: boolean, text: string | undefined, status?: 'success' | 'fail' | null) => {
       setBannerForEveryThing(visibility)
@@ -240,8 +242,8 @@ useEffect(() => {
                               {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
                               {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
                               <div style={style} className='page'>
-                                <CartContent shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>
-                                <CartDetail shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} customer={customer} setCustomer={setCustomer}/>
+                                <CartContent shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} totalPriceChange={totalPriceChange} setTotalPriceChange={setTotalPriceChange}/>
+                                <CartDetail shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} customer={customer} setCustomer={setCustomer} totalPriceChange={totalPriceChange} setTotalPriceChange={setTotalPriceChange}/>
                               </div>
                                 <About/>
                             </BannerContext.Provider>

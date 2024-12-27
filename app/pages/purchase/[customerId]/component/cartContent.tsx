@@ -9,12 +9,16 @@ import { useRouter } from 'next/navigation';
 import { productParams } from '@/app/contexts/productSelectForShowing';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 import EmptyShoppingCart from '@/app/svg/icons/emptyChoppingCart';
+import { purchaseParams } from '@/app/contexts/purchaseData';
 
-type Params = {
+type params = {
     shoppingCart: shoppingCartParams | undefined
     setShoppingCart: (value: shoppingCartParams) => void;
+    purchase?: purchaseParams | undefined
+    totalPriceChange: 'byDiscount' | 'byDiscountPercent' | undefined, 
+    setTotalPriceChange: (value: 'byDiscount' | 'byDiscountPercent' | undefined) => void
 }
-const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
+const CartContent = ({shoppingCart, setShoppingCart, totalPriceChange, setTotalPriceChange}: params) => {
 
     const router = useRouter();
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
@@ -26,11 +30,6 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
             router.push('/pages/productDetails/'+ product._id)
         }
     }
-
-
-    // if(!shoppingCart){
-    //     return;
-    // }
 
 
     if(typeof window == 'undefined'){
@@ -160,6 +159,8 @@ const CartContent = ({shoppingCart, setShoppingCart}: Params) => {
                                     shoppingCart={shoppingCart}
                                     setShoppingCart={setShoppingCart}
                                     purchase={purchase}
+                                    totalPriceChange= {totalPriceChange}
+                                    setTotalPriceChange={setTotalPriceChange}
                                 />
                             </div>
                         </div>

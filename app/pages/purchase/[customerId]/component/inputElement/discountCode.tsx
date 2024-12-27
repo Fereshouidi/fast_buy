@@ -11,8 +11,10 @@ type Params = {
     setShoppingCart: (value: shoppingCartParams) => void;
     allDiscountCodes: discountCodeParams[],
     setAllDiscountCodes: (value: discountCodeParams[]) => void
+    totalPriceChange: 'byDiscount' | 'byDiscountPercent' | undefined, 
+    setTotalPriceChange: (value: 'byDiscount' | 'byDiscountPercent' | undefined) => void
 }
-const DiscountCode = ({shoppingCart, setShoppingCart, allDiscountCodes}: Params) => {
+const DiscountCode = ({shoppingCart, setShoppingCart, allDiscountCodes, setAllDiscountCodes, totalPriceChange, setTotalPriceChange}: Params) => {
 
 
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
@@ -27,7 +29,7 @@ const DiscountCode = ({shoppingCart, setShoppingCart, allDiscountCodes}: Params)
 
         for (let index = 0 ; index < allDiscountCodes?.length ; index++){
 
-            let discount = allDiscountCodes[index];
+            const discount = allDiscountCodes[index];
             if(discount.code && discount.discount) {
                 allDiscountsValue.push( discount.discount);
             }
@@ -40,6 +42,29 @@ const DiscountCode = ({shoppingCart, setShoppingCart, allDiscountCodes}: Params)
         setHighestDiscountPercent(Math.max(...allDiscountsPercentValue) + '% ')
     }, [])
 
+    // useEffect(() => {
+    //     calcTotalPrice(dis)
+    // }, [totalPriceChange])
+
+
+    const calcTotalPrice = (discount: number, discountType: 'discount' | 'discountPercent') => {
+
+        if (shoppingCart?.totalPrice && discountType == 'discount') {
+
+            setShoppingCart({
+                ...shoppingCart,
+                totalPrice: shoppingCart?.totalPrice - discount
+            })
+
+
+        } else if (shoppingCart?.totalPrice && discountType == 'discountPercent') {
+            setShoppingCart({
+                ...shoppingCart,
+                totalPrice: shoppingCart?.totalPrice - (shoppingCart?.totalPrice * (discount / 100)),
+            })
+
+        }
+    }
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
         if(!shoppingCart?.totalPrice){
@@ -53,14 +78,11 @@ const DiscountCode = ({shoppingCart, setShoppingCart, allDiscountCodes}: Params)
 
         for (let index = 0 ; index < allDiscountCodes?.length ; index++){
 
-            let discount = allDiscountCodes[index];
+            const discount = allDiscountCodes[index];
             if(inputValue == discount.code && discount.discount) {
 
                 if(!isCodeUsed) {
-                    setShoppingCart({
-                        ...shoppingCart,
-                        totalPrice: shoppingCart?.totalPrice - discount?.discount
-                    })
+                    calcTotalPrice(discount.discount, 'discount')
                     setIsCodeUsed(true)
                 }
                 
@@ -70,11 +92,7 @@ const DiscountCode = ({shoppingCart, setShoppingCart, allDiscountCodes}: Params)
             } else if(inputValue == discount.code && discount.discountPercent) {
 
                 if (!isCodeUsed) {
-                    setShoppingCart({
-                        ...shoppingCart,
-                        totalPrice: shoppingCart?.totalPrice - (shoppingCart?.totalPrice * (discount.discountPercent / 100)),
-                        discountCode: discount 
-                    })
+                    calcTotalPrice(discount.discountPercent, 'discountPercent')
                     setIsCodeUsed(true)
                 }
 

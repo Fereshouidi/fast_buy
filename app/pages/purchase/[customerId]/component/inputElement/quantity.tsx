@@ -11,9 +11,11 @@ import { updateQuantitiy } from "@/app/crud";
 type params = {
     shoppingCart: shoppingCartParams | undefined
     setShoppingCart: (value: shoppingCartParams) => void;
-    purchase: purchaseParams | undefined
+    purchase?: purchaseParams | undefined
+    totalPriceChange: 'byDiscount' | 'byDiscountPercent' | undefined, 
+    setTotalPriceChange: (value: 'byDiscount' | 'byDiscountPercent' | undefined) => void
 }
-const Quantity = ({shoppingCart, setShoppingCart, purchase}: params) => {
+const Quantity = ({shoppingCart, setShoppingCart, purchase, totalPriceChange, setTotalPriceChange}: params) => {
 
     const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
     const [quantity, setQuantity] = useState(purchase?.quantity? purchase?.quantity : 1)
@@ -25,12 +27,13 @@ const Quantity = ({shoppingCart, setShoppingCart, purchase}: params) => {
 
             if(purchase.product?.discount){
                 
-                if(purchase.discountCode && purchase.product.discountCode?.discount) {                    
+                if(purchase.discountCode && purchase.product.discountCode?.discount) {     
+                    setTotalPriceChange('byDiscount');               
                     return (purchase.product.discount.newPrice - purchase.product.discountCode?.discount) * quantity
                 
                 } else if(purchase.discountCode && purchase.product.discountCode?.discountPercent) {
+                    setTotalPriceChange('byDiscountPercent');               
                     return (purchase.product.discount.newPrice - (purchase.product.discount.newPrice * (purchase.product.discountCode?.discountPercent / 100))) * quantity
-                    
                 }
 
                 else {
@@ -40,9 +43,11 @@ const Quantity = ({shoppingCart, setShoppingCart, purchase}: params) => {
             }else{
 
                 if(purchase.discountCode && purchase.product?.discountCode?.discount) {
+                    setTotalPriceChange('byDiscount');               
                     return (purchase.product.price - purchase.product.discountCode?.discount) * quantity
                 
                 } else if(purchase.discountCode && purchase.product?.discountCode?.discountPercent) {
+                    setTotalPriceChange('byDiscountPercent');               
                     return (purchase.product.price - (purchase.product.price * (purchase.product.discountCode?.discountPercent / 100))) * quantity
                 }
 
@@ -57,9 +62,11 @@ const Quantity = ({shoppingCart, setShoppingCart, purchase}: params) => {
             if(purchase.product?.discount){
                 
                 if(purchase.discountCode && purchase.product.discountCode?.discount) {
+                    setTotalPriceChange('byDiscount');               
                     return (purchase.product.discount.newPrice - purchase.product.discountCode?.discount) * quantity
                 
                 } else if(purchase.discountCode && purchase.product.discountCode?.discountPercent) {
+                    setTotalPriceChange('byDiscountPercent');               
                     return (purchase.product.discount.newPrice - (purchase.product.discount.newPrice * (purchase.product.discountCode?.discountPercent / 100))) * quantity
                 }
 
@@ -70,9 +77,11 @@ const Quantity = ({shoppingCart, setShoppingCart, purchase}: params) => {
             }else{
 
                 if(purchase.discountCode && purchase.product?.discountCode?.discount) {
+                    setTotalPriceChange('byDiscount');               
                     return (purchase.product.price - purchase.product.discountCode?.discount) * quantity
                 
                 } else if(purchase.discountCode && purchase.product?.discountCode?.discountPercent) {
+                    setTotalPriceChange('byDiscountPercent');               
                     return (purchase.product.price - (purchase.product.price * (purchase.product.discountCode?.discountPercent / 100))) * quantity
                 }
 

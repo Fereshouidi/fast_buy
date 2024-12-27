@@ -1,9 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { CSSProperties, useContext } from "react";
-import Link from "next/link";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
-import { BannerContext } from "@/app/contexts/bannerForEverything";
 import { useRouter } from "next/navigation";
 import LoadingIcon_theHolePage from "./loading/loadingHoleOfThePage";
 

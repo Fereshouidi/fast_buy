@@ -18,22 +18,23 @@ type Params = {
     setCustomer: (value: CustomerDataParams) => void;
     shoppingCart: shoppingCartParams | undefined
     setShoppingCart: (value: shoppingCartParams) => void;
+    totalPriceChange: 'byDiscount' | 'byDiscountPercent' | undefined, 
+    setTotalPriceChange: (value: 'byDiscount' | 'byDiscountPercent' | undefined) => void
 }
-const CartDetail = ({customer, setCustomer, shoppingCart, setShoppingCart}: Params) => {
+const CartDetail = ({customer, setCustomer, shoppingCart, setShoppingCart, totalPriceChange, setTotalPriceChange}: Params) => {
 
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
     const companyInformation = useContext(CompanyInformationContext);
     const [paymentMethod, setPaymentMethod] = useState<'paypal' | 'masterCard' | 'cash' | undefined>('cash');
     const [discountCodesForShoppingCarts, setDiscountCodesForShoppingCarts] = useState<discountCodeParams[] | []>([]);
-    const [isThereDiscountCode, setIsThereDiscountCode] = useState<boolean>(false)
+
+    //const [isThereDiscountCode, setIsThereDiscountCode] = useState<boolean>(false)
 
     
     useEffect(() => {
         const fetchData = async () => {
             const allDiscountCodes = await getAllDiscountCodesForShoppingCarts();
-            setDiscountCodesForShoppingCarts(allDiscountCodes)
-            console.log(allDiscountCodes);
-            
+            setDiscountCodesForShoppingCarts(allDiscountCodes)            
         }
         fetchData()
     }, [])
@@ -119,7 +120,7 @@ const CartDetail = ({customer, setCustomer, shoppingCart, setShoppingCart}: Para
                     <PaymentMethod paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>
                     {shoppingCart?.customer?.phone ? null : <InputPhoneNumber customer={customer} setCustomer={setCustomer} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>}
                     {shoppingCart?.customer?.adress ? null : <InputAdress customer={customer} setCustomer={setCustomer} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>}
-                    {discountCodesForShoppingCarts.length > 0 ? <DiscountCode shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} allDiscountCodes={discountCodesForShoppingCarts} setAllDiscountCodes={setDiscountCodesForShoppingCarts}/> : null} 
+                    {discountCodesForShoppingCarts.length > 0 ? <DiscountCode shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} allDiscountCodes={discountCodesForShoppingCarts} setAllDiscountCodes={setDiscountCodesForShoppingCarts} totalPriceChange={totalPriceChange} setTotalPriceChange={setTotalPriceChange}/> : null} 
                     <OrderNow
                         shoppingCart={shoppingCart}
                         setShoppingCart={setShoppingCart}
