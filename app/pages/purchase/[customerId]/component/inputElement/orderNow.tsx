@@ -16,7 +16,7 @@ type Params = {
     shoppingCart: shoppingCartParams | undefined
     setShoppingCart: (value: shoppingCartParams) => void;
 }
-const OrderNow = ({customer, setCustomer, shoppingCart, setShoppingCart}: Params) => {
+const OrderNow = ({customer, shoppingCart, setShoppingCart}: Params) => {
 
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
     const companyInformation = useContext(CompanyInformationContext);

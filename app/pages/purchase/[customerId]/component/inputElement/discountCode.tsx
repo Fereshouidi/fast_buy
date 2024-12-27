@@ -12,7 +12,7 @@ type Params = {
     allDiscountCodes: discountCodeParams[],
     setAllDiscountCodes: (value: discountCodeParams[]) => void
 }
-const DiscountCode = ({shoppingCart, setShoppingCart, allDiscountCodes, setAllDiscountCodes}: Params) => {
+const DiscountCode = ({shoppingCart, setShoppingCart, allDiscountCodes}: Params) => {
 
 
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;

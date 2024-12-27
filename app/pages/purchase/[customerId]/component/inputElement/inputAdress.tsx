@@ -2,7 +2,6 @@
 
 import { CustomerDataParams } from "@/app/contexts/customerData";
 import { shoppingCartParams } from "@/app/contexts/shoppingCart";
-import Adress from "@/app/pages/register/component/signin/component/adress";
 import { CSSProperties } from "react";
 
 
@@ -12,7 +11,7 @@ type Params = {
     shoppingCart: shoppingCartParams | undefined
     setShoppingCart: (value: shoppingCartParams) => void;
 }
-const InputAdress = ({customer, setCustomer, shoppingCart, setShoppingCart}: Params) => {
+const InputAdress = ({customer, setCustomer}: Params) => {
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -21,10 +20,6 @@ const InputAdress = ({customer, setCustomer, shoppingCart, setShoppingCart}: Par
                 ...customer,
                 adress: event.target.value
             })
-            // setShoppingCart({
-            //     ...shoppingCart,
-            //     customer: 
-            // })
         }
     }
 

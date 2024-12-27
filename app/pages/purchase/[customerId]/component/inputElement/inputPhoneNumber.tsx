@@ -10,7 +10,7 @@ type Params = {
     shoppingCart: shoppingCartParams | undefined
     setShoppingCart: (value: shoppingCartParams) => void;
 }
-const InputPhoneNumber = ({customer, setCustomer, shoppingCart, setShoppingCart}: Params) => {
+const InputPhoneNumber = ({customer, setCustomer}: Params) => {
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 

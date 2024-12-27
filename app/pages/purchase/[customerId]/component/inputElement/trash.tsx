@@ -56,17 +56,14 @@ const Trash = ({shoppingCart, setShoppingCart, purchase}: params) => {
         return;
     }
     const style: CSSProperties = {
-        //backgroundColor: 'blue',
         color: iconColor,
         fontSize: window.innerWidth > 1000 ? 'var(--primary-size)' : 'var(--small-size)',
     }
     const styleIconDiv: CSSProperties = {
         display: 'flex',
-        //backgroundColor: 'blue',
     }
     const styleIcon: CSSProperties = {
         display: 'flex',
-       // backgroundColor: 'green',
         color: iconColor,
         padding : 'var(--small-padding)',
         borderRadius: '50px',

@@ -3,8 +3,8 @@
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 import { shoppingCartParams } from "@/app/contexts/shoppingCart";
-import { faCcMastercard, faPaypal } from "@fortawesome/free-brands-svg-icons";
-import { faMoneyBill, faTruck } from "@fortawesome/free-solid-svg-icons";
+import { faPaypal } from "@fortawesome/free-brands-svg-icons";
+import { faMoneyBill } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CSSProperties, useContext } from "react";
 import faMastercard from '@/app/images/mastercard-logo-mastercard-logo-png-vector-download-19.png';
@@ -16,7 +16,7 @@ type params = {
     setShoppingCart: (value: shoppingCartParams) => void;
 }
 
-const PaymentMethod = ({paymentMethod, setPaymentMethod, setShoppingCart}: params) => {
+const PaymentMethod = ({paymentMethod, setPaymentMethod}: params) => {
 
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
     const companyInformation = useContext(CompanyInformationContext);
@@ -41,7 +41,6 @@ const PaymentMethod = ({paymentMethod, setPaymentMethod, setShoppingCart}: param
     }
     const styleMasterCart:CSSProperties = {
        color: 'rgb(147, 71, 5)',
-       //margin: 'var(--small-margin)'
     }
     const styleTruck = {
         color: 'green',
