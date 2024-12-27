@@ -40,7 +40,7 @@ const InputPhoneNumber = ({customer, setCustomer}: Params) => {
     return (
         <div style={style}>
             <input 
-                type="phone" 
+                type="tel" 
                 placeholder={activeLanguage?.PhoneNumberW + '...'} 
                 style={styleInput} 
                 onChange={(event) => handleChange(event)}
