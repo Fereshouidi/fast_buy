@@ -14,7 +14,7 @@ type Params = {
     totalPriceChange: 'byDiscount' | 'byDiscountPercent' | undefined, 
     setTotalPriceChange: (value: 'byDiscount' | 'byDiscountPercent' | undefined) => void
 }
-const DiscountCode = ({shoppingCart, setShoppingCart, allDiscountCodes, setAllDiscountCodes, totalPriceChange, setTotalPriceChange}: Params) => {
+const DiscountCode = ({shoppingCart, setShoppingCart, allDiscountCodes}: Params) => {
 
 
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
