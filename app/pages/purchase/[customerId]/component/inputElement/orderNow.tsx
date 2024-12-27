@@ -25,13 +25,17 @@ const OrderNow = ({customer, shoppingCart, setShoppingCart}: Params) => {
     const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
     const setBanner = useContext(BannerContext)?.setBanner;
 
+    if (!setBanner || !setLoadingIcon) {
+        return;
+    }
+
     const handleClick = async() => {
-        
+
         setBanner ? setBanner(true, activeLanguage?.orderSendedSuccessflyP, "success") : null
 
         if (shoppingCart && customer?.adress && customer?.phone) {
             
-            setLoadingIcon? setLoadingIcon(true): null;
+            setLoadingIcon(true);
 
             await addOrder({
                 ...shoppingCart,
@@ -40,8 +44,8 @@ const OrderNow = ({customer, shoppingCart, setShoppingCart}: Params) => {
             })
             setShoppingCart({})
 
-            setBanner ? setBanner(true, activeLanguage?.orderSendedSuccessflyP, "success") : null
-            setLoadingIcon? setLoadingIcon(false): null;
+            setBanner(true, activeLanguage?.orderSendedSuccessflyP, "success")
+            setLoadingIcon(false);
             
         }
         
