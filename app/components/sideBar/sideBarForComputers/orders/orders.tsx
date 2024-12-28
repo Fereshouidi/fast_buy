@@ -24,15 +24,13 @@ const Order = () => {
         throw new Error("SideBarContext must be used within a SideBarContext.Provider");
     }
     const { sideBarExist, setSideBarExist } = sideBarContext;
+
     if(!languageSelectorContext){
         throw 'context error !'
     }
 
     if(!sideBarContext){
         throw 'context error !'
-    }
-    if (!setLoadingIcon) {
-        return;
     }
 
     useEffect(() => {
@@ -44,6 +42,10 @@ const Order = () => {
             setActiveLanguage(english);
         }
     }, [languageSelectorContext])
+    
+    if (!setLoadingIcon) {
+        return;
+    }
 
     const handleClick = () => {
         setLoadingIcon(true)
