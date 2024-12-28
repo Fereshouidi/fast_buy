@@ -34,7 +34,7 @@ interface Params {
     customerId: string;
 }
 
-const PurchasePage = (props: propsParams) => {
+const PurchasePage = () => {
 
 //     if(typeof window == 'undefined'){
 //         throw `error typeof window == 'undefined'`
