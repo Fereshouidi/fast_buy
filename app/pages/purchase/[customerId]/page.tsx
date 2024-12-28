@@ -95,7 +95,7 @@ useEffect(() => {
 
   }, [typeof window || localStorage.getItem('activeLanguage_')]) 
 
-  localStorage.removeItem('activeLanguage_')
+  //localStorage.removeItem('activeLanguage_')
 
 useEffect(() => {
     const fetchData = async() => {
