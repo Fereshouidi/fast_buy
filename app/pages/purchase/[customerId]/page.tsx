@@ -29,12 +29,12 @@ import Banner from '@/app/banners/bannerForEveryThing';
 // import '@/app/pages/purchase/[customerId]/style.css'
 
 
-interface propsParams {
-    params: Promise<Params>;
-}
-interface Params {
-    customerId: string;
-}
+// interface propsParams {
+//     params: Promise<Params>;
+// }
+// interface Params {
+//     customerId: string;
+// }
 
 const PurchasePage = () => {
 
