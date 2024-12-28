@@ -36,7 +36,7 @@ interface Params {
     customerId: string;
 }
 
-const PurchasePage = (props: propsParams) => {
+const PurchasePage = () => {
 
     if(typeof window == 'undefined'){
         throw `error typeof window == 'undefined'`
@@ -79,11 +79,20 @@ const PurchasePage = (props: propsParams) => {
   const [customerData, setCustomerData] = useState<CustomerDataParams | undefined>(undefined);
 
   useEffect(() => {
-    const getCustomer = async() => {
-        const customerId = (await props.params).customerId;
-        const customer = await getCustomerById(customerId);
-        setCustomer(customer);
-    }
+    const getCustomer = async () => {
+      if (typeof window !== 'undefined') {
+          try {
+              const customerData = localStorage.getItem('customerData');
+              if (customerData) {
+                  const customer = JSON.parse(customerData);
+                  setCustomer(customer);
+              }
+          } catch (error) {
+              console.error('Error parsing customerData from localStorage:', error);
+          }
+      }
+  };
+  
     getCustomer()
 }, [])
 
