@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 // import english from '@/app/languages/english.json';
 // import arabic from '@/app/languages/arabic.json';
@@ -27,14 +27,14 @@
 // // import '@/app/pages/purchase/[customerId]/style.css'
 
 
-// interface propsParams {
-//     params: Promise<Params>;
-// }
-// interface Params {
-//     customerId: string;
-// }
+interface propsParams {
+    params: Promise<Params>;
+}
+interface Params {
+    customerId: string;
+}
 
-// const PurchasePage = (props: propsParams) => {
+const PurchasePage = (props: propsParams) => {
 
 //     if(typeof window == 'undefined'){
 //         throw `error typeof window == 'undefined'`
@@ -174,35 +174,36 @@
 //   }
 
 
-//     return (
+    return (
 
-//         <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType}} >
-//             <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
-//                 <ThemeContext.Provider value={{ theme, setTheme }}>
-//                   <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
-//                     <LoadingIconContext.Provider value={{exist: loadingIconExist , setExist: setLoadingIconExit}}>
-//                       <ActiveLanguageContext.Provider value={{activeLanguage: activeLanguage_, setAtiveLanguage: setActiveLanguage_}}>
-//                         <CustomerDataContext.Provider value={customerData}>
-//                           <BannersContext.Provider value={{purchaseStatusBanner: purchaseStatusBanner, setPurchaseStatusBanner: setPurchaseStatusBanner, purchaseStatus: purchaseStatus , setPurchaseStatus: setPurchaseStatus , passwordsNotMatch: false , setPasswordsNotMatch: ()=> null , emailNotValide: false , setemailNotValide: ()=> null , verificatinEmailBanner: false, setVerificatinEmailBanner: ()=> null, loginStatusBanner: false, setLoginStatusBanner: ()=> null, loginStatus: 404, setLoginStatus: ()=> null }}>
-//                             <BannerContext.Provider value={{bannerexist: bannerForEveryThing, bannerText: bannerText, bannerStatus: bannerStatus , setBanner: setBanner}}>
-//                               <LoadingIcon_theHolePage/>
-//                               <Banner/>
-//                               <PurchaseStatusBanner/>
-//                               {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
-//                               {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-//                               <div style={style} className='page'>
-//                                 orders page
-//                               </div>
-//                                 <About/>
-//                             </BannerContext.Provider>
-//                           </BannersContext.Provider>
-//                         </CustomerDataContext.Provider>
-//                       </ActiveLanguageContext.Provider>
-//                     </LoadingIconContext.Provider>
-//                   </SideBarContext.Provider>
-//                 </ThemeContext.Provider>
-//             </LanguageSelectorContext.Provider>
-//         </CompanyInformationContext.Provider>
-//     )
-// }
-// export default PurchasePage;
+        // <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType}} >
+        //     <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
+        //         <ThemeContext.Provider value={{ theme, setTheme }}>
+        //           <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>
+        //             <LoadingIconContext.Provider value={{exist: loadingIconExist , setExist: setLoadingIconExit}}>
+        //               <ActiveLanguageContext.Provider value={{activeLanguage: activeLanguage_, setAtiveLanguage: setActiveLanguage_}}>
+        //                 <CustomerDataContext.Provider value={customerData}>
+        //                   <BannersContext.Provider value={{purchaseStatusBanner: purchaseStatusBanner, setPurchaseStatusBanner: setPurchaseStatusBanner, purchaseStatus: purchaseStatus , setPurchaseStatus: setPurchaseStatus , passwordsNotMatch: false , setPasswordsNotMatch: ()=> null , emailNotValide: false , setemailNotValide: ()=> null , verificatinEmailBanner: false, setVerificatinEmailBanner: ()=> null, loginStatusBanner: false, setLoginStatusBanner: ()=> null, loginStatus: 404, setLoginStatus: ()=> null }}>
+        //                     <BannerContext.Provider value={{bannerexist: bannerForEveryThing, bannerText: bannerText, bannerStatus: bannerStatus , setBanner: setBanner}}>
+        //                       <LoadingIcon_theHolePage/>
+        //                       <Banner/>
+        //                       <PurchaseStatusBanner/>
+        //                       {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
+        //                       {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
+        //                       <div style={style} className='page'>
+        //                         orders page
+        //                       </div>
+        //                         <About/>
+        //                     </BannerContext.Provider>
+        //                   </BannersContext.Provider>
+        //                 </CustomerDataContext.Provider>
+        //               </ActiveLanguageContext.Provider>
+        //             </LoadingIconContext.Provider>
+        //           </SideBarContext.Provider>
+        //         </ThemeContext.Provider>
+        //     </LanguageSelectorContext.Provider>
+        // </CompanyInformationContext.Provider>
+        <div>aaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+    )
+}
+export default PurchasePage;
