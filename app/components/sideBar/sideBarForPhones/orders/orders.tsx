@@ -6,16 +6,20 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import OrderIcon from "@/app/svg/icons/order";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
+import { useRouter } from "next/navigation";
+import { LoadingIconContext } from "@/app/contexts/loadingIcon";
 
 const Order = () => {
 
     const [activeLanguage, setActiveLanguage] = useState(english);
     const languageSelectorContext = useContext(LanguageSelectorContext);
     const [isHover, setIsHover] = useState<boolean>(false)
+    const router = useRouter();
 
     const companyInformation = useContext(CompanyInformationContext);
-    
     const sideBarContext = useContext(SideBarContext);
+    const setLoadingIcon = useContext(LoadingIconContext)?.setExist
+
     if (!sideBarContext) {
         throw new Error("SideBarContext must be used within a SideBarContext.Provider");
     }
@@ -26,6 +30,9 @@ const Order = () => {
 
     if(!sideBarContext){
         throw 'context error !'
+    }
+    if (!setLoadingIcon) {
+        return;
     }
 
     useEffect(() => {
@@ -39,7 +46,9 @@ const Order = () => {
     }, [languageSelectorContext])
 
     const handleClick = () => {
+        setLoadingIcon(true)
         setSideBarExist(false)
+        router.push('/pages/orders')
     }
 
     const style: CSSProperties = {

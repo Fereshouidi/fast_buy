@@ -20,10 +20,8 @@ import { LoadingIconContext } from "@/app/contexts/loadingIcon";
 import { CustomerDataContext, CustomerDataParams } from "@/app/contexts/customerData";
 import { BannersContext } from "@/app/contexts/banners";
 import PurchaseStatusBanner from "@/app/banners/addedToPurchase";
-import CartContent from "./component/cartContent";
 import { shoppingCartParams } from "@/app/contexts/shoppingCart";
 import { ActiveLanguageContext } from '@/app/contexts/activeLanguage';
-import CartDetail from './component/cartDetail';
 import { BannerContext } from '@/app/contexts/bannerForEverything';
 import Banner from '@/app/banners/bannerForEveryThing';
 // import '@/app/pages/purchase/[customerId]/style.css'
@@ -78,14 +76,7 @@ const PurchasePage = (props: propsParams) => {
 
   const [customerData, setCustomerData] = useState<CustomerDataParams | undefined>(undefined);
 
-  useEffect(() => {
-    const getCustomer = async() => {
-        const customerId = (await props.params).customerId;
-        const customer = await getCustomerById(customerId);
-        setCustomer(customer);
-    }
-    getCustomer()
-}, [])
+
 
 useEffect(() => {
   if (typeof window !== "undefined") {
@@ -93,7 +84,7 @@ useEffect(() => {
     setActiveLanguage_(storedLanguage ? JSON.parse(storedLanguage) : english);
   }
 
-  }, [typeof window || localStorage.getItem('activeLanguage_')]) 
+  }, []) 
 
 useEffect(() => {
     const fetchData = async() => {
@@ -126,52 +117,11 @@ useEffect(() => {
         if (savedTheme) {
           setTheme(savedTheme);
         }
-
-        const fetchCustomer = async() => {
-
-        const storedData = localStorage.getItem("customerData");
-        if (storedData && typeof storedData !== null) {
-          try {
-            setCustomerData(JSON.parse(storedData) as CustomerDataParams) ;
-            const customer = await getCustomerById(JSON.parse(storedData)._id);
-
-            setCustomerData(customer as CustomerDataParams) ;            
-            
-          } catch (error) {
-            console.log("Failed to parse customerData from localStorage:", error);
-            setCustomerData(undefined) ;
-            
-          }
-        }else{
-          console.log(storedData);
-          
-        }
-      }
-      fetchCustomer()
-      
     }
-  }, [typeof window != 'undefined' ? localStorage.getItem("customerData") : null]);
+  }, []);
 
-  const getDependency = () => {
-    if (shoppingCart && shoppingCart.purchases) {
-        return shoppingCart;
-    }
-    return null;
-};
-  useEffect(() => {
-    console.log(customer);
-    
-    const fetchChoppingCart = async() => {
-      const shoppingCarts = await getShoppingCartsByCustomerId(customer?._id);
-      setShoppingCart(shoppingCarts[0])
-      if(shoppingCarts[0]){
-        const updatedCustomerData = {...customer, shoppingCart: shoppingCarts[0]};
-        localStorage.setItem('customerData', JSON.stringify(updatedCustomerData));
-      }
-      
-    }
-    fetchChoppingCart()
-  }, [customer || getDependency() ])
+
+
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -241,8 +191,7 @@ useEffect(() => {
                               {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
                               {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
                               <div style={style} className='page'>
-                                <CartContent shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} totalPriceChange={totalPriceChange} setTotalPriceChange={setTotalPriceChange}/>
-                                <CartDetail shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} customer={customer} setCustomer={setCustomer} totalPriceChange={totalPriceChange} setTotalPriceChange={setTotalPriceChange}/>
+                                orders page
                               </div>
                                 <About/>
                             </BannerContext.Provider>
