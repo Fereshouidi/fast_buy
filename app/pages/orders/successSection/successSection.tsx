@@ -16,7 +16,7 @@ const SuccessSection = ({orders}: params) => {
 
     useEffect(() => {
         if (orders){
-            const ordersList = [];
+            let ordersList = [];
             for (let index = 0 ; index < orders?.length ; index++) {
                 if (orders[index].status == 'delivered') {
                     ordersList.push(orders[index])

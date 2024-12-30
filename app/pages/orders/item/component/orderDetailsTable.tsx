@@ -1,8 +1,7 @@
 'use client';
 
-import { CSSProperties, useContext } from "react";
+import { CSSProperties } from "react";
 import '@/app/pages/orders/item/component/style.css'
-import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 import { OrderParams } from "@/app/contexts/order";
 
 type parmas = {

@@ -19,7 +19,7 @@ const Item = ({order}: {order: OrderParams}) => {
 
     useEffect(() => {
         if (order.products) {   
-            let most3ProductExpensive = [...order.products];
+            const most3ProductExpensive = [...order.products];
             most3ProductExpensive.sort((a, b) => b.price - a.price)
             .slice(0, 3)
             setMostProductExpensive(most3ProductExpensive);  
