@@ -16,7 +16,7 @@ const FailSection = ({orders}: params) => {
 
     useEffect(() => {
         if (orders){
-            let ordersList = [];
+            const ordersList = [];
             for (let index = 0 ; index < orders?.length ; index++) {
                 if (orders[index].status == 'failed') {
                     ordersList.push(orders[index])

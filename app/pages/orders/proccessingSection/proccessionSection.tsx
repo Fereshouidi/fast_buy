@@ -16,7 +16,7 @@ const ProccessiongSection = ({orders}: params) => {
 
     useEffect(() => {
         if (orders){
-            let ordersList = [];
+            const ordersList = [];
             for (let index = 0 ; index < orders?.length ; index++) {
                 if (orders[index].status != 'delivered' && orders[index].status != 'failed') {
                     ordersList.push(orders[index])
@@ -29,7 +29,7 @@ const ProccessiongSection = ({orders}: params) => {
     
 
     const style: CSSProperties = {
-        width: '50%',
+        width: window.innerWidth > 800 ? '50%' : '100%',
         minHeight: '100vh',
         backgroundColor: 'var(--white)',
         //display: 'flex',
