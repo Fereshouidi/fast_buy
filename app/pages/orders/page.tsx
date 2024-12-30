@@ -185,7 +185,7 @@ useEffect(() => {
       document.body.classList.add(activeLanguage);
     }
 
-    if(window && window.innerWidth > 800){
+    if(typeof window != 'undefined' && window.innerWidth > 800){
       document.body.classList.add('computer');
     }else{
       document.body.classList.add('phone');
