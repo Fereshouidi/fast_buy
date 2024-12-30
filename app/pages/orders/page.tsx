@@ -214,6 +214,9 @@ useEffect(() => {
 
   }
     
+  if (typeof window == 'undefined') {
+    return;
+  }
   const style_fs_and_ss: CSSProperties = {
     width: window.innerWidth > 800 ? '50%' : '100%',
     minHeight: '100vh',
