@@ -26,15 +26,7 @@ import { ActiveLanguageContext } from '@/app/contexts/activeLanguage';
 import CartDetail from './component/cartDetail';
 import { BannerContext } from '@/app/contexts/bannerForEverything';
 import Banner from '@/app/banners/bannerForEveryThing';
-// import '@/app/pages/purchase/[customerId]/style.css'
 
-
-// interface propsParams {
-//     params: Promise<Params>;
-// }
-// interface Params {
-//     customerId: string;
-// }
 
 const PurchasePage = () => {
 
@@ -54,7 +46,6 @@ const PurchasePage = () => {
     const [bannerText, setBannerText] = useState<string | undefined>(undefined);
     const [bannerStatus, setBannerStatus] = useState<'success' | 'fail' | null>(null);
     const [totalPriceChange, setTotalPriceChange] = useState<'byDiscount' | 'byDiscountPercent' | undefined>(undefined);
-    //const [discountCodeValue, setDiscount]
 
     const setBanner = (visibility: boolean, text: string | undefined, status?: 'success' | 'fail' | null) => {
       setBannerForEveryThing(visibility)
@@ -104,7 +95,6 @@ useEffect(() => {
 
   }, [typeof window || localStorage.getItem('activeLanguage_')]) 
 
-  //localStorage.removeItem('activeLanguage_')
 
 useEffect(() => {
     const fetchData = async() => {

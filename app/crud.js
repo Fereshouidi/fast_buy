@@ -198,8 +198,6 @@ export const getShoppingCartsByCustomerId = async (customerId) => {
         const shoppingCarts = await axios.get(url + '/get/activeShoppingCart/by/customer' , {
             params: {customerId}
         })        
-        console.log(shoppingCarts.data);
-        
         return shoppingCarts.data;
     }catch(err) {
         throw err;
@@ -245,4 +243,20 @@ export const getAllDiscountCodesForShoppingCarts = async () => {
         throw err
     }
 }
+
+
+export const gtOrdersByCustomer = async (customerId) => {
+
+    try {
+        const orders = await axios.get(url + '/gt/orders/byCustomer' , {
+            params: {customerId}
+        })        
+        console.log(orders.data);
+        
+        return orders.data;
+    }catch(err) {
+        throw err;
+    }
+}
+
 

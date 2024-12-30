@@ -131,7 +131,7 @@ const CartDetail = ({customer, setCustomer, shoppingCart, setShoppingCart, total
                         customer={customer}
                         setCustomer={setCustomer}
                     />
-                    {!customer?.adress && !customer?.phone ? <p style={styleWarningMessage}>{activeLanguage?.warningForWrongDataP}</p> : null}
+                    {!shoppingCart?.customer?.adress && !shoppingCart?.customer?.phone ? <p style={styleWarningMessage}>{activeLanguage?.warningForWrongDataP}</p> : null}
                 </div>
             </div>
         </div>

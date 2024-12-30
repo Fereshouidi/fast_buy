@@ -1,0 +1,8 @@
+table * {
+    border: 1px solid var(--ashen);
+    background-color: var(--almost-white);
+    text-align: center;
+    padding: var(--small-padding);
+    font-size: var(--small-size);
+    color: var(--black);
+}

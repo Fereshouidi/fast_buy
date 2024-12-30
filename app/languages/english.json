@@ -94,5 +94,27 @@
         "part2": " to add items!"
     },
     "marketW": "market",
-    "orderSendedSuccessflyP": "Your request has been sent successfully . go to the orders page to follow the progress of your order by details . "
+    "orderSendedSuccessflyP": "Your request has been sent successfully . go to the orders page to follow the progress of your order by details . ",
+    "proccessingW": "processing",
+    "OrderIDW": "Order ID : ",
+    "orderStatus": {
+        "orderedW": "ordered",
+        "processingW": "processing",
+        "packagedW": "packaged",
+        "shippedW": "shipped",
+        "deliveredW": "delivered",
+        "canceledW": "canceled",
+        "failedW": "failed",
+        "BeingReturnedW": "Being returned",
+        "returnedW": "returned"
+    },
+    "deliveryStagesW": "Delivery stages ",
+    "OrderIdW": "Order ID",
+    "productsDetails": "Products details",
+    "noteW": "Note"
+
+
+    
 }
+
+

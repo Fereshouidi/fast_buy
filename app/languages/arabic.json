@@ -93,7 +93,25 @@
         "part2": " لاظافة عناصر"
     },
     "marketW": "السوق",
-    "orderSendedSuccessflyP": "تم ارسال طلبك بنجاح . اذهب الى صفحة الطلبات لتتبع التقدم الخاص بطلبك بالتفصيل ."
+    "orderSendedSuccessflyP": "تم ارسال طلبك بنجاح . اذهب الى صفحة الطلبات لتتبع التقدم الخاص بطلبك بالتفصيل .",
+    "proccessingW": "بصدد المعالجة",
+    "OrderIDW": "معرف الطلب :",
+    "orderStatus": {
+        "orderedW": "تم الطلب",
+        "processingW": "بصدد المعالجة",
+        "packagedW": "تم التغليف",
+        "shippedW": "تم الشحن",
+        "deliveredW": "تم التوصيل",
+        "canceledW": "تم الالغاء",
+        "failedW": "فشل ",
+        "BeingReturnedW": "بصدد الارجاع",
+        "returnedW": "تم الارجاع"
+    },
+    "deliveryStagesW": "مراحل التوصيل ",
+    "OrderIdW": "معرف الطلب",
+    "productsDetails": "تفاصيل المنتجات",
+    "noteW": "ملاحظة"
+
 
 }
 

@@ -46,17 +46,17 @@ const InformationSection = ({product, setProduct}: Params) => {
         
       //  alert(discountCodeAmount.discount)
 
-        if (customer && product) {
+       // if (customer && product) {
             setPurchaseData({
-                buyer: customer._id, 
+                buyer: customer?._id, 
                 product: product, 
                 discount: product?.discount ? product.discount._id : null, 
                 quantity: 1,
-                totalPrice: product?.discount? product.discount.newPrice : product.price,
-                shoppingCart: customer.ShoppingCart? customer.ShoppingCart._id : null,
-                discountCode: discountCodeAmount.discount || discountCodeAmount.discountPercent ? product.discountCode?._id : null
+                totalPrice: product?.discount? product.discount.newPrice : product?.price,
+                shoppingCart: customer?.ShoppingCart? customer.ShoppingCart._id : null,
+                discountCode: discountCodeAmount.discount || discountCodeAmount.discountPercent ? product?.discountCode?._id : null
             })
-        }
+        //} 
         
     }, [product])
 
