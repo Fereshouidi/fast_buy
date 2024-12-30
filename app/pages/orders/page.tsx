@@ -29,7 +29,7 @@ import SuccessSection from './successSection/successSection';
 import { OrderParams } from '@/app/contexts/order';
 import SwitchSections from './switchSections';
 
-const OrdersPage = () => 
+const OrdersPage = () => {
 
 
     const [loadingIconExist, setLoadingIconExit] = useState<boolean>(false);
