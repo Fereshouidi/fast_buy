@@ -28,9 +28,9 @@ const ProccessiongSection = ({orders}: params) => {
 
     
 
-    if (typeof window == 'undefined') {
-        return;
-    }
+    // if (typeof window == 'undefined') {
+    //     return;
+    // }
 
     const style: CSSProperties = {
         //width: window.innerWidth > 800 ? '50%' : '100%',
