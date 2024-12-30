@@ -7,9 +7,9 @@ import Item from "../item/item";
 
 type params = {
     orders: OrderParams[] | undefined
-    setOrders: (value: OrderParams[]) => void
+    setOrders?: (value: OrderParams[]) => void
 }
-const SuccessSection = ({orders, setOrders}: params) => {
+const SuccessSection = ({orders}: params) => {
 
     const [successOrders, setSuccessOrders ] = useState<OrderParams[] | undefined>(undefined)
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;

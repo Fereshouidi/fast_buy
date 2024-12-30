@@ -26,18 +26,18 @@ const Item = ({order}: {order: OrderParams}) => {
         }
     }, [])
 
-    const handleDate = (date: Date) => {
-        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-        const date_ = new Date(date)
-        const year = date_.getFullYear();
-        const month = date_.getMonth() + 1;
-        const day = date_.getDate(); 
-        const houre = date_.getHours()
+    // const handleDate = (date: Date) => {
+    //     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    //     const date_ = new Date(date)
+    //     const year = date_.getFullYear();
+    //     const month = date_.getMonth() + 1;
+    //     const day = date_.getDate(); 
+    //     const houre = date_.getHours()
 
-        console.log(`السنة: ${year}, الشهر: ${month}, اليوم: ${day} , houre: ${houre}`);
-        return `${months[month-1]}/${day}/${year}`
+    //     console.log(`السنة: ${year}, الشهر: ${month}, اليوم: ${day} , houre: ${houre}`);
+    //     return `${months[month-1]}/${day}/${year}`
     
-    }
+    // }
 
     const style: CSSProperties = {
         width: '100%',
