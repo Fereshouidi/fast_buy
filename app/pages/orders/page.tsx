@@ -29,11 +29,7 @@ import SuccessSection from './successSection/successSection';
 import { OrderParams } from '@/app/contexts/order';
 import SwitchSections from './switchSections';
 
-const OrdersPage = () => {
-
-    if(typeof window == 'undefined'){
-        throw `error typeof window == 'undefined'`
-    }
+const OrdersPage = () => 
 
 
     const [loadingIconExist, setLoadingIconExit] = useState<boolean>(false);
