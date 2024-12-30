@@ -185,7 +185,7 @@ useEffect(() => {
       document.body.classList.add(activeLanguage);
     }
 
-    if(window.innerWidth > 800){
+    if(window && window.innerWidth > 800){
       document.body.classList.add('computer');
     }else{
       document.body.classList.add('phone');
@@ -214,11 +214,11 @@ useEffect(() => {
 
   }
     
-//   if (typeof window == 'undefined') {
-//     return;
-//   }
+  if (typeof window == 'undefined') {
+    return;
+  }
   const style_fs_and_ss: CSSProperties = {
-    //width: window.innerWidth > 800 ? '50%' : '100%',
+    width: window.innerWidth > 800 ? '50%' : '100%',
     minHeight: '100vh',
     backgroundColor: 'var(--white)',
     display: 'flex',
