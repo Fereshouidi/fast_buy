@@ -32,7 +32,7 @@ import SwitchSections from './switchSections';
 const OrdersPage = () => {
 
 
-    const [screenWidth, setScreenWidth] = useState<number>(1000); 
+    const [screenWidth, setScreenWidth] = useState<number>(1000);  
 
     const [loadingIconExist, setLoadingIconExit] = useState<boolean>(false);
 
