@@ -32,7 +32,7 @@ const Quantity = ({product, purchaseData, setPurchaseData}: Params) => {
         alignItems: 'center',
         margin: 'var(--large-margin)',
         fontSize: 'var(--primary-size)',
-        fontWeight: '200',
+        fontWeight: '400',
         color: 'var(--black)'
 
     }
