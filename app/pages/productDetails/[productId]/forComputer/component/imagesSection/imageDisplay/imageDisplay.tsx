@@ -20,7 +20,7 @@ type Params = {
     shoppingCart: shoppingCartParams | undefined,
 }
 
-const ImageDisplay = ({product, purchase, shoppingCart}: Params) => {
+const ImageDisplay = ({product, purchase}: Params) => {
 
     const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
     const activeImageContext = useContext(ActiveImageContext);

@@ -29,7 +29,6 @@ import PurchaseStatusBanner from "@/app/banners/addedToPurchase";
 import { BannerContext } from "@/app/contexts/bannerForEverything";
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 import { getShoppingCartsByCustomerId } from '@/app/crud';
-import { purchaseParams } from '@/app/contexts/purchaseData';
 import { shoppingCartParams } from '@/app/contexts/shoppingCart';
 
 
