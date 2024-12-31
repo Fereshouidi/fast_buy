@@ -66,17 +66,20 @@ const Item = ({order}: {order: OrderParams}) => {
         alignItems: 'center'
     }
     const styleImagesDiv: CSSProperties = {
-        width: 'var(--double-width)',
+        width: 'auto',
+        marginRight: 'var(--large-margin)',
         height: 'var(--primary-height)',
         borderRadius: '20px',
         display: 'flex',
         alignItems: 'center',
-       // backgroundColor: 'red',
+    //    backgroundColor: 'red',
 
     }
     const styleIdDiv: CSSProperties = {
         display: 'flex',
-        fontSize: 'var(--small-size)'
+        fontSize: 'var(--small-size)',
+   //     backgroundColor: 'red',
+
     }
     const styleStatus: CSSProperties = {
         display: 'flex',
