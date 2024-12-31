@@ -1,12 +1,13 @@
 'use client';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { CSSProperties, useContext } from "react";
-import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
+import { CSSProperties } from "react";
+//import { CSSProperties, useContext } from "react";
+//import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 
 const HeartIcon = () => {
 
-    const languageContext = useContext(LanguageSelectorContext);
+   // const languageContext = useContext(LanguageSelectorContext);
 
 
     // const style: CSSProperties = {
