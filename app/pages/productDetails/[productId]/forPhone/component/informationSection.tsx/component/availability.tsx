@@ -22,8 +22,8 @@ const Availablity = ({product}: {product: productParams | undefined}) => {
         display: 'flex',
         alignItems: 'center',
         margin: 'var(--large-margin)',
-        fontSize: 'calc(var(--big-size)/1.2)',
-        fontWeight: '200',
+        fontSize: 'calc(var(--big-size)/1.4)',
+        fontWeight: '500',
         color: 'var(--black)'
 
     }
