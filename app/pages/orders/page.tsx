@@ -206,16 +206,16 @@ useEffect(() => {
     display: 'flex',
     justifyContent: screenWidth > 800 ? 'center' : '',
     flexDirection: screenWidth > 800 ? 'row' : 'column',
-    padding: 'var(--large-padding)',
+    padding: screenWidth > 800 ? 'var(--large-padding)' : '',
 
   }
 
   const style_fs_and_ss: CSSProperties = {
     width: screenWidth > 800 ? '50%' : '100%',
     minHeight: '100vh',
-    backgroundColor: 'var(--white)',
+    backgroundColor: screenWidth > 800 ? 'var(--white)' : 'var(--almost-white)',
     display: 'flex',
-    margin: screenWidth > 800 ? 'var(--large-margin)' : '',
+    margin: screenWidth > 800 ? 'var(--large-margin)' : '0',
     borderRadius: '20px',
     //backgroundColor: 'red',
     padding: '0',

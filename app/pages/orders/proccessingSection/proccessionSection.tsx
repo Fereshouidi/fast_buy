@@ -37,7 +37,7 @@ const ProccessiongSection = ({orders}: params) => {
         minHeight: '100vh',
         backgroundColor: 'var(--white)',
         //display: 'flex',
-        margin: 'var(--large-margin)',
+        margin: window.innerWidth > 800 ? 'var(--large-margin) 0' : '0',
         borderRadius: '20px',
         padding: 'var(--large-padding)'
     }
