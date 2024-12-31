@@ -67,8 +67,8 @@ const Item = ({order}: {order: OrderParams}) => {
     }
     const styleImagesDiv: CSSProperties = {
         width: 'auto',
-        marginRight: activeLanguage?.activeLanguage == 'arabic'? '0' : 'var(--medium-margin)',
-        marginLeft: activeLanguage?.activeLanguage == 'arabic'? 'var(--medium-margin)' : '0',
+        marginRight: activeLanguage?.activeLanguage == 'arabic'? '0' : 'calc(var(--medium-margin) *1.2',
+        marginLeft: activeLanguage?.activeLanguage == 'arabic'? 'calc(var(--medium-margin) *1.2' : '0',
         height: 'var(--primary-height)',
         borderRadius: '20px',
         display: 'flex',
