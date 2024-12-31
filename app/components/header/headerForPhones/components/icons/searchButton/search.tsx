@@ -6,7 +6,7 @@ import { CSSProperties } from "react";
 const Search = () => {
 
 
-    const styleSearchIcon:CSSProperties = {
+    const style: CSSProperties = {
         width: 'var(--primary-width)',
         height: 'var(--primary-height)',
         borderRadius: '50px',
@@ -14,7 +14,9 @@ const Search = () => {
         alignItems: 'center',
         justifyContent: 'center',
         cursor: 'pointer',
-        backgroundColor: 'red',
+       // backgroundColor: 'red',
+        
+        padding: '10px'
         // color: sideBarContext.sideBarExist? `${companyInformation?.primaryColor}`: 'var(--black)',
         // backgroundColor: optionIconColor,
         // color: 'var(--black)',
@@ -26,10 +28,10 @@ const Search = () => {
     }
     
     return(
-        <div>
-            <SearchIconContext.Provider value={styleSearchIcon}>
+        <div style={style}>
+            {/* <SearchIconContext.Provider value={styleSearchIcon}> */}
                 <SearchIcon_ />
-            </SearchIconContext.Provider>
+            {/* </SearchIconContext.Provider> */}
         </div>
     )
 }

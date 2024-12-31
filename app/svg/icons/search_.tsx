@@ -7,8 +7,12 @@ const SearchIcon_ = () => {
     //const searchIconContext = useContext(SearchIconContext);
 
     const style: CSSProperties = {
-        fontSize: '50px',
-        backgroundColor: 'transparent',
+        // widows: '100%',
+        // height: '100%',
+        // fontSize: '10px',
+         backgroundColor: 'transparent',
+       // padding: '10px',
+       // backgroundColor: 'red',
         border: 'none'
     }
     return(
