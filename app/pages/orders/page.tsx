@@ -32,6 +32,8 @@ import SwitchSections from './switchSections';
 const OrdersPage = () => {
 
 
+    const [screenWidth, setScreenWidth] = useState<number>(0); 
+
     const [loadingIconExist, setLoadingIconExit] = useState<boolean>(false);
 
     const [customer, setCustomer] = useState<CustomerDataParams | undefined>(undefined);
@@ -42,7 +44,7 @@ const OrdersPage = () => {
     const [bannerText, setBannerText] = useState<string | undefined>(undefined);
     const [bannerStatus, setBannerStatus] = useState<'success' | 'fail' | null>(null);
     const [orders, setOrders] = useState<OrderParams[] | undefined>(undefined);
-    const [activeSection, setActiveSection] = useState<'processingSection' | 'failseSection' | 'successSection'>('successSection');
+    const [activeSection, setActiveSection] = useState<'processingSection' | 'failseSection' | 'successSection'>(screenWidth > 800 ? 'successSection' : 'processingSection');
     //const [discountCodeValue, setDiscount]
 
     const setBanner = (visibility: boolean, text: string | undefined, status?: 'success' | 'fail' | null) => {
@@ -54,7 +56,6 @@ const OrdersPage = () => {
 
     
 
-  const [screenWidth, setScreenWidth] = useState<number>(0); 
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem("activeTheme") || "light" ;
