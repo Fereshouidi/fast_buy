@@ -1,7 +1,7 @@
 "use client";
 //import { useRouter } from "next/navigation";
 import Logo from "../headerForPhones/components/logo/logo";
-import Icons from "./components/icons/icons";
+//import Icons from "./components/icons/icons";
 import { CSSProperties, useContext, useEffect, useState } from "react";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import english from '@/app/languages/english.json';
