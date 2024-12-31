@@ -1,7 +1,4 @@
 'use client';
-import englist from '@/app/languages/english.json';
-import arabic from '@/app/languages/arabic.json';
-import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { CSSProperties, useContext, useRef } from 'react';
 import { productParams } from "@/app/contexts/productSelectForShowing";
 import PurchaseIcon from '@/app/svg/icons/purchase';
@@ -12,7 +9,6 @@ import { CustomerDataContext } from '@/app/contexts/customerData';
 import { useRouter } from 'next/navigation';
 import { purchaseParams } from '@/app/contexts/purchaseData';
 import { BannersContext } from '@/app/contexts/banners';
-import { shoppingCartParams } from '@/app/contexts/shoppingCart';
 import { ActiveLanguageContext } from '@/app/contexts/activeLanguage';
 
 type Params = {
