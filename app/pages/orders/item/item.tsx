@@ -85,7 +85,8 @@ const Item = ({order}: {order: OrderParams}) => {
     const styleStatus: CSSProperties = {
         display: 'flex',
         fontSize: 'var(--small-size)',
-        margin: '0 var(--small-margin)'
+        margin: '0 var(--small-margin)',
+        color: order.status == 'failed' ? 'red' : order.status == 'delivered' ? 'green' : ''
     }
     const styleNote: CSSProperties = {
         display: 'flex',
