@@ -44,7 +44,7 @@ const OrdersPage = () => {
     const [bannerText, setBannerText] = useState<string | undefined>(undefined);
     const [bannerStatus, setBannerStatus] = useState<'success' | 'fail' | null>(null);
     const [orders, setOrders] = useState<OrderParams[] | undefined>(undefined);
-    const [activeSection, setActiveSection] = useState<'processingSection' | 'failseSection' | 'successSection'>(window.innerWidth > 800 ? 'successSection' : 'processingSection');
+    const [activeSection, setActiveSection] = useState<'processingSection' | 'failseSection' | 'successSection'>(screenWidth > 800 ? 'successSection' : 'processingSection');
     //const [discountCodeValue, setDiscount]
 
     const setBanner = (visibility: boolean, text: string | undefined, status?: 'success' | 'fail' | null) => {
