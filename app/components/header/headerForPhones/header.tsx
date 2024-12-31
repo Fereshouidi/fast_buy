@@ -6,6 +6,8 @@ import { CSSProperties, useContext, useEffect, useState } from "react";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
+import Search from "./components/icons/searchButton/search";
+import OptionIcon from "@/app/svg/icons/option";
 //import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
 const Header = () => {
@@ -41,7 +43,7 @@ console.log(activeLanguage);
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '0 5%',
+    padding: '0 7%',
     boxSizing: 'border-box',
     boxShadow: '0 5px 15px var(--black-almost-transparnt)',
     direction: context.activeLanguage == 'english'? 'ltr':context.activeLanguage == 'arabic'? 'rtl': 'ltr',
@@ -52,8 +54,10 @@ console.log(activeLanguage);
     return(
         <>
             <div style={headerStyle}>
+                <OptionIcon/>
                 <Logo/>
-                <Icons/>
+                <Search/>
+                {/* <Icons/> */}
             </div>
         </>
     )
