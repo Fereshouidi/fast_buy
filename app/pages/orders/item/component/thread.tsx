@@ -31,7 +31,7 @@ const Thread = ({order}: parmas) => {
     }
     const styleThread: CSSProperties = {
         width: '90%',
-        height: '1px',
+        height: '2px',
         backgroundColor: 'var(--ashen)',
         opacity: 0.7,
         display: 'flex',
@@ -55,7 +55,7 @@ const Thread = ({order}: parmas) => {
     }
     const fromOrderedToProcessing: CSSProperties = {
         width: '25%',
-        height: '1px',
+        height: '100%',
         backgroundColor: order?.status == 'processing'? primaryColor : '',
         display: 'flex',
         justifyContent: 'space-between',
@@ -63,7 +63,7 @@ const Thread = ({order}: parmas) => {
     }
     const fromProcessingToPackeget: CSSProperties = {
         width: '25%',
-        height: '1px',
+        height: '100%',
         backgroundColor: order?.status == 'packaged' ? primaryColor : 'var(--ashen)',
         display: 'flex',
         justifyContent: 'end',
@@ -71,14 +71,14 @@ const Thread = ({order}: parmas) => {
     }
     const frompackagedToShipped: CSSProperties = {
         width: '25%',
-        height: '1px',
+        height: '100%',
         display: 'flex',
         justifyContent: 'end',
         alignItems: 'center'
     }
     const fromShippedToDelivered: CSSProperties = {
         width: '25%',
-        height: '1px',
+        height: '100%',
         display: 'flex',
         justifyContent: 'end',
         alignItems: 'center'

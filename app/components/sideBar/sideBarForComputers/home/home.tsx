@@ -48,7 +48,8 @@ const Home = () => {
     }
     const styleHover: CSSProperties = {
         ...style,
-        backgroundColor: companyInformation?.primaryColor
+        backgroundColor: companyInformation?.primaryColor,
+        color: 'red'
     }
     return(
         <li style={isHover? styleHover : style} 

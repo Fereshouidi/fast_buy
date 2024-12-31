@@ -10,4 +10,5 @@ export interface purchaseParams {
     quantity: number | undefined,
     totalPrice: number | undefined,
     discountCode?: discountCodeParams | string | null
+    like?: boolean 
 }

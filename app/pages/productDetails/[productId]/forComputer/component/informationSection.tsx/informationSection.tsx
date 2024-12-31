@@ -16,21 +16,24 @@ import './style.css';
 import { purchaseParams } from "@/app/contexts/purchaseData";
 import { CustomerDataContext } from '@/app/contexts/customerData';
 import DiscountCode from "./component/discountCode";
+import { shoppingCartParams } from "@/app/contexts/shoppingCart";
 
 
 type Params = {
     product: productParams | undefined,
     setProduct: (value: productParams) => void
+    shoppingCart: shoppingCartParams | undefined,
 }
-
-const InformationSection = ({product, setProduct}: Params) => {
+const InformationSection = ({product, setProduct, shoppingCart}: Params) => {
 
     const customer = useContext(CustomerDataContext);
 
     const [purchaseData, setPurchaseData] = useState<purchaseParams | undefined>(undefined);
     const [discountCodeAmount, setDiscountCodeAmount] = useState<{discount?: number | null, discountPercent?: number | null}>({discount: 0, discountPercent: 0});
     const [price, setPrice] = useState<number | undefined>(product?.discount? product.discount.newPrice : product?.price);
+    const [productinShoppingCart, setProductinShoppingCart] = useState<boolean>(false);
 
+   // console.log(shoppingCart?.products);
 
     useEffect(() => {
         if(purchaseData && price){
@@ -43,10 +46,20 @@ const InformationSection = ({product, setProduct}: Params) => {
     }, [price, purchaseData?.quantity, discountCodeAmount])
 
     useEffect(() => {
-        
-      //  alert(discountCodeAmount.discount)
+        if (shoppingCart?.products) {
 
-       // if (customer && product) {
+            for (let index = 0 ; index < shoppingCart?.products?.length ; index++) {
+                if (shoppingCart.products[index]._id == product?._id) {
+                    setProductinShoppingCart(true);
+                } else {
+                    setProductinShoppingCart(false);
+                }
+            }
+
+        }
+    }, [shoppingCart])
+
+    useEffect(() => {
             setPurchaseData({
                 buyer: customer?._id, 
                 product: product, 
@@ -56,7 +69,6 @@ const InformationSection = ({product, setProduct}: Params) => {
                 shoppingCart: customer?.ShoppingCart? customer.ShoppingCart._id : null,
                 discountCode: discountCodeAmount.discount || discountCodeAmount.discountPercent ? product?.discountCode?._id : null
             })
-        //} 
         
     }, [product])
 
@@ -92,7 +104,7 @@ const InformationSection = ({product, setProduct}: Params) => {
                 setDiscountCodeAmount={setDiscountCodeAmount}
             /> : null } 
             <Price product={product} setProduct={setProduct} discountCodeAmount={discountCodeAmount} price={price} setPrice={setPrice} purchaseData={purchaseData} setPurchaseData={setPurchaseData}/>
-            <PutInPurchaseBTN product={product} purchaseData={purchaseData} />
+            <PutInPurchaseBTN product={product} purchaseData={purchaseData} productinShoppingCart={productinShoppingCart} />
         </div>
     )
 }

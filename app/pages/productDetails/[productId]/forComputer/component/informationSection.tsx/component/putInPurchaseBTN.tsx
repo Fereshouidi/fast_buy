@@ -12,17 +12,20 @@ import { CustomerDataContext } from '@/app/contexts/customerData';
 import { useRouter } from 'next/navigation';
 import { purchaseParams } from '@/app/contexts/purchaseData';
 import { BannersContext } from '@/app/contexts/banners';
+import { shoppingCartParams } from '@/app/contexts/shoppingCart';
+import { ActiveLanguageContext } from '@/app/contexts/activeLanguage';
 
 type Params = {
     product: productParams | undefined,
     purchaseData: purchaseParams | undefined,
+    productinShoppingCart: boolean,
 }
-const PutInPurchaseBTN = ({product, purchaseData}: Params) => {
+const PutInPurchaseBTN = ({product, purchaseData, productinShoppingCart}: Params) => {
 
     const router = useRouter();
     
     const customer = useContext(CustomerDataContext);
-    const languageSelectorContext = useContext(LanguageSelectorContext);
+    const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
     const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
     const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
     const setBannerExist = useContext(BannersContext)?.setPurchaseStatusBanner;
@@ -36,10 +39,11 @@ const PutInPurchaseBTN = ({product, purchaseData}: Params) => {
 
     const handleClick = async() => {
 
-        if(!product?.quantity){
+        if(!product?.quantity || productinShoppingCart){
             return;
         }
 
+        
         setLoadingIcon(true)
         if(!btnRef.current){
           return;  
@@ -58,9 +62,7 @@ const PutInPurchaseBTN = ({product, purchaseData}: Params) => {
             setBannerStatus(201);
             setBannerExist(true);
             btnRef.current.style.backgroundColor = 'var(--black)';
-            localStorage.setItem('customerData', JSON.stringify(refreshAccount))
-            console.log(refreshAccount);
-            
+            localStorage.setItem('customerData', JSON.stringify(refreshAccount))            
         }
     }
     
@@ -72,7 +74,7 @@ const PutInPurchaseBTN = ({product, purchaseData}: Params) => {
         alignItems: 'center',
         justifyContent: 'center',
         margin: 'var(--large-margin)',
-        backgroundColor: 'var(--black)',
+        backgroundColor: productinShoppingCart? 'var(--ashen-semi-transparent)' : 'var(--black)',
         color: 'var(--white)',
         opacity: product?.quantity? '1' : '0.3',
         cursor: 'pointer' 
@@ -85,10 +87,8 @@ const PutInPurchaseBTN = ({product, purchaseData}: Params) => {
         <div style={style} onClick={handleClick} ref={btnRef}>
             <PurchaseIcon/>
             <span style={stylePrice} id="put_in-purchase">
-                {languageSelectorContext?.activeLanguage == 'englist' ? englist.putInPurchase 
-                :languageSelectorContext?.activeLanguage == 'arabic' ? arabic.putInPurchase
-                :englist.putInPurchase 
-                }
+                {productinShoppingCart ? activeLanguage?.inPurchaseW : activeLanguage?.putInPurchase}
+                    
             </span>
         </div>
     )

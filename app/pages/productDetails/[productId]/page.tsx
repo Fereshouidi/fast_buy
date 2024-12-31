@@ -28,6 +28,9 @@ import { BannersContext } from "@/app/contexts/banners";
 import PurchaseStatusBanner from "@/app/banners/addedToPurchase";
 import { BannerContext } from "@/app/contexts/bannerForEverything";
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
+import { getShoppingCartsByCustomerId } from '@/app/crud';
+import { purchaseParams } from '@/app/contexts/purchaseData';
+import { shoppingCartParams } from '@/app/contexts/shoppingCart';
 
 
 interface propsParams {
@@ -58,6 +61,7 @@ const ProductDetails = (props: propsParams) => {
     const [bannerText, setBannerText] = useState<string | undefined>(undefined);
     const [bannerStatus, setBannerStatus] = useState<'success' | 'fail' | null>(null);
     const [activeLanguage_, setActiveLanguage_] = useState<typeof english | typeof arabic>(english);
+    const [shoppingCart, setShoppingCart] = useState<shoppingCartParams | undefined>(undefined);
 
     console.log(bannerStatus);
     
@@ -90,6 +94,14 @@ const ProductDetails = (props: propsParams) => {
     }
     getProduct()
 }, [])
+
+useEffect(() => {
+  const fetchData = async() => {
+    const shoppingCart =  await getShoppingCartsByCustomerId(customerData?._id)
+    setShoppingCart(shoppingCart[0])    
+  }
+  fetchData()
+}, [customerData])
 
 useEffect(() => {
     setImageSliderWidth(70);
@@ -161,6 +173,14 @@ useEffect(() => {
   }, [theme]);
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedLanguage = localStorage.getItem('activeLanguage_');    
+      setActiveLanguage_(storedLanguage == JSON.stringify(arabic) ? JSON.parse(storedLanguage) : english);
+    }
+  
+    }, [typeof window || localStorage.getItem('activeLanguage_')]) 
+
+  useEffect(() => {
     
     if(theme == 'dark'){
       document.body.classList.remove('light');
@@ -213,7 +233,7 @@ useEffect(() => {
                                             <PurchaseStatusBanner/>
                                             {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
                                             {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-                                            {screenWidth > 800 ? <PageForComputer product={product} setProduct={setProduct}/> : <PageForPhone product={product} setProduct={setProduct}/>}
+                                            {screenWidth > 800 ? <PageForComputer product={product} setProduct={setProduct} shoppingCart={shoppingCart}/> : <PageForPhone product={product} setProduct={setProduct} shoppingCart={shoppingCart}/>}
                                             <About/>
                                           </ActiveLanguageContext.Provider>
                                         </BannerContext.Provider>

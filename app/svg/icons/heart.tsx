@@ -29,9 +29,9 @@ const HeartIcon = () => {
     }
 
     return (
-        <div style={style}>
+        //<div style={style}>
             <FontAwesomeIcon style={styleIcon} icon={faHeart}/>
-        </div>
+       // </div>
     )
 }
 export default HeartIcon;

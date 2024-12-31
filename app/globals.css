@@ -263,7 +263,7 @@ header div{
 }
 .sideBar-background .sideBar li a:hover{
   outline: none;
-  color: var(--black);
+  color: var(--white);
 
 }
 .sideBar-background .sideBar li:not(.categoriesSelector):hover{

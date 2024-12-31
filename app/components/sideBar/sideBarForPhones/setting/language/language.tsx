@@ -76,7 +76,9 @@ const LanguageSelector = () => {
 
     const styleHover: CSSProperties = {
         ...styleLi,
-        backgroundColor: companyInformation?.primaryColor
+        backgroundColor: companyInformation?.primaryColor,
+        color: 'var(--white)',
+
     }
     return(
         <li style={isHover? styleHover : styleLi} 

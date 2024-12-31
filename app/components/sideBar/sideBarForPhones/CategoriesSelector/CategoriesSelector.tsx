@@ -142,6 +142,7 @@ const styleChildren: CSSProperties = {
 }
 const styleDownIcon: CSSProperties = {
     backgroundColor: 'transparent',
+    color: 'var(--black)',
     width: 'var(--short-width)',
     height: 'var(--short-width)',
     padding: '10px',

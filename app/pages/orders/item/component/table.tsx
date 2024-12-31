@@ -67,7 +67,7 @@ const TableDetails = ({order}: parmas) => {
                     order?.purchases?.map((purchase) => {
                         return <tr key={purchase._id}>
                                     <td>{activeLanguage?.activeLanguage == 'arabic'? purchase.product?.name.arabic : purchase.product?.name.english}</td>
-                                    <td style={{display: 'flex', justifyContent: 'center', border: 'none'}}> <div style={{...styleColor, backgroundColor: purchase.product?.color}}></div> </td>
+                                    <td style={{display: 'flex', justifyContent: 'center', border: 'none'}}> {purchase.product?.color ?<div style={{...styleColor, backgroundColor: purchase.product?.color}}></div> : 'null'} </td>
                                     <td>{activeLanguage?.activeLanguage == "arabic" ? purchase.product?.categorie.name.arabic : purchase.product?.categorie.name.english}</td>
                                     <td>{purchase.quantity}</td>
                                     <td>{purchase.totalPrice}</td>

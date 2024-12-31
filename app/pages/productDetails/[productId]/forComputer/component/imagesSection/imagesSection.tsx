@@ -7,9 +7,17 @@ import RightArrow from "@/app/svg/icons/rightArrowForSlider";
 import LeftArrow from "@/app/svg/icons/leftArrowForSlider";
 import { ActiveImageContext } from "@/app/contexts/activeImageForComputer";
 import { productParams } from "@/app/contexts/productSelectForShowing";
+import { shoppingCartParams } from "@/app/contexts/shoppingCart";
+import { purchaseParams } from "@/app/contexts/purchaseData";
 
+type Params = {
+    product: productParams | undefined,
+    setProduct?: (value: productParams) => void,
+    purchase: purchaseParams | undefined,
+    shoppingCart: shoppingCartParams | undefined,
+}
 
-const ImagesSection = ({product}: {product: productParams | undefined}) => {
+const ImagesSection = ({product, purchase, shoppingCart}: Params) => {
 
     const activeImageContext = useContext(ActiveImageContext);
    
@@ -36,7 +44,7 @@ const ImagesSection = ({product}: {product: productParams | undefined}) => {
 
     return (
         <div style={style}>
-            <ImageDisplay product={product}/>
+            <ImageDisplay product={product} purchase={purchase} shoppingCart={shoppingCart}/>
             {
                 product?.images && product.images.length > 0 ? 
             

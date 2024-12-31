@@ -2,17 +2,24 @@
 
 import { CSSProperties, useContext } from "react";
 import Slider from "./slider/slider";
-import ImageDisplay from "./imageDisplay/imageDisplay";
+import ImageDisplay from "./imageDisplay/imageDisplay"
 import RightArrow from "@/app/svg/icons/rightArrowForSlider";
 import LeftArrow from "@/app/svg/icons/leftArrowForSlider";
-import { ActiveImageContext_ForPhone } from "@/app/contexts/activeImageForPhone";
+import { ActiveImageContext } from "@/app/contexts/activeImageForComputer";
 import { productParams } from "@/app/contexts/productSelectForShowing";
+import { shoppingCartParams } from "@/app/contexts/shoppingCart";
+import { purchaseParams } from "@/app/contexts/purchaseData";
 
+type Params = {
+    product: productParams | undefined,
+    setProduct?: (value: productParams) => void,
+    purchase: purchaseParams | undefined,
+    shoppingCart: shoppingCartParams | undefined,
+}
 
+const ImagesSection = ({product, purchase, shoppingCart}: Params) => {
 
-const ImagesSection = ({product}: {product: productParams | undefined}) => {
-
-    const activeImageContext = useContext(ActiveImageContext_ForPhone);
+    const activeImageContext = useContext(ActiveImageContext);
    
 
     const style: CSSProperties = {
@@ -37,7 +44,7 @@ const ImagesSection = ({product}: {product: productParams | undefined}) => {
 
     return (
         <div style={style}>
-            <ImageDisplay product={product}/>
+            <ImageDisplay product={product} purchase={purchase} shoppingCart={shoppingCart}/>
             {
                 product?.images && product.images.length > 0 ? 
             
