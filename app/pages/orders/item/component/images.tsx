@@ -3,6 +3,7 @@
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 import { productParams } from "@/app/contexts/productSelectForShowing";
 import { CSSProperties, useContext } from "react";
+import { useRouter } from "next/navigation";
 
 type parmas = {
     most3ProductExpensive: productParams[] | undefined
@@ -11,7 +12,12 @@ type parmas = {
 const ImagesDiv = ({most3ProductExpensive, style}: parmas) => {
 
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
+    const router = useRouter();
 
+    const goToProductDetailsPage = (event: React.MouseEvent<HTMLDivElement>, productId: string) => {
+        event.stopPropagation()
+        router.push(`/pages/productDetails/${productId}`)
+    }
     const styleImage: CSSProperties = {
         width: 'calc(var(--primary-width) /1.5)',
         height: 'calc(var(--primary-width) /1.5)',
@@ -23,7 +29,7 @@ const ImagesDiv = ({most3ProductExpensive, style}: parmas) => {
     return (
         <div style={style}>{
             most3ProductExpensive?.map((product) => {
-                return <img key={product._id} src={product?.imagePrincipal} alt="" style={styleImage} />
+                return <img key={product._id} src={product?.imagePrincipal} onClick={(event) => goToProductDetailsPage(event, product._id)} style={styleImage} />
             })
         }</div>
     )
