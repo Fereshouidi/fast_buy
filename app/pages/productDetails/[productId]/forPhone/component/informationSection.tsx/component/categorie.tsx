@@ -15,7 +15,7 @@ const Categorie = ({product}: {product: productParams | undefined}) => {
         display: 'flex',
         alignItems: 'center',
         margin: 'var(--large-margin)',
-        fontSize: 'calc(var(--medium-size)/1.2)',
+        fontSize: 'calc(var(--medium-size)/1.4)',
         fontWeight: '400',
         color: 'var(--black)'
     }
