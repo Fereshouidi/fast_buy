@@ -1,14 +1,18 @@
 'use client';
-import { SearchIconContext } from "@/app/contexts/searchIconConext";
-import { useContext } from "react";
+import { CSSProperties } from "react";
 
 
 const SearchIcon_ = () => {
 
-    const searchIconContext = useContext(SearchIconContext);
+    //const searchIconContext = useContext(SearchIconContext);
 
+    const style: CSSProperties = {
+        fontSize: '50px',
+        backgroundColor: 'transparent',
+        border: 'none'
+    }
     return(
-        <svg  style={searchIconContext}
+        <svg  style={ style}
             className="search-icon primary-border" 
             xmlns="http://www.w3.org/2000/svg" 
             viewBox="0 0 18 24" 

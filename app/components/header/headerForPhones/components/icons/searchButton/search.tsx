@@ -7,12 +7,22 @@ const Search = () => {
 
 
     const styleSearchIcon:CSSProperties = {
-        color: 'var(--black)',
-        border: 'none',
+        width: 'var(--primary-width)',
+        height: 'var(--primary-height)',
+        borderRadius: '50px',
         display: 'flex',
-        justifyContent: 'center',
         alignItems: 'center',
-        cursor: "pointer"
+        justifyContent: 'center',
+        cursor: 'pointer',
+        backgroundColor: 'red',
+        // color: sideBarContext.sideBarExist? `${companyInformation?.primaryColor}`: 'var(--black)',
+        // backgroundColor: optionIconColor,
+        // color: 'var(--black)',
+        // border: 'none',
+        // display: 'flex',
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        // cursor: "pointer"
     }
     
     return(
