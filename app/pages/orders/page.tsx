@@ -98,7 +98,7 @@ useEffect(() => {
 useEffect(() => {
   if (typeof window !== "undefined") {
     const storedLanguage = localStorage.getItem('activeLanguage_');    
-    setActiveLanguage_(storedLanguage ? JSON.parse(storedLanguage) : english);
+    setActiveLanguage_(storedLanguage == JSON.stringify(arabic) ? JSON.parse(storedLanguage) : english);
   }
 
   }, [typeof window || localStorage.getItem('activeLanguage_')]) 
