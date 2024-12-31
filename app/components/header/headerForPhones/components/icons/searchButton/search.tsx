@@ -14,6 +14,7 @@ const Search = () => {
         alignItems: 'center',
         justifyContent: 'center',
         cursor: 'pointer',
+        color: 'var(--black)',
        // backgroundColor: 'red',
         
         padding: '10px'
