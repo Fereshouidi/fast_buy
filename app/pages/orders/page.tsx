@@ -42,7 +42,7 @@ const OrdersPage = () => {
     const [bannerText, setBannerText] = useState<string | undefined>(undefined);
     const [bannerStatus, setBannerStatus] = useState<'success' | 'fail' | null>(null);
     const [orders, setOrders] = useState<OrderParams[] | undefined>(undefined);
-    const [activeSection, setActiveSection] = useState<'failseSection' | 'successSection'>('successSection');
+    const [activeSection, setActiveSection] = useState<'processingSection' | 'failseSection' | 'successSection'>('successSection');
     //const [discountCodeValue, setDiscount]
 
     const setBanner = (visibility: boolean, text: string | undefined, status?: 'success' | 'fail' | null) => {
@@ -215,7 +215,7 @@ useEffect(() => {
     minHeight: '100vh',
     backgroundColor: 'var(--white)',
     display: 'flex',
-    margin: 'var(--large-margin)',
+    margin: screenWidth > 800 ? 'var(--large-margin)' : '',
     borderRadius: '20px',
     //backgroundColor: 'red',
     padding: '0',
@@ -242,9 +242,10 @@ useEffect(() => {
                               {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
                               {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
                               <div style={style} className='page'>
-                                <ProccessiongSection orders={orders} setOrders={setOrders}/>
+                                {screenWidth > 800 ? <ProccessiongSection orders={orders} setOrders={setOrders}/> : null}
                                 <div style={style_fs_and_ss}>
                                     <SwitchSections activeSection={activeSection} setActiveSection={setActiveSection}/>
+                                    {activeSection == 'processingSection' &&  <ProccessiongSection orders={orders} setOrders={setOrders}/>}
                                     {activeSection == 'failseSection' && <FailSection orders={orders} setOrders={setOrders}/>} 
                                     {activeSection == 'successSection' && <SuccessSection orders={orders} setOrders={setOrders}/>}
                                 </div>

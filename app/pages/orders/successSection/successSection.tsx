@@ -36,7 +36,7 @@ const SuccessSection = ({orders}: params) => {
         minHeight: '100vh',
         backgroundColor: 'var(--white)',
         //display: 'flex',
-        margin: 'var(--large-margin)',
+        margin: 'var(--large-margin) 0',
         borderRadius: '20px',
         padding: 'var(--large-padding)'
     }
