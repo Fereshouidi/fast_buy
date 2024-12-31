@@ -7,7 +7,7 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
 import Search from "./components/icons/searchButton/search";
-import OptionIcon from "@/app/svg/icons/option";
+import Options from "../headerForComputer/components/option/option";
 //import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
 const Header = () => {
@@ -54,7 +54,7 @@ console.log(activeLanguage);
     return(
         <>
             <div style={headerStyle}>
-                <OptionIcon/>
+                <Options/>
                 <Logo/>
                 <Search/>
                 {/* <Icons/> */}
