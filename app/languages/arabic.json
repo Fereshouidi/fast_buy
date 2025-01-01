@@ -111,7 +111,10 @@
     "deliveryStagesW": "مراحل التوصيل ",
     "OrderIdW": "معرف الطلب",
     "productsDetails": "تفاصيل المنتجات",
-    "noteW": "ملاحظة"
+    "noteW": "ملاحظة",
+    "customerW": "العميل",
+    "OrderDateW": "تاريخ الطلب"
+
 
 
 }

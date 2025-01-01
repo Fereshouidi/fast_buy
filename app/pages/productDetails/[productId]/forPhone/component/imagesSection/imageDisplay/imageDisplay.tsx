@@ -9,18 +9,18 @@ import noAvailableImage from '@/app/images/OIP.jpg'
 import { productParams } from "@/app/contexts/productSelectForShowing";
 import { shoppingCartParams } from "@/app/contexts/shoppingCart";
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
-import { updateLikeStatus } from "@/app/crud";
 import { purchaseParams } from "@/app/contexts/purchaseData";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
 type Params = {
     product: productParams | undefined,
     setProduct?: (value: productParams) => void,
-    purchase: purchaseParams | undefined,
+    purchase: purchaseParams | undefined
+    setPurchase: (value: purchaseParams | undefined) => void    
     shoppingCart: shoppingCartParams | undefined,
 }
 
-const ImageDisplay = ({product, purchase}: Params) => {
+const ImageDisplay = ({product, purchase, setPurchase}: Params) => {
 
     const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
     const activeImageContext = useContext(ActiveImageContext);
@@ -31,9 +31,19 @@ const ImageDisplay = ({product, purchase}: Params) => {
     useEffect(() => {
         setInFavorite(purchase?.like)
     }, [purchase])
+
     const handleHeartClick = async() => {
         setInFavorite(!inFavorite);
-        await updateLikeStatus(purchase?._id, !inFavorite)
+        if (purchase) {
+            setPurchase({
+                ...purchase,
+                like: !inFavorite
+            })
+        } else {
+            
+        }
+        
+        
     }
     const style: CSSProperties = {
         maxWidth: '70vh',
@@ -72,7 +82,8 @@ const ImageDisplay = ({product, purchase}: Params) => {
     }
     return (
         <div style={style}>
-            {product?.name && product.images.length > 0 ? <div style={styleHeart} onClick={handleHeartClick}><HeartIcon /></div> : null}
+            {/* {product?.name && product.images.length > 0 ? <div style={styleHeart} onClick={handleHeartClick}><HeartIcon /></div> : null} */}
+            <div style={styleHeart} onClick={handleHeartClick}><HeartIcon /></div>
             <LeftArrow/>
             <img 
                 style={styleImg}

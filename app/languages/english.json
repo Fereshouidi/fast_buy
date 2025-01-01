@@ -112,8 +112,9 @@
     "deliveryStagesW": "Delivery stages ",
     "OrderIdW": "Order ID",
     "productsDetails": "Products details",
-    "noteW": "Note"
-
+    "noteW": "Note",
+    "customerW": "customer",
+    "OrderDateW": "Order date"
 
     
 }

@@ -8,12 +8,16 @@ import { purchaseParams } from "@/app/contexts/purchaseData";
 
 type Params = {
     product: productParams | undefined,
-    setProduct: (value: productParams) => void
+    setProduct: (value: productParams) => void,
+    purchase?: purchaseParams | undefined
+    setPurchase?: (value: purchaseParams | undefined) => void    
     shoppingCart: shoppingCartParams | undefined,
 }
 const PageForComputer = ({product, setProduct, shoppingCart}: Params) => {
 
     const [purchase, setPurchase] = useState<purchaseParams | undefined>(undefined);
+   // const [purchaseData, setPurchaseData] = useState<purchaseParams | undefined>(undefined);
+
     
     useEffect(() => {
         if (shoppingCart?.purchases) {
@@ -36,8 +40,8 @@ const PageForComputer = ({product, setProduct, shoppingCart}: Params) => {
     }
     return (
         <div id="the-product-detail-page-of-computer" style={style}>
-            <ImagesSection product={product} setProduct={setProduct} purchase={purchase} shoppingCart={shoppingCart}/>
-            <InformationSection product={product} setProduct={setProduct} shoppingCart={shoppingCart}/>
+            <ImagesSection product={product} setProduct={setProduct} purchase={purchase} setPurchase={setPurchase} shoppingCart={shoppingCart}/>
+            <InformationSection product={product} setProduct={setProduct} purchaseData={purchase} setPurchaseData={setPurchase} shoppingCart={shoppingCart}/>
         </div>
     )
 }

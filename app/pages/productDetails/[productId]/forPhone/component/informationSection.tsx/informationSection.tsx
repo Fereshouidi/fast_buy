@@ -21,14 +21,16 @@ import { shoppingCartParams } from "@/app/contexts/shoppingCart";
 
 type Params = {
     product: productParams | undefined,
-    setProduct: (value: productParams) => void
+    setProduct: (value: productParams ) => void
+    purchaseData: purchaseParams | undefined
+    setPurchaseData: (value: purchaseParams | undefined) => void
     shoppingCart: shoppingCartParams | undefined,
 }
-const InformationSection = ({product, setProduct, shoppingCart}: Params) => {
+const InformationSection = ({product, setProduct, purchaseData, setPurchaseData, shoppingCart}: Params) => {
 
     const customer = useContext(CustomerDataContext);
 
-    const [purchaseData, setPurchaseData] = useState<purchaseParams | undefined>(undefined);
+   // const [purchaseData, setPurchaseData] = useState<purchaseParams | undefined>(undefined);
     const [discountCodeAmount, setDiscountCodeAmount] = useState<{discount?: number | null, discountPercent?: number | null}>({discount: 0, discountPercent: 0});
     const [price, setPrice] = useState<number | undefined>(product?.discount? product.discount.newPrice : product?.price);
     const [productinShoppingCart, setProductinShoppingCart] = useState<boolean>(false);

@@ -6,7 +6,7 @@ export interface purchaseParams {
     buyer: string | undefined,
     product: productParams | undefined,
     shoppingCart: string | null,
-    discount: string | null | undefined,
+    discount?: string | null | undefined,
     quantity: number | undefined,
     totalPrice: number | undefined,
     discountCode?: discountCodeParams | string | null

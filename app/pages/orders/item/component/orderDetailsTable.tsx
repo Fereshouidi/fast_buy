@@ -1,8 +1,9 @@
 'use client';
 
-import { CSSProperties } from "react";
+import { CSSProperties, useContext } from "react";
 import '@/app/pages/orders/item/component/style.css'
 import { OrderParams } from "@/app/contexts/order";
+import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 
 type parmas = {
     order: OrderParams | undefined
@@ -10,7 +11,7 @@ type parmas = {
 }
 const OrderDetailsTable = ({order}: parmas) => {
 
-    // const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
+    const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
 
     const timeFormat = (date: Date) => {
         const date_ = new Date(date);
@@ -45,10 +46,10 @@ const OrderDetailsTable = ({order}: parmas) => {
             <table style={styleTable}>
                 <thead>
                     <tr>
-                        <th>Customer</th>
-                        <th>Adress</th>
-                        <th>Payment Method</th>
-                        <th>Order date</th>
+                        <th>{activeLanguage?.customerW}</th>
+                        <th>{activeLanguage?.fullAdressW}</th>
+                        <th>{activeLanguage?.paymentMethodW}</th>
+                        <th>{activeLanguage?.OrderDateW}</th>
                     </tr>
                 </thead>
                 <tbody>

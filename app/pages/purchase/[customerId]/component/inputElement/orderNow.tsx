@@ -38,7 +38,8 @@ const OrderNow = ({customer, shoppingCart, setShoppingCart}: Params) => {
             await addOrder({
                 ...shoppingCart,
                 status: 'processing',
-                customer: customer
+                customer: customer,
+                totalPrice: (shoppingCart.totalPrice || 0) + (shoppingCart.shippingCost || 0)
             })
             setShoppingCart({})
 

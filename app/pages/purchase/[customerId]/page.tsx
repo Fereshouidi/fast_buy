@@ -160,7 +160,6 @@ useEffect(() => {
     return null;
 };
   useEffect(() => {
-    console.log(customer);
     
     const fetchChoppingCart = async() => {
       const shoppingCarts = await getShoppingCartsByCustomerId(customer?._id);
@@ -172,7 +171,7 @@ useEffect(() => {
       
     }
     fetchChoppingCart()
-  }, [customer || getDependency() ])
+  }, [customer || shoppingCart])
 
   useEffect(() => {
     if (typeof window !== "undefined") {

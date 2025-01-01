@@ -261,8 +261,10 @@ export const gtOrdersByCustomer = async (customerId) => {
 export const updateLikeStatus = async (purchaseId, likeStatus) => {
 
     try {
-        const purchase = await axios.put(url + '/update/likeStatus' , { purchaseId, likeStatus })                
-        return purchase.data;
+        const response = await axios.put(url + '/update/likeStatus' , { purchaseId, likeStatus })     
+        console.log(response.data);
+                   
+        return response.data;
     }catch(err) {
         throw err;
     }

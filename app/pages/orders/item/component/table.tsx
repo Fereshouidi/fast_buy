@@ -78,7 +78,7 @@ const TableDetails = ({order}: parmas) => {
                 </tbody>
                 <tfoot style={styleTFoot}>
                     <tr>
-                        <td colSpan={4} style={{textAlign: 'start', padding: '0 var(--extra-large-padding)'}}>total price</td>
+                        <td colSpan={4} style={{textAlign: 'start', padding: '0 var(--extra-large-padding)'}}>{activeLanguage?.totalPriceW}</td>
                         <td>{order?.totalPrice}</td>
                     </tr>
                 </tfoot>

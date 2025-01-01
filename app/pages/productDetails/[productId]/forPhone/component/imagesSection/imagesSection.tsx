@@ -2,7 +2,7 @@
 
 import { CSSProperties, useContext } from "react";
 import Slider from "./slider/slider";
-import ImageDisplay from "./imageDisplay/imageDisplay"
+import ImageDisplay from "./imageDisplay/imageDisplay";
 import RightArrow from "@/app/svg/icons/rightArrowForSlider";
 import LeftArrow from "@/app/svg/icons/leftArrowForSlider";
 import { ActiveImageContext } from "@/app/contexts/activeImageForComputer";
@@ -13,11 +13,12 @@ import { purchaseParams } from "@/app/contexts/purchaseData";
 type Params = {
     product: productParams | undefined,
     setProduct?: (value: productParams) => void,
-    purchase: purchaseParams | undefined,
+    purchase: purchaseParams | undefined
+    setPurchase: (value: purchaseParams | undefined) => void    
     shoppingCart: shoppingCartParams | undefined,
 }
 
-const ImagesSection = ({product, purchase, shoppingCart}: Params) => {
+const ImagesSection = ({product, purchase, setPurchase, shoppingCart}: Params) => {
 
     const activeImageContext = useContext(ActiveImageContext);
    
@@ -44,7 +45,7 @@ const ImagesSection = ({product, purchase, shoppingCart}: Params) => {
 
     return (
         <div style={style}>
-            <ImageDisplay product={product} purchase={purchase} shoppingCart={shoppingCart}/>
+            <ImageDisplay product={product} purchase={purchase} setPurchase={setPurchase} shoppingCart={shoppingCart}/>
             {
                 product?.images && product.images.length > 0 ? 
             
