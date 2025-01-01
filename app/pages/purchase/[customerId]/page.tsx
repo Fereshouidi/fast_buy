@@ -153,12 +153,12 @@ useEffect(() => {
     }
   }, [typeof window != 'undefined' ? localStorage.getItem("customerData") : null]);
 
-  const getDependency = () => {
-    if (shoppingCart && shoppingCart.purchases) {
-        return shoppingCart;
-    }
-    return null;
-};
+//   const getDependency = () => {
+//     if (shoppingCart && shoppingCart.purchases) {
+//         return shoppingCart;
+//     }
+//     return null;
+// };
   useEffect(() => {
     
     const fetchChoppingCart = async() => {
