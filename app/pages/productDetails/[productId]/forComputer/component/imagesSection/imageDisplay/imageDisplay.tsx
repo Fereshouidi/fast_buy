@@ -11,7 +11,6 @@ import { shoppingCartParams } from "@/app/contexts/shoppingCart";
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 import { purchaseParams } from "@/app/contexts/purchaseData";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
-import { updateLikeStatus } from "@/app/crud";
 import { CustomerDataContext, CustomerDataParams } from "@/app/contexts/customerData";
 import { updateCustomer } from "@/app/crud";
 
@@ -31,18 +30,18 @@ const ImageDisplay = ({product, purchase, setPurchase, shoppingCart}: Params) =>
     const activeImageIndex = activeImageContext?.activeImageIndex || 0;
     const activeLanguag = useContext(ActiveLanguageContext)?.activeLanguage;
     const [inFavorite, setInFavorite] = useState<boolean | undefined>(false);
-    const [purchaseInShoppingCart, setPurchadeInShoppingCart] = useState<boolean>(false);
+    //const [purchaseInShoppingCart, setPurchadeInShoppingCart] = useState<boolean>(false);
 
-    useEffect(() => {
-        if (shoppingCart?.purchases) {
-            for (let i = 0 ; i < shoppingCart?.purchases?.length ; i++) {
-                if (shoppingCart.purchases[i].product?._id == product?._id) {
-                    setPurchadeInShoppingCart(true);
-                }
-            }
-        }
+    // useEffect(() => {
+    //     if (shoppingCart?.purchases) {
+    //         for (let i = 0 ; i < shoppingCart?.purchases?.length ; i++) {
+    //             if (shoppingCart.purchases[i].product?._id == product?._id) {
+    //                 setPurchadeInShoppingCart(true);
+    //             }
+    //         }
+    //     }
         
-    }, [shoppingCart, purchase])
+    // }, [shoppingCart, purchase])
 
     useEffect(() => {
         setInFavorite(purchase?.like)
@@ -58,7 +57,7 @@ const ImageDisplay = ({product, purchase, setPurchase, shoppingCart}: Params) =>
         }
 
         if (!inFavorite && customer?.favorite?.every(item => typeof item._id === 'string')) {
-            let updatedCustomer: CustomerDataParams = {
+            const updatedCustomer: CustomerDataParams = {
                 ...customer,
                 favorite: customer.favorite != undefined && product ? [...customer.favorite, product] : product ? [product] : undefined,
             };
