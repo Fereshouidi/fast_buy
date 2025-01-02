@@ -4,6 +4,8 @@ import { OrderParams } from "@/app/contexts/order";
 import { CSSProperties, useContext, useEffect, useState } from "react";
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 import Item from "../item/item";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBan, faBoxOpen, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 type params = {
     orders: OrderParams[] | undefined
@@ -52,14 +54,39 @@ const SuccessSection = ({orders}: params) => {
         margin: window.innerWidth > 800 ? 'var(--large-margin) 0' : '',
 
     }
+    const StyleEmptySuccessOrderDiv: CSSProperties = {
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        height: 'auto',
+        padding: '10vh',
+        opacity: 0.7
+    }
+    const StyleEmptySuccessOrder: CSSProperties = {
+        width: '40%',
+       // backgroundColor: 'blue',
+        height: 'auto',
+        margin: 'var(--large-margin)'
+    }
     return (
         <div style={style}>
             <h4 style={styleH4}>{activeLanguage?.orderStatus.deliveredW + ' (' + (successOrders?.length || 0) + ') :'}</h4>
-            <div className="item" style={styleItemsContainer}>{
-                successOrders?.map((order) => {
-                    return <Item key={order._id} order={order}/>
-                })
-            }</div>
+            {successOrders && successOrders.length > 0 ? 
+
+                <div className="item" style={styleItemsContainer}>{
+                    successOrders?.map((order) => {
+                        return <Item key={order._id} order={order}/>
+                    })
+                }</div>
+
+                :  <div style={StyleEmptySuccessOrderDiv}> 
+                        <FontAwesomeIcon icon={faBoxOpen} style={StyleEmptySuccessOrder}/> 
+                        <p>{activeLanguage?.noSuccessOrderP}</p>
+                    </div>
+            }
+            
         </div>
     )
 }

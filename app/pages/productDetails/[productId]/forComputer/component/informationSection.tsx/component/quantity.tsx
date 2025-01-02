@@ -57,7 +57,7 @@ const Quantity = ({product, purchaseData, setPurchaseData}: Params) => {
                 : englist.quantity + ' : '
             }</span>
 
-            <select style={styleColorDiv} id="selectQuantitue" onChange={(event) => handleChange(event)}>
+            <select style={styleColorDiv} id="selectQuantitue" onChange={(event) => handleChange(event)} value={purchaseData?.quantity}>
                 {Array.from({ length: product?.quantity? product?.quantity : 0 }, (_, count) => (
                     <option key={count} value={count + 1}>{count + 1}</option>
                 ))}

@@ -57,11 +57,6 @@ const App = () => {
 const [conpanyInformations, setConpanyInformations] = useState<companyInformationsParams | undefined>();
 
 useEffect(() => {
-  // if (typeof window !== "undefined") {
-  //   setActiveLanguage_(() => {
-  //     if(localStorage.getItem('activeLanguage') == 'english') 
-  //   })
-  // }
   if (typeof window !== "undefined") {
     const storedLanguage = localStorage.getItem('activeLanguage_');
     setActiveLanguage_(storedLanguage ? JSON.parse(storedLanguage) : null);
@@ -70,8 +65,10 @@ useEffect(() => {
   }, []) 
 
 useEffect(() => {
+  
     const fetchData = async() => {
         const conpanyInformationsData = await getConpanyInformations();
+        console.log(conpanyInformationsData);
         setConpanyInformations(conpanyInformationsData);
         console.log(conpanyInformationsData);
     }

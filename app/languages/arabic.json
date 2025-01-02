@@ -113,10 +113,10 @@
     "productsDetails": "تفاصيل المنتجات",
     "noteW": "ملاحظة",
     "customerW": "العميل",
-    "OrderDateW": "تاريخ الطلب"
-
-
-
+    "OrderDateW": "تاريخ الطلب",
+    "noSuccessOrderP": "لا يوجد طلبات ناجحة !",
+    "noFailOrderP": "لا يوجد طلبات فاشلة !",
+    "noProcessingOrderP": "لا يوجد طلبات بصدد المعالجة !"
 }
 
 

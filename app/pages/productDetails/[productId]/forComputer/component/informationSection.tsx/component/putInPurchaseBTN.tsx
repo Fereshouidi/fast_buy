@@ -4,7 +4,7 @@ import { productParams } from "@/app/contexts/productSelectForShowing";
 import PurchaseIcon from '@/app/svg/icons/purchase';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 import { LoadingIconContext } from '@/app/contexts/loadingIcon';
-import { addPurchase, getCustomerById } from '@/app/crud';
+import { getCustomerById, putPurchaseInShoppingCart } from '@/app/crud';
 import { CustomerDataContext } from '@/app/contexts/customerData';
 import { useRouter } from 'next/navigation';
 import { purchaseParams } from '@/app/contexts/purchaseData';
@@ -15,8 +15,9 @@ type Params = {
     product: productParams | undefined,
     purchaseData: purchaseParams | undefined,
     productinShoppingCart: boolean,
+    setProductinShoppingCart: (value: boolean) => void;
 }
-const PutInPurchaseBTN = ({product, purchaseData, productinShoppingCart}: Params) => {
+const PutInPurchaseBTN = ({product, purchaseData, productinShoppingCart, setProductinShoppingCart}: Params) => {
 
     const router = useRouter();
     
@@ -35,7 +36,7 @@ const PutInPurchaseBTN = ({product, purchaseData, productinShoppingCart}: Params
 
     const handleClick = async() => {
 
-        if(!product?.quantity || productinShoppingCart){
+        if(!product?.quantity || productinShoppingCart == true || productinShoppingCart == undefined){
             return;
         }
 
@@ -50,16 +51,28 @@ const PutInPurchaseBTN = ({product, purchaseData, productinShoppingCart}: Params
         if(!customer){
             return router.push('/pages/register');
         }
-        const newPurchase = await addPurchase(purchaseData);
-        const refreshAccount = await getCustomerById(newPurchase.newPurchase.buyer);
-        
-        if(newPurchase && typeof window != 'undefined'){
-            setLoadingIcon(false);
-            setBannerStatus(201);
-            setBannerExist(true);
-            btnRef.current.style.backgroundColor = 'var(--black)';
-            localStorage.setItem('customerData', JSON.stringify(refreshAccount))            
+        console.log(purchaseData, customer);
+
+        if (purchaseData && customer) {
+            await putPurchaseInShoppingCart(purchaseData?._id, customer._id);
+            setProductinShoppingCart(true)
+            const refreshAccount = await getCustomerById(purchaseData?.buyer);
+
+            console.log('purchaseData......................................................');
+            
+            
+            if(purchaseData && typeof window != 'undefined'){
+                setLoadingIcon(false);
+                setBannerStatus(201);
+                setBannerExist(true);
+                btnRef.current.style.backgroundColor = 'var(--black)';
+                localStorage.setItem('customerData', JSON.stringify(refreshAccount))            
+            }
+        } else {
+            console.log(purchaseData);
+            
         }
+        
     }
     
     const style: CSSProperties = {
@@ -70,7 +83,7 @@ const PutInPurchaseBTN = ({product, purchaseData, productinShoppingCart}: Params
         alignItems: 'center',
         justifyContent: 'center',
         margin: 'var(--large-margin)',
-        backgroundColor: productinShoppingCart? 'var(--ashen-semi-transparent)' : 'var(--black)',
+        backgroundColor: productinShoppingCart == false ? 'var(--black)' : 'var(--ashen-semi-transparent)' ,
         color: 'var(--white)',
         opacity: product?.quantity? '1' : '0.3',
         cursor: 'pointer' 

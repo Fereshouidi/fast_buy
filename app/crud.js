@@ -1,4 +1,4 @@
-const url = 'https://fast-buy-back-end.vercel.app/api';
+const url = 'http://localhost:3002/api';
 import axios from "axios";
 
 //https://fast-buy-back-end.vercel.app/api
@@ -91,6 +91,8 @@ export const getCategoriesSection = async() => {
 export const getConpanyInformations = async() => {
     try{
         const conpanyInformations = (await axios.get(url + '/get/conpanyInformations')).data;
+        console.log(conpanyInformations);
+        
         return conpanyInformations;
     }catch(err){
         throw err;
@@ -192,6 +194,26 @@ export const addPurchase = async (purchase) => {
     }
 }
 
+export const putPurchaseInShoppingCart = async (purchaseId, customerId) => {   
+        
+    try{
+        const response = await axios.post(url + '/put/purchase/in/shoppingCart', {purchaseId, customerId});
+        return response.data;
+    }catch(err) {
+        throw err
+    }
+}
+
+export const addPurchaseAndPutItInShoppingCart = async (purchase) => {   
+        
+    try{
+        const response = await axios.post(url + '/add/purchase/and/putItInShoppingCart', purchase);
+        return response.data;
+    }catch(err) {
+        throw err
+    }
+}
+
 export const getShoppingCartsByCustomerId = async (customerId) => {
     
     try {
@@ -224,6 +246,23 @@ export const updateQuantitiy = async (updatedPurchase) => {
     }
 }
 
+export const updatePurchase = async (updatedPurchase) => {
+    console.log(updatedPurchase);
+    
+    try {
+        const response = await axios.put(url+ '/update/purchase', updatedPurchase);
+        if (response.status == 200) {
+            console.log('ttttttttttt');
+            
+            return response.data
+        } else {
+            return updatedPurchase
+        }
+    }catch (err) {
+        throw err;
+    }
+}
+
 export const addOrder = async (order) => {   
     
     try{
@@ -244,7 +283,6 @@ export const getAllDiscountCodesForShoppingCarts = async () => {
     }
 }
 
-
 export const gtOrdersByCustomer = async (customerId) => {
 
     try {
@@ -264,6 +302,35 @@ export const updateLikeStatus = async (purchaseId, likeStatus) => {
         const response = await axios.put(url + '/update/likeStatus' , { purchaseId, likeStatus })     
         console.log(response.data);
                    
+        return response.data;
+    }catch(err) {
+        throw err;
+    }
+}
+
+export const updateCustomer = async (customerId, updatedCustomerData) => {
+
+    try {
+        const response = await axios.put(url + '/update/customer' , { 
+            id: customerId,
+            updatedCustomerData 
+        })     
+        console.log(updatedCustomerData);
+                   
+        return response.data;
+    }catch(err) {
+        throw err;
+    }
+}
+
+export const getPurchasesByCustomerProduct = async (customerId, productId) => {
+    
+    try {
+        const response = await axios.get(url + '/get/purchases/by/customer&product' , {
+            params: {customerId, productId}
+        })        
+        console.log(response.data);
+        
         return response.data;
     }catch(err) {
         throw err;

@@ -11,6 +11,9 @@ import { shoppingCartParams } from "@/app/contexts/shoppingCart";
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 import { purchaseParams } from "@/app/contexts/purchaseData";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
+import { updateLikeStatus } from "@/app/crud";
+import { CustomerDataContext, CustomerDataParams } from "@/app/contexts/customerData";
+import { updateCustomer } from "@/app/crud";
 
 type Params = {
     product: productParams | undefined,
@@ -20,30 +23,61 @@ type Params = {
     shoppingCart: shoppingCartParams | undefined,
 }
 
-const ImageDisplay = ({product, purchase, setPurchase}: Params) => {
+const ImageDisplay = ({product, purchase, setPurchase, shoppingCart}: Params) => {
 
+    const customer = useContext(CustomerDataContext);
     const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
     const activeImageContext = useContext(ActiveImageContext);
     const activeImageIndex = activeImageContext?.activeImageIndex || 0;
     const activeLanguag = useContext(ActiveLanguageContext)?.activeLanguage;
     const [inFavorite, setInFavorite] = useState<boolean | undefined>(false);
+    const [purchaseInShoppingCart, setPurchadeInShoppingCart] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (shoppingCart?.purchases) {
+            for (let i = 0 ; i < shoppingCart?.purchases?.length ; i++) {
+                if (shoppingCart.purchases[i].product?._id == product?._id) {
+                    setPurchadeInShoppingCart(true);
+                }
+            }
+        }
+        
+    }, [shoppingCart, purchase])
 
     useEffect(() => {
         setInFavorite(purchase?.like)
     }, [purchase])
 
     const handleHeartClick = async() => {
-        setInFavorite(!inFavorite);
+
         if (purchase) {
             setPurchase({
                 ...purchase,
                 like: !inFavorite
             })
+        }
+
+        if (!inFavorite && customer?.favorite?.every(item => typeof item._id === 'string')) {
+            let updatedCustomer: CustomerDataParams = {
+                ...customer,
+                favorite: customer.favorite != undefined && product ? [...customer.favorite, product] : product ? [product] : undefined,
+            };
+            await updateCustomer(purchase?.buyer, updatedCustomer);
+            setInFavorite(true)
+            
         } else {
+            if (customer && customer._id) {
+                let updatedCustomer: CustomerDataParams = {
+                    ...customer,
+                    favorite: Array.isArray(customer.favorite) && product
+                        ? customer.favorite.filter(item => item._id !== product._id) 
+                        : undefined,
+                };
+                await updateCustomer(purchase?.buyer, updatedCustomer);
+                setInFavorite(false)
+            } 
             
         }
-        
-        
     }
     const style: CSSProperties = {
         maxWidth: '70vh',

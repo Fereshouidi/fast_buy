@@ -114,9 +114,10 @@
     "productsDetails": "Products details",
     "noteW": "Note",
     "customerW": "customer",
-    "OrderDateW": "Order date"
-
-    
+    "OrderDateW": "Order date",
+    "noSuccessOrderP": "There are no successful orders !",
+    "noFailOrderP": "There are no failed orders !",
+    "noProcessingOrderP": "There are no orders being processed !"
 }
 
 

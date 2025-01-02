@@ -1,4 +1,5 @@
 import { createContext } from "react"
+import { productParams } from "./productSelectForShowing"
 
 export interface CustomerDataParams {
     _id: string,
@@ -13,6 +14,7 @@ export interface CustomerDataParams {
     saveAccount: boolean,
     verification: boolean,
     ShoppingCart: shoppingCart
+    favorite: productParams[] | undefined
 }
 
 export interface shoppingCart {

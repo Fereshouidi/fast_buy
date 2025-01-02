@@ -14,7 +14,7 @@ type Params = {
     discountCodeAmount: {discount?: number | null, discountPercent?: number | null},
     setDiscountCodeAmount:  (value: {discount?: number | null, discountPercent?: number | null}) => void,
 }
-const DiscountCode = ({product, setDiscountCodeAmount}: Params) => {
+const DiscountCode = ({product, purchaseData, setDiscountCodeAmount}: Params) => {
 
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage
     const companyInformation = useContext(CompanyInformationContext);
@@ -60,7 +60,7 @@ const DiscountCode = ({product, setDiscountCodeAmount}: Params) => {
     return (
         <div className="item" style={style}>
             <h6 style={styleH6}>{activeLanguage?.discountCodeW}</h6>
-            <input type="text" style={styleInput} placeholder="..." onChange={(event) => handleChange(event)}/>
+            <input type="text" style={styleInput} placeholder={purchaseData?.discountCode?.code?? "..."} onChange={(event) => handleChange(event)}/>
         </div>
     )
 }

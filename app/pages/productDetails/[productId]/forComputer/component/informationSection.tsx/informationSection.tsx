@@ -17,6 +17,7 @@ import { purchaseParams } from "@/app/contexts/purchaseData";
 import { CustomerDataContext } from '@/app/contexts/customerData';
 import DiscountCode from "./component/discountCode";
 import { shoppingCartParams } from "@/app/contexts/shoppingCart";
+import { addPurchase, getPurchasesByCustomerProduct, updatePurchase } from "@/app/crud";
 
 
 type Params = {
@@ -30,19 +31,19 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
 
     const customer = useContext(CustomerDataContext);
 
-   // const [purchaseData, setPurchaseData] = useState<purchaseParams | undefined>(undefined);
     const [discountCodeAmount, setDiscountCodeAmount] = useState<{discount?: number | null, discountPercent?: number | null}>({discount: 0, discountPercent: 0});
     const [price, setPrice] = useState<number | undefined>(product?.discount? product.discount.newPrice : product?.price);
-    const [productinShoppingCart, setProductinShoppingCart] = useState<boolean>(false);
-
-   // console.log(shoppingCart?.products);
+    const [productinShoppingCart, setProductinShoppingCart] = useState<boolean | undefined>(undefined);
+    
 
     useEffect(() => {
+        console.log('a');
+        
         if(purchaseData && price){
             setPurchaseData({
                 ...purchaseData,
                 totalPrice: price && purchaseData?.quantity ? price * purchaseData?.quantity : 0,
-                discountCode: discountCodeAmount.discount || discountCodeAmount.discountPercent ? product?.discountCode?._id : null
+                discountCode: discountCodeAmount.discount || discountCodeAmount.discountPercent ? product?.discountCode : null
             })
         }
     }, [price, purchaseData?.quantity, discountCodeAmount])
@@ -53,26 +54,66 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
             for (let index = 0 ; index < shoppingCart?.products?.length ; index++) {
                 if (shoppingCart.products[index]._id == product?._id) {
                     setProductinShoppingCart(true);
+                    return;
                 } else {
                     setProductinShoppingCart(false);
                 }
             }
-
+        } else {
+            setProductinShoppingCart(false);
         }
-    }, [shoppingCart])
+    }, [JSON.stringify(shoppingCart)])
 
     useEffect(() => {
-            setPurchaseData({
-                buyer: customer?._id, 
-                product: product, 
-                discount: product?.discount ? product.discount._id : null, 
-                quantity: 1,
-                totalPrice: product?.discount? product.discount.newPrice : product?.price,
-                shoppingCart: customer?.ShoppingCart? customer.ShoppingCart._id : null,
-                discountCode: discountCodeAmount.discount || discountCodeAmount.discountPercent ? product?.discountCode?._id : null
-            })
+        const getPurchase = async() => {
+
+            if (customer && product ) {
+
+                const purchaseFrom_DB = await getPurchasesByCustomerProduct(customer?._id, product?._id);
+
+                if (purchaseFrom_DB && !purchaseData) {
+                    console.log(purchaseFrom_DB);
+                    setPurchaseData(purchaseFrom_DB);
+                } else {
+
+                    const purchaseData = await addPurchase({
+                        buyer: customer?._id, 
+                        product: product, 
+                        discount: product?.discount ? product.discount._id : null, 
+                        quantity: 1,
+                        totalPrice: product?.discount? product.discount.newPrice : product?.price ? product?.price : 0,
+                        discountCode: discountCodeAmount.discount || discountCodeAmount.discountPercent ? product?.discountCode?._id : null,
+                        like: false
+                    })
+                    setPurchaseData(purchaseData.newPurchase);
+                   // await updatePurchase(purchaseData.newPurchase)
+                }
+                
+            }
+        }
+        console.log('d');
+        
+        getPurchase();
         
     }, [product])
+
+
+    useEffect(() => {
+        console.log('c');
+    
+        const fetchData = async () => {
+            if (purchaseData) {
+                const updatedPurchase = await updatePurchase(purchaseData);
+                if (JSON.stringify(updatedPurchase) !== JSON.stringify(purchaseData)) {
+                    setPurchaseData(updatedPurchase);
+                }
+            }
+            
+            console.log('updatedPurchase');
+        };
+        fetchData();
+    }, [purchaseData]);
+    
 
     const style: CSSProperties = {
         width: '50%',
@@ -106,7 +147,7 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
                 setDiscountCodeAmount={setDiscountCodeAmount}
             /> : null } 
             <Price product={product} setProduct={setProduct} discountCodeAmount={discountCodeAmount} price={price} setPrice={setPrice} purchaseData={purchaseData} setPurchaseData={setPurchaseData}/>
-            <PutInPurchaseBTN product={product} purchaseData={purchaseData} productinShoppingCart={productinShoppingCart} />
+            {productinShoppingCart != undefined  && <PutInPurchaseBTN product={product} purchaseData={purchaseData} productinShoppingCart={productinShoppingCart} setProductinShoppingCart={setProductinShoppingCart}/> }
         </div>
     )
 }
