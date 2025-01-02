@@ -22,7 +22,7 @@ type Params = {
     shoppingCart: shoppingCartParams | undefined,
 }
 
-const ImageDisplay = ({product, purchase, setPurchase, shoppingCart}: Params) => {
+const ImageDisplay = ({product, purchase, setPurchase}: Params) => {
 
     const customer = useContext(CustomerDataContext);
     const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
@@ -66,7 +66,7 @@ const ImageDisplay = ({product, purchase, setPurchase, shoppingCart}: Params) =>
             
         } else {
             if (customer && customer._id) {
-                let updatedCustomer: CustomerDataParams = {
+                const updatedCustomer: CustomerDataParams = {
                     ...customer,
                     favorite: Array.isArray(customer.favorite) && product
                         ? customer.favorite.filter(item => item._id !== product._id) 

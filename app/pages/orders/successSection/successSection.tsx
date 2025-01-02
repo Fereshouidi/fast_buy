@@ -5,7 +5,7 @@ import { CSSProperties, useContext, useEffect, useState } from "react";
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 import Item from "../item/item";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBan, faBoxOpen, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import {faBoxOpen } from "@fortawesome/free-solid-svg-icons";
 
 type params = {
     orders: OrderParams[] | undefined
