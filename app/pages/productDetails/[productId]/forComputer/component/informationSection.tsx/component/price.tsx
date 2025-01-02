@@ -81,7 +81,7 @@ const Price = ({product, setPrice, discountCodeAmount, purchaseData}: Params) =>
                     : arabic.priceW + ' : '}
             </span>
 
-            <span style={stylePrice}>{purchaseData?.totalPrice}</span>
+            <span style={stylePrice}>{purchaseData?.totalPrice?? product?.discount.newPrice?? product?.price}</span>
             <span>{product?.currencyType}</span>
         </div>
     )
