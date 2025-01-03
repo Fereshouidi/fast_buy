@@ -61,7 +61,7 @@ const [conpanyInformations, setConpanyInformations] = useState<companyInformatio
 useEffect(() => {
   if (typeof window !== "undefined") {
     const storedLanguage = localStorage.getItem('activeLanguage_');
-    setActiveLanguage_(storedLanguage ? JSON.parse(storedLanguage) : null);
+    setActiveLanguage_(storedLanguage ? JSON.parse(storedLanguage) : english);
   }
 
   }, []) 
