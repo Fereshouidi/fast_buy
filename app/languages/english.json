@@ -117,7 +117,9 @@
     "OrderDateW": "Order date",
     "noSuccessOrderP": "There are no successful orders !",
     "noFailOrderP": "There are no failed orders !",
-    "noProcessingOrderP": "There are no orders being processed !"
+    "noProcessingOrderP": "There are no orders being processed !",
+    "favoriteW": "Favorite",
+    "noFavoriteP": "there is no favorite products !"
 }
 
 

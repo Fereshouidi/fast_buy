@@ -116,7 +116,10 @@
     "OrderDateW": "تاريخ الطلب",
     "noSuccessOrderP": "لا يوجد طلبات ناجحة !",
     "noFailOrderP": "لا يوجد طلبات فاشلة !",
-    "noProcessingOrderP": "لا يوجد طلبات بصدد المعالجة !"
+    "noProcessingOrderP": "لا يوجد طلبات بصدد المعالجة !",
+    "favoriteW": "المفضل",
+    "noFavoriteP": "لا يوجد منتجات مفضلة !"
+
 }
 
 

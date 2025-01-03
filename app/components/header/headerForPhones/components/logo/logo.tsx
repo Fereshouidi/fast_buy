@@ -1,12 +1,18 @@
 'use client';
 import { CSSProperties, useContext } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
+import { ActiveLanguageContext } from '@/app/contexts/activeLanguage';
 
 const Logo = () => {
 
-    const companyInformation = useContext(CompanyInformationContext)
+    const companyInformations = useContext(CompanyInformationContext);
+    const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage.activeLanguage;
+    
+    if(!companyInformations){
+        throw 'error companyInformation !'
+    }
 
-
+ 
     const style: CSSProperties = {
         cursor: 'pointer',
         color: 'var(--black)'
@@ -14,10 +20,10 @@ const Logo = () => {
     return (
         <div style={style} className='logo'>
             <img 
-                src={companyInformation?.logo}
+                src={companyInformations?.logo}
                 alt="Logo"   
             />
-            <h3 >{companyInformation?.name?.english}</h3>
+            <h1>{activeLanguage == 'arabic' ? companyInformations.name?.arabic : companyInformations.name?.english }</h1>
         </div>
     )
 }

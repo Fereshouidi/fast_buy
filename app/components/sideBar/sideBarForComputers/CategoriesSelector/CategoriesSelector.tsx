@@ -8,6 +8,8 @@ import '../CategoriesSelector/categorieSelector.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
+import { useRouter } from "next/navigation";
+import { LoadingIconContext } from "@/app/contexts/loadingIcon";
 
 const CategorieSelector = () => {
 
@@ -27,8 +29,9 @@ const CategorieSelector = () => {
 
     const [isHover, setIsHover] = useState<boolean>(false)
 
-    const companyInformation = useContext(CompanyInformationContext)
-
+    const companyInformation = useContext(CompanyInformationContext);
+    const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
+    const router = useRouter();
     const languageSelectorContext = useContext(LanguageSelectorContext);
     const [allCategories, setAllCategories] = useState<categorieParams[]>([]);
     const [categorieClicked, setCategorieClicked] = useState<boolean>(false);
@@ -39,15 +42,9 @@ const CategorieSelector = () => {
         throw new Error("SideBarContext must be used within a SideBarContext.Provider");
     }
     const { sideBarExist } = sideBarContext;
-    if(!languageSelectorContext){
-        throw 'context error !'
-    }
 
-    if(!sideBarContext){
+    if(!allCategories || !sideBarContext || !languageSelectorContext || !setLoadingIcon){
         throw 'context error !'
-    }
-    if(!allCategories){
-        throw '  !'
     }
     
     useEffect(() => {
@@ -78,7 +75,6 @@ const getAllChildrenIds = (parent: categorieParams, categories: categorieParams[
     return allIds
 };
 
-    
     const handleClick = async (categorie: categorieParams) => {
     if (categorie.childrenCategories.length > 0) {
         if (!categorie.childOpen) {
@@ -111,13 +107,21 @@ const getAllChildrenIds = (parent: categorieParams, categories: categorieParams[
     handleCategorieSelectorClicked(categorie)
 };
 
+const goToCategoriesPage = (categorie: categorieParams) => {
+    if (!categorie.parentCategorie) {
+        return handleClick(categorie)
+    }
+    setLoadingIcon(true);
+    router.push('/pages/categorie/'+ categorie._id);
+}
+
+
 const style: CSSProperties = {
     display: sideBarExist? 'flex': 'none',
     height: 'auto',
     minHeight: 'var(--primary-height)',
     padding: 0,
 }
-
 const styleDiv: CSSProperties = {
     minHeight: 'var(--primary-height)',
     display: 'flex',
@@ -127,7 +131,6 @@ const styleDiv: CSSProperties = {
     zIndex: 999,
     width: '100%',
 }
-
 const styleChildren: CSSProperties = {
     display: 'flex',
     alignItems: 'center',
@@ -154,7 +157,6 @@ const styleDownIcon: CSSProperties = {
     zIndex: 0,
     cursor: 'pointer'
 }
-
 const styleHover: CSSProperties = {
     ...style,
     backgroundColor: companyInformation?.primaryColor
@@ -179,7 +181,7 @@ const styleChildrenHover: CSSProperties = {
                 allCategories.map((categorie, index) => {
                     return (
                     <ul key={index} style={isHover? styleChildrenHover : styleChildren}  >
-                        <ul style={languageSelectorContext.activeLanguage == 'arabic' ? {paddingRight: `${categorie.margin}px` } : {paddingLeft: `${categorie.margin}px` }} className={categorie.parentCategorie? "child" : categorieClicked? "parent-clicked": "parent"} key={categorie._id} >{languageSelectorContext.activeLanguage == 'arabic' ? categorie.name.arabic : languageSelectorContext.activeLanguage == 'english' ? categorie.name.english : categorie.name.english}</ul>
+                        <ul style={languageSelectorContext.activeLanguage == 'arabic' ? {paddingRight: `${categorie.margin}px` } : {paddingLeft: `${categorie.margin}px` }} className={categorie.parentCategorie? "child" : categorieClicked? "parent-clicked": "parent"} key={categorie._id} onClick={() => goToCategoriesPage(categorie)} >{languageSelectorContext.activeLanguage == 'arabic' ? categorie.name.arabic : languageSelectorContext.activeLanguage == 'english' ? categorie.name.english : categorie.name.english}</ul>
                         {categorie.childrenCategories.length > 0 ? <FontAwesomeIcon onClick={() => handleClick(categorie)} style={styleDownIcon} icon={faChevronDown } /> : null}
                     </ul>
                 )

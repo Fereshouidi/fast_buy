@@ -12,7 +12,7 @@ import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 import { purchaseParams } from "@/app/contexts/purchaseData";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 import { CustomerDataContext, CustomerDataParams } from "@/app/contexts/customerData";
-import { updateCustomer } from "@/app/crud";
+import { updateCustomer, updateLikeStatus } from "@/app/crud";
 
 type Params = {
     product: productParams | undefined,
@@ -56,27 +56,27 @@ const ImageDisplay = ({product, purchase, setPurchase}: Params) => {
             })
         }
 
-        if (!inFavorite && customer?.favorite?.every(item => typeof item._id === 'string')) {
-            const updatedCustomer: CustomerDataParams = {
-                ...customer,
-                favorite: customer.favorite != undefined && product ? [...customer.favorite, product] : product ? [product] : undefined,
-            };
-            await updateCustomer(purchase?.buyer, updatedCustomer);
-            setInFavorite(true)
-            
-        } else {
-            if (customer && customer._id) {
-                const updatedCustomer: CustomerDataParams = {
-                    ...customer,
-                    favorite: Array.isArray(customer.favorite) && product
-                        ? customer.favorite.filter(item => item._id !== product._id) 
-                        : undefined,
-                };
-                await updateCustomer(purchase?.buyer, updatedCustomer);
-                setInFavorite(false)
-            } 
-            
-        }
+        updateLikeStatus(purchase?._id, !inFavorite)
+        // if (!inFavorite && Array.isArray(customer?.favorite) && customer.favorite.every(item => typeof item._id === 'string')) {
+        //     if (product) {
+        //         const updatedCustomer: CustomerDataParams = {
+        //             ...customer,
+        //             favorite: [...customer.favorite, product],
+        //         };
+        //         await updateCustomer(purchase?.buyer, updatedCustomer);
+        //         setInFavorite(true);
+        //     }
+        // } else if (customer && customer._id) {
+        //     if (Array.isArray(customer.favorite) && product) {
+        //         const updatedCustomer: CustomerDataParams = {
+        //             ...customer,
+        //             favorite: customer.favorite.filter(item => item._id !== product._id),
+        //         };
+        //         await updateCustomer(purchase?.buyer, updatedCustomer);
+        //         setInFavorite(false);
+        //     }
+        // }
+        
     }
 
     const style: CSSProperties = {
