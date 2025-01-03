@@ -162,7 +162,6 @@ useEffect(() => {
     
   }, [theme, activeLanguage, screenWidth]);
 
-  alert('hooo')
 
   useEffect(() => {
     if(customerData && !customerData?.verification && conpanyInformations?.activateAccountWhileSignin){
@@ -171,6 +170,9 @@ useEffect(() => {
     
 }, [customerData, conpanyInformations])
 
+useEffect(() => {
+  alert('hooo')
+}, [])
 
 
   if (screenWidth === null) {
