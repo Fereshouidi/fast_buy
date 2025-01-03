@@ -188,7 +188,7 @@ header div{
 .logo h1{
     width: '70%';
     max-height: '100%';
-    font-size: var(--big-size);
+    /* font-size: var(--big-size); */
 }
 
 
