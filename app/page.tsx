@@ -3,8 +3,8 @@
 import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
 import { useState, useEffect } from "react";
-// import HeaderForComputer from "@/app/components/header/headerForComputer/header";
-// import HeaderForPhone from "@/app/components/header/headerForPhones/header";
+import HeaderForComputer from "@/app/components/header/headerForComputer/header";
+import HeaderForPhone from "@/app/components/header/headerForPhones/header";
 import { ThemeContext } from "@/app/contexts/ThemeContext";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { CustomerDataContext } from "./contexts/customerData";
@@ -12,16 +12,16 @@ import { CustomerDataParams } from "./contexts/customerData";
 import { CompanyInformationContext } from "./contexts/companyInformation";
 import { companyInformationsParams } from "./contexts/companyInformation";
 import { SideBarContext } from "@/app/contexts/SideBarContext";
-// import SideBarForComputer from "@/app/components/sideBar/sideBarForComputers/sidebar";
-// import SideBarForPhone from '@/app/components/sideBar/sideBarForPhones/SideBar';
-// import BulletinBoardForPhone from "./components/bulletinBoard_one/forPhone/bulletinBoard";
-// import BulletinBoardForComputer from "./components/bulletinBoard_one/forcomputer/bulletinBoard";
-// import Slider from "./components/slider/slider";
-// import ProductsShowing from "@/app/components/productsShowing/productsShowing";
-// import BulletinBoard_two_forPhone from "./components/bulletinBoard_two/forPhone/bulletinBoard";
-// import BulletinBoard_two_forComputer from "./components/bulletinBoard_two/forcomputer/bulletinBoard";
-// import CategoriesSection from "@/app/components/categories/categories";
-// import About from "@/app/components/about/about";
+import SideBarForComputer from "@/app/components/sideBar/sideBarForComputers/sidebar";
+import SideBarForPhone from '@/app/components/sideBar/sideBarForPhones/SideBar';
+import BulletinBoardForPhone from "./components/bulletinBoard_one/forPhone/bulletinBoard";
+import BulletinBoardForComputer from "./components/bulletinBoard_one/forcomputer/bulletinBoard";
+import Slider from "./components/slider/slider";
+import ProductsShowing from "@/app/components/productsShowing/productsShowing";
+import BulletinBoard_two_forPhone from "./components/bulletinBoard_two/forPhone/bulletinBoard";
+import BulletinBoard_two_forComputer from "./components/bulletinBoard_two/forcomputer/bulletinBoard";
+import CategoriesSection from "@/app/components/categories/categories";
+import About from "@/app/components/about/about";
 import { getConpanyInformations, getCustomerById } from "./crud";
 import { useRouter } from "next/navigation";
 import { LoadingIconContext } from "./contexts/loadingIcon";
@@ -126,9 +126,9 @@ useEffect(() => {
     fetchCustomer()
   }, [typeof window != 'undefined' ? localStorage.getItem("customerData") : null]);
 
-  // const closeAccount = () => {
-  //   localStorage.removeItem('customerData')
-  // }
+  const closeAccount = () => {
+    localStorage.removeItem('customerData')
+  }
 
 
 
@@ -151,7 +151,7 @@ useEffect(() => {
     if(activeLanguage != 'arabic'){
       document.body.classList.remove('arabic');
     }else{
-      document.body.classList.add(activeLanguage);
+      document.body.classList.add(activeLanguage?? '');
     }
 
     if(window.innerWidth > 800){
@@ -194,7 +194,7 @@ useEffect(() => {
                 <CustomerDataContext.Provider value={customerData}>
                   <LoadingIconContext.Provider value={{exist: loadingIconExist , setExist: setLoadingIconExit}}>
                     <BannerContext.Provider value={{bannerexist: bannerForEveryThing,bannerText: bannerText , setBanner: setBanner}}>
-                      {/* {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
+                      {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
                         {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
                         {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
                         <Slider/>
@@ -203,8 +203,7 @@ useEffect(() => {
                         {screenWidth > 800 ? <BulletinBoard_two_forComputer /> : <BulletinBoard_two_forPhone />}
                         <CategoriesSection/>
                         <About/>
-                        <span onClick={closeAccount}>x</span> */}
-                        hahahahahahahahaha
+                        <span onClick={closeAccount}>x</span>
                     </BannerContext.Provider>
                   </LoadingIconContext.Provider>
                 </CustomerDataContext.Provider>
