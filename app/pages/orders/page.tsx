@@ -32,7 +32,7 @@ import SwitchSections from './switchSections';
 const OrdersPage = () => {
 
 
-    const [screenWidth, setScreenWidth] = useState<number>(1000);  
+    const [screenWidth, setScreenWidth] = useState<number>(0);  
 
     const [loadingIconExist, setLoadingIconExit] = useState<boolean>(false);
 
@@ -54,6 +54,11 @@ const OrdersPage = () => {
     }
 
 
+    useEffect(() => {
+        if (typeof window != 'undefined') {
+            setActiveSection(window.innerWidth > 800 ? 'successSection' : 'processingSection')
+        }
+    }, [])
     
 
   const [theme, setTheme] = useState(() => {
