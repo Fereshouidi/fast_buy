@@ -194,7 +194,7 @@ useEffect(() => {
                 <CustomerDataContext.Provider value={customerData}>
                   <LoadingIconContext.Provider value={{exist: loadingIconExist , setExist: setLoadingIconExit}}>
                     <BannerContext.Provider value={{bannerexist: bannerForEveryThing,bannerText: bannerText , setBanner: setBanner}}>
-                      {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
+                      {/* {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
                         {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
                         {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
                         <Slider/>
@@ -203,7 +203,8 @@ useEffect(() => {
                         {screenWidth > 800 ? <BulletinBoard_two_forComputer /> : <BulletinBoard_two_forPhone />}
                         <CategoriesSection/>
                         <About/>
-                        <span onClick={closeAccount}>x</span>
+                        <span onClick={closeAccount}>x</span> */}
+                        hahahahahahahahaha
                     </BannerContext.Provider>
                   </LoadingIconContext.Provider>
                 </CustomerDataContext.Provider>
