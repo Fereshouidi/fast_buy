@@ -88,7 +88,7 @@ const Card = ({product}: {product : productParams}) => {
     }
     const StyleImage: CSSProperties = {
         width: '100%',
-        height: '700%',
+        height: '75%',
         objectFit: 'cover',
         borderRadius: '20px',
         backgroundColor: 'var(--almost-white)',
