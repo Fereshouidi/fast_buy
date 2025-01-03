@@ -170,9 +170,7 @@ useEffect(() => {
     
 }, [customerData, conpanyInformations])
 
-useEffect(() => {
-  alert('hooo')
-}, [])
+
 
 
   if (screenWidth === null) {
@@ -183,7 +181,9 @@ useEffect(() => {
     return <LoadingIcon_theHolePage/>; 
   }
   
-
+  useEffect(() => {
+    alert('aaaaaaaaaaaaaaaaaaaaaaaaaa')
+  }, [])
 
   return (
     <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin}} >
