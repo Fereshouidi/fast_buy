@@ -28,6 +28,8 @@ import { LoadingIconContext } from "./contexts/loadingIcon";
 import LoadingIcon_theHolePage from "./svg/icons/loading/loadingHoleOfThePage";
 import { ActiveLanguageContext } from "./contexts/activeLanguage";
 import { BannerContext } from './contexts/bannerForEverything';
+
+
 const App = () => {
 
 
@@ -68,7 +70,7 @@ useEffect(() => {
   
     const fetchData = async() => {
         const conpanyInformationsData = await getConpanyInformations();
-        console.log(conpanyInformationsData);
+        alert(conpanyInformationsData);
         setConpanyInformations(conpanyInformationsData);
         console.log(conpanyInformationsData);
     }
@@ -129,7 +131,6 @@ useEffect(() => {
     localStorage.removeItem('customerData')
   }
 
-  //alert(customerData?.ShoppingCart.purchases.length)
 
 
   useEffect(() => {
@@ -180,7 +181,6 @@ useEffect(() => {
     return <LoadingIcon_theHolePage/>; 
   }
   
-  // return <LoadingIcon_theHolePage/>
 
 
   return (
