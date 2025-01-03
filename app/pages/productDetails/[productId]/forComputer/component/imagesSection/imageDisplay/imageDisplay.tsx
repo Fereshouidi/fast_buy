@@ -11,7 +11,6 @@ import { shoppingCartParams } from "@/app/contexts/shoppingCart";
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 import { purchaseParams } from "@/app/contexts/purchaseData";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
-import { CustomerDataContext } from "@/app/contexts/customerData";
 import { updateLikeStatus } from "@/app/crud";
 
 type Params = {
