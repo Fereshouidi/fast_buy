@@ -69,11 +69,11 @@ const Card = ({product}: {product : productParams}) => {
         flexDirection: 'column',
         width: '160px',
         height: '200px',
-        backgroundColor: 'var(--white)',
+       // backgroundColor: 'var(--white)',
         borderRadius: '10px',
         margin: 'var(--extra-small-margin)',
         padding: 'calc(var(--small-padding)/2)',
-        boxShadow: '0 5px 15px var(--black-almost-transparnt)',
+       // boxShadow: '0 5px 15px var(--black-almost-transparnt)',
         cursor: "pointer",
         transition: '0.5s ease',
         flexShrink: '0',
@@ -84,7 +84,8 @@ const Card = ({product}: {product : productParams}) => {
     const StyleWithHover: CSSProperties = {
         ...Style,
         // transform: 'scale(1.05)',
-       backgroundColor: 'var(--black-almost-transparent)'
+       backgroundColor: 'var(--white)',
+       transition: '0s',
     }
     const StyleImage: CSSProperties = {
         width: '100%',

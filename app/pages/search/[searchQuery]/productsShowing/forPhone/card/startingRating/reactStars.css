@@ -1,0 +1,15 @@
+.rating-stars{
+    /* background-color: red; */
+}
+
+.rating-stars-rtl{
+    direction: rtl;
+    display: flex;
+    justify-content: flex-start; 
+}
+
+.rating-stars-ltr{
+    direction: ltr;
+    display: flex;
+    justify-content: flex-start; 
+}

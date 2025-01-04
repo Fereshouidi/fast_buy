@@ -6,9 +6,12 @@ import SearchBar from "./components/searchBar/searchBar";
 import CategorieSelector from "./components/languageSelector/languageSelector";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import Options from "./components/option/option";
-//import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
-const Header = () => {
+type params = {
+    Query?: string | undefined
+}
+
+const Header = ({Query}: params) => {
     
     //const companyInformation = useContext(CompanyInformationContext)
     const context = useContext(LanguageSelectorContext);
@@ -18,7 +21,6 @@ const Header = () => {
     }
 
     const { activeLanguage } = context;
-
 
 
     const headerStyle :CSSProperties = {
@@ -36,12 +38,22 @@ const Header = () => {
         boxShadow: '0 5px 15px var(--black-almost-transparnt)',
         direction: activeLanguage == 'english'? 'ltr':activeLanguage == 'arabic'? 'rtl': 'ltr',
     }
+
+    const styleSearchBar:CSSProperties = {
+        backgroundColor: 'transparent',
+        width: '50%',
+        height: 'var(--primary-height)',
+        position: 'relative',
+        padding: '0',
+        direction: context.activeLanguage == "arabic"? 'rtl': 'ltr',
+        transition: '0.7s ease',
+    }
     return(
         <>
             <header style={headerStyle} className="header">
                 <Options/>
                 <Logo/>
-                <SearchBar/>
+                <SearchBar style={styleSearchBar} Query={Query}/>
                 <CategorieSelector/>
                 <Purchase/>
             </header>

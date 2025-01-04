@@ -1,8 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, CSSProperties } from 'react';
 import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 
-const SearchIcon = () => {
+// type propsParams = {
+//     onClick: () => void
+// }
+const SearchIcon = ({ onClick }) => {
+
 
     const [hover, setHover] = useState(false);
 
@@ -42,6 +46,7 @@ const SearchIcon = () => {
 
     return(
         <svg 
+            onClick={onClick}
             className="search-icon primary-border" 
             style={hover? styleHover: style} 
             onMouseEnter={() => setHover(true)}

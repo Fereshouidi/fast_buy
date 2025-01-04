@@ -1,8 +1,8 @@
-const url = 'https://fast-buy-back-end.vercel.app/api';
+const url = 'http://localhost:3002/api';
 import axios from "axios";
 
 //https://fast-buy-back-end.vercel.app/api
-//http://localhost:3002/api
+//http://localhost:3002/api 
 
 export const getBulletinBoard = async() => {
     try{
@@ -102,9 +102,7 @@ export const getCategoriesSection = async() => {
 
 export const getConpanyInformations = async() => {
     try{
-        const conpanyInformations = (await axios.get(url + '/get/conpanyInformations')).data;
-        console.log(conpanyInformations);
-        
+        const conpanyInformations = (await axios.get(url + '/get/conpanyInformations')).data;        
         return conpanyInformations;
     }catch(err){
         throw err;
@@ -259,12 +257,10 @@ export const updateQuantitiy = async (updatedPurchase) => {
 }
 
 export const updatePurchase = async (updatedPurchase) => {
-    console.log(updatedPurchase);
     
     try {
         const response = await axios.put(url+ '/update/purchase', updatedPurchase);
         if (response.status == 200) {
-            console.log('ttttttttttt');
             
             return response.data
         } else {
@@ -348,3 +344,16 @@ export const getPurchasesByCustomerProduct = async (customerId, productId) => {
         throw err;
     }
 }
+
+export const getProductsByName = async (searchQuery) => {
+    
+    try {
+        const response = await axios.get(url + '/get/products/by/name' , {
+            params: {searchQuery}
+        })                
+        return response.data;
+    }catch(err) {
+        throw err;
+    }
+}
+

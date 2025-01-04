@@ -2,39 +2,32 @@
 
 import { CSSProperties, useContext, useState } from "react";
 import Price from "./price/price";
+import BoxIcon from "@/app/svg/icons/box";
 import StarRating from "./startingRating/StartRating";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-import { CompanyInformationContext } from "@/app/contexts/companyInformation";
-import { LoadingIconContext } from "@/app/contexts/loadingIcon";
 import { useRouter } from "next/navigation";
+import { LoadingIconContext } from "@/app/contexts/loadingIcon";
+import '@/app/svg/icons/loading/loading.css';
 import { productParams } from "@/app/contexts/productSelectForShowing";
+
 
 
 const Card = ({product}: {product : productParams}) => {
 
     const router = useRouter();
-    const companyInformation = useContext(CompanyInformationContext);
-    const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
-    const languageContext = useContext(LanguageSelectorContext)
 
-    const [cardHover, setCardHover] = useState<boolean>(false)
+const languageContext = useContext(LanguageSelectorContext)
+const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
 
-    
-    if(typeof window == 'undefined'){
-        throw 'window.innerWidth == "undefind"'
-    }
-    if(!setLoadingIcon){
-        return;
-    }
-    
+const [cardHover, setCardHover] = useState<boolean>(false);
+
+
 if(!languageContext){
-  throw 'error languageContext'
-}
-
-const goToDetailPage = (product: productParams) => {
-    setLoadingIcon(true);
-    router.push(`/pages/productDetails/${product._id}`);
-};
+    throw 'error languageContext'
+  }
+  if(!setLoadingIcon){
+      return;
+  }
 
 
 const setHover = () => {
@@ -44,33 +37,30 @@ const unsetHover = () => {
     setCardHover(false)
 }
 
+const goToCardShow = (product: productParams) => {
+    setLoadingIcon(true);
+    router.push(`/pages/productDetails/${product._id}`);
+};
+
     const Style: CSSProperties = {
-     //   border: `0.1px solid ${companyInformation?.primaryColor}`,
-        display: 'flex',
-        alignItems: "center",
-        flexDirection: 'column',
         width: '250px',
         height: '350px',
-       // backgroundColor: 'var(--white)',
+        //backgroundColor: 'var(--white)',
         borderRadius: '20px',
         margin: 'var(--medium-margin)',
         padding: 'var(--small-padding)',
         cursor: "pointer",
-        flexShrink: '0',
-        flexGrow: '0',
-        flexBasis: window.innerWidth > 1500 ? 'calc(90vw /6)' : window.innerWidth <= 1500 && window.innerWidth >= 1100 ? 'calc(90vw /5)' : 'calc(90vw /4)',
+        transition: '0.5s ease'
     }
     const StyleWithHover: CSSProperties = {
         ...Style,
-        transition: '0s',
-        border: `0.1px solid ${companyInformation?.primaryColor}`,
-        backgroundColor: 'var(--white)'
+        backgroundColor: 'var(--white)',    
     }
     const StyleImage: CSSProperties = {
         width: '100%',
         height: '70%',
         objectFit: 'cover',
-        borderRadius: '10px',
+        borderRadius: '20px',
         backgroundColor: 'var(--almost-white)',
     }
     const styleH4: CSSProperties = {
@@ -84,23 +74,27 @@ const unsetHover = () => {
         position: 'relative'
     }
     const styleBoxAndPricesDiv: CSSProperties = {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'end',
+        position: 'absolute',
+        left: '0',
+        bottom: '0',
         width: '100%',
-        margin: 'var(--extra-small-margin) 0',
         direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr'
     }
     return(
-        <div style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover} onClick={() => goToDetailPage(product)}>
+        <div id="card" style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover} onClick={() => goToCardShow(product)}>
             <img src={product.imagePrincipal} alt="" style={StyleImage} />
             <div style={StyleCartInformation}>
                 <h4 style={styleH4}>{
                     languageContext.activeLanguage == "english" ?
                     product.name.english
-                    :languageContext.activeLanguage == "arabic" ?
-                    product.name.arabic
-                    :product.name.english    
+                    : product.name.arabic    
                 }</h4>
                 <StarRating product={product}/>
                 <div style={styleBoxAndPricesDiv}>
+                    <BoxIcon  />
                     <Price product={product}/>
                 </div>
             </div>
