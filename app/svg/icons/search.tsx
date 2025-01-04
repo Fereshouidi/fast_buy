@@ -1,12 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, CSSProperties } from 'react';
 import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 
-// type propsParams = {
-//     onClick: () => void
-// }
-const SearchIcon = ({ onClick }) => {
-
+type SearchIconProps = {
+    onClick: React.MouseEventHandler<SVGSVGElement>;
+};
+const SearchIcon: React.FC<SearchIconProps> = ({ onClick }) => {
 
     const [hover, setHover] = useState(false);
 
@@ -21,7 +20,7 @@ const SearchIcon = ({ onClick }) => {
 
     
 
-    const style = {
+    const style: CSSProperties = {
         position: 'absolute',
         right: activeLanguage === 'english' ? '5px' : activeLanguage === 'arabic'? 'calc(100% - 45px)': '5px',
         top: '50%',

@@ -33,7 +33,7 @@ const SearchBar = ({style, Query}: params) => {
         throw new Error("LanguageSelector must be used within a LanguageSelectorContext.Provider");
     }
 
-    useEffect(() => {
+        useEffect(() => {
         if(context.activeLanguage == "english"){
             setActiveLanguage(english);
         }else if(context.activeLanguage == "arabic"){
