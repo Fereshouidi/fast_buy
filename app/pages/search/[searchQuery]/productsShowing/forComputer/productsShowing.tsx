@@ -5,12 +5,16 @@ import Card from "./card/card";
 import english from "@/app/languages/english.json";
 import arabic from "@/app/languages/arabic.json";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-import LoadingIcon from "@/app/svg/icons/loading/loading";
 import { productParams } from "@/app/contexts/productSelectForShowing";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 
-const ProductsShowing = (products: {products: productParams[]}) => {
 
+type params = {
+    products: productParams[] 
+  }
+  const ProductsShowing = ({ products }: params) => {
 
     const [activeLanguage, setActiveLanguage] = useState(english);
 
@@ -38,11 +42,6 @@ const ProductsShowing = (products: {products: productParams[]}) => {
         padding: 'var(--medium-padding)'
     }
 
-    const StyleH2: CSSProperties = {
-        margin: 'calc(var(--large-margin)*3) 0',
-        color: 'var(--black)'
-    }
-
     const styleContainer: CSSProperties = {
         width: '100%',
         display: "flex",
@@ -50,19 +49,38 @@ const ProductsShowing = (products: {products: productParams[]}) => {
         alignItems: "center",
         flexWrap: 'wrap'
     }
-    
+    const styleNoFavoriteDiv: CSSProperties = {
+        width: '100%',
+        height: '70vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+        opacity: 0.7
+      }
+      const styleIcon: CSSProperties = {
+        width: 'var(--double-width)',
+        height: 'auto',
+        margin: 'var(--medium-margin)'
+      }
 
     return (
         <section style={Style}>
             <div style={styleContainer}>
-                {products ? products.products.map((product, index) => {
-                    return <div key={index}>
-                        <Card product={product}/>
-                    </div>
-                })
-                : <LoadingIcon/>
+                {products.length > 0 ? products.map((product, index) => {
+                        return <div key={index}>
+                            <Card product={product}/>
+                        </div>
+                    })
+                    
+                :<div style={styleNoFavoriteDiv}>
+                    <FontAwesomeIcon icon={faSearch} style={styleIcon}/>
+                    <p>{activeLanguage?.noFavoriteP}</p>
+                </div>
                 }
             </div>
+            
+
         </section>
     )
 }

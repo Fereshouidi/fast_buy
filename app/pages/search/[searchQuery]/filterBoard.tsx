@@ -3,9 +3,7 @@
 const FilterBoard = () => {
 
     return (
-        <div>
-            
-        </div>
+        <div>FilterBoard</div>
     )
 }
 

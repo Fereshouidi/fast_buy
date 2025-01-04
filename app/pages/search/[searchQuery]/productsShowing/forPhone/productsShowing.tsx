@@ -5,9 +5,10 @@ import Card from "./card/card";
 import english from "@/app/languages/english.json";
 import arabic from "@/app/languages/arabic.json";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-import LoadingIcon from "@/app/svg/icons/loading/loading";
 import { productParams } from "@/app/contexts/productSelectForShowing";
 import SearchBar from "@/app/components/header/headerForComputer/components/searchBar/searchBar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeartBroken, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 
 type params = {
@@ -40,11 +41,6 @@ type params = {
         alignItems: "center",
         flexDirection: 'column'
     }
-    
-    const StyleH2: CSSProperties = {
-        margin: window.innerWidth > 800 ? 'calc(var(--large-margin)*3) 0' : 'calc(var(--large-margin)*2) 0',
-        color: 'var(--black)'
-    }
 
     const styleContainer: CSSProperties = {
         width: '100%',
@@ -64,17 +60,34 @@ type params = {
         transition: '0.7s ease',
         margin: 'var(--medium-margin) 0'
     }
-
+    const styleNoFavoriteDiv: CSSProperties = {
+        width: '100%',
+        height: '70vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+        opacity: 0.7
+      }
+      const styleIcon: CSSProperties = {
+        width: 'var(--double-width)',
+        height: 'auto',
+        margin: 'var(--medium-margin)'
+      }
     return (
         <section style={Style}>
-            <SearchBar style={styleSearchBar} Query={Query}/>
+            {window.innerWidth < 800 ? <SearchBar style={styleSearchBar} Query={Query}/> : null}
             <div style={styleContainer}>
                 {products.length > 0 ? products.map((product, index) => {
                         return <div key={index}>
                             <Card product={product}/>
                         </div>
                     })
-                    : <LoadingIcon/>
+                    
+                :<div style={styleNoFavoriteDiv}>
+                    <FontAwesomeIcon icon={faSearch} style={styleIcon}/>
+                    <p>{activeLanguage?.noFavoriteP}</p>
+                </div>
                 }
             </div>
             

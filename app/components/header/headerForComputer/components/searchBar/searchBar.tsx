@@ -28,16 +28,10 @@ const SearchBar = ({style, Query}: params) => {
 
     const context = useContext(LanguageSelectorContext);
 
+    
     if (!context || !context.activeLanguage) {
         throw new Error("LanguageSelector must be used within a LanguageSelectorContext.Provider");
     }
-
-    if (!context || !context.activeLanguage || !setLoadingIcon) {
-        console.error("error context !");
-        return null;
-    }
-
-    
 
     useEffect(() => {
         if(context.activeLanguage == "english"){
@@ -46,6 +40,11 @@ const SearchBar = ({style, Query}: params) => {
             setActiveLanguage(arabic);
         }
     }, [context.activeLanguage])
+
+    if (!context || !context.activeLanguage || !setLoadingIcon) {
+        console.error("error context !");
+        return null;
+    }
     
 
     const handleChange = async(event: React.ChangeEvent<HTMLInputElement>) => {
