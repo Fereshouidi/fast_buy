@@ -45,7 +45,7 @@ const goToCardShow = (product: productParams) => {
     const Style: CSSProperties = {
         width: '250px',
         height: '350px',
-        backgroundColor: 'var(--white)',
+        backgroundColor: 'transparent',
         borderRadius: '20px',
         margin: 'var(--medium-margin)',
         padding: 'var(--small-padding)',
@@ -54,7 +54,7 @@ const goToCardShow = (product: productParams) => {
     }
     const StyleWithHover: CSSProperties = {
         ...Style,
-       backgroundColor: 'var(--black-almost-transparent)'
+        backgroundColor: 'var(--white)',
     }
     const StyleImage: CSSProperties = {
         width: '100%',
