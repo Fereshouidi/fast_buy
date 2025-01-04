@@ -1,4 +1,4 @@
-import React, { useState, useContext, CSSProperties } from 'react';
+import React, { useState, useContext } from 'react';
 import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 

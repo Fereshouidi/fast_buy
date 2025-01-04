@@ -8,7 +8,7 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 import { productParams } from "@/app/contexts/productSelectForShowing";
 import SearchBar from "@/app/components/header/headerForComputer/components/searchBar/searchBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeartBroken, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 
 type params = {
