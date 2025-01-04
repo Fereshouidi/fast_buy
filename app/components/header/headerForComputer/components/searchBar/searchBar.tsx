@@ -130,7 +130,9 @@ const SearchBar = ({style, Query}: params) => {
                         : inputStyle
                     } 
                 />
-                <SearchIcon onClick={() => goToSearchPage(searchQuery)}/>
+                <div onClick={() => goToSearchPage(searchQuery)}>
+                    <SearchIcon/>
+                </div>
 
                 <div className="result-section" style={styleResultSection}>{
                     searchReasult?.map(product => {
