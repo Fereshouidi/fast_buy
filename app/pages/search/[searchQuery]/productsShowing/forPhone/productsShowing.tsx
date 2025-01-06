@@ -47,7 +47,7 @@ type params = {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
     }
 
     const styleSearchBar:CSSProperties = {

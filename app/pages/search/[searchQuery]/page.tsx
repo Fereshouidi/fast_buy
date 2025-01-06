@@ -188,7 +188,7 @@ useEffect(() => {
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
-    padding: 'var(--large-padding)'
+    padding: screenWidth > 800 ? 'var(--large-padding)' : ''
   }
 
 
