@@ -41,7 +41,7 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
     
         for (let i = 0; i < orders.length; i++) {
             const order = orders[i];
-            if (order?.products && Array.isArray(order.products)) {
+            if (order?.products && Array.isArray(order.products) && order.status == 'delivered') {
                 for (let j = 0; j < order.products.length; j++) {
                     const orderProduct = order.products[j];
                     if (orderProduct?._id === product?._id) { 

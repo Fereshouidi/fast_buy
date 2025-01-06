@@ -19,9 +19,7 @@ const TotalRating = ({product}: {product: productParams | undefined}) => {
     useEffect(() => {
         const fetchData = async() => {
             const reviews = await getReviewsByProduct(product?._id);
-            setReviews(reviews);
-            console.log(reviews);
-            
+            setReviews(reviews);            
         }
         if (x != 1) {
             fetchData()
