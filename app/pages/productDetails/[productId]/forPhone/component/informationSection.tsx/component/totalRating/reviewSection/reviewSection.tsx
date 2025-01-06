@@ -23,7 +23,7 @@ const ReviewsSection = ({exist, setExist, reviews}: params) => {
     const styleBannerContainer: CSSProperties = {
         position: 'fixed',
         zIndex: 998,
-        top: 'var(--header-height)',
+        top: 'calc(var(--header-height) / 1.5)',
         left: '0',
         backgroundColor: 'var(--black-almost-transparnt)',
         width: '100vw',
