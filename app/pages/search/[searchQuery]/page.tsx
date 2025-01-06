@@ -23,7 +23,7 @@ import { BannerContext } from '@/app/contexts/bannerForEverything';
 import Banner from '@/app/banners/bannerForEveryThing';
 import ProductsShowing from './productsShowing/productsShowing';
 import { productParams } from '@/app/contexts/productSelectForShowing';
-import FilterBoard from './filterBoard';
+// import FilterBoard from './filterBoard';
 
 interface propsParams {
   params: Promise<Params>;
