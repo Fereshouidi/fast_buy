@@ -79,7 +79,8 @@ const RateSection = ({exist, setExist, purchase }: params) => {
         direction: 'rtl'
     }
     const styleFaBan: CSSProperties = {
-        cursor: 'pointer'
+        cursor: 'pointer',
+        color: 'var(--black)'
     }
     const styleTextArea: CSSProperties = {
         margin: 'var(--large-margin)',
