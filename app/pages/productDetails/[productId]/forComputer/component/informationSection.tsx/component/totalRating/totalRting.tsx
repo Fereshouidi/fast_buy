@@ -36,8 +36,8 @@ const TotalRating = ({product}: {product: productParams | undefined}) => {
         color: 'var(--black)',
     }
     const styleSpan: CSSProperties = {
-        marginRight: activeLanguage != 'arabic' ? 'var(--large-margin)' : '',
-        marginLeft: activeLanguage != 'arabic' ? '' : 'var(--large-margin)',
+        marginRight: activeLanguage?.activeLanguage != 'arabic' ? 'var(--large-margin)' : '',
+        marginLeft: activeLanguage?.activeLanguage != 'arabic' ? '' : 'var(--large-margin)',
         cursor: 'pointer',
     }
     const styleSHowReviews: CSSProperties = {
