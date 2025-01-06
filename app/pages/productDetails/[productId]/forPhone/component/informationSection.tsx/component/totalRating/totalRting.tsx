@@ -49,6 +49,8 @@ const TotalRating = ({product}: {product: productParams | undefined}) => {
         marginRight: activeLanguage?.activeLanguage != 'arabic' ? 'var(--large-margin)' : '',
         marginLeft: activeLanguage?.activeLanguage != 'arabic' ? '' : 'var(--large-margin)',
         cursor: 'pointer',
+        fontWeight: '400',
+
     }
     const styleShowReviews: CSSProperties = {
         fontSize: 'var(--small-size)',
@@ -64,12 +66,12 @@ const TotalRating = ({product}: {product: productParams | undefined}) => {
             <div style={styleDivContainer}>
 
                 <span style={styleSpan} >{
-                    activeLanguage?.EvaluationW
+                    activeLanguage?.EvaluationW + ' : '
                 }</span>
 
                 <ReactStars
                     count={5}
-                    size={20} 
+                    size={24} 
                     value={product.totalRating}
                     edit={false} 
                     color2={`${companyInformation?.primaryColor}`} 
