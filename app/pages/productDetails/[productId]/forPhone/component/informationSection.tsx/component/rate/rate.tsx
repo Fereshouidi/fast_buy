@@ -24,7 +24,7 @@ const Rate = ({purchase, setPurchase}: params) => {
         alignItems: 'center',
         margin: 'calc(var(--large-margin) * 1.5) var(--large-margin)',
         fontSize: 'calc(var(--big-size)/1.2)',
-        fontWeight: '200',
+        fontWeight: '700',
         color: primaryColor,
         cursor: 'pointer'
     }

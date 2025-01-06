@@ -30,6 +30,7 @@ const Item = ({review}: params) => {
     }
     const styleNote: CSSProperties = {
         fontSize: 'calc(var(--primary-size) /1.2)',
+        fontWeight: '400',
         padding: 'var(--medium-padding) 0',
         marginLeft: activeLanguage?.activeLanguage == "arabic" ? '' : 'var(--large-margin)'
     }
