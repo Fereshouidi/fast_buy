@@ -37,7 +37,7 @@ const TotalRating = ({product}: {product: productParams | undefined}) => {
         flexDirection: 'column',
         margin: 'var(--large-margin)',
         fontSize: 'var(--primary-size)',
-        fontWeight: '200',
+        fontWeight: '400',
         color: 'var(--black)',
     }
     const styleDivContainer: CSSProperties = {
@@ -53,7 +53,7 @@ const TotalRating = ({product}: {product: productParams | undefined}) => {
 
     }
     const styleShowReviews: CSSProperties = {
-        fontSize: 'var(--small-size)',
+        fontSize: 'calc(var(--small-size)*1.5)',
         margin: 'var(--small-margin)',
         color: companyInformation?.primaryColor,
         textDecoration: 'underline',
