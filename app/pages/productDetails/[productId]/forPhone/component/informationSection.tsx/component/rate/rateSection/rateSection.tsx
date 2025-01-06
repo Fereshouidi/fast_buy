@@ -66,7 +66,7 @@ const RateSection = ({exist, setExist, purchase }: params) => {
         border: `1px solid ${primaryColor}`,
         padding: 'var(--medium-padding)',
         borderRadius: '20px',
-        width: 'var(--extra-long-width)'
+        width: '95%'
     }
     const styleContainer: CSSProperties = {
         display: 'flex',

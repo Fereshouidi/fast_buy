@@ -37,7 +37,7 @@ const ReviewsSection = ({exist, setExist, reviews}: params) => {
         border: `1px solid ${primaryColor}`,
         padding: '0 var(--medium-padding)',
         borderRadius: '20px',
-        width: 'calc(var(--extra-long-width) *2)',
+        width: '95%',
         maxHeight: '80%',
         overflow: 'scroll',
         scrollbarWidth: 'none',
