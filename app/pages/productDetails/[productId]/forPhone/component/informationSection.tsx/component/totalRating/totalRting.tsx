@@ -34,17 +34,23 @@ const TotalRating = ({product}: {product: productParams | undefined}) => {
     const style: CSSProperties = {
         display: 'flex',
         alignItems: 'center',
+        flexDirection: 'column',
         margin: 'var(--large-margin)',
         fontSize: 'var(--primary-size)',
         fontWeight: '200',
         color: 'var(--black)',
+    }
+    const styleDivContainer: CSSProperties = {
+        display: 'flex',
+        alignItems: 'center',
+        width: '100%'
     }
     const styleSpan: CSSProperties = {
         marginRight: activeLanguage?.activeLanguage != 'arabic' ? 'var(--large-margin)' : '',
         marginLeft: activeLanguage?.activeLanguage != 'arabic' ? '' : 'var(--large-margin)',
         cursor: 'pointer',
     }
-    const styleSHowReviews: CSSProperties = {
+    const styleShowReviews: CSSProperties = {
         fontSize: 'var(--small-size)',
         margin: 'var(--small-margin)',
         color: companyInformation?.primaryColor,
@@ -55,20 +61,24 @@ const TotalRating = ({product}: {product: productParams | undefined}) => {
 
     return (
         <div style={style}>
-            <span style={styleSpan} >{
-                activeLanguage?.EvaluationW
-            }</span>
+            <div style={styleDivContainer}>
 
-            <ReactStars
-                count={5}
-                size={20} 
-                value={product.totalRating}
-                edit={false} 
-                color2={`${companyInformation?.primaryColor}`} 
-                className='react-stars'
-            />
+                <span style={styleSpan} >{
+                    activeLanguage?.EvaluationW
+                }</span>
 
-            <span style={styleSHowReviews} onClick={() => setReviewsSection(true)}>{activeLanguage?.showReviewsW}</span>
+                <ReactStars
+                    count={5}
+                    size={20} 
+                    value={product.totalRating}
+                    edit={false} 
+                    color2={`${companyInformation?.primaryColor}`} 
+                    className='react-stars'
+                />
+
+            </div>
+
+            <span style={styleShowReviews} onClick={() => setReviewsSection(true)}>{activeLanguage?.showReviewsW}</span>
 
             <ReviewsSection exist={reviewsSection} setExist={setReviewsSection} reviews={reviews} setReviews={setReviews}/>
         </div>
