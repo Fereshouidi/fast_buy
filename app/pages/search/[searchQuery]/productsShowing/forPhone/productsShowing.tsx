@@ -72,7 +72,9 @@ type params = {
       const styleIcon: CSSProperties = {
         width: 'var(--double-width)',
         height: 'auto',
-        margin: 'var(--medium-margin)'
+        margin: 'var(--medium-margin)',
+        color: 'var(--black)',
+        opacity: '0.7'
       }
     return (
         <section style={Style}>

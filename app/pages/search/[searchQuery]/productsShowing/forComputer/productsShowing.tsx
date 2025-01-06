@@ -61,7 +61,10 @@ type params = {
       const styleIcon: CSSProperties = {
         width: 'var(--double-width)',
         height: 'auto',
-        margin: 'var(--medium-margin)'
+        margin: 'var(--medium-margin)',
+        opacity: '0.7',
+        color: 'var(--black)',
+
       }
 
     return (
