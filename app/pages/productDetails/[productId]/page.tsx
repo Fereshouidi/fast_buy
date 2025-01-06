@@ -13,7 +13,7 @@ import { ProductSelectContext } from "@/app/contexts/productSelectForShowing";
 import SideBarForComputer from "@/app/components/sideBar/sideBarForComputers/sidebar";
 import SideBarForPhone from '@/app/components/sideBar/sideBarForPhones/SideBar';
 import About from "@/app/components/about/about";
-import { getConpanyInformations, getCustomerById, getProductById } from "@/app/crud";
+import { getConpanyInformations, getCustomerById, getProductById, gtOrdersByCustomer } from "@/app/crud";
 import LoadingIcon from "@/app/svg/icons/loading/loading";
 import PageForComputer from "./forComputer/pageForComputer";
 import PageForPhone from "./forPhone/pageForPhone";
@@ -26,10 +26,12 @@ import { LoadingIconContext } from "@/app/contexts/loadingIcon";
 import { CustomerDataContext, CustomerDataParams } from "@/app/contexts/customerData";
 import { BannersContext } from "@/app/contexts/banners";
 import PurchaseStatusBanner from "@/app/banners/addedToPurchase";
+import Banner from '@/app/banners/bannerForEveryThing';
 import { BannerContext } from "@/app/contexts/bannerForEverything";
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 import { getShoppingCartsByCustomerId } from '@/app/crud';
 import { shoppingCartParams } from '@/app/contexts/shoppingCart';
+import { OrderParams } from '@/app/contexts/order';
 
 
 interface propsParams {
@@ -47,7 +49,7 @@ const ProductDetails = (props: propsParams) => {
 
 
     const [loadingIconExist, setLoadingIconExit] = useState<boolean>(false);
-
+    const [orders, setOrders] = useState<OrderParams[] | undefined>(undefined)
     const [product, setProduct] = useState<productParams | undefined>(undefined);
     const [activeImage, setActiveImage] = useState<string | undefined>();
     const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
@@ -97,7 +99,9 @@ const ProductDetails = (props: propsParams) => {
 useEffect(() => {
   const fetchData = async() => {
     const shoppingCart =  await getShoppingCartsByCustomerId(customerData?._id)
-    setShoppingCart(shoppingCart[0])    
+    const orders = await gtOrdersByCustomer(customerData?._id);
+    setShoppingCart(shoppingCart[0]);
+    setOrders(orders);
   }
   fetchData()
 }, [customerData])
@@ -230,9 +234,10 @@ useEffect(() => {
                                           <ActiveLanguageContext.Provider value={{activeLanguage: activeLanguage_, setAtiveLanguage: setActiveLanguage_}}>
                                             <LoadingIcon_theHolePage/>
                                             <PurchaseStatusBanner/>
+                                            <Banner/>
                                             {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
                                             {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-                                            {screenWidth > 800 ? <PageForComputer product={product} setProduct={setProduct} shoppingCart={shoppingCart}/> : <PageForPhone product={product} setProduct={setProduct} shoppingCart={shoppingCart}/>}
+                                            {screenWidth > 800 ? <PageForComputer product={product} setProduct={setProduct} shoppingCart={shoppingCart} orders={orders}/> : <PageForPhone product={product} setProduct={setProduct} shoppingCart={shoppingCart}/>}
                                             <About/>
                                           </ActiveLanguageContext.Provider>
                                         </BannerContext.Provider>

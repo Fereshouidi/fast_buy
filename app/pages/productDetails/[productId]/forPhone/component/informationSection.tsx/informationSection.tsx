@@ -18,6 +18,7 @@ import { CustomerDataContext } from '@/app/contexts/customerData';
 import DiscountCode from "./component/discountCode";
 import { shoppingCartParams } from "@/app/contexts/shoppingCart";
 import { addPurchase, getPurchasesByCustomerProduct, updatePurchase } from "@/app/crud";
+import Rate from "./component/rate/rate";
 
 
 type Params = {
@@ -91,7 +92,6 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
                 
             }
         }
-        console.log('d');
         
         getPurchase();
         
@@ -109,7 +109,6 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
                 }
             }
             
-            console.log('updatedPurchase');
         };
         fetchData();
     }, [purchaseData]);
@@ -149,6 +148,7 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
             /> : null } 
             <Price product={product} setProduct={setProduct} discountCodeAmount={discountCodeAmount} price={price} setPrice={setPrice} purchaseData={purchaseData} setPurchaseData={setPurchaseData}/>
             {productinShoppingCart != undefined  && <PutInPurchaseBTN product={product} purchaseData={purchaseData} productinShoppingCart={productinShoppingCart} setProductinShoppingCart={setProductinShoppingCart}/> }
+            <Rate/>
         </div>
     )
 }

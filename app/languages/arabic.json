@@ -118,7 +118,13 @@
     "noFailOrderP": "لا يوجد طلبات فاشلة !",
     "noProcessingOrderP": "لا يوجد طلبات بصدد المعالجة !",
     "favoriteW": "المفضل",
-    "noFavoriteP": "لا يوجد منتجات مفضلة !"
+    "noFavoriteP": "لا يوجد منتجات مفضلة !",
+    "rateProductW": "قيم المنتج",
+    "showReviewsW": "شاهد المراجعات",
+    "reviewsW": "المراجعات",
+    "commentW": "تعليق",
+    "submateW": "ارسال",
+    "noReviewsP": "لا يوجد مراجعات على هذا المنتج !"
 
 }
 

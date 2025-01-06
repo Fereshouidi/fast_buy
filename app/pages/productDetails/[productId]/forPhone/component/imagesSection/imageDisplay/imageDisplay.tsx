@@ -11,8 +11,8 @@ import { shoppingCartParams } from "@/app/contexts/shoppingCart";
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 import { purchaseParams } from "@/app/contexts/purchaseData";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
-import { CustomerDataContext, CustomerDataParams } from "@/app/contexts/customerData";
-import { updateCustomer } from "@/app/crud";
+import { updateLikeStatus } from "@/app/crud";
+import { CustomerDataContext } from "@/app/contexts/customerData";
 
 type Params = {
     product: productParams | undefined,
@@ -24,28 +24,39 @@ type Params = {
 
 const ImageDisplay = ({product, purchase, setPurchase}: Params) => {
 
-    const customer = useContext(CustomerDataContext);
     const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
+    const customer = useContext(CustomerDataContext);
     const activeImageContext = useContext(ActiveImageContext);
     const activeImageIndex = activeImageContext?.activeImageIndex || 0;
     const activeLanguag = useContext(ActiveLanguageContext)?.activeLanguage;
     const [inFavorite, setInFavorite] = useState<boolean | undefined>(false);
-    //const [purchaseInShoppingCart, setPurchadeInShoppingCart] = useState<boolean>(false);
 
-    // useEffect(() => {
-    //     if (shoppingCart?.purchases) {
-    //         for (let i = 0 ; i < shoppingCart?.purchases?.length ; i++) {
-    //             if (shoppingCart.purchases[i].product?._id == product?._id) {
-    //                 setPurchadeInShoppingCart(true);
-    //             }
-    //         }
-    //     }
-        
-    // }, [shoppingCart, purchase])
 
+    let ref = 0;
     useEffect(() => {
-        setInFavorite(purchase?.like)
-    }, [purchase])
+        if (ref == 0) {
+            if (customer?.favorite) {
+                for (let i = 0; i < customer.favorite.length; i++) {
+                    if (customer.favorite[i]._id === product?._id) {
+                        setInFavorite(true);
+                        
+                        if (purchase && purchase.like !== true) {
+                            setPurchase({
+                                ...purchase,
+                                like: true,
+                            });
+    
+                        }
+                        break; 
+                    }
+                }
+            }
+            ref = 1
+        }
+        
+    }, [purchase && ref])
+
+
 
     const handleHeartClick = async() => {
 
@@ -54,29 +65,13 @@ const ImageDisplay = ({product, purchase, setPurchase}: Params) => {
                 ...purchase,
                 like: !inFavorite
             })
+
+            setInFavorite(!inFavorite)
         }
 
-        if (!inFavorite && customer?.favorite?.every(item => typeof item._id === 'string')) {
-            const updatedCustomer: CustomerDataParams = {
-                ...customer,
-                favorite: customer.favorite != undefined && product ? [...customer.favorite, product] : product ? [product] : undefined,
-            };
-            await updateCustomer(purchase?.buyer, updatedCustomer);
-            setInFavorite(true)
-            
-        } else {
-            if (customer && customer._id) {
-                const updatedCustomer: CustomerDataParams = {
-                    ...customer,
-                    favorite: Array.isArray(customer.favorite) && product
-                        ? customer.favorite.filter(item => item._id !== product._id) 
-                        : undefined,
-                };
-                await updateCustomer(purchase?.buyer, updatedCustomer);
-                setInFavorite(false)
-            } 
-            
-        }
+        updateLikeStatus(purchase?._id, !inFavorite)
+
+        
     }
     const style: CSSProperties = {
         maxWidth: '70vh',

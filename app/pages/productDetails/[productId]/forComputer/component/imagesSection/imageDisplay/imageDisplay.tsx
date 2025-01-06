@@ -12,6 +12,7 @@ import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 import { purchaseParams } from "@/app/contexts/purchaseData";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 import { updateLikeStatus } from "@/app/crud";
+import { CustomerDataContext } from "@/app/contexts/customerData";
 
 type Params = {
     product: productParams | undefined,
@@ -24,15 +25,38 @@ type Params = {
 const ImageDisplay = ({product, purchase, setPurchase}: Params) => {
 
     const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
+    const customer = useContext(CustomerDataContext);
     const activeImageContext = useContext(ActiveImageContext);
     const activeImageIndex = activeImageContext?.activeImageIndex || 0;
     const activeLanguag = useContext(ActiveLanguageContext)?.activeLanguage;
     const [inFavorite, setInFavorite] = useState<boolean | undefined>(false);
 
 
+    let ref = 0;
     useEffect(() => {
-        setInFavorite(purchase?.like)
-    }, [purchase])
+        if (ref == 0) {
+            if (customer?.favorite) {
+                for (let i = 0; i < customer.favorite.length; i++) {
+                    if (customer.favorite[i]._id === product?._id) {
+                        setInFavorite(true);
+                        
+                        if (purchase && purchase.like !== true) {
+                            setPurchase({
+                                ...purchase,
+                                like: true,
+                            });
+    
+                        }
+                        break; 
+                    }
+                }
+            }
+            ref = 1
+        }
+        
+    }, [purchase && ref])
+
+
 
     const handleHeartClick = async() => {
 
@@ -41,6 +65,8 @@ const ImageDisplay = ({product, purchase, setPurchase}: Params) => {
                 ...purchase,
                 like: !inFavorite
             })
+
+            setInFavorite(!inFavorite)
         }
 
         updateLikeStatus(purchase?._id, !inFavorite)
@@ -79,7 +105,7 @@ const ImageDisplay = ({product, purchase, setPurchase}: Params) => {
         right: activeLanguag?.activeLanguage != 'arabic' ? 'var(--large-margin)' : '',
         left: activeLanguag?.activeLanguage != 'arabic' ? '' : 'var(--large-margin)',
         top: 'var(--large-margin)',
-        backgroundColor: purchase?.like ? primaryColor : 'var(--ashen)',
+        backgroundColor: inFavorite ? primaryColor : 'var(--ashen)',
         cursor: 'pointer'
     }
 

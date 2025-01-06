@@ -5,7 +5,7 @@ import { purchaseParams } from "./purchaseData"
 
 export interface OrderParams {
     _id: string | undefined
-    customer: CustomerDataParams | string | undefined
+    customer: CustomerDataParams | undefined
     products: productParams[] | undefined
     purchases: purchaseParams[]
     status?: 'cart'| 'processing'| 'packaged'| 'shipped'| 'delivered'| 'canceled'| 'failed'|'Being returned'| 'returned'| 'out_of_stock'| 'ready_for_pickup' | undefined;

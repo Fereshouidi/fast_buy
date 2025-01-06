@@ -188,7 +188,7 @@ useEffect(() => {
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
-
+    padding: 'var(--large-padding)'
   }
 
 
@@ -208,7 +208,7 @@ useEffect(() => {
                               {screenWidth > 800 ? <HeaderForComputer Query={searchQuery}/> : <HeaderForPhone />}
                               {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
                               <div style={style} className='page'>
-                                <FilterBoard/>
+                                {/* <FilterBoard/> */}
                                 { products && <ProductsShowing products={products?? []} Query={searchQuery}/> }
                               </div>
                                 <About/>

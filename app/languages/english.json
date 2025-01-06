@@ -119,7 +119,13 @@
     "noFailOrderP": "There are no failed orders !",
     "noProcessingOrderP": "There are no orders being processed !",
     "favoriteW": "Favorite",
-    "noFavoriteP": "there is no favorite products !"
+    "noFavoriteP": "there is no favorite products !",
+    "rateProductW": "Rate product",
+    "showReviewsW": "Show reviews",
+    "reviewsW": "Reviews",
+    "commentW": "Comment",
+    "submateW": "Submate",
+    "noReviewsP": "there is no reviews in that product !"
 }
 
 
