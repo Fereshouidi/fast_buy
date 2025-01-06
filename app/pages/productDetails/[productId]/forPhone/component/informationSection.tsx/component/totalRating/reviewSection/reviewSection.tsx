@@ -25,9 +25,9 @@ const ReviewsSection = ({exist, setExist, reviews}: params) => {
         zIndex: 998,
         top: 'calc(var(--header-height) / 1.5)',
         left: '0',
-        backgroundColor: 'var(--black-almost-transparnt)',
+        backgroundColor: 'red',
         width: '100vw',
-        height: 'calc(100vh - var(--header-height))',
+        height: 'calc(100vh - calc(var(--header-height) / 1.5))',
         display: exist? 'flex' : 'none',
         justifyContent: 'center',
         alignItems: 'center'
