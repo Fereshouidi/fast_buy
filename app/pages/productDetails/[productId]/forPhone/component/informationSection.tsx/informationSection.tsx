@@ -9,7 +9,7 @@ import Price from "./component/price";
 import PutInPurchaseBTN from "./component/putInPurchaseBTN";
 import Quantity from "./component/quantity";
 import Size from "./component/size";
-import TotalRating from "./component/totalRting";
+import TotalRating from "./component/totalRating/totalRting";
 import { productParams } from "@/app/contexts/productSelectForShowing";
 import Availablity from "./component/availability";
 import './style.css';
@@ -19,6 +19,7 @@ import DiscountCode from "./component/discountCode";
 import { shoppingCartParams } from "@/app/contexts/shoppingCart";
 import { addPurchase, getPurchasesByCustomerProduct, updatePurchase } from "@/app/crud";
 import Rate from "./component/rate/rate";
+import { OrderParams } from "@/app/contexts/order";
 
 
 type Params = {
@@ -27,10 +28,33 @@ type Params = {
     purchaseData: purchaseParams | undefined
     setPurchaseData: (value: purchaseParams | undefined) => void
     shoppingCart: shoppingCartParams | undefined,
+    orders: OrderParams[] | undefined
 }
-const InformationSection = ({product, setProduct, purchaseData, setPurchaseData, shoppingCart}: Params) => {
+const InformationSection = ({product, setProduct, purchaseData, setPurchaseData, shoppingCart, orders}: Params) => {
 
     const customer = useContext(CustomerDataContext);
+
+    const customerCanRate = () => {
+        if (!orders || !Array.isArray(orders)) {
+            return false; 
+        }
+    
+        for (let i = 0; i < orders.length; i++) {
+            const order = orders[i];
+            if (order?.products && Array.isArray(order.products)) {
+                for (let j = 0; j < order.products.length; j++) {
+                    const orderProduct = order.products[j];
+                    if (orderProduct?._id === product?._id) { 
+                        return true;
+                    }
+                }
+            }
+        }
+    
+        return false;
+    };
+    
+    
 
     const [discountCodeAmount, setDiscountCodeAmount] = useState<{discount?: number | null, discountPercent?: number | null}>({discount: 0, discountPercent: 0});
     const [price, setPrice] = useState<number | undefined>(product?.discount? product.discount.newPrice : product?.price);
@@ -38,7 +62,6 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
     
 
     useEffect(() => {
-        console.log('a');
         
         if(purchaseData && price){
             setPurchaseData({
@@ -87,7 +110,6 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
                         like: false
                     })
                     setPurchaseData(purchaseData.newPurchase);
-                   // await updatePurchase(purchaseData.newPurchase)
                 }
                 
             }
@@ -99,7 +121,6 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
 
 
     useEffect(() => {
-        console.log('c');
     
         const fetchData = async () => {
             if (purchaseData) {
@@ -148,7 +169,7 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
             /> : null } 
             <Price product={product} setProduct={setProduct} discountCodeAmount={discountCodeAmount} price={price} setPrice={setPrice} purchaseData={purchaseData} setPurchaseData={setPurchaseData}/>
             {productinShoppingCart != undefined  && <PutInPurchaseBTN product={product} purchaseData={purchaseData} productinShoppingCart={productinShoppingCart} setProductinShoppingCart={setProductinShoppingCart}/> }
-            <Rate/>
+            {customerCanRate()? <Rate purchase={purchaseData} setPurchase={setPurchaseData}/> : null}
         </div>
     )
 }

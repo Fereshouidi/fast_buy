@@ -237,7 +237,7 @@ useEffect(() => {
                                             <Banner/>
                                             {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
                                             {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-                                            {screenWidth > 800 ? <PageForComputer product={product} setProduct={setProduct} shoppingCart={shoppingCart} orders={orders}/> : <PageForPhone product={product} setProduct={setProduct} shoppingCart={shoppingCart}/>}
+                                            {screenWidth > 800 ? <PageForComputer product={product} setProduct={setProduct} shoppingCart={shoppingCart} orders={orders}/> : <PageForPhone product={product} setProduct={setProduct} shoppingCart={shoppingCart} orders={orders}/>}
                                             <About/>
                                           </ActiveLanguageContext.Provider>
                                         </BannerContext.Provider>
