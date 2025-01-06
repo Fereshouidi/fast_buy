@@ -67,7 +67,9 @@ type params = {
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
-        opacity: 0.7
+        opacity: 0.7,
+        color: 'var(--black)',
+
       }
       const styleIcon: CSSProperties = {
         width: 'var(--double-width)',
@@ -88,7 +90,7 @@ type params = {
                     
                 :<div style={styleNoFavoriteDiv}>
                     <FontAwesomeIcon icon={faSearch} style={styleIcon}/>
-                    <p>{activeLanguage?.noFavoriteP}</p>
+                    <p>{activeLanguage?.noResultP}</p>
                 </div>
                 }
             </div>

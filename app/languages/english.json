@@ -125,7 +125,8 @@
     "reviewsW": "Reviews",
     "commentW": "Comment",
     "submateW": "Submate",
-    "noReviewsP": "there is no reviews in that product !"
+    "noReviewsP": "there is no reviews in that product !",
+    "noResultP": "there's no result !"
 }
 
 
