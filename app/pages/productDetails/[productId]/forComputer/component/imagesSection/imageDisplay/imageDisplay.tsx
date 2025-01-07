@@ -13,6 +13,7 @@ import { purchaseParams } from "@/app/contexts/purchaseData";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 import { updateLikeStatus } from "@/app/crud";
 import { CustomerDataContext } from "@/app/contexts/customerData";
+import { useRouter } from "next/navigation";
 
 type Params = {
     product: productParams | undefined,
@@ -30,6 +31,7 @@ const ImageDisplay = ({product, purchase, setPurchase}: Params) => {
     const activeImageIndex = activeImageContext?.activeImageIndex || 0;
     const activeLanguag = useContext(ActiveLanguageContext)?.activeLanguage;
     const [inFavorite, setInFavorite] = useState<boolean | undefined>(false);
+    const router = useRouter();
 
 
     let ref = 0;
@@ -60,6 +62,10 @@ const ImageDisplay = ({product, purchase, setPurchase}: Params) => {
 
     const handleHeartClick = async() => {
 
+        if (!customer) {
+            return router.push('/pages/register')
+        }
+
         if (purchase) {
             setPurchase({
                 ...purchase,
@@ -70,7 +76,6 @@ const ImageDisplay = ({product, purchase, setPurchase}: Params) => {
         }
 
         updateLikeStatus(purchase?._id, !inFavorite)
-
         
     }
 
