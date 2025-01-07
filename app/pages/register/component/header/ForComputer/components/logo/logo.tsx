@@ -12,7 +12,9 @@ const Logo = () => {
  
     const style: CSSProperties = {
         cursor: 'pointer',
-        color: 'var(--black)'
+        color: 'var(--black)',
+        fontSize: 'var(--small-size)'
+
     }
     return (
         <div style={style} className='logo'>
