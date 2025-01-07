@@ -110,6 +110,7 @@ const RateSection = ({exist, setExist, purchase }: params) => {
 
                 <div className="content" style={styleContainer}> 
                     <ReactStars 
+                        className="ReactStars"
                         color1={'var(--ashen-semi-transparent)'}
                         color2={primaryColor}
                         count={5}

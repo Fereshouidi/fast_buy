@@ -31,12 +31,15 @@ const ProductsShowing = ({ products }: { products: productParams[] }) => {
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
-        opacity: 0.7
+        opacity: 0.7,
+        color: 'var(--black)'
+
       }
       const styleIcon: CSSProperties = {
         width: 'var(--double-width)',
         height: 'auto',
-        margin: 'var(--medium-margin)'
+        margin: 'var(--medium-margin)',
+
       }
 
     return (

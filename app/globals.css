@@ -222,9 +222,11 @@ header div{
 }
 
 
-.arabic *{
+.arabic div:not(.ReactStars), 
+.arabic span:not(.ReactStars) {
   direction: rtl;
 }
+
 
 .sideBar-background{
   text-decoration: dashed;

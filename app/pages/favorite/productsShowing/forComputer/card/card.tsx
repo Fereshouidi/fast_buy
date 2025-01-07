@@ -74,7 +74,8 @@ console.log(product);
         width: '100%',
         height: '29%',
         borderRadius: '20px',
-        position: 'relative'
+        position: 'relative',
+        color: 'var(--black)'
     }
     const styleBoxAndPricesDiv: CSSProperties = {
         display: 'flex',
@@ -84,7 +85,9 @@ console.log(product);
         left: '0',
         bottom: '0',
         width: '100%',
-        direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr'
+        direction: languageContext.activeLanguage == 'arabic'? 'rtl' : 'ltr',
+        color: 'var(--black)'
+
     }
     return(
         <div id="card" style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover} onClick={() => goToCardShow(product)}>
