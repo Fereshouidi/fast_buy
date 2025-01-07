@@ -159,8 +159,8 @@ const Slide = ({product} : {product: productParams}) => {
                 :product.name.english
             }</h4>
             <div style={stylePrices}>
-                {product.discount && product.discount.oldPrice && <span style={styleoldPrice}>{product.discount.oldPrice + product.currencyType}</span>} 
-                {product.discount && product.discount.oldPrice && <span style={styleNewPrice}>{product.discount.newPrice + product.currencyType}</span>}
+                {product.discount && product.discount.oldPrice && <span style={styleoldPrice}>{product.discount.oldPrice +' '+ (companyInformation?.currencyType || '')}</span>} 
+                {product.discount && product.discount.oldPrice && <span style={styleNewPrice}>{product.discount.newPrice +' '+ (companyInformation?.currencyType || '')}</span>}
             </div>
         </div>
     )

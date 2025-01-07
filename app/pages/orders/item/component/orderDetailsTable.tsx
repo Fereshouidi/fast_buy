@@ -17,11 +17,12 @@ const OrderDetailsTable = ({order}: parmas) => {
         const date_ = new Date(date);
 
         const year = date_.getFullYear();
-        const month = date_.getMonth();
-        const day = date_.getDay();
+        const month = date_.getMonth() + 1;
+        const day = date_.getDate();
         const hour = date_.getHours();
         const munite = date_.getMinutes();
 
+        
 
         return `${year}/${month}/${day}  ${hour}:${munite}`
     }

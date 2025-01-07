@@ -71,6 +71,8 @@ useEffect(() => {
     const fetchData = async() => {
         const conpanyInformationsData = await getConpanyInformations();
         //alert(conpanyInformationsData.p);
+        console.log(conpanyInformationsData);
+        
         setConpanyInformations(conpanyInformationsData);
     }
     fetchData();
@@ -102,7 +104,7 @@ useEffect(() => {
         }
 
         const storedData = localStorage.getItem("customerData");
-        console.log(storedData);
+        //console.log(storedData);
 
         if (storedData && typeof storedData !== null) {
           try {
@@ -110,7 +112,7 @@ useEffect(() => {
           //  alert(JSON.parse(storedData)._id)
             const customer = await getCustomerById(JSON.parse(storedData)._id);
             setCustomerData(customer as CustomerDataParams) ;
-            console.log(storedData);
+            //console.log(storedData);
             
             
           } catch (error) {
@@ -186,7 +188,7 @@ useEffect(() => {
   // }
 
   return (
-    <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin}} >
+    <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType}} >
         <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
           <ActiveLanguageContext.Provider value={{activeLanguage: activeLanguage_, setAtiveLanguage: setActiveLanguage_}}>
             <ThemeContext.Provider value={{ theme, setTheme }}>

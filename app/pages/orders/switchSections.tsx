@@ -26,7 +26,7 @@ const SwitchSections = ({activeSection, setActiveSection}: params)=> {
         textAlign: 'center',
         margin: 'var(--small-margin)',
         backgroundColor: activeSection == 'processingSection' ? primaryColor : 'var(--ashen-semi-transparent)',
-        color: 'var(--white)',
+        color: 'white',
         padding: 'var(--medium-padding) 0',
         borderRadius: '50px',
         cursor: 'pointer'
@@ -36,7 +36,7 @@ const SwitchSections = ({activeSection, setActiveSection}: params)=> {
         textAlign: 'center',
         margin: 'var(--small-margin)',
         backgroundColor: activeSection == 'failseSection' ? primaryColor : 'var(--ashen-semi-transparent)',
-        color: 'var(--white)',
+        color: 'white',
         padding: 'var(--medium-padding) 0',
         borderRadius: '50px',
         cursor: 'pointer'
@@ -46,7 +46,7 @@ const SwitchSections = ({activeSection, setActiveSection}: params)=> {
         textAlign: 'center',
         margin: 'var(--small-margin)',
         backgroundColor: activeSection == 'successSection' ? primaryColor : 'var(--ashen-semi-transparent)',
-        color: 'var(--white)',
+        color: 'white',
         padding: 'var(--medium-padding) 0',
         borderRadius: '50px',
         cursor: 'pointer'

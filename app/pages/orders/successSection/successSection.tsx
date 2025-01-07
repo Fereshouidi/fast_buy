@@ -37,7 +37,6 @@ const SuccessSection = ({orders}: params) => {
         width: '100%',
         minHeight: '100vh',
         backgroundColor: 'var(--white)',
-        //display: 'flex',
         margin: window.innerWidth > 800 ? 'var(--large-margin) 0' : '0',
         borderRadius: '20px',
         padding: 'var(--large-padding)'
@@ -62,13 +61,15 @@ const SuccessSection = ({orders}: params) => {
         flexDirection: 'column',
         height: 'auto',
         padding: '10vh',
-        opacity: 0.7
+        opacity: 0.7,
+        color: 'var(--black)',    
     }
     const StyleEmptySuccessOrder: CSSProperties = {
         width: '40%',
-       // backgroundColor: 'blue',
         height: 'auto',
-        margin: 'var(--large-margin)'
+        margin: 'var(--large-margin)',
+        opacity: 0.7,
+        color: 'var(--black)',
     }
     return (
         <div style={style}>

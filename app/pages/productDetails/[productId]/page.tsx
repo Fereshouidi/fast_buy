@@ -175,13 +175,14 @@ useEffect(() => {
     }
   }, [theme]);
 
-  useEffect(() => {
+  useEffect(() => {   
     if (typeof window !== "undefined") {
       const storedLanguage = localStorage.getItem('activeLanguage_');    
       setActiveLanguage_(storedLanguage == JSON.stringify(arabic) ? JSON.parse(storedLanguage) : english);
+      //alert(storedLanguage);
+
     }
-  
-    }, [typeof window || localStorage.getItem('activeLanguage_')]) 
+    }, [ window || localStorage.getItem('activeLanguage_')]) 
 
   useEffect(() => {
     
@@ -220,7 +221,7 @@ useEffect(() => {
     
     return (
 
-        <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin}} >
+        <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType}} >
             <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
                 <ThemeContext.Provider value={{ theme, setTheme }}>
                     <ProductSelectContext.Provider value={{product: product}}>

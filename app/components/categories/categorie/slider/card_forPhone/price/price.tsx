@@ -103,14 +103,14 @@ const newPriceHover: CSSProperties = {
         <div style={stylePriceDiv}>
           {product.discount ? (
             <div style={stylediscountPricesDiv}>
-              {/* <h5 style={styleoldPrice}>{product.discount.oldPrice+ ' ' +product.currencyType|| "N/A"}</h5> */}
+              {/* <h5 style={styleoldPrice}>{product.discount.oldPrice+ ' ' +companyInformation?.currencyType|| "N/A"}</h5> */}
               <h4 style={price_Hover? newPriceHover: styleNewPrice}
                 onMouseEnter={() => setPrice_Hover(true)} 
                 onMouseLeave={() => setPrice_Hover(false)}
-              >{product.discount.newPrice+ ' ' +product.currencyType|| "N/A"}</h4>
+              >{product.discount.newPrice+ ' ' +companyInformation?.currencyType|| "N/A"}</h4>
             </div>
           ) : (
-            <h4 style={styleNewPrice} >{product.price+ ' ' +product.currencyType || "N/A"}</h4>
+            <h4 style={styleNewPrice} >{product.price+ ' ' +companyInformation?.currencyType || "N/A"}</h4>
           )}
         </div>
       );

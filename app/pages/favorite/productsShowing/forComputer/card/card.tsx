@@ -42,6 +42,9 @@ const goToCardShow = (product: productParams) => {
     router.push(`/pages/productDetails/${product._id}`);
 };
 
+console.log(product);
+
+
     const Style: CSSProperties = {
         width: '250px',
         height: '350px',
@@ -88,9 +91,9 @@ const goToCardShow = (product: productParams) => {
             <img src={product.imagePrincipal} alt="" style={StyleImage} />
             <div style={StyleCartInformation}>
                 <h4 style={styleH4}>{
-                    languageContext.activeLanguage == "english" ?
-                    product.name.english
-                    : product.name.arabic    
+                    languageContext.activeLanguage == "arabic" ?
+                    product.name.arabic 
+                    : product.name.english
                 }</h4>
                 <StarRating product={product}/>
                 <div style={styleBoxAndPricesDiv}>

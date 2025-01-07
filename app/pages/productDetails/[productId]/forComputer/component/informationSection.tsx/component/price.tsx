@@ -5,6 +5,7 @@ import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext"
 import { productParams } from "@/app/contexts/productSelectForShowing";
 import { CSSProperties, useContext, useEffect } from "react";
 import { purchaseParams } from '@/app/contexts/purchaseData';
+import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 
 type Params = {
     product: productParams | undefined,
@@ -18,6 +19,7 @@ type Params = {
 const Price = ({product, setPrice, discountCodeAmount, purchaseData}: Params) => {
 
     const languageSelectorContext = useContext(LanguageSelectorContext);
+    const companyInformation = useContext(CompanyInformationContext);
 
     useEffect(() => {
         setPrice( handlePrice())
@@ -82,7 +84,7 @@ const Price = ({product, setPrice, discountCodeAmount, purchaseData}: Params) =>
             </span>
 
             <span style={stylePrice}>{purchaseData?.totalPrice?? product?.discount?.newPrice?? product?.price}</span>
-            <span>{product?.currencyType}</span>
+            <span>{companyInformation?.currencyType}</span>
         </div>
     )
 }
