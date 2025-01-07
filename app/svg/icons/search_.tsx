@@ -8,7 +8,7 @@ const SearchIcon_ = () => {
 
     const style: CSSProperties = {
         backgroundColor: 'transparent',
-        color: 'red',
+        //color: 'red',
         border: 'none'
     }
     return(
