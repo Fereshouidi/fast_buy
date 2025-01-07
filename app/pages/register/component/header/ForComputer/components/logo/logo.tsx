@@ -1,13 +1,11 @@
 'use client';
 import { CSSProperties, useContext } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
-import { ActiveLanguageContext } from '@/app/contexts/activeLanguage';
 import { useRouter } from 'next/navigation';
 
 const Logo = () => {
 
     const companyInformations = useContext(CompanyInformationContext);
-    const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage.activeLanguage;
     const router = useRouter();
 
     const goToHomePage = () => {
