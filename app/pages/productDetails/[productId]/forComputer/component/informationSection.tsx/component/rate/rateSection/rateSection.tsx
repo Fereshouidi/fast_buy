@@ -48,7 +48,7 @@ const RateSection = ({exist, setExist, purchase, review }: params) => {
 
     const submate = () => {
         if (purchase && starsNum && setLoadingIcon && setBanner) {             
-            if (starsNum) { 
+            if (starsNum && note) { 
                 setLoadingIcon(true);
                 setExist(false);
                 updateReview(review?._id, purchase.buyer, purchase.product , starsNum, note);
@@ -95,10 +95,11 @@ const RateSection = ({exist, setExist, purchase, review }: params) => {
     const styleButton: CSSProperties = {
         padding: 'calc(var(--medium-padding) *1.3)',
         margin: 'calc(var(--medium-margin) *1.3)',
-        backgroundColor: primaryColor,
+        backgroundColor: starsNum && note ? primaryColor : 'var(--ashen-semi-transparent)',
+        border: starsNum && note ? '' : 'none',
         color: 'white',
         borderRadius: '50px',
-        cursor: 'pointer'
+        cursor: starsNum && note ? 'pointer' : '',
     }
     
     return (
