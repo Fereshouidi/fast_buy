@@ -347,6 +347,20 @@ export const getPurchasesByCustomerProduct = async (customerId, productId) => {
     }
 }
 
+export const getReviewByCustomerProduct = async (customerId, productId) => {
+    
+    try {
+        const response = await axios.get(url + '/get/review/by/customer&product' , {
+            params: {customerId, productId}
+        })        
+        console.log(response.data);
+        
+        return response.data;
+    }catch(err) {
+        throw err;
+    }
+}
+
 export const getProductsByName = async (searchQuery) => {
     
     try {
@@ -359,11 +373,11 @@ export const getProductsByName = async (searchQuery) => {
     }
 }
 
-export const updateReview = async (purchaseId, customerId, productId, customerRating, customerNote) => {
+export const updateReview = async (reviewId, customerId, productId, customerRating, customerNote) => {
     
     try {
         const response = await axios.put(url + '/update/review' , { 
-            purchaseId, 
+            reviewId, 
             customerId,
             productId,
             customerRating, 
