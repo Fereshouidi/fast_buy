@@ -49,7 +49,7 @@ const RateSection = ({exist, setExist, purchase }: params) => {
             if (starsNum) { 
                 setLoadingIcon(true);
                 setExist(false);
-                updateReview(purchase._id, starsNum, note);
+                updateReview(purchase._id, purchase.buyer, purchase.product , starsNum, note);
                 setBanner(true, 'your review has been sended successfully', 'success');
                 setLoadingIcon(false);
                 setIsEdit(false);

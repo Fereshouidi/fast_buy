@@ -96,10 +96,9 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
                 const purchaseFrom_DB = await getPurchasesByCustomerProduct(customer?._id, product?._id);
 
                 if (purchaseFrom_DB && !purchaseData) {
-                    console.log(purchaseFrom_DB);
                     setPurchaseData(purchaseFrom_DB);
-                } else {
-
+                } else if (product) {
+                    
                     const purchaseData = await addPurchase({
                         buyer: customer?._id, 
                         product: product, 
