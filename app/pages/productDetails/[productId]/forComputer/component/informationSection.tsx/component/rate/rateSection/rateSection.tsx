@@ -43,8 +43,8 @@ const RateSection = ({exist, setExist, purchase, review }: params) => {
     }
 
     useEffect(() => {
-        setStarsNum(purchase?.customerRating?? 0)
-    }, [])
+        setStarsNum(review?.customerRating?? 0)
+    }, [review])
 
     const submate = () => {
         if (purchase && starsNum && setLoadingIcon && setBanner) {             
