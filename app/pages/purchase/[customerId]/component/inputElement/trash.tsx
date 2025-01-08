@@ -68,15 +68,15 @@ const Trash = ({shoppingCart, setShoppingCart, purchase}: params) => {
         padding : 'var(--small-padding)',
         borderRadius: '50px',
         cursor: "pointer",
+
     }
     return (
         <div 
             className="icon trash" 
             style={style} 
-            onClick={(event) => deletePurchase(event)}
         >
-            <div style={styleIconDiv}>
-                <p style={styleIcon}> <FontAwesomeIcon icon={faTrash}/> {activeLanguage?.deleteW}</p>
+            <div style={styleIconDiv} >
+                <p style={styleIcon} onClick={(event) => deletePurchase(event)}> <FontAwesomeIcon icon={faTrash}/> {activeLanguage?.deleteW}</p>
             </div>
         </div>
     )
