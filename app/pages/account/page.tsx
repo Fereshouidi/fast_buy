@@ -27,14 +27,8 @@ import LogOut from './logOut/logOut';
 import Phone from './phone/phone';
 import UserName from './userName/userName';
 
-interface propsParams {
-  params: Promise<Params>;
-}
-interface Params {
-  categorieId: string;
-}
 
-const OrdersPage = (props: propsParams) => {
+const OrdersPage = () => {
 
   
     const [screenWidth, setScreenWidth] = useState<number>(1000);  

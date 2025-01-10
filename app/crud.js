@@ -1,4 +1,4 @@
-const url = 'http://localhost:3002/api';
+const url = 'https://fast-buy-back-end.vercel.app/api';
 import axios from "axios";
 
 //https://fast-buy-back-end.vercel.app/api
@@ -160,6 +160,7 @@ export const sendActivationToken = async(email, username, companyEmail, companyP
         return true;
 
     }catch(err) {
+        console.log(err);
         return false;
     }
 }

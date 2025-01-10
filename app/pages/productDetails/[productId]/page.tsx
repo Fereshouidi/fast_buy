@@ -63,12 +63,13 @@ const ProductDetails = (props: propsParams) => {
    // const [bannerStatus, setBannerStatus] = useState<'success' | 'fail' | null>(null);
     const [activeLanguage_, setActiveLanguage_] = useState<typeof english | typeof arabic>(english);
     const [shoppingCart, setShoppingCart] = useState<shoppingCartParams | undefined>(undefined);
-
+    const [bannerStatus, setBannerStatus] = useState<'success' | 'fail' | null>(null);
     
 
     const setBanner = (visibility: boolean, text: string | undefined, status?: 'success' | 'fail' | null) => {
       setBannerForEveryThing(visibility)
       setBannerText(text);
+      setBannerStatus(bannerStatus);
     }
     
 
@@ -227,7 +228,7 @@ useEffect(() => {
                                   <LoadingIconContext.Provider value={{exist: loadingIconExist , setExist: setLoadingIconExit}}>
                                     <CustomerDataContext.Provider value={customerData}>
                                       <BannersContext.Provider value={{purchaseStatusBanner: purchaseStatusBanner, setPurchaseStatusBanner: setPurchaseStatusBanner, purchaseStatus: purchaseStatus , setPurchaseStatus: setPurchaseStatus , passwordsNotMatch: false , setPasswordsNotMatch: ()=> null , emailNotValide: false , setemailNotValide: ()=> null , verificatinEmailBanner: false, setVerificatinEmailBanner: ()=> null, loginStatusBanner: false, setLoginStatusBanner: ()=> null, loginStatus: 404, setLoginStatus: ()=> null }}>
-                                        <BannerContext.Provider value={{bannerexist: bannerForEveryThing,bannerText: bannerText , setBanner: setBanner}}>
+                                        <BannerContext.Provider value={{bannerexist: bannerForEveryThing,bannerText: bannerText , bannerStatus: bannerStatus, setBanner: setBanner}}>
                                           <ActiveLanguageContext.Provider value={{activeLanguage: activeLanguage_, setAtiveLanguage: setActiveLanguage_}}>
                                             <LoadingIcon_theHolePage/>
                                             <PurchaseStatusBanner/>
