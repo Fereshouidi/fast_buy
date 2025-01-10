@@ -126,7 +126,14 @@
     "commentW": "Comment",
     "submateW": "Submate",
     "noReviewsP": "there is no reviews in that product !",
-    "noResultP": "there's no result !"
+    "noResultP": "there's no result !",
+    "updateUserNameP": "update your userName",
+    "updateEmailP": "update your email",
+    "updateInterrestedP": "update your interrested",
+    "updatePhoneP": "update your phone",
+    "updateAdressP": "update your Location",
+    "logOutP": "Close account",
+    "logOutW": "Log out"
 }
 
 

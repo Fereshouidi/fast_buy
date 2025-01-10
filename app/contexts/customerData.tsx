@@ -12,6 +12,7 @@ export interface CustomerDataParams {
     password: string,
     retypePassword: string,
     saveAccount: boolean,
+    token: number | undefined,
     verification: boolean,
     ShoppingCart: shoppingCart
     favorite: productParams[] | undefined

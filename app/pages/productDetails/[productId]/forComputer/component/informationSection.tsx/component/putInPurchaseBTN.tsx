@@ -51,15 +51,11 @@ const PutInPurchaseBTN = ({product, purchaseData, productinShoppingCart, setProd
         if(!customer){
             return router.push('/pages/register');
         }
-        console.log(purchaseData, customer);
 
         if (purchaseData && customer) {
             await putPurchaseInShoppingCart(purchaseData?._id, customer._id);
             setProductinShoppingCart(true)
-            const refreshAccount = await getCustomerById(purchaseData?.buyer);
-
-            console.log('purchaseData......................................................');
-            
+            const refreshAccount = await getCustomerById(purchaseData?.buyer);            
             
             if(purchaseData && typeof window != 'undefined'){
                 setLoadingIcon(false);
@@ -68,10 +64,7 @@ const PutInPurchaseBTN = ({product, purchaseData, productinShoppingCart, setProd
                 btnRef.current.style.backgroundColor = 'var(--black)';
                 localStorage.setItem('customerData', JSON.stringify(refreshAccount))            
             }
-        } else {
-            console.log(purchaseData);
-            
-        }
+        } 
         
     }
     

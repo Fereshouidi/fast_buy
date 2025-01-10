@@ -1,5 +1,5 @@
 'use client';
-import { CSSProperties, useContext, useEffect, useState } from "react";
+import { CSSProperties, useContext } from "react";
 import Home from "./home/home";
 import Order from "./orders/orders";
 import About from "./about/about";
@@ -9,16 +9,13 @@ import Favorite from "./favorite/favorite";
 import Purchase from "./purchase/purchase";
 import Setting from "./setting/setting";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-import english from '@/app/languages/english.json';
-import arabic from '@/app/languages/arabic.json';
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 
 
 const SideBar = () => {
 
-    const [activeLanguage, setActiveLanguage] = useState(english);
+    // const [activeLanguage, setActiveLanguage] = useState(english);
 
-    console.log(activeLanguage);
     
     const context = useContext(LanguageSelectorContext);
     const sideBarExistContext = useContext(SideBarContext);
@@ -31,13 +28,13 @@ const SideBar = () => {
         throw new Error("SideBarContext error");
     }
 
-    useEffect(() => {
-        if(context.activeLanguage == "english"){
-            setActiveLanguage(english);
-        }else if(context.activeLanguage == "arabic"){
-            setActiveLanguage(arabic);
-        }
-    }, [context.activeLanguage])
+    // useEffect(() => {
+    //     if(context.activeLanguage == "english"){
+    //         setActiveLanguage(english);
+    //     }else if(context.activeLanguage == "arabic"){
+    //         setActiveLanguage(arabic);
+    //     }
+    // }, [context.activeLanguage])
 
     const backgroundStyle: CSSProperties = {
         direction: context.activeLanguage == 'arabic'? 'rtl': 'ltr',

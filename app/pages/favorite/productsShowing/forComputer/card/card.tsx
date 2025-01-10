@@ -42,8 +42,6 @@ const goToCardShow = (product: productParams) => {
     router.push(`/pages/productDetails/${product._id}`);
 };
 
-console.log(product);
-
 
     const Style: CSSProperties = {
         width: '250px',

@@ -144,7 +144,7 @@ useEffect(() => {
             
           }
         }else{
-          console.log(storedData);
+          console.error('error storedData !');
           
         }
       }

@@ -24,29 +24,11 @@ const CategoriesSection = () => {
         margin: number;
     };
 
-    // type productParams = {
-    //     name: nameParams;
-    //     imagePrincipal: string;
-    //     price: number;
-    //     discount: discountParams;
-    //     totalRating: number;
-    //     currencyType: string;
-    // };
-
     type nameParams = {
         english: string,
         arabic: string
     }
-    
-    // type discountParams = {
-    //     createdAt: Date;
-    //     discountSticker: string;
-    //     newPrice: number;
-    //     oldPrice: number;
-    //     percentage: number;
-    //     startOfDiscount: Date;
-    //     endOfDiscount: Date;
-    // };
+
 
     const [categoriesSection, setCategoriesSection] = useState<categoriesSectionParams>();
 
@@ -54,7 +36,6 @@ const CategoriesSection = () => {
         const fetchData = async () => {
             const data = await getCategoriesSection();
             setCategoriesSection(data);
-            console.log(data);
         };
         fetchData();
     }, []);

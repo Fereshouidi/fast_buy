@@ -13,7 +13,6 @@ type params = {
 
 const Header = ({Query}: params) => {
     
-    //const companyInformation = useContext(CompanyInformationContext)
     const context = useContext(LanguageSelectorContext);
 
     if (!context) {

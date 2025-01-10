@@ -1,13 +1,13 @@
 'use client';
 
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
-import { purchaseParams } from "@/app/contexts/purchaseData";
 import { CSSProperties, useContext } from "react";
 import ReactStars from "react-stars";
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
+import { reviewParams } from "@/app/contexts/reviews";
 
 type params = {
-    review: purchaseParams | undefined
+    review: reviewParams | undefined
 }
 const Item = ({review}: params) => {
 
@@ -23,7 +23,6 @@ const Item = ({review}: params) => {
         width: '100%',
         display: 'flex',
         alignItems: 'center',
-       // backgroundColor: 'red'
     }
     const stylerate: CSSProperties = {
         margin: '0 var(--medium-margin)'
@@ -37,7 +36,7 @@ const Item = ({review}: params) => {
         <div style={style}> 
             <div style={style_div_customer_and_rate}>
 
-                <h5 >{review?.buyer?.userName}</h5>
+                <h5 >{review?.customer?.userName}</h5>
 
                 <div style={stylerate}>
                     <ReactStars

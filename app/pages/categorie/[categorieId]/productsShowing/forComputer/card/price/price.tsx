@@ -50,7 +50,6 @@ const newPriceHover: CSSProperties = {
   ...styleNewPrice,
   backgroundColor: darkenedColor
 }
-console.log(product);
 
   
     return (

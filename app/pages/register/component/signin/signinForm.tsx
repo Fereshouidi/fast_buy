@@ -32,9 +32,6 @@ const SigninForm = ({logInExist, setLogInExist, signinExist, setSignInExist}: sw
     const [passwordType, setPasswordType] = useState<'text' | 'password'>('text');
     const [formData, setFormData] = useState<formDataParams>({userName: '', email: '', password: '', retypePassword: '', dateOfBirth: undefined, adress: '', interrestedAbout: '', phone: undefined, saveAccount: false});
 
-    useEffect(() => {
-        console.log(formData)
-    }, [formData])
 
     return (
         <div className={signinExist ? 'form' : 'invisible'}>

@@ -112,7 +112,7 @@ useEffect(() => {
             
           }
         }else{
-          console.log(storedData);
+            console.error('error storedData !');
           
         }
       }
@@ -173,7 +173,6 @@ useEffect(() => {
 
   }
 
-  console.log(customerData);
   
 
 

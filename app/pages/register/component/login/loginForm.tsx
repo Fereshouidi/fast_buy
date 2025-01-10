@@ -34,10 +34,7 @@ const LoginForm = ({logInExist, setLogInExist, signinExist, setSignInExist}: swi
     
     const [form, setForm] = useState<formParams>({userName: '', password: '', rememberMe: false});
 
-    useEffect(() => {
-        console.log(form)
-    }, [form])
-    
+
     return (
         <div className={logInExist ? 'form' : 'invisible'}>
 

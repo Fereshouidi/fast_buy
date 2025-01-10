@@ -69,10 +69,7 @@ useEffect(() => {
 useEffect(() => {
   
     const fetchData = async() => {
-        const conpanyInformationsData = await getConpanyInformations();
-        //alert(conpanyInformationsData.p);
-        console.log(conpanyInformationsData);
-        
+        const conpanyInformationsData = await getConpanyInformations();        
         setConpanyInformations(conpanyInformationsData);
     }
     fetchData();
@@ -104,15 +101,12 @@ useEffect(() => {
         }
 
         const storedData = localStorage.getItem("customerData");
-        //console.log(storedData);
 
         if (storedData && typeof storedData !== null) {
           try {
             setCustomerData(JSON.parse(storedData) as CustomerDataParams) ;
-          //  alert(JSON.parse(storedData)._id)
             const customer = await getCustomerById(JSON.parse(storedData)._id);
             setCustomerData(customer as CustomerDataParams) ;
-            //console.log(storedData);
             
             
           } catch (error) {
@@ -121,7 +115,7 @@ useEffect(() => {
             
           }
         }else{
-          console.log(storedData);
+          console.error('error storedData !');
         }
       }
     }

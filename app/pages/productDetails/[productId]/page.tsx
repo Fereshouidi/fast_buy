@@ -60,17 +60,15 @@ const ProductDetails = (props: propsParams) => {
     const [purchaseStatus, setPurchaseStatus] = useState<number>(404);
     const [bannerForEveryThing, setBannerForEveryThing] = useState<boolean>(false);
     const [bannerText, setBannerText] = useState<string | undefined>(undefined);
-    const [bannerStatus, setBannerStatus] = useState<'success' | 'fail' | null>(null);
+   // const [bannerStatus, setBannerStatus] = useState<'success' | 'fail' | null>(null);
     const [activeLanguage_, setActiveLanguage_] = useState<typeof english | typeof arabic>(english);
     const [shoppingCart, setShoppingCart] = useState<shoppingCartParams | undefined>(undefined);
 
-    console.log(bannerStatus);
     
 
     const setBanner = (visibility: boolean, text: string | undefined, status?: 'success' | 'fail' | null) => {
       setBannerForEveryThing(visibility)
       setBannerText(text);
-      setBannerStatus(status? status : null)
     }
     
 
@@ -151,9 +149,7 @@ useEffect(() => {
           try {
             setCustomerData(JSON.parse(storedData) as CustomerDataParams) ;
             const customer = await getCustomerById(JSON.parse(storedData)._id);
-            setCustomerData(customer as CustomerDataParams) ;
-            console.log(customer);
-            
+            setCustomerData(customer as CustomerDataParams) ;            
             
           } catch (error) {
             console.error("Failed to parse customerData from localStorage:", error);
@@ -161,7 +157,7 @@ useEffect(() => {
             
           }
         }else{
-          console.log(storedData);
+          console.error('error storedData !');
           
         }
       }

@@ -125,7 +125,14 @@
     "commentW": "تعليق",
     "submateW": "ارسال",
     "noReviewsP": "لا يوجد مراجعات على هذا المنتج !",
-    "noResultP": "لا يوجد نتيجة !"
+    "noResultP": "لا يوجد نتيجة !",
+    "updateUserNameP": "تعدل اسم المستخدم",
+    "updateEmailP": "تعدل البريد الالكتروني",
+    "updateInterrestedP": "تعديل الاهتمامات",
+    "updatePhoneP": "تعديل رقم الهاتف",
+    "updateAdressP": "تعديل الموقع الجغرافي",
+    "logOutP": "اغلاق الحساب",
+    "logOutW": "تسجيل الخروج"
 
 }
 

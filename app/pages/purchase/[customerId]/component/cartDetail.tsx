@@ -28,12 +28,6 @@ const CartDetail = ({customer, setCustomer, shoppingCart, setShoppingCart, total
     const [paymentMethod, setPaymentMethod] = useState<'paypal' | 'masterCard' | 'cash' | undefined>('cash');
     const [discountCodesForShoppingCarts, setDiscountCodesForShoppingCarts] = useState<discountCodeParams[] | []>([]);
 
-    //const [isThereDiscountCode, setIsThereDiscountCode] = useState<boolean>(false)
-
-    useEffect(() => {
-        console.log(shoppingCart?.customer?.phone);
-        
-    }, [customer])
 
     useEffect(() => {
         const fetchData = async () => {

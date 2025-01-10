@@ -1,37 +1,18 @@
 "use client";
-//import { useRouter } from "next/navigation";
 import Logo from "../headerForPhones/components/logo/logo";
-//import Icons from "./components/icons/icons";
-import { CSSProperties, useContext, useEffect, useState } from "react";
+import { CSSProperties, useContext } from "react";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-import english from '@/app/languages/english.json';
-import arabic from '@/app/languages/arabic.json';
 import Search from "./components/icons/searchButton/search";
 import Options from "../headerForComputer/components/option/option";
-//import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 
 const Header = () => {
 
-    const [activeLanguage, setActiveLanguage] = useState({});
 
-    //const companyInformation = useContext(CompanyInformationContext)
     const context = useContext(LanguageSelectorContext);
     if(!context){
         throw 'context error';
     }
-
-    useEffect(() => {
-        if(context.activeLanguage == 'english'){
-            setActiveLanguage(english);
-        }else if(context.activeLanguage == 'arabic'){
-            setActiveLanguage(arabic);
-        }
-    }, [context.activeLanguage])
     
-console.log(activeLanguage);
-
-    
-  //const router = useRouter()
 
   const headerStyle :CSSProperties = {
     position: 'fixed',

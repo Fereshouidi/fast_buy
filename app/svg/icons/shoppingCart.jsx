@@ -6,8 +6,6 @@ const ShoppingCartIcon = () => {
 
 
   const customer = useContext(CustomerDataContext)
-
-  console.log(customer);
   
 
   const styleDiv = {

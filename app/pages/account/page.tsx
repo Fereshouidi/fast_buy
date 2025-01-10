@@ -7,45 +7,43 @@ import HeaderForComputer from "@/app/components/header/headerForComputer/header"
 import HeaderForPhone from "@/app/components/header/headerForPhones/header";
 import { ThemeContext } from "@/app/contexts/ThemeContext";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
-import { CompanyInformationContext } from "@/app/contexts/companyInformation";
+import { CompanyInformationContext, companyInformationsParams } from "@/app/contexts/companyInformation";
 import { SideBarContext } from "@/app/contexts/SideBarContext";
 import SideBarForComputer from "@/app/components/sideBar/sideBarForComputers/sidebar";
 import SideBarForPhone from '@/app/components/sideBar/sideBarForPhones/SideBar';
 import About from "@/app/components/about/about";
-import { getConpanyInformations, getCustomerById, gtOrdersByCustomer } from "@/app/crud";
+import { getConpanyInformations, getCustomerById, updateCustomer} from "@/app/crud";
 import LoadingIcon from "@/app/svg/icons/loading/loading";
-import { companyInformationsParams } from "@/app/contexts/companyInformation";
 import LoadingIcon_theHolePage from "@/app/svg/icons/loading/loadingHoleOfThePage";
 import { LoadingIconContext } from "@/app/contexts/loadingIcon";
-import { CustomerDataContext, CustomerDataParams } from "@/app/contexts/customerData";
-import { BannersContext } from "@/app/contexts/banners";
-import PurchaseStatusBanner from "@/app/banners/addedToPurchase";
 import { ActiveLanguageContext } from '@/app/contexts/activeLanguage';
 import { BannerContext } from '@/app/contexts/bannerForEverything';
 import Banner from '@/app/banners/bannerForEveryThing';
-import ProccessiongSection from './proccessingSection/proccessionSection';
-import FailSection from './failedSection/failSection';
-import SuccessSection from './successSection/successSection';
-import { OrderParams } from '@/app/contexts/order';
-import SwitchSections from './switchSections';
+import { CustomerDataContext, CustomerDataParams } from '@/app/contexts/customerData';
+import Email from './email/email';
+import Interrested from './interrested/interrested';
+import Adress from './adress/adress';
+import LogOut from './logOut/logOut';
+import Phone from './phone/phone';
+import UserName from './userName/userName';
 
-const OrdersPage = () => {
+interface propsParams {
+  params: Promise<Params>;
+}
+interface Params {
+  categorieId: string;
+}
 
+const OrdersPage = (props: propsParams) => {
 
-    const [screenWidth, setScreenWidth] = useState<number>(0);  
+  
+    const [screenWidth, setScreenWidth] = useState<number>(1000);  
 
     const [loadingIconExist, setLoadingIconExit] = useState<boolean>(false);
-
-    const [customer, setCustomer] = useState<CustomerDataParams | undefined>(undefined);
-    const [purchaseStatusBanner, setPurchaseStatusBanner] = useState<boolean>(false);
-    const [purchaseStatus, setPurchaseStatus] = useState<number>(404);
     const [conpanyInformations, setConpanyInformations] = useState<companyInformationsParams | undefined>();
     const [bannerForEveryThing, setBannerForEveryThing] = useState<boolean>(false);
     const [bannerText, setBannerText] = useState<string | undefined>(undefined);
     const [bannerStatus, setBannerStatus] = useState<'success' | 'fail' | null>(null);
-    const [orders, setOrders] = useState<OrderParams[] | undefined>(undefined);
-    const [activeSection, setActiveSection] = useState<'processingSection' | 'failseSection' | 'successSection'>(screenWidth > 800 ? 'successSection' : 'processingSection');
-    //const [discountCodeValue, setDiscount]
 
     const setBanner = (visibility: boolean, text: string | undefined, status?: 'success' | 'fail' | null) => {
       setBannerForEveryThing(visibility)
@@ -54,11 +52,6 @@ const OrdersPage = () => {
     }
 
 
-    useEffect(() => {
-        if (typeof window != 'undefined') {
-            setActiveSection(window.innerWidth > 800 ? 'successSection' : 'processingSection')
-        }
-    }, [])
     
 
   const [theme, setTheme] = useState(() => {
@@ -74,23 +67,6 @@ const OrdersPage = () => {
 
   const [customerData, setCustomerData] = useState<CustomerDataParams | undefined>(undefined);
 
-  useEffect(() => {
-    const getCustomer = async () => {
-      if (typeof window !== 'undefined') {
-          try {
-              const customerData = localStorage.getItem('customerData');
-              if (customerData) {
-                  const customer = JSON.parse(customerData);
-                  setCustomer(customer);
-              }
-          } catch (error) {
-              console.error('Error parsing customerData from localStorage:', error);
-          }
-      }
-  };
-  
-    getCustomer()
-}, [])
 
 useEffect(() => {
     if (typeof window !== "undefined") {
@@ -109,14 +85,6 @@ useEffect(() => {
   }, []);
 
 useEffect(() => {
-    const fetchData = async() => {
-        const orders = await gtOrdersByCustomer(customer?._id);
-        setOrders(orders);
-    }
-    fetchData()
-}, [customer])
-
-useEffect(() => {
   if (typeof window !== "undefined") {
     const storedLanguage = localStorage.getItem('activeLanguage_');    
     setActiveLanguage_(storedLanguage == JSON.stringify(arabic) ? JSON.parse(storedLanguage) : english);
@@ -132,6 +100,23 @@ useEffect(() => {
     }
     fetchData();
 }, [])
+
+useEffect(() => {
+
+    const fetchData = async() => {
+        const updatedCustomer = await updateCustomer(customerData?._id, customerData);
+
+        if (updatedCustomer && JSON.stringify(updatedCustomer) !== JSON.stringify(customerData)) {
+          setCustomerData(updatedCustomer);
+          localStorage.setItem('customerData', JSON.stringify(updatedCustomer));          
+        }
+    }
+
+    if (customerData && typeof window !== 'undefined') {
+      fetchData();
+    }
+        
+}, [customerData])
 
   useEffect(() => {    
 
@@ -153,11 +138,12 @@ useEffect(() => {
             
           }
         }else{
-            console.error('error storedData !');
+          console.error('error storedData !');
           
         }
       }
-      fetchCustomer()
+
+        fetchCustomer()
       
     }
   }, [typeof window != 'undefined' ? localStorage.getItem("customerData") : null]);
@@ -202,32 +188,31 @@ useEffect(() => {
   if (!conpanyInformations) {
     return <LoadingIcon/>; 
   }
-
+  
   
   const style: CSSProperties = {
     width: '100vw',
-    minHeight: '100vh',
+    minHeight: 'calc(100vh - var(--header-height))',
     backgroundColor: 'var(--almost-white)',
     display: 'flex',
-    justifyContent: screenWidth > 800 ? 'center' : '',
-    flexDirection: screenWidth > 800 ? 'row' : 'column',
-    padding: screenWidth > 800 ? 'var(--large-padding)' : '',
-
+    alignItems: 'center',
+    justifyContent: 'center',
+    //padding: screenWidth > 800 ? 'var(--large-padding)' : '',
   }
 
-  const style_fs_and_ss: CSSProperties = {
-    width: screenWidth > 800 ? '50%' : '100%',
-    minHeight: '100vh',
-    backgroundColor: screenWidth > 800 ? 'var(--white)' : 'var(--almost-white)',
+  const stylContainere: CSSProperties = {
+    width: '80%',
+    height: 'auto',
+    backgroundColor: 'var(--almost-white)',
     display: 'flex',
-    margin: screenWidth > 800 ? 'var(--large-margin)' : '0',
-    borderRadius: '20px',
-    //backgroundColor: 'red',
-    padding: '0',
-    boxSizing: 'border-box',
-    //justifyContent: screenWidth > 800 ? 'center' : '',
-    flexDirection: 'column'
+    //alignItems: 'center',
+    justifyContent: 'center',
+    //flexDirection: 'column',
+    flexWrap: 'wrap',
+    gap: '10px',
+    padding: screenWidth > 800 ? 'var(--large-padding)' : '',
   }
+
 
 
     return (
@@ -239,25 +224,23 @@ useEffect(() => {
                     <LoadingIconContext.Provider value={{exist: loadingIconExist , setExist: setLoadingIconExit}}>
                       <ActiveLanguageContext.Provider value={{activeLanguage: activeLanguage_, setAtiveLanguage: setActiveLanguage_}}>
                         <CustomerDataContext.Provider value={customerData}>
-                          <BannersContext.Provider value={{purchaseStatusBanner: purchaseStatusBanner, setPurchaseStatusBanner: setPurchaseStatusBanner, purchaseStatus: purchaseStatus , setPurchaseStatus: setPurchaseStatus , passwordsNotMatch: false , setPasswordsNotMatch: ()=> null , emailNotValide: false , setemailNotValide: ()=> null , verificatinEmailBanner: false, setVerificatinEmailBanner: ()=> null, loginStatusBanner: false, setLoginStatusBanner: ()=> null, loginStatus: 404, setLoginStatus: ()=> null }}>
                             <BannerContext.Provider value={{bannerexist: bannerForEveryThing, bannerText: bannerText, bannerStatus: bannerStatus , setBanner: setBanner}}>
                               <LoadingIcon_theHolePage/>
                               <Banner/>
-                              <PurchaseStatusBanner/>
                               {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
                               {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
                               <div style={style} className='page'>
-                                {screenWidth > 800 ? <ProccessiongSection orders={orders} setOrders={setOrders}/> : null}
-                                <div style={style_fs_and_ss}>
-                                    <SwitchSections activeSection={activeSection} setActiveSection={setActiveSection}/>
-                                    {activeSection == 'processingSection' &&  <ProccessiongSection orders={orders} setOrders={setOrders}/>}
-                                    {activeSection == 'failseSection' && <FailSection orders={orders} setOrders={setOrders}/>} 
-                                    {activeSection == 'successSection' && <SuccessSection orders={orders} setOrders={setOrders}/>}
+                                <div style={stylContainere}>
+                                    <UserName customer={customerData} setCustomer={setCustomerData}/>
+                                    <Email customer={customerData} setCustomer={setCustomerData}/>
+                                    <Phone customer={customerData} setCustomer={setCustomerData}/>
+                                    <Adress customer={customerData} setCustomer={setCustomerData}/>
+                                    <Interrested customer={customerData} setCustomer={setCustomerData}/>
+                                    <LogOut />
                                 </div>
                               </div>
                                 <About/>
                             </BannerContext.Provider>
-                          </BannersContext.Provider>
                         </CustomerDataContext.Provider>
                       </ActiveLanguageContext.Provider>
                     </LoadingIconContext.Provider>

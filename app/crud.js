@@ -1,4 +1,4 @@
-const url = 'https://fast-buy-back-end.vercel.app/api';
+const url = 'http://localhost:3002/api';
 import axios from "axios";
 
 //https://fast-buy-back-end.vercel.app/api
@@ -103,7 +103,6 @@ export const getCategoriesSection = async() => {
 export const getConpanyInformations = async() => {
     try{
         const conpanyInformations = (await axios.get(url + '/get/conpanyInformations')).data;        
-        console.log(conpanyInformations);
         
         return conpanyInformations;
     }catch(err){
@@ -161,7 +160,6 @@ export const sendActivationToken = async(email, username, companyEmail, companyP
         return true;
 
     }catch(err) {
-        console.log(err);        
         return false;
     }
 }
@@ -189,9 +187,7 @@ export const logIn = async (userName, password) => {
         
         return {data: response.data, status: response.status};
 
-    } catch (err) {
-        console.log(err.response.status);
-        
+    } catch (err) {        
         return {status: err.response.status};
     }
 };
@@ -309,9 +305,7 @@ export const gtOrdersByCustomer = async (customerId) => {
 export const updateLikeStatus = async (purchaseId, likeStatus) => {
 
     try {
-        const response = await axios.put(url + '/update/likeStatus' , { purchaseId, likeStatus })     
-        console.log(response.data);
-                   
+        const response = await axios.put(url + '/update/likeStatus' , { purchaseId, likeStatus })                        
         return response.data;
     }catch(err) {
         throw err;
@@ -324,10 +318,8 @@ export const updateCustomer = async (customerId, updatedCustomerData) => {
         const response = await axios.put(url + '/update/customer' , { 
             id: customerId,
             updatedCustomerData 
-        })     
-        console.log(updatedCustomerData);
-                   
-        return response.data;
+        })             
+        return response.data.customer;
     }catch(err) {
         throw err;
     }
@@ -339,7 +331,6 @@ export const getPurchasesByCustomerProduct = async (customerId, productId) => {
         const response = await axios.get(url + '/get/purchases/by/customer&product' , {
             params: {customerId, productId}
         })        
-        console.log(response.data);
         
         return response.data;
     }catch(err) {
@@ -353,7 +344,6 @@ export const getReviewByCustomerProduct = async (customerId, productId) => {
         const response = await axios.get(url + '/get/review/by/customer&product' , {
             params: {customerId, productId}
         })        
-        console.log(response.data);
         
         return response.data;
     }catch(err) {

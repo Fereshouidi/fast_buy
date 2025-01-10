@@ -71,7 +71,6 @@ useEffect(() => {
     const fetchData = async() => {
         const conpanyInformationsData = await getConpanyInformations();
         setConpanyInformations(conpanyInformationsData);
-        console.log(conpanyInformationsData);
         
     }
     fetchData();

@@ -7,13 +7,16 @@ import { SideBarContext } from "@/app/contexts/SideBarContext";
 import AccountIcon from "@/app/svg/icons/account";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 import { useRouter } from "next/navigation";
+import { CustomerDataContext } from "@/app/contexts/customerData";
+import { LoadingIconContext } from "@/app/contexts/loadingIcon";
 
 const Account = () => {
 
     const [activeLanguage, setActiveLanguage] = useState(english);
     const languageSelectorContext = useContext(LanguageSelectorContext);
-    const [isHover, setIsHover] = useState<boolean>(false)
-
+    const [isHover, setIsHover] = useState<boolean>(false);
+    const customer = useContext(CustomerDataContext);
+    const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
     const companyInformation = useContext(CompanyInformationContext);
 
     const router = useRouter();
@@ -27,7 +30,7 @@ const Account = () => {
         throw 'context error !'
     }
 
-    if(!sideBarContext){
+    if(!sideBarContext || !setLoadingIcon){
         throw 'context error !'
     }
 
@@ -42,8 +45,13 @@ const Account = () => {
     }, [languageSelectorContext])
 
     const handleClick = () => {
+        setLoadingIcon(true);
         setSideBarExist(false);
-        router.push('/pages/register');
+        if (customer) {
+            router.push('/pages/account');
+        } else {
+            router.push('/pages/register');
+        }
     }
 
 
