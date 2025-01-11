@@ -136,7 +136,7 @@ const Email = ({customer, setCustomer}: params) => {
                         placeholder={activeLanguage?.emailW + ' ...'}
                         onChange={(e) => handleEmail(e)}
                     />
-                    <button style={styleButton} onClick={verifEmail}>verif</button>
+                    <button style={styleButton} onClick={verifEmail}>{activeLanguage?.verif}</button>
                 </div>
             </div>
 

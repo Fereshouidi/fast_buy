@@ -5,7 +5,13 @@
     border-radius: 20px;
     border: 0.02px solid var(--ashen-semi-transparent);
     font-weight: 100;
+    color: var(--black);
     /* opacity: 0.7 */
+}
+.item input {
+    background-color: var(--white);
+    color: var(--black);
+
 }
 
 .item .logOut-btn {

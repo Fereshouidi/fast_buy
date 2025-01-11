@@ -44,14 +44,8 @@ const ReviewsSection = ({exist, setExist, reviews}: params) => {
         position: 'relative'
     }
     const styleContainer: CSSProperties = {
-        // display: 'flex',
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        // flexDirection: 'column',
         height: '100%',
         padding: 'var(--medium-padding)',
-        
-       // backgroundColor: 'red',
     }
     const styleHeader: CSSProperties = {
         direction: 'rtl',
@@ -71,6 +65,14 @@ const ReviewsSection = ({exist, setExist, reviews}: params) => {
     const styleFaBan: CSSProperties = {
         cursor: 'pointer',
         fontSize: 'var(--primary-size)'
+    }
+    const styleReviewsWDiv: CSSProperties = {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
+    const styleReviewsNum: CSSProperties = {
+        margin: '0 var(--small-margin)'
     }
     const styleNoReviewsDiv: CSSProperties = {
         width: '100%',
@@ -93,7 +95,10 @@ const ReviewsSection = ({exist, setExist, reviews}: params) => {
 
                 <div className="header" style={styleHeader}>
                     <FontAwesomeIcon icon={faX} style={styleFaBan} onClick={() => setExist(false)}/> 
-                    <h5>{activeLanguage?.reviewsW}</h5>
+                        <div style={styleReviewsWDiv}>
+                            <span style={styleReviewsNum}>{'['+ reviews?.length +']'}</span>
+                            <h5>{activeLanguage?.reviewsW}</h5>
+                        </div>
                     <h1></h1>
                 </div>
 
