@@ -33,7 +33,7 @@ const Phone = ({customer, setCustomer}: params) => {
     }
     const styleH3: CSSProperties = {
         width: '100%',
-        padding: window.innerWidth > 800 ? 'var(--large-padding)' : '',
+        padding: 'var(--large-padding)',
         borderBottom: '0.02px solid var(--ashen-semi-transparent)'
     }
     const styleContainer: CSSProperties = {
@@ -41,16 +41,16 @@ const Phone = ({customer, setCustomer}: params) => {
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
-        padding: window.innerWidth > 800 ? 'var(--large-padding)' : '',
+        padding: 'var(--large-padding)',
 
     }
     const styleP: CSSProperties = {
         fontSize: 'var(--small-size)',
-        padding: window.innerWidth > 800 ? 'var(--medium-padding)' : '',
+        padding: 'var(--medium-padding)',
 
     }
     const styleInput: CSSProperties = {
-        padding: window.innerWidth > 800 ? 'var(--medium-padding)' : '',
+        padding: 'var(--medium-padding)' ,
         outline: 'none',
         border: 'none',
         borderBottom: '0.02px solid var(--ashen-semi-transparent)',
@@ -59,7 +59,7 @@ const Phone = ({customer, setCustomer}: params) => {
         opacity: 0.9
     }
     return (
-        <div style={style}>
+        <div className="item">
 
             <h4 style={styleH3}>{activeLanguage?.PhoneNumberW}</h4>
 

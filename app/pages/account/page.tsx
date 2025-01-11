@@ -26,6 +26,7 @@ import Adress from './adress/adress';
 import LogOut from './logOut/logOut';
 import Phone from './phone/phone';
 import UserName from './userName/userName';
+import './style.css'
 
 
 const OrdersPage = () => {
@@ -198,13 +199,13 @@ useEffect(() => {
     width: '80%',
     height: 'auto',
     backgroundColor: 'var(--almost-white)',
-    display: 'flex',
+    display: window.innerWidth > 800 ? 'flex' : 'flex',
     //alignItems: 'center',
     justifyContent: 'center',
     //flexDirection: 'column',
     flexWrap: 'wrap',
     gap: '10px',
-    padding: screenWidth > 800 ? 'var(--large-padding)' : '',
+    padding: screenWidth > 800 ? 'var(--large-padding)' : 'var(--extra-large-padding) 0',
   }
 
 

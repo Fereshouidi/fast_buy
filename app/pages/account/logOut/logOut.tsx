@@ -30,7 +30,7 @@ const LogOut = () => {
     }
     const styleH3: CSSProperties = {
         width: '100%',
-        padding: window.innerWidth > 800 ? 'var(--large-padding)' : '',
+        padding: window.innerWidth > 800 ? 'var(--large-padding)' : 'var(--medium-padding)',
         borderBottom: '0.02px solid var(--ashen-semi-transparent)',
         color: 'red'
     }
@@ -39,16 +39,16 @@ const LogOut = () => {
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
-        padding: window.innerWidth > 800 ? 'var(--large-padding)' : '',
+        padding: window.innerWidth > 800 ? 'var(--large-padding)' : 'var(--medium-padding)',
 
     }
     const styleP: CSSProperties = {
         fontSize: 'var(--small-size)',
-        padding: window.innerWidth > 800 ? 'var(--medium-padding)' : '',
+        padding: window.innerWidth > 800 ? 'var(--medium-padding)' : 'var(--medium-padding)',
 
     }
     const styleButton: CSSProperties = {
-        padding: window.innerWidth > 800 ? 'var(--medium-padding)' : '',
+        padding: window.innerWidth > 800 ? 'var(--medium-padding)' : 'var(--medium-padding)',
         minWidth: '80%',
         borderRadius: '10px',
         textAlign: 'center',
@@ -57,7 +57,7 @@ const LogOut = () => {
         color: 'white'
     }
     return (
-        <div style={style}>
+        <div className="item">
 
             <h4 style={styleH3}>{activeLanguage?.logOutW}</h4>
 
