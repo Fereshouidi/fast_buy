@@ -34,7 +34,9 @@ const Adress = ({customer, setCustomer}: params) => {
     const styleH3: CSSProperties = {
         width: '100%',
         padding: window.innerWidth > 800 ? 'var(--large-padding)' : 'var(--medium-padding)',
-        borderBottom: '0.02px solid var(--ashen-semi-transparent)'
+        borderBottom: '0.02px solid var(--ashen-semi-transparent)',
+        opacity: 0.7
+
     }
     const styleContainer: CSSProperties = {
         display: 'flex',
@@ -47,7 +49,7 @@ const Adress = ({customer, setCustomer}: params) => {
     const styleP: CSSProperties = {
         fontSize: 'var(--small-size)',
         padding: window.innerWidth > 800 ? 'var(--medium-padding)' : 'var(--medium-padding)',
-
+        opacity: 1
     }
     const styleInput: CSSProperties = {
         padding: window.innerWidth > 800 ? 'var(--medium-padding)' : 'var(--small-padding)',

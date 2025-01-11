@@ -34,7 +34,9 @@ const Interrested = ({customer, setCustomer}: params) => {
     const styleH3: CSSProperties = {
         width: '100%',
         padding: window.innerWidth > 800 ? 'var(--large-padding)' : 'var(--medium-padding)',
-        borderBottom: '0.02px solid var(--ashen-semi-transparent)'
+        borderBottom: '0.02px solid var(--ashen-semi-transparent)',
+        opacity: 0.7
+
     }
     const styleContainer: CSSProperties = {
         display: 'flex',
