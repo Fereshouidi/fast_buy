@@ -31,14 +31,7 @@ const Adress = ({customer, setCustomer}: params) => {
     //     fontWeight: '100',
     //     opacity: 0.7
     // }
-    const styleH3: CSSProperties = {
-        width: '100%',
-        padding: window.innerWidth > 800 ? 'var(--large-padding)' : 'var(--medium-padding)',
-        borderBottom: '0.02px solid var(--ashen-semi-transparent)',
-        opacity: 0.7,
-        fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'var(--small-size)'
 
-    }
     const styleContainer: CSSProperties = {
         display: 'flex',
         justifyContent: 'center',
@@ -65,7 +58,7 @@ const Adress = ({customer, setCustomer}: params) => {
     return (
         <div className="item">
 
-            <h4 style={styleH3}>{activeLanguage?.fullAdressW}</h4>
+            <h4>{activeLanguage?.fullAdressW}</h4>
 
             <div style={styleContainer}>
                 <p style={styleP}>{activeLanguage?.updateAdressP +' : '}</p>

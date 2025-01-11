@@ -8,10 +8,18 @@
     color: var(--black);
     /* opacity: 0.7 */
 }
+
+.item h4 {
+    width: 100%;
+    border-bottom: 0.02px solid var(--ashen-semi-transparent);
+    opacity: 0.7;
+    font-size: 'var(--primary-size)' ;
+    padding: var(--large-padding);
+}
+
 .item input {
     background-color: var(--white);
     color: var(--black);
-
 }
 
 .item .logOut-btn {
@@ -34,6 +42,10 @@
         flex: 1 1 100%;
         /* background-color: red; */
         width: 100px;
+    }
+
+    .item h4 {
+        font-size: calc(var(--primary-size) / 1.2) ;
     }
 
 }
