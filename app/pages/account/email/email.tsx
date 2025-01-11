@@ -67,14 +67,14 @@ const Email = ({customer, setCustomer}: params) => {
         }
     }
 
-    const style: CSSProperties = {
-        flex: '1 1 30%',
-        backgroundColor: 'var(--white)',
-        borderRadius: '20px',
-        border: '0.02px solid var(--ashen-semi-transparent)',
-        fontWeight: '100',
-        opacity: 0.7
-    }
+    // const style: CSSProperties = {
+    //     flex: '1 1 30%',
+    //     backgroundColor: 'var(--white)',
+    //     borderRadius: '20px',
+    //     border: '0.02px solid var(--ashen-semi-transparent)',
+    //     fontWeight: '100',
+    //     opacity: 0.7
+    // }
     const styleH3: CSSProperties = {
         width: '100%',
         padding: window.innerWidth > 800 ? 'var(--large-padding)' : 'var(--medium-padding)',
