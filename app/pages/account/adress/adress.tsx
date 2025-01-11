@@ -60,6 +60,7 @@ const Adress = ({customer, setCustomer}: params) => {
         borderRadius: ' 0 0 10px 0',
         opacity: 0.9
     }
+    
     return (
         <div className="item">
 

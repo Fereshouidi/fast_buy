@@ -33,7 +33,7 @@ const Phone = ({customer, setCustomer}: params) => {
     // }
     const styleH3: CSSProperties = {
         width: '100%',
-        padding: 'var(--large-padding)',
+        padding: window.innerWidth > 800 ? 'var(--large-padding)' : 'var(--medium-padding)',
         borderBottom: '0.02px solid var(--ashen-semi-transparent)',
         opacity: 0.7
 
@@ -43,16 +43,16 @@ const Phone = ({customer, setCustomer}: params) => {
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
-        padding: 'var(--large-padding)',
+        padding: window.innerWidth > 800 ? 'var(--large-padding)' : 'var(--medium-padding)',
 
     }
     const styleP: CSSProperties = {
         fontSize: 'var(--small-size)',
-        padding: 'var(--medium-padding)',
-
+        padding: window.innerWidth > 800 ? 'var(--medium-padding)' : 'var(--medium-padding)',
+        opacity: 1
     }
     const styleInput: CSSProperties = {
-        padding: 'var(--medium-padding)' ,
+        padding: window.innerWidth > 800 ? 'var(--medium-padding)' : 'var(--small-padding)',
         outline: 'none',
         border: 'none',
         borderBottom: '0.02px solid var(--ashen-semi-transparent)',
@@ -60,6 +60,7 @@ const Phone = ({customer, setCustomer}: params) => {
         borderRadius: ' 0 0 10px 0',
         opacity: 0.9
     }
+
     return (
         <div className="item">
 

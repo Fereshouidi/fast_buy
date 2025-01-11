@@ -55,17 +55,16 @@ const LogOut = () => {
         borderRadius: '10px',
         textAlign: 'center',
         opacity: 1,
-        backgroundColor: 'red',
         color: 'white'
     }
     return (
-        <div className="item">
+        <div className="item" >
 
             <h4 style={styleH3}>{activeLanguage?.logOutW}</h4>
 
             <div style={styleContainer}>
                 <p style={styleP}>{activeLanguage?.logOutP +' : '}</p>
-                <h5 style={styleButton} onClick={logOut}>{activeLanguage?.logOutW}</h5>
+                <h5 className="logOut-btn" style={styleButton} onClick={logOut}>{activeLanguage?.logOutW}</h5>
             </div>
 
         </div>

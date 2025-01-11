@@ -48,8 +48,8 @@ const Interrested = ({customer, setCustomer}: params) => {
     }
     const styleP: CSSProperties = {
         fontSize: 'var(--small-size)',
-        padding: window.innerWidth > 800 ? 'var(--medium-padding)' : '',
-
+        padding: window.innerWidth > 800 ? 'var(--medium-padding)' : 'var(--medium-padding)',
+        opacity: 1
     }
     const styleInput: CSSProperties = {
         padding: window.innerWidth > 800 ? 'var(--medium-padding)' : 'var(--small-padding)',
@@ -60,6 +60,7 @@ const Interrested = ({customer, setCustomer}: params) => {
         borderRadius: ' 0 0 10px 0',
         opacity: 0.9
     }
+
     return (
         <div className="item">
 

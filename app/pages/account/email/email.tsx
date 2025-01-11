@@ -100,6 +100,7 @@ const Email = ({customer, setCustomer}: params) => {
         display: 'flex',
         justifyContent: 'space-around',
         alignItems: 'center',
+        padding: window.innerWidth > 800 ? 'var(--medium-padding)' : 'var(--small-padding)',
     }
     const styleInput: CSSProperties = {
         padding: window.innerWidth > 800 ? 'var(--medium-padding)' : 'var(--small-padding)',
