@@ -1,7 +1,6 @@
 'use client';
 
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
-import { purchaseParams } from "@/app/contexts/purchaseData";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CSSProperties, useContext } from "react";

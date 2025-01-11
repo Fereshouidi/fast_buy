@@ -5,7 +5,6 @@ import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 import { CSSProperties, useContext, useEffect, useState } from "react";
 import ReviewsSection from "./reviewSection/reviewSection";
 import { getReviewsByProduct } from "@/app/crud";
-import { purchaseParams } from "@/app/contexts/purchaseData";
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 import { reviewParams } from "@/app/contexts/reviews";
 
