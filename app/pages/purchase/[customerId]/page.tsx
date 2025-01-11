@@ -26,6 +26,7 @@ import { ActiveLanguageContext } from '@/app/contexts/activeLanguage';
 import CartDetail from './component/cartDetail';
 import { BannerContext } from '@/app/contexts/bannerForEverything';
 import Banner from '@/app/banners/bannerForEveryThing';
+import './style.css'
 
 
 const PurchasePage = () => {

@@ -100,11 +100,7 @@ useEffect(() => {
 
     const fetchData = async() => {
         const updatedCustomer = await updateCustomer(customerData?._id, customerData);
-
-        if (updatedCustomer && JSON.stringify(updatedCustomer) !== JSON.stringify(customerData)) {
-          setCustomerData(updatedCustomer);
-          localStorage.setItem('customerData', JSON.stringify(updatedCustomer));          
-        }
+          localStorage.setItem('customerData', JSON.stringify(updatedCustomer));                    
     }
 
     if (customerData && typeof window !== 'undefined') {

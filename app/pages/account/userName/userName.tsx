@@ -21,23 +21,10 @@ const UserName = ({customer, setCustomer}: params) => {
                 userName: event.target.value
             })
         }         
+        
     }
 
-    // const style: CSSProperties = {
-    //     flex: '1 1 30%',
-    //     backgroundColor: 'var(--white)',
-    //     borderRadius: '20px',
-    //     border: '0.02px solid var(--ashen-semi-transparent)',
-    //     fontWeight: '100',
-    //     opacity: 0.7
-    // }
-    // const styleH4: CSSProperties = {
-    //     width: '100%',
-    //     padding: window.innerWidth > 800 ? 'var(--large-padding)' : 'var(--medium-padding)',
-    //     borderBottom: '0.02px solid var(--ashen-semi-transparent)',
-    //     opacity: 0.7,
-    //     fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'var(--small-size)'
-    // }
+
     const styleContainer: CSSProperties = {
         display: 'flex',
         justifyContent: 'center',

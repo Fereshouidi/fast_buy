@@ -22,9 +22,7 @@ const Email = ({customer, setCustomer}: params) => {
     const [email, setEmail] = useState<string>(customer?.email?? '');
 
     const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(event.target.value);
-        console.log(event.target.value);
-        
+        setEmail(event.target.value);        
     }
 
     
@@ -66,15 +64,6 @@ const Email = ({customer, setCustomer}: params) => {
 
         }
     }
-
-    // const style: CSSProperties = {
-    //     flex: '1 1 30%',
-    //     backgroundColor: 'var(--white)',
-    //     borderRadius: '20px',
-    //     border: '0.02px solid var(--ashen-semi-transparent)',
-    //     fontWeight: '100',
-    //     opacity: 0.7
-    // }
 
     const styleContainer: CSSProperties = {
         display: 'flex',
