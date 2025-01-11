@@ -69,7 +69,7 @@ const ProductDetails = (props: propsParams) => {
     const setBanner = (visibility: boolean, text: string | undefined, status?: 'success' | 'fail' | null) => {
       setBannerForEveryThing(visibility)
       setBannerText(text);
-      setBannerStatus(bannerStatus);
+      setBannerStatus(status?? null);
     }
     
 

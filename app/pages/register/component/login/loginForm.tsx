@@ -7,7 +7,7 @@ import PasswordInput from "./component/passwordInput";
 import RememberMe from './component/rememberMe';
 import SubmateBTN from './component/submateBTN';
 import SwitchToSignin from './component/switchToSignin';
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import '@/app/pages/register/component/style.css';
 
 export type formStateParams = {
