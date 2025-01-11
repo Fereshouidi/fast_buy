@@ -7,13 +7,14 @@ import ReviewsSection from "./reviewSection/reviewSection";
 import { getReviewsByProduct } from "@/app/crud";
 import { purchaseParams } from "@/app/contexts/purchaseData";
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
+import { reviewParams } from "@/app/contexts/reviews";
 
 const TotalRating = ({product}: {product: productParams | undefined}) => {
 
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
     const companyInformation = useContext(CompanyInformationContext);
     const [reviewsSection, setReviewsSection] = useState<boolean>(false);
-    const [reviews, setReviews] = useState<purchaseParams[] | undefined>(undefined)
+    const [reviews, setReviews] = useState<reviewParams[] | undefined>(undefined)
 
     let x = 0;
     useEffect(() => {

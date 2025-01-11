@@ -7,12 +7,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CSSProperties, useContext } from "react";
 import Item from "./item";
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
+import { reviewParams } from "@/app/contexts/reviews";
 
 type params = {
     exist: boolean,
     setExist: (value: boolean) => void;
-    reviews: purchaseParams[] | undefined,
-    setReviews: (value: purchaseParams[]) => void;
+    reviews: reviewParams[] | undefined,
+    setReviews: (value: reviewParams[]) => void;
 }
 const ReviewsSection = ({exist, setExist, reviews}: params) => {
 
