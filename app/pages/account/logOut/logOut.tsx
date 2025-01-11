@@ -33,7 +33,8 @@ const LogOut = () => {
         padding: window.innerWidth > 800 ? 'var(--large-padding)' : 'var(--medium-padding)',
         borderBottom: '0.02px solid var(--ashen-semi-transparent)',
         color: 'red',
-        opacity: 0.7
+        opacity: 0.7,
+        fontSize: window.innerWidth > 800 ? 'var(--primary-size)' : 'var(--small-size)'
 
     }
     const styleContainer: CSSProperties = {
