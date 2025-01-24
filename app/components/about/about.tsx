@@ -138,7 +138,7 @@ const About = () => {
                   <ul>
                     <li>
                       Enjoy discounts up to <strong  style={styleStrong}>{` ${bigestDiscount?.discount.percentage}% `}</strong>
-                      on {bigestDiscount && bigestDiscount.products.length >= 0 ? ` ${bigestDiscount.products[0].name.english} ` : ''}
+                      on {bigestDiscount && bigestDiscount.products.length >= 0 ? ` ${bigestDiscount.products[0]?.name.english} ` : ''}
                     </li>
                     <li>
                       Exclusive offers such as <strong  style={styleStrong}>{` ${conpanyInformations.offersDetails} `}</strong>
@@ -208,7 +208,7 @@ const About = () => {
                   <ul>
                     <li>
                       استمتع بخصومات تصل إلى <strong  style={styleStrong}>{`${bigestDiscount?.discount.percentage}% `}</strong>
-                      على {bigestDiscount && bigestDiscount.products.length >= 0 ? ` ${bigestDiscount.products[0].name.arabic} ` : ''}
+                      على {bigestDiscount && bigestDiscount.products.length >= 0 ? ` ${bigestDiscount.products[0]?.name.arabic} ` : ''}
                     </li>
                     <li>
                       عروض حصرية مثل <strong  style={styleStrong}>{`${conpanyInformations.offersDetails}`}</strong>

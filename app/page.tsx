@@ -11,7 +11,7 @@ import { CustomerDataContext } from "./contexts/customerData";
 import { CustomerDataParams } from "./contexts/customerData";
 import { CompanyInformationContext } from "./contexts/companyInformation";
 import { companyInformationsParams } from "./contexts/companyInformation";
-import { SideBarContext } from "@/app/contexts/SideBarContext";
+// import { SideBarContext } from "@/app/contexts/SideBarContext";
 import SideBarForComputer from "@/app/components/sideBar/sideBarForComputers/sidebar";
 import SideBarForPhone from '@/app/components/sideBar/sideBarForPhones/SideBar';
 import BulletinBoardForPhone from "./components/bulletinBoard_one/forPhone/bulletinBoard";
@@ -28,6 +28,7 @@ import { LoadingIconContext } from "./contexts/loadingIcon";
 import LoadingIcon_theHolePage from "./svg/icons/loading/loadingHoleOfThePage";
 import { ActiveLanguageContext } from "./contexts/activeLanguage";
 import { BannerContext } from './contexts/bannerForEverything';
+import { SideBarContext } from './contexts/SideBarContext';
 
 
 const App = () => {
@@ -100,7 +101,7 @@ useEffect(() => {
           setTheme(savedTheme);
         }
 
-        const storedData = localStorage.getItem("customerData");
+        const storedData = localStorage.getItem("customerData");        
 
         if (storedData && typeof storedData !== null) {
           try {
@@ -115,7 +116,7 @@ useEffect(() => {
             
           }
         }else{
-          console.error('error storedData !');
+          console.log('error storedData !');
         }
       }
     }
@@ -190,7 +191,7 @@ useEffect(() => {
                 <CustomerDataContext.Provider value={customerData}>
                   <LoadingIconContext.Provider value={{exist: loadingIconExist , setExist: setLoadingIconExit}}>
                     <BannerContext.Provider value={{bannerexist: bannerForEveryThing,bannerText: bannerText , setBanner: setBanner}}>
-                      {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
+                        {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
                         {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
                         {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
                         <Slider/>
