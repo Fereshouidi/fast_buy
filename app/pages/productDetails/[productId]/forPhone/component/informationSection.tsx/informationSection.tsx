@@ -64,9 +64,18 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
     // const [price, setPrice] = useState<number>(1);
 
     useEffect(() => {
-        setPrice(product?.discount? product.discount.newPrice : product?.price);
-    }, [product])
-    
+        console.log(purchaseData);
+        
+        if (purchaseData?.discountCode?.discount) {
+            setPrice((product?.discount? product.discount.newPrice : product?.price) - purchaseData?.discountCode?.discount);
+        } else if (purchaseData?.discountCode?.discountPercent) {
+            setPrice((product?.discount? product.discount.newPrice : product?.price) - (product?.discount? product.discount.newPrice : product?.price) * (purchaseData?.discountCode?.discountPercent / 100));
+        } else {
+            setPrice(product?.discount? product.discount.newPrice : product?.price);
+        }
+        
+    }, [product, purchaseData?.discountCode])
+
     useEffect(() => {
         
         if(purchaseData && price){
@@ -158,7 +167,7 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
                 <Availablity product={product}/>
                 {product?.color? <Color product={product}/> : null}
                 {product?.size? <Size product={product}/> : null}
-                <Quantity product={product} purchaseData={purchaseData} setPurchaseData={setPurchaseData} price={price} setPrice={setPrice}/>
+                <Quantity product={product} purchaseData={purchaseData} setPurchaseData={setPurchaseData} isPriceChange={isPriceChange} setIspriceChange={setIspriceChange} price={price} setPrice={setPrice}/>
                 <TotalRating product={product}/>
             </div>
             {product?.categorie? <Categorie product={product}/> : null}
@@ -169,6 +178,8 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
                 setPurchaseData={setPurchaseData}
                 discountCodeAmount={discountCodeAmount}
                 setDiscountCodeAmount={setDiscountCodeAmount}
+                isPriceChange={isPriceChange}
+                setIspriceChange={setIspriceChange}
                 price={price}
                 setPrice={setPrice}
             /> : null } 

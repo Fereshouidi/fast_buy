@@ -12,8 +12,10 @@ type Params = {
     setPurchaseData: (value: purchaseParams) => void
     price: number | undefined, 
     setPrice: (value: number | undefined) => void,
+    isPriceChange: boolean,
+    setIspriceChange: (value: boolean) => void
 }
-const Quantity = ({product, purchaseData, setPurchaseData, price, setPrice}: Params) => {
+const Quantity = ({product, purchaseData, setPurchaseData, isPriceChange, setIspriceChange, price, setPrice}: Params) => {
 
     const languageSelectorContext = useContext(LanguageSelectorContext);
 
@@ -27,11 +29,15 @@ const Quantity = ({product, purchaseData, setPurchaseData, price, setPrice}: Par
                     product?.price * parseInt(event.target.value) 
             })   
 
-            if (product.discount) {
-                setPrice(product.discount.newPrice * parseInt(event.target.value))
-            } else {
-                setPrice(product?.price * parseInt(event.target.value) )
-            }
+            setIspriceChange(true);
+            // if (product.discount) {
+            //     if (purchaseData?.discountCode) {
+
+            //     }
+            //     setPrice(product.discount.newPrice * parseInt(event.target.value))
+            // } else {
+            //     setPrice(product?.price * parseInt(event.target.value) )
+            // }
         }
     }
 

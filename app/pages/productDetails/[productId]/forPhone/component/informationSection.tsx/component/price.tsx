@@ -82,6 +82,7 @@ const Price = ({product, price, setPrice, discountCodeAmount, purchaseData, isPr
     }
 
 
+
     return (
         <div style={style} id="price">
             <span style={stylePriceW}>
@@ -90,7 +91,7 @@ const Price = ({product, price, setPrice, discountCodeAmount, purchaseData, isPr
                     : arabic.priceW + ' : '}
             </span>
 
-            <span style={stylePrice}>{price}</span>
+            <span style={stylePrice}>{isPriceChange? purchaseData?.totalPrice?.toFixed(3) : price}</span>
             <span>{companyInformation?.currencyType}</span>
         </div>
     )
