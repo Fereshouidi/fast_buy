@@ -1,7 +1,3 @@
 {
-  "/pages/favorite/page": "app/pages/favorite/page.js",
-  "/page": "app/page.js",
-  "/pages/register/page": "app/pages/register/page.js",
-  "/pages/account/page": "app/pages/account/page.js",
-  "/pages/categorie/[categorieId]/page": "app/pages/categorie/[categorieId]/page.js"
+  "/pages/productDetails/[productId]/page": "app/pages/productDetails/[productId]/page.js"
 }

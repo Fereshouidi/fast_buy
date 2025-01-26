@@ -22,12 +22,15 @@ const Color = ({product}: {product: productParams | undefined}) => {
         color: 'var(--black)'
 
     }
+    const styleColorW: CSSProperties = {
+        margin: '0 var(--medium-margin)',
+    }
     const styleColorDiv: CSSProperties = {
         width: '15px',
         height: '15px',
         borderRadius: '50%',
         backgroundColor: product?.color,
-        margin: '0 var(--medium-margin)',
+        // margin: '0 var(--medium-margin)',
     }
 
     return (
@@ -41,6 +44,7 @@ const Color = ({product}: {product: productParams | undefined}) => {
                 : englist.colorW + ' : '
             }</span>
             
+            <div style={styleColorW}>{product?.color}</div>
             <div style={styleColorDiv}></div>
 
         </div>
