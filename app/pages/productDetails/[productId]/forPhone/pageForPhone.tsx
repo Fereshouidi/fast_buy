@@ -18,6 +18,7 @@ type Params = {
 const PageForComputer = ({product, setProduct, shoppingCart, orders}: Params) => {
 
     const [purchase, setPurchase] = useState<purchaseParams | undefined>(undefined);
+    const [isPriceChange, setIsPriceChange] = useState<boolean>(false);
 
     
     useEffect(() => {
@@ -43,7 +44,7 @@ const PageForComputer = ({product, setProduct, shoppingCart, orders}: Params) =>
     return (
         <div id="the-product-detail-page-of-computer" style={style}>
             <ImagesSection product={product} setProduct={setProduct} purchase={purchase} setPurchase={setPurchase} shoppingCart={shoppingCart}/>
-            <InformationSection product={product} setProduct={setProduct} purchaseData={purchase} setPurchaseData={setPurchase} shoppingCart={shoppingCart} orders={orders}/>
+            <InformationSection product={product} setProduct={setProduct} purchaseData={purchase} setPurchaseData={setPurchase} shoppingCart={shoppingCart} orders={orders} isPriceChange={isPriceChange} setIspriceChange={setIsPriceChange} />
         </div>
     )
 }
