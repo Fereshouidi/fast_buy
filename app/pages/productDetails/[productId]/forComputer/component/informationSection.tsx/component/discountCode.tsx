@@ -13,18 +13,26 @@ type Params = {
     setPurchaseData: (value: purchaseParams) => void,
     discountCodeAmount: {discount?: number | null, discountPercent?: number | null},
     setDiscountCodeAmount:  (value: {discount?: number | null, discountPercent?: number | null}) => void,
+    price: number | undefined, 
+    setPrice: (value: number | undefined) => void,
+    isPriceChange: boolean,
+    setIspriceChange: (value: boolean) => void
 }
-const DiscountCode = ({product, purchaseData, setDiscountCodeAmount}: Params) => {
+const DiscountCode = ({product, purchaseData, setDiscountCodeAmount, isPriceChange, setIspriceChange, price, setPrice}: Params) => {
 
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage
     const companyInformation = useContext(CompanyInformationContext);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if(event.target.value == product?.discountCode?.code){
+        if(event.target.value == product?.discountCode?.code && !purchaseData?.discountCode){
             setDiscountCodeAmount({
                 discount: product.discountCode.discount,
                 discountPercent: product.discountCode.discountPercent
             })
+            
+            // setPrice(price - (product?.discountCode?.discount?? product.discountCode?.discountPercent))
+           // setIspriceChange(true);
+
         }
     };
     

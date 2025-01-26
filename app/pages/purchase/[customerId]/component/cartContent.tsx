@@ -150,7 +150,7 @@ const CartContent = ({shoppingCart, setShoppingCart, totalPriceChange, setTotalP
                             </div>
                             <div className="right-part" style={styleBottomPart}>
                                 <span style={stylePrice}>
-                                    {purchase.totalPrice +
+                                    {purchase.totalPrice.toFixed(3) +
                                         " " +
                                         companyInformationContext?.currencyType
                                     }

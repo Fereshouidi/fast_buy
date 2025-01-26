@@ -28,9 +28,11 @@ type Params = {
     purchaseData: purchaseParams | undefined
     setPurchaseData: (value: purchaseParams | undefined) => void
     shoppingCart: shoppingCartParams | undefined,
-    orders: OrderParams[] | undefined
+    orders: OrderParams[] | undefined,
+    isPriceChange: boolean,
+    setIspriceChange: (value: boolean) => void
 }
-const InformationSection = ({product, setProduct, purchaseData, setPurchaseData, shoppingCart, orders}: Params) => {
+const InformationSection = ({product, setProduct, purchaseData, setPurchaseData, shoppingCart, orders, isPriceChange, setIspriceChange}: Params) => {
 
     const customer = useContext(CustomerDataContext);
 
@@ -57,9 +59,22 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
     
 
     const [discountCodeAmount, setDiscountCodeAmount] = useState<{discount?: number | null, discountPercent?: number | null}>({discount: 0, discountPercent: 0});
-    const [price, setPrice] = useState<number | undefined>(product?.discount? product.discount.newPrice : product?.price);
+    const [price, setPrice] = useState<number>(0);
     const [productinShoppingCart, setProductinShoppingCart] = useState<boolean | undefined>(undefined);
-    
+    // const [price, setPrice] = useState<number>(1);
+
+    useEffect(() => {
+        console.log(purchaseData);
+        
+        if (purchaseData?.discountCode?.discount) {
+            setPrice((product?.discount? product.discount.newPrice : product?.price) - purchaseData?.discountCode?.discount);
+        } else if (purchaseData?.discountCode?.discountPercent) {
+            setPrice((product?.discount? product.discount.newPrice : product?.price) - (product?.discount? product.discount.newPrice : product?.price) * (purchaseData?.discountCode?.discountPercent / 100));
+        } else {
+            setPrice(product?.discount? product.discount.newPrice : product?.price);
+        }
+        
+    }, [product, purchaseData?.discountCode])
 
     useEffect(() => {
         
@@ -153,7 +168,7 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
                 <Availablity product={product}/>
                 {product?.color? <Color product={product}/> : null}
                 {product?.size? <Size product={product}/> : null}
-                <Quantity product={product} purchaseData={purchaseData} setPurchaseData={setPurchaseData}/>
+                <Quantity product={product} purchaseData={purchaseData} setPurchaseData={setPurchaseData} isPriceChange={isPriceChange} setIspriceChange={setIspriceChange} price={price} setPrice={setPrice}/>
                 <TotalRating product={product}/>
             </div>
             {product?.categorie? <Categorie product={product}/> : null}
@@ -164,8 +179,12 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
                 setPurchaseData={setPurchaseData}
                 discountCodeAmount={discountCodeAmount}
                 setDiscountCodeAmount={setDiscountCodeAmount}
+                isPriceChange={isPriceChange}
+                setIspriceChange={setIspriceChange}
+                price={price}
+                setPrice={setPrice}
             /> : null } 
-            <Price product={product} setProduct={setProduct} discountCodeAmount={discountCodeAmount} price={price} setPrice={setPrice} purchaseData={purchaseData} setPurchaseData={setPurchaseData}/>
+            <Price product={product} setProduct={setProduct} discountCodeAmount={discountCodeAmount} price={price} setPrice={setPrice} purchaseData={purchaseData} setPurchaseData={setPurchaseData} isPriceChange={isPriceChange} setIspriceChange={setIspriceChange} />
             {productinShoppingCart != undefined  && <PutInPurchaseBTN product={product} purchaseData={purchaseData} productinShoppingCart={productinShoppingCart} setProductinShoppingCart={setProductinShoppingCart}/> }
             {customerCanRate()? <Rate purchase={purchaseData} setPurchase={setPurchaseData}/> : null}
         </div>

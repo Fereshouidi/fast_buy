@@ -10,8 +10,10 @@ type Params = {
     product: productParams | undefined,
     purchaseData: purchaseParams | undefined,
     setPurchaseData: (value: purchaseParams) => void
+    price: number | undefined, 
+    setPrice: (value: number | undefined) => void,
 }
-const Quantity = ({product, purchaseData, setPurchaseData}: Params) => {
+const Quantity = ({product, purchaseData, setPurchaseData, price, setPrice}: Params) => {
 
     const languageSelectorContext = useContext(LanguageSelectorContext);
 
@@ -24,6 +26,12 @@ const Quantity = ({product, purchaseData, setPurchaseData}: Params) => {
                     product.discount.newPrice * parseInt(event.target.value) : 
                     product?.price * parseInt(event.target.value) 
             })   
+
+            if (product.discount) {
+                setPrice(product.discount.newPrice * parseInt(event.target.value))
+            } else {
+                setPrice(product?.price * parseInt(event.target.value) )
+            }
         }
     }
 

@@ -1,3 +1,5 @@
 {
-  "/pages/productDetails/[productId]/page": "app/pages/productDetails/[productId]/page.js"
+  "/page": "app/page.js",
+  "/pages/productDetails/[productId]/page": "app/pages/productDetails/[productId]/page.js",
+  "/pages/purchase/[customerId]/page": "app/pages/purchase/[customerId]/page.js"
 }

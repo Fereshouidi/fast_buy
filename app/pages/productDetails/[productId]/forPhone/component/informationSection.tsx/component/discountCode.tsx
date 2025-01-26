@@ -13,8 +13,10 @@ type Params = {
     setPurchaseData: (value: purchaseParams) => void,
     discountCodeAmount: {discount?: number | null, discountPercent?: number | null},
     setDiscountCodeAmount:  (value: {discount?: number | null, discountPercent?: number | null}) => void,
+    price: number | undefined, 
+    setPrice: (value: number | undefined) => void,
 }
-const DiscountCode = ({product, purchaseData, setDiscountCodeAmount}: Params) => {
+const DiscountCode = ({product, purchaseData, setDiscountCodeAmount, price, setPrice}: Params) => {
 
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage
     const companyInformation = useContext(CompanyInformationContext);
@@ -25,10 +27,12 @@ const DiscountCode = ({product, purchaseData, setDiscountCodeAmount}: Params) =>
                 discount: product.discountCode.discount,
                 discountPercent: product.discountCode.discountPercent
             })
+            
+            setPrice(price - (product?.discountCode?.discount?? product.discountCode?.discountPercent))
+
         }
     };
     
-
 
 
     const style :CSSProperties = {

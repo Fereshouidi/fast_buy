@@ -17,6 +17,12 @@
       "static/chunks/main-app.js",
       "static/css/app/pages/productDetails/[productId]/page.css",
       "static/chunks/app/pages/productDetails/[productId]/page.js"
+    ],
+    "/pages/purchase/[customerId]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/pages/purchase/[customerId]/page.css",
+      "static/chunks/app/pages/purchase/[customerId]/page.js"
     ]
   }
 }
