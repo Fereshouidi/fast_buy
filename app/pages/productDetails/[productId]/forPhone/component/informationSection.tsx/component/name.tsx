@@ -14,11 +14,11 @@ const Name = ({product}: {product: productParams | undefined}) => {
     useEffect(() => {
         if(product?.name){
             if(languageSelectorContext?.activeLanguage == 'english'){
-                setName(product?.name.english)
+                setName(product?.name?.english?? '')
             }else if(languageSelectorContext?.activeLanguage == 'arabic'){
                 setName(product?.name.arabic)
             }else{
-                setName(product?.name.english)
+                setName(product?.name?.english?? '')
             }
         }else{
             setName('')
@@ -40,7 +40,7 @@ const Name = ({product}: {product: productParams | undefined}) => {
 
     return (
         <div style={style} id="name-div">
-            <p style={styleName}>{name}</p>
+            <p style={styleName}>{name.length > 30 ? name.slice(0, 30) + '...' : name}</p>
         </div>
     )
 }

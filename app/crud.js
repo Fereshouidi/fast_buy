@@ -1,4 +1,4 @@
-const url = 'https://fast-buy-back-end.vercel.app/api';
+const url = 'http://localhost:3002/api';
 import axios from "axios";
 
 //https://fast-buy-back-end.vercel.app/api
@@ -79,17 +79,17 @@ export const getProductsByCategorie = async(id) => {
     }
 }
 
-export const getCategorieById = async(id) => {
-    try{
-        const response = await axios.get(url + '/get/categorie/by/id', {
-            params: {id}
-        })
-        const data = response.data;
-        return data;
-    }catch(err){
-        throw err;
-    }
-}
+// export const getCategorieById = async(id) => {
+//     try{
+//         const response = await axios.get(url + '/get/categorie/by/id', {
+//             params: {id}
+//         })
+//         const data = response.data;
+//         return data;
+//     }catch(err){
+//         throw err;
+//     }
+// }
 
 export const getCategoriesSection = async() => {
     try{
@@ -125,6 +125,19 @@ export const getProductByBiggestDiscount = async() => {
         return bestCategories;
     }catch(err){
         throw err;
+    }
+}
+
+export const getCategorieById = async(categorieId) => {
+    try{
+        const response = await axios.get(url + '/get/categorie/by/id', {
+            params: {categorieId}
+        })
+        const data = response.data;        
+        return data;
+
+    }catch(err){
+        return null;
     }
 }
 

@@ -147,14 +147,14 @@ const SearchBar = ({style, Query}: params) => {
                             onMouseLeave={() => setItemFocus(null)}
                             onClick={(e) => goToSearchPage(
                                 activeLanguage.activeLanguage == 'arabic' ?
-                                product.name.arabic :
-                                product.name.english
+                                product.name?.arabic ?? ''?? '':
+                                product.name?.english?? ''
                             , e)}   
                         >
                         {
                             activeLanguage.activeLanguage == 'arabic' ?
-                            product.name.arabic :
-                            product.name.english
+                            product.name?.arabic ?? ''?? '':
+                            product.name?.english?? ''
                         }
                         </div>
                     })    

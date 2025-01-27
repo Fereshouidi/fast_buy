@@ -69,8 +69,8 @@ const Categorie = ({ categorie, products }: { categorie: categorieParams, produc
                 languageContext.activeLanguage == "arabic" ?
                 categorie.name.arabic
                 :languageContext.activeLanguage == "english" ?
-                categorie.name.english
-                :categorie.name.english    
+                categorie.name?.english?? ''
+                :categorie.name?.english?? ''    
             }</h2>
             {<Slider products={products}/> }
         </div>

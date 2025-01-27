@@ -113,9 +113,9 @@ const About = () => {
          return (
             conpanyInformations && languageContext.activeLanguage === "english" ?
               <section id="about-section">
-                <h1 style={styleH1}>{`${conpanyInformations.name.english}: The Leading E-Commerce Platform for Your Customers`}</h1>
+                <h1 style={styleH1}>{`${conpanyInformations.name?.english?? ''}: The Leading E-Commerce Platform for Your Customers`}</h1>
                 <p>
-                  Welcome to <strong style={styleStrong}>{`${conpanyInformations.name.english}`}</strong>, your trusted partner for an exceptional online shopping experience tailored to your customers&apos; needs. We offer:
+                  Welcome to <strong style={styleStrong}>{`${conpanyInformations.name?.english?? ''}`}</strong>, your trusted partner for an exceptional online shopping experience tailored to your customers&apos; needs. We offer:
                 </p>
           
                 <div className="products">
@@ -123,9 +123,9 @@ const About = () => {
                   <ul>
                     {bestCategories?.map((categorie, index) => (
                       <li key={index}>
-                        <strong style={styleStrong}>{`${categorie.catgorie.name.english}:`}</strong> such as
+                        <strong style={styleStrong}>{`${categorie.catgorie.name?.english?? ''}:`}</strong> such as
                         {categorie.products.slice(0, 3).map((product, index) => (
-                          <span key={index}>{` ${product.name.english} `}</span>
+                          <span key={index}>{` ${product.name.english.length > 30 ? product.name.english.slice(0, 30) + '...' : product.name.english}, `}</span>
                         ))}
                         .
                       </li>
@@ -138,7 +138,7 @@ const About = () => {
                   <ul>
                     <li>
                       Enjoy discounts up to <strong  style={styleStrong}>{` ${bigestDiscount?.discount.percentage}% `}</strong>
-                      on {bigestDiscount && bigestDiscount.products.length >= 0 ? ` ${bigestDiscount.products[0]?.name.english} ` : ''}
+                      on {bigestDiscount && bigestDiscount.products.length >= 0 ? ` ${bigestDiscount.products[0]?.name?.english?.length > 30 ? bigestDiscount.products[0]?.name?.english.slice(0, 30) + '...' : bigestDiscount.products[0]?.name?.english } ` : ''}
                     </li>
                     <li>
                       Exclusive offers such as <strong  style={styleStrong}>{` ${conpanyInformations.offersDetails} `}</strong>
@@ -176,7 +176,7 @@ const About = () => {
                 </div>
           
                 <p>
-                  Discover now the world of <strong  style={styleStrong}>{`${conpanyInformations.name.english}`}</strong> and be part of a shopping experience
+                  Discover now the world of <strong  style={styleStrong}>{`${conpanyInformations.name?.english.length?? ''}`}</strong> and be part of a shopping experience
                   that makes your life easier and more enjoyable. Don&apos;t miss the opportunity to join thousands of satisfied customers who trust us!
                 </p>
               </section>
@@ -195,7 +195,7 @@ const About = () => {
                       <li key={index}>
                         <strong  style={styleStrong}>{`${categorie.catgorie.name.arabic}:`}</strong> مثل
                         {categorie.products.slice(0, 3).map((product, index) => (
-                          <span key={index}>{` ${product.name.arabic} `}</span>
+                          <span key={index}>{` ${product.name.arabic.length > 30 ? product.name.arabic.slice(0, 30) + '...' : product.name.arabic}, `}</span>
                         ))}
                         .
                       </li>
@@ -208,7 +208,7 @@ const About = () => {
                   <ul>
                     <li>
                       استمتع بخصومات تصل إلى <strong  style={styleStrong}>{`${bigestDiscount?.discount.percentage}% `}</strong>
-                      على {bigestDiscount && bigestDiscount.products.length >= 0 ? ` ${bigestDiscount.products[0]?.name.arabic} ` : ''}
+                      على {bigestDiscount && bigestDiscount.products.length >= 0 ? ` ${bigestDiscount.products[0]?.name?.arabic?.length > 30 ? bigestDiscount.products[0]?.name?.arabic.slice(0, 30) + '...' : bigestDiscount.products[0]?.name?.arabic } ` : ''}
                     </li>
                     <li>
                       عروض حصرية مثل <strong  style={styleStrong}>{`${conpanyInformations.offersDetails}`}</strong>

@@ -153,10 +153,10 @@ const Slide = ({product} : {product: productParams}) => {
                  </div>
             <h4 style={styleTittle}>{
                 languageContext.activeLanguage == 'english' ?
-                product.name.english
+                product.name?.english?? ''
                 :languageContext.activeLanguage == 'arabic' ?
                 product.name.arabic
-                :product.name.english
+                :product.name?.english?? ''
             }</h4>
             <div style={stylePrices}>
                 {product.discount && product.discount.oldPrice && <span style={styleoldPrice}>{product.discount.oldPrice +' '+ (companyInformation?.currencyType || '')}</span>} 

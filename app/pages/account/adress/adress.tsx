@@ -67,6 +67,7 @@ const Adress = ({customer, setCustomer}: params) => {
                     style={styleInput}
                     placeholder={activeLanguage?.fullAdressW +' ...'}
                     onChange={(e) => handleAdress(e)}
+                    maxLength={100}
                 />
             </div>
 

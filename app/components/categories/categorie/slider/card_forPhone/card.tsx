@@ -91,12 +91,14 @@ const unsetHover = () => {
         <div style={cardHover? StyleWithHover : Style} onMouseEnter={setHover} onMouseLeave={unsetHover} onClick={() => goToDetailPage(product)}>
             <img src={product.imagePrincipal} alt="" style={StyleImage} />
             <div style={StyleCartInformation}>
-            <h4 style={styleH4}>{
+                <h4 style={styleH4}>{
                     languageContext.activeLanguage == "english" ?
-                    product.name.english
-                    :languageContext.activeLanguage == "arabic" ?
-                    product.name.arabic
-                    :product.name.english    
+                    product.name?.english.length > 15 ? 
+                        product.name?.english.slice(0, 15) + '...'
+                        : product.name?.english ?? ''
+                    : product.name?.arabic.length > 15 ?
+                        product.name?.arabic.slice(0, 15) + '...'
+                        : product.name?.arabic ?? ''   
                 }</h4>
                 <StarRating product={product}/>
                 <div style={styleBoxAndPricesDiv}>

@@ -29,7 +29,7 @@ const Logo = () => {
                 src={companyInformations?.logo}
                 alt="Logo"   
             />
-            <h1>{activeLanguage == 'arabic' ? companyInformations.name?.arabic : companyInformations.name?.english }</h1>
+            <h1>{activeLanguage == 'arabic' ? companyInformations.name?.arabic ?? '': companyInformations.name?.english?? '' }</h1>
         </div>
     )
 }

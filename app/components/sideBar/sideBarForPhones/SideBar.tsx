@@ -1,5 +1,5 @@
 'use client';
-import { CSSProperties, useContext } from "react";
+import { CSSProperties, useContext, useEffect, useState } from "react";
 import Home from "./home/home";
 import Order from "./orders/orders";
 import About from "./about/about";
@@ -10,12 +10,16 @@ import Purchase from "./purchase/purchase";
 import Setting from "./setting/setting";
 import { LanguageSelectorContext } from "@/app/contexts/LanguageSelectorContext";
 import { SideBarContext } from "@/app/contexts/SideBarContext";
+import english from "@/app/languages/english.json";
+import arabic from "@/app/languages/arabic.json";
+import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 
 
 const SideBar = () => {
 
     // const [activeLanguage, setActiveLanguage] = useState(english);
 
+    const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
     
     const context = useContext(LanguageSelectorContext);
     const sideBarExistContext = useContext(SideBarContext);
@@ -37,11 +41,16 @@ const SideBar = () => {
     // }, [context.activeLanguage])
 
     const backgroundStyle: CSSProperties = {
-        direction: context.activeLanguage == 'arabic'? 'rtl': 'ltr',
-        right: context.activeLanguage == 'arabic'? '0': '',
-        left: context.activeLanguage != 'arabic'? '0': '',
+        position: 'fixed',
+        // direction: activeLanguage.activeLanguage == 'arabic'? 'rtl': 'ltr',
+        right: activeLanguage.activeLanguage == 'arabic'? '0': '',
+        left: activeLanguage.activeLanguage != 'arabic'? '0': '',
         width: sideBarExistContext.sideBarExist? '100vw': '0',
-        top: 'var(--header-height-for-phone)'
+        top: 'var(--header-height-for-phone)',
+        height: 'calc(100vh - calc(var(--header-height) /1.2))',
+        // height: '100vh',
+        margin: '0',
+        overflow: 'hidden',
     }
     const sideBarStyle: CSSProperties = {
         direction: context.activeLanguage == 'arabic'? 'rtl': 'ltr',

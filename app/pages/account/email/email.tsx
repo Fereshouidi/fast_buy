@@ -117,6 +117,7 @@ const Email = ({customer, setCustomer}: params) => {
                         style={styleInput} 
                         placeholder={activeLanguage?.emailW + ' ...'}
                         onChange={(e) => handleEmail(e)}
+                        maxLength={50}
                     />
                     <button style={styleButton} onClick={verifEmail}>{activeLanguage?.verif}</button>
                 </div>

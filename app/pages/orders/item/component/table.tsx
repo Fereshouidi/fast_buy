@@ -66,9 +66,9 @@ const TableDetails = ({order}: parmas) => {
                 <tbody style={styleTbody}>{
                     order?.purchases?.map((purchase) => {
                         return <tr key={purchase._id}>
-                                    <td>{activeLanguage?.activeLanguage == 'arabic'? purchase.product?.name.arabic : purchase.product?.name.english}</td>
+                                    <td style={{padding: 0}}>{activeLanguage?.activeLanguage == 'arabic'? purchase.product?.name?.arabic.length > 10 ? purchase.product?.name?.arabic.slice(0, 10) + '...' : purchase.product?.name?.arabic : purchase.product?.name?.english.length > 10 ? purchase.product?.name?.english.slice(0, 10) + '...' : purchase.product?.name?.english?? ''}</td>
                                     <td style={{display: 'flex', justifyContent: 'center', border: 'none'}}> {purchase.product?.color ?<div style={{...styleColor, backgroundColor: purchase.product?.color}}></div> : 'null'} </td>
-                                    <td>{activeLanguage?.activeLanguage == "arabic" ? purchase.product?.categorie.name.arabic : purchase.product?.categorie.name.english}</td>
+                                    <td>{activeLanguage?.activeLanguage == "arabic" ? purchase.product?.categorie.name?.arabic ?? ''?? '': purchase.product?.categorie.name?.english?? ''}</td>
                                     <td>{purchase.quantity}</td>
                                     <td>{purchase.totalPrice}</td>
                                 </tr>

@@ -74,6 +74,7 @@ const Phone = ({customer, setCustomer}: params) => {
                     style={styleInput} 
                     placeholder={activeLanguage?.PhoneNumberW + " ..."}
                     onChange={(e) => handlePhone(e)}
+                    maxLength={30}
                 />
             </div>
 

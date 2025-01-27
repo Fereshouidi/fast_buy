@@ -13,7 +13,7 @@ const Setting = () => {
     }
 
     const style: CSSProperties = {
-        position: 'fixed',
+        position: 'absolute',
         bottom: '0',
         left: languageSelectorContext.activeLanguage == 'arabic' ? '' : '0',
         right: languageSelectorContext.activeLanguage == 'arabic' ? '0' : '',

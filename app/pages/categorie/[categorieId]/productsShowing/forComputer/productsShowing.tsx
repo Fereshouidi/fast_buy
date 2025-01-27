@@ -55,7 +55,7 @@ const ProductsShowing = ({categorie, products}: params) => {
     
     return (
         <section style={Style}>
-            <h2 style={StyleH2}>{activeLanguage.activeLanguage == 'arabic' ? categorie.name.arabic : categorie.name.english + ' :'}</h2>
+            <h2 style={StyleH2}>{activeLanguage.activeLanguage == 'arabic' ? categorie.name?.arabic ?? ''?? '': categorie.name?.english?? '' + ' :'}</h2>
             <div style={styleContainer}>
                 {products ? products.map((product, index) => {
                     return <div key={index}>

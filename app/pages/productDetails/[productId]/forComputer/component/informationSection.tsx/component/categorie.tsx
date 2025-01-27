@@ -36,10 +36,10 @@ const Categorie = ({product}: {product: productParams | undefined}) => {
             }</h4>
             <span style={styleCategorieName}>{
                 languageSelectorContext?.activeLanguage == "english" ?
-                    product?.categorie.name.english
+                    product?.categorie.name?.english?? ''
                 : languageSelectorContext?.activeLanguage == "arabic" ?
-                    product?.categorie.name.arabic 
-                :   product?.categorie.name.english
+                    product?.categorie.name?.arabic ?? ''?? ''
+                :   product?.categorie.name?.english?? ''
             }</span>
         </div>
     )

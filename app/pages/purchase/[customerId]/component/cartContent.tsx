@@ -136,11 +136,15 @@ const CartContent = ({shoppingCart, setShoppingCart, totalPriceChange, setTotalP
                                         style={styleIMG}
                                         alt=""
                                     />
-                                    <h4 style={styleName}>
-                                        {activeLanguage?.activeLanguage ==  'arabic'
-                                            ? purchase.product?.name.arabic
-                                            : purchase.product?.name.english}
-                                    </h4>
+                                    <h4 style={styleName}>{
+                                        activeLanguage?.activeLanguage == "english" ?
+                                        purchase.product.name?.english.length > 15 ? 
+                                        purchase.product.name?.english.slice(0, 15) + '...'
+                                            : purchase.product.name?.english ?? ''
+                                        : purchase.product.name?.arabic.length > 15 ?
+                                            purchase.product.name?.arabic.slice(0, 15) + '...'
+                                            : purchase.product.name?.arabic ?? ''   
+                                    }</h4>
                                 </div>
                                 <Trash
                                     shoppingCart={shoppingCart}

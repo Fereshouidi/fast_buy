@@ -60,6 +60,7 @@ const UserName = ({customer, setCustomer}: params) => {
                     style={styleInput} 
                     placeholder={activeLanguage?.userNameW+ ' ...'}
                     onChange={(e) => handleUserName(e)}
+                    maxLength={20}
                 />
             </div>
 
