@@ -1,11 +1,13 @@
 'use client';
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
-import { CSSProperties, useContext, useState } from "react";
+import { CSSProperties, useContext, useEffect, useState } from "react";
 import { CompanyInformationContext } from "@/app/contexts/companyInformation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import RateSection from "./rateSection/rateSection";
 import { purchaseParams } from "@/app/contexts/purchaseData";
+import { reviewParams } from "@/app/contexts/reviews";
+import { getReviewByCustomerProduct } from "@/app/crud";
 
 type params = {
     purchase: purchaseParams | undefined,
@@ -17,8 +19,16 @@ const Rate = ({purchase, setPurchase}: params) => {
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
     const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
     const [rateSectionExist, setRateSectionExist] = useState<boolean>(false);
+    const [review, setReview] = useState<reviewParams | undefined>(undefined);
 
 
+    useEffect(() => {
+        const fetchReview = async () => {
+            const review = await getReviewByCustomerProduct(purchase?.buyer, purchase?.product);
+            setReview(review);
+        } 
+        fetchReview()
+    }, [purchase])
     const style: CSSProperties = {
         display: 'flex',
         alignItems: 'center',
@@ -39,7 +49,7 @@ const Rate = ({purchase, setPurchase}: params) => {
                 {activeLanguage?.rateProductW }
             </div>
 
-            <RateSection exist={rateSectionExist} setExist={setRateSectionExist} purchase={purchase} setPurchase={setPurchase}/>
+            <RateSection exist={rateSectionExist} setExist={setRateSectionExist} purchase={purchase} setPurchase={setPurchase} review={review}/>
         </>
     )
 }

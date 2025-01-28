@@ -47,6 +47,12 @@
       "static/chunks/main-app.js",
       "static/css/app/pages/orders/page.css",
       "static/chunks/app/pages/orders/page.js"
+    ],
+    "/pages/register/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/pages/register/page.css",
+      "static/chunks/app/pages/register/page.js"
     ]
   }
 }

@@ -11,6 +11,7 @@ import { updateReview } from "@/app/crud";
 import { ActiveLanguageContext } from "@/app/contexts/activeLanguage";
 import { BannerContext } from "@/app/contexts/bannerForEverything";
 import { LoadingIconContext } from "@/app/contexts/loadingIcon";
+import { reviewParams } from "@/app/contexts/reviews";
 
 
 type params = {
@@ -20,8 +21,9 @@ type params = {
     setNote?: (value: string) => void;
     purchase: purchaseParams | undefined,
     setPurchase: (value: purchaseParams) => void;
+    review: reviewParams | undefined
 }
-const RateSection = ({exist, setExist, purchase }: params) => {
+const RateSection = ({exist, setExist, purchase, review }: params) => {
 
     const setBanner = useContext(BannerContext)?.setBanner;
     const setLoadingIcon = useContext(LoadingIconContext)?.setExist;
@@ -41,15 +43,15 @@ const RateSection = ({exist, setExist, purchase }: params) => {
     }
 
     useEffect(() => {
-        setStarsNum(purchase?.customerRating?? 0)
-    }, [])
+        setStarsNum(review?.customerRating?? 0)
+    }, [review])
 
     const submate = () => {
         if (purchase && starsNum && setLoadingIcon && setBanner) {             
-            if (starsNum) { 
+            if (starsNum && note) { 
                 setLoadingIcon(true);
                 setExist(false);
-                updateReview(purchase._id, starsNum, note);
+                updateReview(review?._id, purchase.buyer, purchase.product , starsNum, note);
                 setBanner(true, 'your review has been sended successfully', 'success');
                 setLoadingIcon(false);
                 setIsEdit(false);

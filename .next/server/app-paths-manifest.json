@@ -1,7 +1,7 @@
 {
-  "/pages/productDetails/[productId]/page": "app/pages/productDetails/[productId]/page.js",
-  "/pages/categorie/[categorieId]/page": "app/pages/categorie/[categorieId]/page.js",
   "/page": "app/page.js",
-  "/pages/orders/page": "app/pages/orders/page.js",
-  "/pages/favorite/page": "app/pages/favorite/page.js"
+  "/pages/favorite/page": "app/pages/favorite/page.js",
+  "/pages/register/page": "app/pages/register/page.js",
+  "/pages/purchase/[customerId]/page": "app/pages/purchase/[customerId]/page.js",
+  "/pages/productDetails/[productId]/page": "app/pages/productDetails/[productId]/page.js"
 }
