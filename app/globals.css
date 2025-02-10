@@ -148,11 +148,10 @@ body{
   overflow-x: hidden;
 }
 
-body::-webkit-scrollbar-button {
+/* body::-webkit-scrollbar-button {
   width: 0;
   opacity: 0;
-  /* height: 0; */
-}
+} */
 
 .computer {
   padding-top: var(--header-height);
