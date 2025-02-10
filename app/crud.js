@@ -284,6 +284,9 @@ export const updatePurchase = async (updatedPurchase) => {
 }
 
 export const addOrder = async (order) => {   
+
+    console.log(order);
+    
     
     try{
         const response = await axios.post(url + '/add/order', order);        

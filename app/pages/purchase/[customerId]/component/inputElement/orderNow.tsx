@@ -37,8 +37,10 @@ const OrderNow = ({customer, shoppingCart, setShoppingCart}: Params) => {
 
             await addOrder({
                 ...shoppingCart,
+                products: shoppingCart.products.map(product => product._id),
+                purchases: shoppingCart.purchases.map(purchase => purchase._id),
                 status: 'processing',
-                customer: customer,
+                customer: customer._id,
                 totalPrice: (shoppingCart.totalPrice || 0) + (shoppingCart.shippingCost || 0)
             })
             setShoppingCart({})
