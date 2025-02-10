@@ -13,13 +13,16 @@ const SwitchSections = ({activeSection, setActiveSection}: params)=> {
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
     const primaryColor = useContext(CompanyInformationContext)?.primaryColor;
 
-
     const style: CSSProperties = {
         width: '100%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 'var(--large-padding)'
+        padding: 'var(--medium-padding)',
+        paddingBottom: 0,
+        borderRadius: '20px',
+        //backgroundColor: 'red',
+
     }
     const styleProcessing: CSSProperties = {
         width: 'calc(var(--double-width) /1.2)',

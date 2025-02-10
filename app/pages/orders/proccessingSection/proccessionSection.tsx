@@ -36,11 +36,15 @@ const ProccessiongSection = ({orders}: params) => {
     
     const style: CSSProperties = {
         width: window.innerWidth > 800 ? '50%' : '100%',
-        minHeight: '100vh',
+        //minHeight: '100vh',
+        height: 'calc(100vh - var(--header-height) *1.8 )',
         backgroundColor: 'var(--white)',
         margin: window.innerWidth > 800 ? 'var(--large-margin) 0' : '0',
         borderRadius: '20px',
-        padding: 'var(--large-padding)'
+        padding: 'var(--large-padding)',
+        overflow: 'scroll',
+        boxShadow: '0 5px 15px var(--black-almost-transparnt)',
+
     }
     const styleH4: CSSProperties = {
         opacity: 0.7,
@@ -73,7 +77,7 @@ const ProccessiongSection = ({orders}: params) => {
         color: 'var(--black)',
     }
     return (
-        <div style={style}>
+        <div style={style} className="scroll-without-bar">
             <h4 style={styleH4}>{activeLanguage?.proccessingW + ' (' + (proccessingOrders?.length || 0) + ') :'}</h4>
             {proccessingOrders && proccessingOrders.length > 0 ? 
 

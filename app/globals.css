@@ -145,6 +145,13 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar-button {
+  width: 0;
+  opacity: 0;
+  /* height: 0; */
 }
 
 .computer {
@@ -160,7 +167,9 @@ svg {
   border-radius: 50px;
 }
 
-
+.scroll-without-bar::-webkit-scrollbar {
+  width: 0;
+}
 
 .primary-border{
   border: var(--border-width) solid var(--border-color) ;

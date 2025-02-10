@@ -212,12 +212,13 @@ useEffect(() => {
     justifyContent: screenWidth > 800 ? 'center' : '',
     flexDirection: screenWidth > 800 ? 'row' : 'column',
     padding: screenWidth > 800 ? 'var(--large-padding)' : '',
-
+    
   }
 
   const style_fs_and_ss: CSSProperties = {
     width: screenWidth > 800 ? '50%' : '100%',
-    minHeight: '100vh',
+    //height:'calc(100vh - calc( var(--header-height) *2.5) )',
+    height: 'calc(100vh - calc( var(--header-height) *1.8)',
     backgroundColor: screenWidth > 800 ? 'var(--white)' : 'var(--almost-white)',
     display: 'flex',
     margin: screenWidth > 800 ? 'var(--large-margin)' : '0',
@@ -226,13 +227,19 @@ useEffect(() => {
     padding: '0',
     boxSizing: 'border-box',
     //justifyContent: screenWidth > 800 ? 'center' : '',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    position: 'relative',
+    // top: 'calc( var(--header-height) *1.2)',
+    // right: '0',
+    // overflowY: 'scroll',
+    boxShadow: '0 5px 15px var(--black-almost-transparnt)',
+
   }
 
 
     return (
 
-        <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType}} >
+        <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType, shippingCost: conpanyInformations.shippingCost}} >
             <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
                 <ThemeContext.Provider value={{ theme, setTheme }}>
                   <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>

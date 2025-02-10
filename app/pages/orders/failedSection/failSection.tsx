@@ -32,15 +32,19 @@ const FailSection = ({orders}: params) => {
 
     const style: CSSProperties = {
         width: '100%',
-        minHeight: '100vh',
+        height: '100%',
         backgroundColor: 'var(--white)',
-        margin: window.innerWidth > 800 ? 'var(--large-margin) 0' : '0',
+        margin: '0',
         borderRadius: '20px',
-        padding: 'var(--large-padding)'
+        padding: '0 var(--large-padding)',
+        overflow: 'scroll',
+       // boxShadow: '0 5px 15px var(--black-almost-transparnt)',
+
     }
     const styleH4: CSSProperties = {
         opacity: 0.7,
-        color: 'var(--black)'
+        color: 'var(--black)',
+        paddingTop: 'var(--medium-padding)'
     }
     const styleItemsContainer: CSSProperties = {
         width: '100%',
@@ -69,7 +73,7 @@ const FailSection = ({orders}: params) => {
         opacity: '0.7'
     }
     return (
-        <div style={style}>
+        <div style={style} className="scroll-without-bar">
             <h4 style={styleH4}>{activeLanguage?.orderStatus.failedW + ' (' + (failedOrders?.length || 0) + ') :'}</h4>
             {failedOrders && failedOrders.length > 0 ? 
 
