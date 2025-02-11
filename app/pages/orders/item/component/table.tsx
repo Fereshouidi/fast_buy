@@ -14,7 +14,7 @@ const TableDetails = ({order}: parmas) => {
 
     const activeLanguage = useContext(ActiveLanguageContext)?.activeLanguage;
     const companyInformation = useContext(CompanyInformationContext);
-
+    
     const style: CSSProperties = {
         margin: 'var(--large-margin) 0',
         width: '100%',
@@ -82,6 +82,12 @@ const TableDetails = ({order}: parmas) => {
                         <td colSpan={4} style={{textAlign: 'start', padding: '0 var(--extra-large-padding)'}}>{activeLanguage?.shippingCostW}</td>
                         <td>{companyInformation?.shippingCost}</td>
                     </tr>
+                    {order?.discountCode && 
+                        <tr> 
+                            <td colSpan={4} style={{textAlign: 'start', padding: '0 var(--extra-large-padding)'}}>{activeLanguage?.discountw}</td>
+                            <td>{order?.discountCode ? order?.discountCode.discount ? order?.discountCode.discount + companyInformation?.currencyType : order?.discountCode.discountPercent ? order?.discountCode.discountPercent + '%' : null : null}</td>
+                        </tr>
+                    }
                     <tr>
                         <td colSpan={4} style={{textAlign: 'start', padding: '0 var(--extra-large-padding)'}}>{activeLanguage?.totalPriceW}</td>
                         <td>{order?.totalPrice}</td>

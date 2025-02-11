@@ -53,6 +53,7 @@ const DiscountCode = ({shoppingCart, setShoppingCart, allDiscountCodes}: Params)
 
             setShoppingCart({
                 ...shoppingCart,
+                discountCode: allDiscountCodes.filter(discount_ => discount_.discount == discount)[0],
                 totalPrice: shoppingCart?.totalPrice - discount
             })
 
@@ -60,6 +61,7 @@ const DiscountCode = ({shoppingCart, setShoppingCart, allDiscountCodes}: Params)
         } else if (shoppingCart?.totalPrice && discountType == 'discountPercent') {
             setShoppingCart({
                 ...shoppingCart,
+                discountCode: allDiscountCodes.filter(discount_ => discount_.discountPercent == discount)[0],
                 totalPrice: shoppingCart?.totalPrice - (shoppingCart?.totalPrice * (discount / 100)),
             })
 
