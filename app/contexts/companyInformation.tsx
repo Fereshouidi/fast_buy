@@ -11,6 +11,13 @@ export interface companyInformationsParams {
     originalProductsPercentage?: number,
     servises?: string[],
     backgroundOfRegisterPage?: string,
+    backgroundsPages: {
+        homePage: string,
+        registerPage: string
+        accountPage: string
+        ordersPage: string
+        shoppingCartPage: string
+    },
     registerRequiredData?: registerRequiredDataParams,
     email?: string,
     password?: string,

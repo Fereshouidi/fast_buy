@@ -148,6 +148,8 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
         fetchData();
     }, [purchaseData]);
     
+    console.log(product?.categorie);
+    
 
     const style: CSSProperties = {
         width: '50%',
@@ -172,7 +174,7 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
                 <TotalRating product={product}/>
             </div>
             {product?.categorie? <Categorie product={product}/> : null}
-            {product?.discountCode? <DiscountCode 
+            {product?.discountCode || product?.categorie?.discountCode? <DiscountCode 
                 product={product} 
                 setProduct={setProduct} 
                 purchaseData={purchaseData} 

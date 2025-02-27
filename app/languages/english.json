@@ -135,7 +135,8 @@
     "logOutP": "Close account",
     "logOutW": "Log out",
     "verif": "verif",
-    "discountw": "discount"
+    "discountw": "discount",
+    "emailChangedSuccessfullyP": "your email has been changed successfully and we've send you a verification link "
 }
 
 

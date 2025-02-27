@@ -54,11 +54,11 @@ const Email = ({customer, setCustomer}: params) => {
                     token: token,
                     verification: false
                 });
-                setBanner(true, "your email has been changed successfully and we've send you a ferification link ");
+                setBanner(true, activeLanguage?.emailChangedSuccessfullyP);
                 setLoadingIcon(false);
 
             } else {
-                setBanner(true, 'email not valid !', 'fail');
+                setBanner(true, activeLanguage?.emailNotValid, 'fail');
                 setLoadingIcon(false);
             }
 

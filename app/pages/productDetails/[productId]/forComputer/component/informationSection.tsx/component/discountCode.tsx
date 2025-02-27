@@ -29,10 +29,6 @@ const DiscountCode = ({product, purchaseData, setDiscountCodeAmount, isPriceChan
                 discount: product.discountCode.discount,
                 discountPercent: product.discountCode.discountPercent
             })
-            
-            // setPrice(price - (product?.discountCode?.discount?? product.discountCode?.discountPercent))
-           // setIspriceChange(true);
-
         }
     };
     

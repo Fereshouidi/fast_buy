@@ -47,7 +47,7 @@ const BulletinBoard = () => {
     }, []);
     
     const handleClick = () => {
-        router.push(bulletinBoard && bulletinBoard.link ? bulletinBoard.link : '')
+        bulletinBoard && bulletinBoard.link ? router.push( bulletinBoard.link ) : null
     }
 
     const style:CSSProperties = {
