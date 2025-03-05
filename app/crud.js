@@ -1,4 +1,4 @@
-const url = 'https://fast-buy-back-end.vercel.app/api';
+const url = 'http://localhost:3002/api';
 import axios from "axios";
 
 //https://fast-buy-back-end.vercel.app/api
@@ -28,6 +28,8 @@ export const getSliderData = async() => {
     try{
         const response = await axios.get(url + '/get/slider');
         const data = response.data;
+        console.log(data);
+        
         return data;
     }catch(err){
         throw err;
@@ -103,6 +105,8 @@ export const getCategoriesSection = async() => {
 export const getConpanyInformations = async() => {
     try{
         const conpanyInformations = (await axios.get(url + '/get/conpanyInformations')).data;        
+        console.log(conpanyInformations);
+        
         
         return conpanyInformations;
     }catch(err){

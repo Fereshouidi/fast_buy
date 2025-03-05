@@ -2,7 +2,7 @@
 
 import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
-import { useState, useEffect } from "react";
+import { useState, useEffect, CSSProperties } from "react";
 import HeaderForComputer from "@/app/components/header/headerForComputer/header";
 import HeaderForPhone from "@/app/components/header/headerForPhones/header";
 import { ThemeContext } from "@/app/contexts/ThemeContext";
@@ -178,12 +178,28 @@ useEffect(() => {
     return <LoadingIcon_theHolePage/>; 
   }
   
-  // if (true) {
+  
+  const style: CSSProperties = {
+    width: '100%',
+    height: '100%',
+    
+    backgroundImage: `url(${conpanyInformations.backgroundsPages?.homePage})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    // backgroundColor: 'var(--white-almost-transparnt)',
+    // backgroundColor: 'red',
+    overflow: 'hidden'
+
+  }
+  // if (true) {    
+
   //   alert('aaaaaaaaaaaaaaaaaaaaaaaaaa')
   // }
 
   return (
-    <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType, shippingCost: conpanyInformations.shippingCost, backgroundsPages: conpanyInformations.backgroundsPages}} >
+    <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, qualityAssurance: conpanyInformations?.qualityAssurance, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType, shippingCost: conpanyInformations.shippingCost, backgroundsPages: conpanyInformations.backgroundsPages, socialMediaLinks: conpanyInformations.socialMediaLinks}} >
         <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
           <ActiveLanguageContext.Provider value={{activeLanguage: activeLanguage_, setAtiveLanguage: setActiveLanguage_}}>
             <ThemeContext.Provider value={{ theme, setTheme }}>
@@ -191,16 +207,20 @@ useEffect(() => {
                 <CustomerDataContext.Provider value={customerData}>
                   <LoadingIconContext.Provider value={{exist: loadingIconExist , setExist: setLoadingIconExit}}>
                     <BannerContext.Provider value={{bannerexist: bannerForEveryThing,bannerText: bannerText , setBanner: setBanner}}>
-                        {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
+                        {window?.innerWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
                         {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-                        {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
-                        <Slider/>
-                        <LoadingIcon_theHolePage/>
-                        <ProductsShowing/>
-                        {screenWidth > 800 ? <BulletinBoard_two_forComputer /> : <BulletinBoard_two_forPhone />}
-                        <CategoriesSection/>
-                        <About/>
-                        <span onClick={closeAccount}>x</span>
+                       
+                        <div style={style}>
+                          {screenWidth > 800 ? <BulletinBoardForComputer /> : <BulletinBoardForPhone />}
+                          <Slider/>
+                          <LoadingIcon_theHolePage/>
+                          <ProductsShowing/>
+                          {screenWidth > 800 ? <BulletinBoard_two_forComputer /> : <BulletinBoard_two_forPhone />}
+                          <CategoriesSection/>
+                          <About/>
+                          {/* <span onClick={closeAccount}>x</span> */}
+                        </div>
+
                     </BannerContext.Provider>
                   </LoadingIconContext.Provider>
                 </CustomerDataContext.Provider>

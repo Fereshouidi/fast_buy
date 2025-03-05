@@ -113,7 +113,9 @@ useEffect(() => {
         const orders = await gtOrdersByCustomer(customer?._id);
         setOrders(orders);
     }
-    fetchData()
+    if (customer?._id) {
+      fetchData();
+    }
 }, [customer])
 
 useEffect(() => {
@@ -205,23 +207,29 @@ useEffect(() => {
 
   
   const style: CSSProperties = {
-    width: '100vw',
-    minHeight: '100vh',
+    width: '100%',
+    minHeight: '100%',
     backgroundColor: 'var(--almost-white)',
     display: 'flex',
     justifyContent: screenWidth > 800 ? 'center' : '',
     flexDirection: screenWidth > 800 ? 'row' : 'column',
-    padding: screenWidth > 800 ? 'var(--large-padding)' : '',
-    
+    padding: screenWidth > 800 ? 'var(--large-padding)' : '0',
+    backgroundImage: `url(${conpanyInformations.backgroundsPages?.ordersPage})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    overflow: "hidden"
+
   }
 
   const style_fs_and_ss: CSSProperties = {
     width: screenWidth > 800 ? '50%' : '100%',
     //height:'calc(100vh - calc( var(--header-height) *2.5) )',
     height: 'calc(100vh - calc( var(--header-height) *1.8)',
-    backgroundColor: screenWidth > 800 ? 'var(--white)' : 'var(--almost-white)',
+    // backgroundColor: screenWidth > 800 ? 'var(--white-semi-transparent)' : 'var(--almost-white)',
     display: 'flex',
-    margin: screenWidth > 800 ? 'var(--large-margin)' : '0',
+    margin: screenWidth > 800 ? 'var(--large-margin)' : 'var(--extra-large-margin) 0',
     borderRadius: '20px',
     //backgroundColor: 'red',
     padding: '0',
@@ -233,13 +241,14 @@ useEffect(() => {
     // right: '0',
     // overflowY: 'scroll',
     boxShadow: '0 5px 15px var(--black-almost-transparnt)',
+    overflow: "hidden"
 
   }
 
 
     return (
 
-      <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType, shippingCost: conpanyInformations.shippingCost, backgroundsPages: conpanyInformations.backgroundsPages}} >
+      <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, qualityAssurance: conpanyInformations?.qualityAssurance, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType, shippingCost: conpanyInformations.shippingCost, backgroundsPages: conpanyInformations.backgroundsPages, socialMediaLinks: conpanyInformations.socialMediaLinks}} >
             <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
                 <ThemeContext.Provider value={{ theme, setTheme }}>
                   <SideBarContext.Provider value={{ sideBarExist, setSideBarExist }}>

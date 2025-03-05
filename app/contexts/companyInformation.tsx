@@ -6,10 +6,11 @@ export interface companyInformationsParams {
     logo?: string,
     primaryColor?: string,
     biggestDiscount?: number,
-    offersDetails? : string,
-    entities?: string[],
+    entities?: nameParams,
     originalProductsPercentage?: number,
-    servises?: string[],
+    servises?: nameParams,
+    qualityAssurance?: nameParams,
+    offersDetails? : nameParams,    
     backgroundOfRegisterPage?: string,
     backgroundsPages: {
         homePage: string,
@@ -25,6 +26,8 @@ export interface companyInformationsParams {
     companyInformations?: string,
     currencyType?: string
     shippingCost: string
+    socialMediaLinks?: socialMediaParams
+
 }
 
 type nameParams = {
@@ -45,6 +48,15 @@ type registerRequiredDataParams = {
     interrestedAbout: {
         type: boolean,
     }
+}
+
+export type socialMediaParams = {
+    facebook?: string
+    instagram?: string
+    messanger?: string
+    whatsApp?: string
+    youtube?: string
+    x?: string
 }
 
 export const CompanyInformationContext = createContext<companyInformationsParams | undefined>(undefined);

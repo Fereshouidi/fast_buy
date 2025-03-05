@@ -70,11 +70,13 @@ const ProductsShowing = ({allProducts, pageNumber, setPageNumber}: productsShowi
 
     const Style: CSSProperties = {
         width: '100%',
-        backgroundColor: 'var(--almost-white)',
+        // backgroundColor: 'var(--almost-white)',
+        // backgroundColor: 'var(--white-almost-transparnt)',
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        flexDirection: 'column'
+        flexDirection: 'column',
+        margin: 'var(--small-margin) 0'
     }
     
     const StyleH2: CSSProperties = {

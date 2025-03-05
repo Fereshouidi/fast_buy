@@ -38,12 +38,12 @@ const ProccessiongSection = ({orders}: params) => {
         width: window.innerWidth > 800 ? '50%' : '100%',
         //minHeight: '100vh',
         height: 'calc(100vh - var(--header-height) *1.8 )',
-        backgroundColor: 'var(--white)',
+        // backgroundColor: window?.innerWidth > 800 ? 'var(--white-semi-transparent)' : 'var(--almost-white)',
         margin: window.innerWidth > 800 ? 'var(--large-margin) 0' : '0',
         borderRadius: '20px',
         padding: 'var(--large-padding)',
         overflow: 'scroll',
-        boxShadow: '0 5px 15px var(--black-almost-transparnt)',
+        boxShadow: window.innerWidth > 800 ? '0 5px 15px var(--black-almost-transparnt)' : '0 0 0',
 
     }
     const styleH4: CSSProperties = {

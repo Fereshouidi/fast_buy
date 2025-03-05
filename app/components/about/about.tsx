@@ -9,36 +9,38 @@ import XIcon from "@/app/svg/icons/socialMedia/x";
 import MessengerIcon from "@/app/svg/icons/socialMedia/messanger";
 import WhatsAppIcon from "@/app/svg/icons/socialMedia/whatsApp";
 import YouTubeIcon from "@/app/svg/icons/socialMedia/youtube";
-
-
+import { companyInformationsParams } from "@/app/contexts/companyInformation";
+import { CategorieParams } from "@/app/contexts/categories";
+import { productParams } from "@/app/contexts/productSelectForShowing";
+import { discountParams } from "@/app/contexts/productSelectForShowing";
 
 const About = () => {
 
   //const companyInformation = useContext(CompanyInformationContext);
 
-    type conpanyInformationsParams = {
-        name: nameParams,
-        categories: categorieParams,
-        primaryColor: string,
-        biggestDiscount: number,
-        offersDetails : string,
-        entities: string[],
-        originalProductsPercentage: number,
-        servises: string[],
-        socialMediaLinks: socialMedia
-    }
+  //   type conpanyInformationsParams = {
+  //       name: nameParams,
+  //       categories: categorieParams,
+  //       primaryColor: string,
+  //       biggestDiscount: number,
+  //       offersDetails : string,
+  //       entities: string[],
+  //       originalProductsPercentage: number,
+  //       servises: string[],
+  //       socialMediaLinks: socialMedia
+  //   }
 
-    type socialMedia = {
-      facebook: string,
-      messanger: string,
-      whatsApp: string,
-      instagram: string,
-      x: string,
-      youtube: string
-  }
+  //   type socialMedia = {
+  //     facebook: string,
+  //     messanger: string,
+  //     whatsApp: string,
+  //     instagram: string,
+  //     x: string,
+  //     youtube: string
+  // }
 
     type categoriesSectionParams = {
-        catgorie: categorieParams;
+        catgorie: CategorieParams;
         products: productParams[];
     }[];
 
@@ -47,42 +49,42 @@ const About = () => {
         products: productParams[];
     };
 
-    type categorieParams = {
-        _id: string;
-        name: nameParams;
-        parentCategorie: string;
-        childrenCategories: categorieParams[];
-        childOpen: boolean;
-        margin: number;
-    };
+  //   type categorieParams = {
+  //       _id: string;
+  //       name: nameParams;
+  //       parentCategorie: string;
+  //       childrenCategories: categorieParams[];
+  //       childOpen: boolean;
+  //       margin: number;
+  //   };
 
-    type productParams = {
-        name: nameParams;
-        imagePrincipal: string;
-        price: number;
-        discount: discountParams;
-        totalRating: number;
-        currencyType: string;
-    };
+  //   type productParams = {
+  //       name: nameParams;
+  //       imagePrincipal: string;
+  //       price: number;
+  //       discount: discountParams;
+  //       totalRating: number;
+  //       currencyType: string;
+  //   };
 
-    type nameParams = {
-        english: string,
-        arabic: string
-    }
+  //   type nameParams = {
+  //       english: string,
+  //       arabic: string
+  //   }
 
-    type discountParams = {
-        createdAt: Date;
-        discountSticker: string;
-        newPrice: number;
-        oldPrice: number;
-        percentage: number;
-        startOfDiscount: Date;
-        endOfDiscount: Date;
-    };
+  //   type discountParams = {
+  //       createdAt: Date;
+  //       discountSticker: string;
+  //       newPrice: number;
+  //       oldPrice: number;
+  //       percentage: number;
+  //       startOfDiscount: Date;
+  //       endOfDiscount: Date;
+  //   };
 
     
     const languageContext = useContext(LanguageSelectorContext);
-    const [conpanyInformations, setConpanyInformations] = useState<conpanyInformationsParams>();
+    const [conpanyInformations, setConpanyInformations] = useState<companyInformationsParams>();
     const [bestCategories, setBestCategories] = useState<categoriesSectionParams>();
     const [bigestDiscount, setBigestDiscount] = useState<bigestDiscountParams>();
 
@@ -93,7 +95,7 @@ const About = () => {
 
     useEffect(() => {
         const fetchData = async() => {
-            const conpanyInformationsData = await getConpanyInformations();
+            const conpanyInformationsData = await getConpanyInformations();            
             setConpanyInformations(conpanyInformationsData)
             const bestCategoriesData = await getCategoriesSection();
             setBestCategories(bestCategoriesData);
@@ -104,12 +106,22 @@ const About = () => {
     }, [])
 
     const styleStrong: CSSProperties = {
-      color: conpanyInformations?.primaryColor,
+      // color: conpanyInformations?.primaryColor,
+      opacity: 0.8,
+      wordWrap: 'break-word',
+      overflowWrap: 'break-word',
+    }
+    
+    const stylePre: CSSProperties = {
+      whiteSpace: "pre-wrap",
+      wordWrap: "break-word",
+      overflowWrap: "break-word",
     }
     const styleH1: CSSProperties = {
       color: conpanyInformations?.primaryColor,
     }
 
+    
          return (
             conpanyInformations && languageContext.activeLanguage === "english" ?
               <section id="about-section">
@@ -141,29 +153,25 @@ const About = () => {
                       on {bigestDiscount && bigestDiscount.products.length >= 0 ? ` ${bigestDiscount.products[0]?.name?.english?.length > 30 ? bigestDiscount.products[0]?.name?.english.slice(0, 30) + '...' : bigestDiscount.products[0]?.name?.english } ` : ''}
                     </li>
                     <li>
-                      Exclusive offers such as <strong  style={styleStrong}>{` ${conpanyInformations.offersDetails} `}</strong>
+                      Exclusive offers such as <strong style={styleStrong}> <pre style={stylePre}>{` ${conpanyInformations?.offersDetails?.english} `}</pre> </strong>
                     </li>
                   </ul>
                 </div>
           
                 <div className="services">
                   <h2>Exceptional Services:</h2>
-                  <ul>
-                    {conpanyInformations.servises && conpanyInformations.servises.map((servise, index) => (
-                      <li key={index}>{`${servise}.`}</li>
-                    ))}
-                  </ul>
+                  <strong style={styleStrong}> <pre style={stylePre}>{conpanyInformations.servises?.english}</pre> </strong>
                 </div>
           
                 <div className="guarantee">
                   <h2>Quality Guarantee:</h2>
-                  <ul>
-                    <li>
+                  <strong style={styleStrong}> <pre style={stylePre}>{conpanyInformations?.qualityAssurance?.english}</pre> </strong>
+                </div>
+
+                {/* <li>
                       All our products are <strong  style={styleStrong}>{` ${conpanyInformations.originalProductsPercentage}% `}</strong>
                       authentic, with flexible return policies.
-                    </li>
-                  </ul>
-                </div>
+                    </li> */}
 
                 <div className="social-media"> 
                   <h2>Social Media :</h2>
@@ -211,32 +219,30 @@ const About = () => {
                       على {bigestDiscount && bigestDiscount.products.length >= 0 ? ` ${bigestDiscount.products[0]?.name?.arabic?.length > 30 ? bigestDiscount.products[0]?.name?.arabic.slice(0, 30) + '...' : bigestDiscount.products[0]?.name?.arabic } ` : ''}
                     </li>
                     <li>
-                      عروض حصرية مثل <strong  style={styleStrong}>{`${conpanyInformations.offersDetails}`}</strong>
+                      عروض حصرية مثل <strong style={styleStrong}> <pre>{`${conpanyInformations.offersDetails?.arabic}`}</pre> </strong>
                     </li>
                   </ul>
                 </div>
           
                 <div className="services">
                   <h2>خدمات استثنائية:</h2>
-                  <ul>
-                    {conpanyInformations.servises && conpanyInformations.servises.map((servise, index) => (
-                      <li key={index}>{`${servise}.`}</li>
-                    ))}
-                  </ul>
+                  <strong style={styleStrong}><pre>{conpanyInformations.servises?.arabic}</pre></strong>
                 </div>
           
                 <div className="guarantee">
                   <h2>ضمان الجودة:</h2>
-                  <ul>
+                  <strong style={styleStrong}><pre>{conpanyInformations.qualityAssurance?.arabic}</pre></strong>
+
+                  {/* <ul>
                     <li>
                       جميع منتجاتنا أصلية بنسبة <strong  style={styleStrong}>{` ${conpanyInformations.originalProductsPercentage}% `}</strong>
                       مع سياسات إرجاع مرنة.
                     </li>
-                  </ul>
+                  </ul> */}
                 </div>
           
                 <div className="social-media"> 
-                  <h2>Social Media :</h2>
+                  <h2>وسائل التواصل الجتماعي :</h2>
                     {conpanyInformations.socialMediaLinks.facebook && <a href={conpanyInformations.socialMediaLinks.facebook}><FacebookIcon/></a> }
                     {conpanyInformations.socialMediaLinks.instagram && <a href={conpanyInformations.socialMediaLinks.instagram}><InstagramIcon/></a>}
                     {conpanyInformations.socialMediaLinks.whatsApp && <a href={conpanyInformations.socialMediaLinks.whatsApp}><WhatsAppIcon/></a>}

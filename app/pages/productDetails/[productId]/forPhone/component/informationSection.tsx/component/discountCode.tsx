@@ -54,6 +54,7 @@ const DiscountCode = ({product, purchaseData, setDiscountCodeAmount, isPriceChan
         margin: '0 var(--medium-margin)',
         padding: '0 var(--medium-padding)',
         backgroundColor: 'var(--almost-white)',
+        borderRadius: '20px'
 
     }
     const styleInput :CSSProperties = {

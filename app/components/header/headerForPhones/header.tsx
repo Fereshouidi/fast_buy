@@ -19,7 +19,7 @@ const Header = () => {
     top: '0',
     zIndex: '999',
     width: '100vw',
-    height: 'calc(var(--header-height)/1.2)',
+    //height: 'calc(var(--header-height)/1.2)',
     backgroundColor: 'var(--white)',
     display: 'flex',
     justifyContent: 'space-between',

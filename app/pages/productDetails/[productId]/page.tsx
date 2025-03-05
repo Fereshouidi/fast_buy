@@ -2,7 +2,7 @@
 
 import english from '@/app/languages/english.json';
 import arabic from '@/app/languages/arabic.json';
-import { useState, useEffect } from "react";
+import { useState, useEffect, CSSProperties } from "react";
 import HeaderForComputer from "@/app/components/header/headerForComputer/header";
 import HeaderForPhone from "@/app/components/header/headerForPhones/header";
 import { ThemeContext } from "@/app/contexts/ThemeContext";
@@ -216,11 +216,10 @@ useEffect(() => {
     return <LoadingIcon/>; 
   }
   
-
     
     return (
 
-      <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, backgroundOfRegisterPage: conpanyInformations.backgroundOfRegisterPage, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType, shippingCost: conpanyInformations.shippingCost, backgroundsPages: conpanyInformations.backgroundsPages}} >
+      <CompanyInformationContext.Provider value={{name: conpanyInformations.name, logo: conpanyInformations.logo, email: conpanyInformations.email, password: conpanyInformations.password, primaryColor: conpanyInformations.primaryColor, biggestDiscount: conpanyInformations.biggestDiscount, entities: conpanyInformations.entities, offersDetails: conpanyInformations.offersDetails, originalProductsPercentage: conpanyInformations.originalProductsPercentage,servises: conpanyInformations.servises, qualityAssurance: conpanyInformations?.qualityAssurance, registerRequiredData: conpanyInformations.registerRequiredData , activateAccountWhileSignin: conpanyInformations.activateAccountWhileSignin, currencyType: conpanyInformations.currencyType, shippingCost: conpanyInformations.shippingCost, backgroundsPages: conpanyInformations.backgroundsPages, socialMediaLinks: conpanyInformations.socialMediaLinks}} >
             <LanguageSelectorContext.Provider value={{ activeLanguage, setActiveLanguage }}>
                 <ThemeContext.Provider value={{ theme, setTheme }}>
                     <ProductSelectContext.Provider value={{product: product}}>
@@ -237,7 +236,12 @@ useEffect(() => {
                                             <Banner/>
                                             {screenWidth > 800 ? <HeaderForComputer /> : <HeaderForPhone />}
                                             {screenWidth > 800 ? <SideBarForComputer /> : <SideBarForPhone />}
-                                            {screenWidth > 800 ? <PageForComputer product={product} setProduct={setProduct} shoppingCart={shoppingCart} orders={orders}/> : <PageForPhone product={product} setProduct={setProduct} shoppingCart={shoppingCart} orders={orders}/>}
+
+                                            {/* <div style={style}> */}
+                                              {screenWidth > 800 ? <PageForComputer product={product} setProduct={setProduct} shoppingCart={shoppingCart} orders={orders}/> : <PageForPhone product={product} setProduct={setProduct} shoppingCart={shoppingCart} orders={orders}/>}
+
+                                            {/* </div> */}
+
                                             <About/>
                                           </ActiveLanguageContext.Provider>
                                         </BannerContext.Provider>

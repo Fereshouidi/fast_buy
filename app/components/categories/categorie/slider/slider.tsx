@@ -20,7 +20,7 @@ const Slider = ({ products }: {products: productParams[] }) => {
         padding: window.innerWidth > 800 ? '10px' : "5px",
         margin: window.innerWidth > 800 ? '10px' : "5px",
         borderRadius: "20px",
-        backgroundColor: 'var(--white-almost-transparnt)',        
+        // backgroundColor: 'var(--white-almost-transparnt)',        
         overflowX: 'scroll',
         scrollbarWidth: 'none',
         msOverflowStyle: 'none',

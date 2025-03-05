@@ -20,44 +20,25 @@ const Slider = () => {
         changingTime: number;
     };
     
-    // type slideDataParams = {
-    //     name: languageParams;
-    //     images: string[];
-    //     imagePrincipal: string,
-    //     startOfDiscount: Date,
-    //     endOfDiscount: Date,
-    //     discount: discountParams,
-    //     discountSticker: string,
-    //     currencyType: string
-    // };
-
     type languageParams = {
         english: string,
         arabic: string
     }
-
-    // type discountParams = {
-    //     createdAt: Date,
-    //     discountSticker: string,
-    //     newPrice: number,
-    //     oldPrice: number,
-    //     percentage: number,
-    //     startOfDiscount: Date, 
-    //     endOfDiscount: Date
-    // };
     
     const [sliderData, setSliderData] = useState<sliderDataParams>();
 
     useEffect(() => {
         const fetchData = async() => {
             const data = await getSliderData();
+            console.log(data);
+            
             setSliderData(data);
         }
         fetchData()
     }, [])
 
     const StyleSection:CSSProperties = {
-        backgroundColor: 'var(--white)', 
+        // backgroundColor: 'var(--white)', 
         width: '100%', 
         height: 'auto',
         display: 'flex', 
@@ -74,7 +55,7 @@ const Slider = () => {
         marginTop: 'var(--extra-large-margin)',
         position: 'relative',
         borderRadius: '25px',
-        backgroundColor: 'var(--white)',
+        backgroundColor: 'var(--white-almost-transparnt)',
     }
     const styleH2: CSSProperties = {
         color: 'var(--black)',

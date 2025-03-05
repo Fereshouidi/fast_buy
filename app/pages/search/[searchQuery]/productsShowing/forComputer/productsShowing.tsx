@@ -34,7 +34,7 @@ type params = {
 
     const Style: CSSProperties = {
         width: '100%',
-        backgroundColor: 'var(--almost-white)',
+        // backgroundColor: 'var(--almost-white)',
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

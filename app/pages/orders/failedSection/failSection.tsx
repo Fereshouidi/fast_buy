@@ -33,7 +33,7 @@ const FailSection = ({orders}: params) => {
     const style: CSSProperties = {
         width: '100%',
         height: '100%',
-        backgroundColor: 'var(--white)',
+        // backgroundColor: 'var(--white)',
         margin: '0',
         borderRadius: '20px',
         padding: '0 var(--large-padding)',

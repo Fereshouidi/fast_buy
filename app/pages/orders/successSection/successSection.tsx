@@ -36,7 +36,7 @@ const SuccessSection = ({orders}: params) => {
     const style: CSSProperties = {
         width: '100%',
         height: '100%',
-        backgroundColor: 'var(--white)',
+        // backgroundColor: window?.innerWidth > 800 ? 'var(--white-semi-transparent)' : 'var(--almost-white)',
         margin: '0',
         borderRadius: '20px',
         padding: '0 var(--large-padding)',

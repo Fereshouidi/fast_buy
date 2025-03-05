@@ -155,7 +155,10 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
         width: '50%',
         maxHeight: '100%',
         flexDirection: 'column',
-        margin: 'var(--extra-large-margin)'
+        margin: 'var(--extra-large-margin)',
+        backgroundColor: "var(--white-semi-transparent)",
+        borderRadius: '20px',
+        padding: 'var(--medium-padding)'
     }
     const styleInputDiv: CSSProperties = {
         flexDirection: 'column',

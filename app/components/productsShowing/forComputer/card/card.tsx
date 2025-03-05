@@ -49,7 +49,8 @@ const goToCardShow = (product: productParams) => {
         margin: 'var(--medium-margin)',
         padding: 'var(--small-padding)',
         cursor: "pointer",
-        transition: '0.5s ease'
+        transition: '0.5s ease',
+        // backgroundColor: 'var(--white-almost-transparnt'
     }
     const StyleWithHover: CSSProperties = {
         ...Style,

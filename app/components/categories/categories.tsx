@@ -43,7 +43,7 @@ const CategoriesSection = () => {
     const style: CSSProperties = {
         width: '100%',
         height: 'auto',
-        backgroundColor: 'var(--white)',
+        // backgroundColor: 'var(--white-almost-transparnt)',
         padding: window.innerWidth > 800 ? 'calc(var(--large-margin)*5) 0' : 'var(--large-margin) 0'
     };
 

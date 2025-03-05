@@ -26,7 +26,7 @@ type LanguageParams = {
     arabic: string
 }
 
-type discountParams = {
+export type discountParams = {
     _id: string,
     createdAt: Date,
     discountSticker: string,

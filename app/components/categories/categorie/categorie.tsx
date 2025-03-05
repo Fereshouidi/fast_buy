@@ -16,29 +16,10 @@ type categorieParams = {
     margin: number;
 }
 
-// type productParams = {
-//     name: LanguageParams;
-//     imagePrincipal: string;
-//     price: number;
-//     discount: discountParams;
-//     totalRating: number;
-//     currencyType: string;
-// }
-
 type LanguageParams = {
     english: string,
     arabic: string
 }
-
-// type discountParams = {
-//     createdAt: Date;
-//     discountSticker: string;
-//     newPrice: number;
-//     oldPrice: number;
-//     percentage: number;
-//     startOfDiscount: Date;
-//     endOfDiscount: Date;
-// };
 
 const Categorie = ({ categorie, products }: { categorie: categorieParams, products: productParams[] }) => {
 
@@ -52,7 +33,8 @@ const Categorie = ({ categorie, products }: { categorie: categorieParams, produc
     }
 
     const style: CSSProperties = {
-        backgroundColor: 'var(--white)',
+        // backgroundColor: 'var(--white)',
+        // backgroundColor: 'var(--white-almost-transparnt)',
         margin: '1px',
         display: 'flex',
         alignItems: 'center',

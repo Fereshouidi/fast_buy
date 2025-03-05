@@ -6,11 +6,13 @@
   /* colors */
   
   --white-almost-transparnt: rgba(248, 248, 248, 0.229);
+  --white-semi-transparent: rgba(248, 248, 248, 0.534);
   --almost-white: rgb(247, 247, 247);
   --white: #ffffff;
   --black: #000000;
   --almost-black: rgb(23, 23, 23);
   --black-almost-transparnt: rgba(0, 0, 0, 0.148);
+  --black-semi-transparent: rgba(0, 0, 0, 0.526);
   --ashen: rgb(123, 123, 123);
   --ashen-almost-white: rgb(220, 220, 220);
   --ashen-semi-transparent:  rgba(123, 123, 123, 0.463);
@@ -141,13 +143,21 @@
 
 body{
   background-color: var(--almost-white);
+  box-sizing: border-box;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
   overflow-x: hidden;
+  overflow: scroll;
+  width: 100%;
+  height: 100%;
 }
 
+.page {
+  overflow: hidden;
+}
 /* body::-webkit-scrollbar-button {
   width: 0;
   opacity: 0;
@@ -212,15 +222,18 @@ header div{
   color: var(--black);
 }
 .dark {
-  --white-almost-transparnt: rgba(0, 0, 0, 0.089);
+  --white-almost-transparnt: rgba(0, 0, 0, 0.212);
+  --white-semi-transparent: rgba(0, 0, 0, 0.527);
   --almost-white: rgb(25, 25, 25);
   --white: #000000;
   --black: #ffffff;
   --almost-black: rgb(245, 245, 245);
   --black-almost-transparnt: rgba(255, 255, 255, 0.082);
+  --black-semi-transparent: rgba(255, 255, 255, 0.558);
+
 }
 .dark .dark header, .dark div, .dark p, .dark h1, .dark h2, .dark h4, .dark button, .dark a {
-  --white-almost-transparnt: rgba(0, 0, 0, 0.089);
+  --white-almost-transparnt: rgba(0, 0, 0, 0.289);
   --almost-white: rgb(25, 25, 25);
   --white: #000000;
   --black: #ffffff;
