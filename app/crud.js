@@ -1,4 +1,4 @@
-const url = 'http://https://fast-buy-back-end.vercel.app//api';
+const url = 'http://https://fast-buy-back-end.vercel.app/api';
 import axios from "axios";
 
 //https://fast-buy-back-end.vercel.app/api
