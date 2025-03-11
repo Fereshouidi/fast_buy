@@ -27,10 +27,12 @@ type switchFormsParams = {
 const SigninForm = ({logInExist, setLogInExist, signinExist, setSignInExist}: switchFormsParams) => {
 
     const activeLanguage = useContext(LanguageSelectorContext)?.activeLanguage;
-    const registerRequiredData = useContext(CompanyInformationContext)?.registerRequiredData;
+    const registerRequiredData = useContext(CompanyInformationContext)?.registerRequiredData 
+
 
     const [passwordType, setPasswordType] = useState<'text' | 'password'>('text');
-    const [formData, setFormData] = useState<formDataParams>({userName: '', email: '', password: '', retypePassword: '', dateOfBirth: undefined, adress: '', interrestedAbout: '', phone: undefined, saveAccount: false});
+    // const [formData, setFormData] = useState<formDataParams>({userName: '', email: '', password: '', retypePassword: '', dateOfBirth: undefined, adress: '', interrestedAbout: '', phone: undefined, saveAccount: false});
+    const [formData, setFormData] = useState<formDataParams>({userName: '', email: '', password: '', retypePassword: '', phoneNumber: null, dateOfBearth: null, adress: '', interrestedAbout: '',});
 
 
     return (

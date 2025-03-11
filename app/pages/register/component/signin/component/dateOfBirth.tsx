@@ -21,7 +21,7 @@ const DateOfBearthInput = ({setFormData}: Params) => {
         const dateValue = event.target.value ? new Date(event.target.value) : undefined;
         setFormData((prev: formDataParams) => ({
             ...prev,
-            dateOfBirth: dateValue,
+            dateOfBearth: dateValue,
         }));
     };
     

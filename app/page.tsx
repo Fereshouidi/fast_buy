@@ -33,6 +33,8 @@ import { SideBarContext } from './contexts/SideBarContext';
 
 const App = () => {
 
+  // localStorage.removeItem('customerData');
+
 
   const router = useRouter();
 

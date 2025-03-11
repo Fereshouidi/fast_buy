@@ -97,6 +97,8 @@ const About = () => {
         const fetchData = async() => {
             const conpanyInformationsData = await getConpanyInformations();            
             setConpanyInformations(conpanyInformationsData)
+            console.log(conpanyInformationsData);
+            
             const bestCategoriesData = await getCategoriesSection();
             setBestCategories(bestCategoriesData);
             const bigestDiscountData = await getProductByBiggestDiscount();
@@ -219,19 +221,19 @@ const About = () => {
                       على {bigestDiscount && bigestDiscount.products.length >= 0 ? ` ${bigestDiscount.products[0]?.name?.arabic?.length > 30 ? bigestDiscount.products[0]?.name?.arabic.slice(0, 30) + '...' : bigestDiscount.products[0]?.name?.arabic } ` : ''}
                     </li>
                     <li>
-                      عروض حصرية مثل <strong style={styleStrong}> <pre>{`${conpanyInformations.offersDetails?.arabic}`}</pre> </strong>
+                      عروض حصرية مثل <strong style={styleStrong}> <pre style={stylePre}>{`${conpanyInformations.offersDetails?.arabic}`}</pre> </strong>
                     </li>
                   </ul>
                 </div>
           
                 <div className="services">
                   <h2>خدمات استثنائية:</h2>
-                  <strong style={styleStrong}><pre>{conpanyInformations.servises?.arabic}</pre></strong>
+                  <strong style={styleStrong}><pre style={stylePre}>{conpanyInformations.servises?.arabic}</pre></strong>
                 </div>
           
                 <div className="guarantee">
                   <h2>ضمان الجودة:</h2>
-                  <strong style={styleStrong}><pre>{conpanyInformations.qualityAssurance?.arabic}</pre></strong>
+                  <strong style={styleStrong}><pre style={stylePre}>{conpanyInformations.qualityAssurance?.arabic}</pre></strong>
 
                   {/* <ul>
                     <li>

@@ -16,6 +16,7 @@ const LogOut = () => {
         if (setLoadingIcon && typeof window != 'undefined') {
             setLoadingIcon(true);
             localStorage.removeItem('customerData');
+            localStorage.removeItem('customerData');
             router.push('/pages/register')
         }
     }

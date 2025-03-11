@@ -41,11 +41,11 @@ const PageForComputer = ({product, setProduct, shoppingCart, orders}: Params) =>
         minHeight: 'calc(100vh - var(--header-height)',
         display: 'flex',
         justifyContent: "center",
-        // backgroundImage: `url(${companyInformations.backgroundsPages?.homePage})`,
-        // backgroundRepeat: 'no-repeat',
-        // backgroundAttachment: 'fixed',
-        // backgroundPosition: 'center',
-        // backgroundSize: 'cover',
+        backgroundImage: `url(${companyInformations.backgroundsPages?.homePage})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
     
 
     }

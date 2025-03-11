@@ -43,8 +43,8 @@ const SideBar = () => {
     const backgroundStyle: CSSProperties = {
         position: 'fixed',
         // direction: activeLanguage.activeLanguage == 'arabic'? 'rtl': 'ltr',
-        right: activeLanguage.activeLanguage == 'arabic'? '0': '',
-        left: activeLanguage.activeLanguage != 'arabic'? '0': '',
+        right: activeLanguage?.activeLanguage == 'arabic'? '0': '',
+        left: activeLanguage?.activeLanguage != 'arabic'? '0': '',
         width: sideBarExistContext.sideBarExist? '100vw': '0',
         top: 'var(--header-height-for-phone)',
         height: 'calc(100vh - calc(var(--header-height) /1.2))',
@@ -53,9 +53,9 @@ const SideBar = () => {
         overflow: 'hidden',
     }
     const sideBarStyle: CSSProperties = {
-        direction: context.activeLanguage == 'arabic'? 'rtl': 'ltr',
-        right: context.activeLanguage == 'arabic'? '0': '',
-        left: context.activeLanguage != 'arabic'? '0': '',
+        direction: context?.activeLanguage == 'arabic'? 'rtl': 'ltr',
+        right: context?.activeLanguage == 'arabic'? '0': '',
+        left: context?.activeLanguage != 'arabic'? '0': '',
         transition: '0.3s ease'
     }
     return(

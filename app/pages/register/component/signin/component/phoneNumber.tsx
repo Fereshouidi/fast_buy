@@ -21,7 +21,7 @@ const PhoneNumberInput = ({setFormData}: Params) => {
         const Value = event.target.value ? Number(event.target.value) : undefined;
         setFormData((prev) => ({
             ...prev,
-            phone: Value,
+            phoneNumber: Value,
         }));
     }
 

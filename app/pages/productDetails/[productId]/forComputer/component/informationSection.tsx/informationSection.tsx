@@ -61,27 +61,48 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
     const [discountCodeAmount, setDiscountCodeAmount] = useState<{discount?: number | null, discountPercent?: number | null}>({discount: 0, discountPercent: 0});
     const [price, setPrice] = useState<number>(0);
     const [productinShoppingCart, setProductinShoppingCart] = useState<boolean | undefined>(undefined);
-    // const [price, setPrice] = useState<number>(1);
+
 
     useEffect(() => {
-        console.log(purchaseData);
         
-        if (purchaseData?.discountCode?.discount) {
-            setPrice((product?.discount? product.discount.newPrice : product?.price) - purchaseData?.discountCode?.discount);
-        } else if (purchaseData?.discountCode?.discountPercent) {
-            setPrice((product?.discount? product.discount.newPrice : product?.price) - (product?.discount? product.discount.newPrice : product?.price) * (purchaseData?.discountCode?.discountPercent / 100));
-        } else {
-            setPrice(product?.discount? product.discount.newPrice : product?.price);
-        }
+        //if (purchaseData?.discountCode) {
+
+            if (purchaseData?.discountCode?.discount) {
+                //setPrice(purchaseData?.totalPrice - purchaseData?.discountCode?.discount);
+                setPrice(
+                    ((product?.discount?.newPrice ?? product?.price ?? 0) * (purchaseData?.quantity ?? 1)) 
+                    - (purchaseData?.discountCode?.discount ?? 0)
+                );
+                        
+            } else if (purchaseData?.discountCode?.discountPercent) {
+                //setPrice(purchaseData?.totalPrice - purchaseData?.totalPrice * (purchaseData?.discountCode?.discountPercent / 100));            // setPrice((product?.discount? product.discount.newPrice : product?.price) - (product?.discount? product.discount.newPrice : product?.price) * (purchaseData?.discountCode?.discountPercent / 100));
+                const minusValue = (product?.discount? product.discount.newPrice : product?.price) * (purchaseData?.discountCode?.discountPercent / 100);
+                setPrice( ((product?.discount? product.discount.newPrice : product?.price) * purchaseData?.quantity) - minusValue );
+            } else {
+                setPrice(purchaseData?.totalPrice);
+                // setPrice(product?.discount? product.discount.newPrice : product?.price);
+            }
+
+        //}
+
         
-    }, [product, purchaseData?.discountCode])
+        // if (purchaseData?.discountCode?.discount) {
+        //     setPrice((product?.discount? product.discount.newPrice : product?.price) - purchaseData?.discountCode?.discount);
+        // } else if (purchaseData?.discountCode?.discountPercent) {
+        //     setPrice((product?.discount? product.discount.newPrice : product?.price) - (product?.discount? product.discount.newPrice : product?.price) * (purchaseData?.discountCode?.discountPercent / 100));
+        // } else {
+        //     setPrice(product?.discount? product.discount.newPrice : product?.price);
+        // }
+        
+    }, [product, purchaseData?.quantity, purchaseData?.discountCode])
 
     useEffect(() => {
         
         if(purchaseData && price){
             setPurchaseData({
                 ...purchaseData,
-                totalPrice: price && purchaseData?.quantity ? price * purchaseData?.quantity : 0,
+                totalPrice: price,
+                //totalPrice: price && purchaseData?.quantity ? price * purchaseData?.quantity : 0,
                 discountCode: discountCodeAmount.discount || discountCodeAmount.discountPercent ? product?.discountCode : null
             })
         }
@@ -147,9 +168,8 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
         };
         fetchData();
     }, [purchaseData]);
-    
-    console.log(product?.categorie);
-    
+        
+        
 
     const style: CSSProperties = {
         width: '50%',
@@ -177,18 +197,19 @@ const InformationSection = ({product, setProduct, purchaseData, setPurchaseData,
                 <TotalRating product={product}/>
             </div>
             {product?.categorie? <Categorie product={product}/> : null}
-            {product?.discountCode || product?.categorie?.discountCode? <DiscountCode 
-                product={product} 
-                setProduct={setProduct} 
-                purchaseData={purchaseData} 
-                setPurchaseData={setPurchaseData}
-                discountCodeAmount={discountCodeAmount}
-                setDiscountCodeAmount={setDiscountCodeAmount}
-                isPriceChange={isPriceChange}
-                setIspriceChange={setIspriceChange}
-                price={price}
-                setPrice={setPrice}
-            /> : null } 
+            {product?.discountCode && product.discountCode?.numOfUse > 0 ? 
+                <DiscountCode 
+                    product={product} 
+                    setProduct={setProduct} 
+                    purchaseData={purchaseData} 
+                    setPurchaseData={setPurchaseData}
+                    discountCodeAmount={discountCodeAmount}
+                    setDiscountCodeAmount={setDiscountCodeAmount}
+                    isPriceChange={isPriceChange}
+                    setIspriceChange={setIspriceChange}
+                    price={price}
+                    setPrice={setPrice}
+                /> : null } 
             <Price product={product} setProduct={setProduct} discountCodeAmount={discountCodeAmount} price={price} setPrice={setPrice} purchaseData={purchaseData} setPurchaseData={setPurchaseData} isPriceChange={isPriceChange} setIspriceChange={setIspriceChange} />
             {productinShoppingCart != undefined  && <PutInPurchaseBTN product={product} purchaseData={purchaseData} productinShoppingCart={productinShoppingCart} setProductinShoppingCart={setProductinShoppingCart}/> }
             {customerCanRate()? <Rate purchase={purchaseData} setPurchase={setPurchaseData}/> : null}

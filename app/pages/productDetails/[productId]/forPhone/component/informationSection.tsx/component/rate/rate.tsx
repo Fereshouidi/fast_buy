@@ -24,7 +24,7 @@ const Rate = ({purchase, setPurchase}: params) => {
 
     useEffect(() => {
         const fetchReview = async () => {
-            const review = await getReviewByCustomerProduct(purchase?.buyer, purchase?.product);
+            const review = await getReviewByCustomerProduct(purchase?.buyer?._id, purchase?.product?._id);
             setReview(review);
         } 
         fetchReview()

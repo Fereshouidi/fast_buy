@@ -25,16 +25,6 @@ const Price = ({product, price, setPrice, discountCodeAmount, purchaseData, isPr
     const [isFirstRender, setIsFirstRender] = useState(true);
     const [price_, setPrice_] = useState<number>(product?.discount?.newPrice || product?.price);
 
-
-    console.log(price);
-
-
-    // useEffect(() => {
-    //     setPrice( handlePrice())
-    // }, [discountCodeAmount])
-
-    
-
     const handlePrice = () => {
         const discount = product?.discount?.newPrice || product?.price;
         const discountValue = discountCodeAmount.discount || 0;

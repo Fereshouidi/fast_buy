@@ -6,15 +6,15 @@ export interface handleformDataParams {
 }
 
 export interface formDataParams {
-    userName: string,
-    email: string,
-    phone: number | undefined,
-    dateOfBirth: Date | undefined,
-    adress: string,
-    interrestedAbout: string,
-    password: string,
-    retypePassword: string,
-    saveAccount: boolean
+    userName?: string,
+    email?: string,
+    phoneNumber?: number | undefined,
+    dateOfBearth?: Date | undefined,
+    adress?: string,
+    interrestedAbout?: string,
+    password?: string,
+    retypePassword?: string,
+    saveAccount?: boolean
 }
 
 export const formDataContext = createContext<formDataParams | undefined>(undefined)

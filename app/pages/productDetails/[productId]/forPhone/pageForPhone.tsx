@@ -42,11 +42,11 @@ const PageForComputer = ({product, setProduct, shoppingCart, orders}: Params) =>
         display: 'flex',
         justifyContent: "center",
         flexDirection: 'column',
-        // backgroundImage: `url(${companyInformations.backgroundsPages?.homePage})`,
-        // backgroundRepeat: 'no-repeat',
-        // backgroundAttachment: 'fixed',
-        // backgroundPosition: 'center',
-        // backgroundSize: 'cover',
+        backgroundImage: `url(${companyInformations.backgroundsPages?.homePage})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
     }
     return (
         <div id="the-product-detail-page-of-computer" style={style}>

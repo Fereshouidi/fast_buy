@@ -42,11 +42,6 @@ const DiscountCode = ({shoppingCart, setShoppingCart, allDiscountCodes}: Params)
         setHighestDiscountPercent(Math.max(...allDiscountsPercentValue) + '% ')
     }, [])
 
-    // useEffect(() => {
-    //     calcTotalPrice(dis)
-    // }, [totalPriceChange])
-
-
     const calcTotalPrice = (discount: number, discountType: 'discount' | 'discountPercent') => {
 
         if (shoppingCart?.totalPrice && discountType == 'discount') {
@@ -81,7 +76,7 @@ const DiscountCode = ({shoppingCart, setShoppingCart, allDiscountCodes}: Params)
         for (let index = 0 ; index < allDiscountCodes?.length ; index++){
 
             const discount = allDiscountCodes[index];
-            if(inputValue == discount.code && discount.discount) {
+            if(inputValue == discount.code && discount.discount && discount.numOfUse > 0) {
 
                 if(!isCodeUsed) {
                     calcTotalPrice(discount.discount, 'discount')

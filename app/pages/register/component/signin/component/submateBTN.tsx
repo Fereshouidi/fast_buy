@@ -4,7 +4,7 @@ import arabic from '@/app/languages/arabic.json';
 import { LanguageSelectorContext } from '@/app/contexts/LanguageSelectorContext';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
-import { CSSProperties, useContext, useRef } from 'react';
+import { CSSProperties, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { CompanyInformationContext } from '@/app/contexts/companyInformation';
 import { formDataParams } from '@/app/contexts/signinFormData';
 import { BannersContext } from '@/app/contexts/banners';
@@ -31,6 +31,7 @@ const SubmateBTN = ({formData}: Params) => {
     const setEmailNotValidBanner = useContext(BannersContext)?.setemailNotValide;
     const setVerificationBanner = useContext(BannersContext)?.setVerificatinEmailBanner;
     const loadingIconContext = useContext(LoadingIconContext);
+    const [isButtonWork, setIsButtonWork] = useState<boolean>(false);
 
     const btnRef = useRef<HTMLDivElement | null>(null);
 
@@ -41,8 +42,38 @@ const SubmateBTN = ({formData}: Params) => {
 
     const randomActivationCode = Math.round(Math.random() * 10000);
 
+    useEffect(() => {
+        if (
+            formData.userName.trim() &&
+            formData.email.trim() &&
+            formData.password.trim() &&
+            formData.retypePassword.trim()
+        ) {
+            let allRequiredFieldsFilled = true;
+    
+            Object.entries(companyInformationContext?.registerRequiredData || {}).forEach(([key, isRequired]) => {
+                if (isRequired) {
+                    if (!formData[key]?.toString().trim()) {
+                        allRequiredFieldsFilled = false;
+                    }
+                }
+            });
+    
+            setIsButtonWork(allRequiredFieldsFilled);
+        } else {
+            setIsButtonWork(false); 
+        }
+    
+    }, [formData]);
+    
+
+
     const handleClick = async() => {
 
+        if (!isButtonWork) {
+            return;
+        }
+        
         if(btnRef.current){
             btnRef.current.style.backgroundColor = darken(0.1,  companyInformationContext?.primaryColor || '');
             setTimeout(() => {
@@ -99,7 +130,7 @@ const SubmateBTN = ({formData}: Params) => {
     }
 
     const style: CSSProperties = {
-        backgroundColor: companyInformationContext?.primaryColor
+        backgroundColor: isButtonWork ? companyInformationContext?.primaryColor : 'var(--ashen-almost-white)'
     }
     
     return (

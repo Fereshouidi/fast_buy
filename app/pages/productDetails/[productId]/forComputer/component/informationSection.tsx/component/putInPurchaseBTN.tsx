@@ -55,7 +55,7 @@ const PutInPurchaseBTN = ({product, purchaseData, productinShoppingCart, setProd
         if (purchaseData && customer) {
             await putPurchaseInShoppingCart(purchaseData?._id, customer._id);
             setProductinShoppingCart(true)
-            const refreshAccount = await getCustomerById(purchaseData?.buyer);            
+            const refreshAccount = await getCustomerById(purchaseData?.buyer?._id);            
             
             if(purchaseData && typeof window != 'undefined'){
                 setLoadingIcon(false);
