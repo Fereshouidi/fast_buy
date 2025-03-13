@@ -49,7 +49,7 @@ const EmptyShoppingCart = () => {
         <div style={style}> 
             <FontAwesomeIcon icon={faCartArrowDown} style={iconStyle} aria-label="Empty shopping cart icon" />
             <p style={styleP}>
-                {activeLanguage?.emptyPurchaseP.part1} <span onClick={goToHomePage} style={styleLink}>{activeLanguage?.marketW}</span> {activeLanguage?.emptyPurchaseP.part2}
+                {activeLanguage?.emptyPurchaseP?.part1} <span onClick={goToHomePage} style={styleLink}>{activeLanguage?.marketW}</span> {activeLanguage?.emptyPurchaseP?.part2}
             </p>
         </div>
     );

@@ -21,11 +21,24 @@ const Rate = ({purchase, setPurchase}: params) => {
     const [rateSectionExist, setRateSectionExist] = useState<boolean>(false);
     const [review, setReview] = useState<reviewParams | undefined>(undefined);
 
+    console.log(purchase);
+    
 
     useEffect(() => {
         const fetchReview = async () => {
-            const review = await getReviewByCustomerProduct(purchase?.buyer?._id, purchase?.product?._id);
-            setReview(review);
+            if (purchase?.buyer?._id && purchase?.product?._id) {
+                const review = await getReviewByCustomerProduct(purchase?.buyer?._id, purchase?.product?._id);
+                console.log(review);
+                
+                if (review) {
+                    console.log(review);
+                    
+                    setReview(review);
+                }
+            } else {
+                console.log(purchase?.buyer , purchase?.product);
+                
+            }
         } 
         fetchReview()
     }, [purchase])
@@ -50,7 +63,7 @@ const Rate = ({purchase, setPurchase}: params) => {
                 {activeLanguage?.rateProductW }
             </div>
 
-            <RateSection exist={rateSectionExist} setExist={setRateSectionExist} purchase={purchase} setPurchase={setPurchase} review={review}/>
+            <RateSection exist={rateSectionExist} setExist={setRateSectionExist} purchase={purchase} review={review}/>
         </>
     )
 }

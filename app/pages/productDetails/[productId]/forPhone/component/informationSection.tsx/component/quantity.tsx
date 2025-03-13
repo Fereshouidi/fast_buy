@@ -30,14 +30,6 @@ const Quantity = ({product, purchaseData, setPurchaseData, isPriceChange, setIsp
             })   
 
             setIspriceChange(true);
-            // if (product.discount) {
-            //     if (purchaseData?.discountCode) {
-
-            //     }
-            //     setPrice(product.discount.newPrice * parseInt(event.target.value))
-            // } else {
-            //     setPrice(product?.price * parseInt(event.target.value) )
-            // }
         }
     }
 
@@ -51,12 +43,13 @@ const Quantity = ({product, purchaseData, setPurchaseData, isPriceChange, setIsp
 
     }
     const styleColorDiv: CSSProperties = {
-        width: 'var(--double-width)',
+        width: 'var(--long-width)',
         height: '30px',
         border: '1px solid var(--ashen)',
-        backgroundColor: 'var(--almost-white)',
+        backgroundColor: 'transparent',
+        borderRadius: '50px',
         color: 'var(--almost-black)',
-        margin: '0 var(--medium-margin)',
+        margin: '0 var(--large-margin)',
     }
     
     return (

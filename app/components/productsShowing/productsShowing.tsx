@@ -22,7 +22,7 @@ const ProductsShowing = () => {
     useEffect(() => {
         const fetchData = async() => {
             const data = await getAllProducts_SortedByRating(pageNumber, 12);
-            setAllProducts((prev) => [...(prev || []), ...data]);
+            setAllProducts((prev) => [...(prev || []), ...data.products]);
         }
         fetchData()
     }, [pageNumber])
@@ -32,6 +32,12 @@ const ProductsShowing = () => {
         return ;
       }
 
+      
+    // if (allProducts.some(product => product.name.english == "AirBuds Max ")) {
+    //     console.log("yes");
+    // } else {
+    //     console.log("no");
+    // }
 
     return (
         

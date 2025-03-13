@@ -50,6 +50,13 @@ const Card = ({product}: {product : productParams}) => {
         return;
     }
 
+    // if (product.name.english == "Classic Denim Jacket") {
+    //     console.log("yes");
+    // } else {
+    //     console.log("no");
+    // }
+    
+
     const setHover = () => {
         setCardHover(true)
     }

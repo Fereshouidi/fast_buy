@@ -55,7 +55,8 @@ const Quantity = ({product, purchaseData, setPurchaseData, isPriceChange, setIsp
         width: 'var(--long-width)',
         height: '30px',
         border: '1px solid var(--ashen)',
-        backgroundColor: 'var(--almost-white)',
+        backgroundColor: 'transparent',
+        borderRadius: '50px',
         color: 'var(--almost-black)',
         margin: '0 var(--large-margin)',
     }

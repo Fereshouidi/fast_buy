@@ -57,7 +57,7 @@ const DiscountCode = ({product, purchaseData, setDiscountCodeAmount, isPriceChan
         outline: 'none',
         border: `1px solid ${companyInformation?.primaryColor}`,
         borderRadius: '20px',
-        backgroundColor: 'var(--almost-white)',
+        backgroundColor: '#c2c2c236',
         padding: '0 var(--large-padding)',
         color: 'var(--black)'
     }

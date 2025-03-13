@@ -1,4 +1,4 @@
-const url = 'https://fast-buy-back-end.vercel.app/api';
+const url = 'http://localhost:3002/api';
 import axios from "axios";
 
 //https://fast-buy-back-end.vercel.app/api
@@ -41,6 +41,13 @@ export const getAllProducts_SortedByRating = async(page, limit) => {
         const response = await axios.get(url + '/get/products/byRating', 
             {params: { page: page, limit: limit }});
         const data = response.data;
+        console.log(data);
+
+        // if (data.products.some(product => product.name.english == "Classic Denim Jacket")) {
+        //     console.log("yes");
+            
+        // }
+        
         return data;
     }catch(err){
         throw err;

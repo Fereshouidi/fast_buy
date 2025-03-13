@@ -20,7 +20,7 @@ type params = {
     setStarsNum?: (value: number) => void;
     setNote?: (value: string) => void;
     purchase: purchaseParams | undefined,
-    setPurchase: (value: purchaseParams) => void;
+    // setPurchase: (value: purchaseParams) => void;
     review: reviewParams | undefined
 }
 const RateSection = ({exist, setExist, purchase, review }: params) => {
@@ -45,14 +45,20 @@ const RateSection = ({exist, setExist, purchase, review }: params) => {
     useEffect(() => {
         setStarsNum(review?.customerRating?? 0)
     }, [review])
-
+    
     const submate = () => {
         if (purchase && starsNum && setLoadingIcon && setBanner) {             
             if (starsNum && note) { 
                 setLoadingIcon(true);
                 setExist(false);
-                updateReview(review?._id, purchase.buyer, purchase.product , starsNum, note);
-                setBanner(true, 'your review has been sended successfully', 'success');
+                console.log(review?._id, purchase.buyer?._id, purchase.product?._id , starsNum, note);
+                
+                const isDone = updateReview(review?._id, purchase.buyer?._id, purchase.product?._id , starsNum, note);
+                if (isDone) {
+                    setBanner(true, 'your review has been sended successfully', 'success');
+                } else {
+                    setBanner(true, 'some issue happen , try again', 'success');
+                }
                 setLoadingIcon(false);
                 setIsEdit(false);
             }
